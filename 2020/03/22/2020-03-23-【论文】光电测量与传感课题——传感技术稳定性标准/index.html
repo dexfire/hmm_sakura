@@ -1,0 +1,1119 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  
+  <title itemprop="name">【论文】光电测量与传感课题——传感技术稳定性标准 | Hexo</title>
+  
+    <link rel="shortcut icon" href="/images/favicon.ico">
+  
+  <meta http-equiv="x-dns-prefetch-control" content="on">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+SerifMerriweather|Merriweather+Sans|Source+Code+Pro|Ubuntu:400,700|Noto+Serif+SC" media="all">
+  <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+  <link rel="stylesheet" id="saukra_css-css" href="/css/style.css" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/lib.min.css" media="all">
+  <link rel="stylesheet" href="/css/font.css" media="all">
+  <link rel="stylesheet" href="/css/insight.css" media="all">
+  <link rel="stylesheet" href="/css/jquery.fancybox.min.css" media="all">
+  <link rel="stylesheet" href="/css/zoom.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<!--   <link rel="stylesheet" id="saukra_css-css" href="https://2heng.xin/wp-content/cache/autoptimize/css/autoptimize_ad42a61f4c7d4bdd9f91afcff6b5dda5.css
+" type="text/css" media="all"> -->
+  <script>
+  /*Initial Variables*/
+  var mashiro_option = new Object();
+  var mashiro_global = new Object();
+  mashiro_option.NProgressON = true;
+  /* 
+   * 邮箱信息之类的东西可以填在这里，这些js变量基本都作用于sakura-app.js
+   * 这样的设置仅是为了方便在基于PHP开发的主题中设置js变量，既然移植到了Node上，我想或许可以精简这一逻辑吧
+   */
+  mashiro_option.email_domain = "";
+  mashiro_option.email_name = "";
+  mashiro_option.cookie_version_control = "";
+  mashiro_option.qzone_autocomplete = false;
+  mashiro_option.site_name = "さくら荘そのhojun";
+  mashiro_option.author_name = "hojun";
+  mashiro_option.site_url = "https://sakura.hojun.cn";
+  mashiro_option.v_appId = "GyC3NzMvd0hT9Yyd2hYIC0MN-gzGzoHsz";
+  mashiro_option.v_appKey = "mgOpfzbkHYqU92CV4IDlAUHQ";
+  mashiro_option.mathjax = "0";
+  mashiro_option.qq_api_url = "https://api.mashiro.top/qqinfo/"; 
+  mashiro_option.qq_avatar_api_url = "https://api.mashiro.top/qqinfo/";
+
+  // mashiro_option.jsdelivr_css_src = "https://cdn.jsdelivr.net/gh/moezx/cdn@3.4.5/css/lib.min.css";
+  // mashiro_option.float_player_on = true;
+
+  /*End of Initial Variables*/
+  </script>
+  <script type="text/javascript">
+  var bg = "https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/cover/(1).jpg.webp,https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/cover/(2).jpg.webp,https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/cover/(3).jpg.webp,https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/cover/(4).jpg.webp,https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/cover/(5).jpg.webp,https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/cover/(6).jpg.webp,https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/cover/(7).jpg.webp,https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/cover/(8).jpg.webp".split(",");
+  var bgindex = Math.floor(Math.random()*bg.length);
+  if (!!window.ActiveXObject || "ActiveXObject" in window) { //is IE?
+    alert('朋友，IE浏览器未适配哦~');
+  }
+  </script>
+  <style type="text/css">
+  .hljs-ln{border-collapse:collapse}.hljs-ln td{padding:0}.hljs-ln-n:before{content:attr(data-line-number)}
+  </style>
+  <style type="text/css">.site-top .lower nav{display:block !important;}.author-profile i,.post-like a,.post-share .show-share,.sub-text,.we-info a,span.sitename,.post-more i:hover,#pagination a:hover,.post-content a:hover,.float-content i:hover{color:#FE9600}.feature i,.download,.navigator i:hover,.links ul li:before,.ar-time i,span.ar-circle,.object,.comment .comment-reply-link,.siren-checkbox-radio:checked + .siren-checkbox-radioInput:after{background:#FE9600}::-webkit-scrollbar-thumb{background:#FE9600}.download,.navigator i:hover,.link-title,.links ul li:hover,#pagination a:hover,.comment-respond input[type='submit']:hover{border-color:#FE9600}.entry-content a:hover,.site-info a:hover,.comment h4 a,#comments-navi a.prev,#comments-navi a.next,.comment h4 a:hover,.site-top ul li a:hover,.entry-title a:hover,#archives-temp h3,span.page-numbers.current,.sorry li a:hover,.site-title a:hover,i.iconfont.js-toggle-search.iconsearch:hover,.comment-respond input[type='submit']:hover{color:#FE9600}.comments .comments-main{display:block !important;}.comments .comments-hidden{display:none !important;}background-position:center center;background-attachment:inherit;}
+  </style>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body class="page-template page-template-user page-template-page-analytics page-template-userpage-analytics-php page page-id-1297 chinese-font serif isWebKit">
+  <div class="scrollbar" id="bar">
+  </div>
+  <a href="#" class="cd-top faa-float animated"></a>
+  <section id="main-container">
+    <div class="headertop filter-dot">
+  <div id="banner_wave_1"></div>
+  <div id="banner_wave_2"></div>
+  <figure id="centerbg" class="centerbg">
+    <div class="focusinfo no-select">
+      <div class="header-tou">
+        <a href="https://sakura.hojun.cn" target="_blank" rel="noopener">
+          <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/custom/avatar.jpg">
+        </a>
+      </div>
+      <div class="header-info">
+        <p>Live your life with passion! With some drive!</p>
+        <div class="top-social_v2">
+          <li id="bg-pre">
+            <img class="flipx" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/next-b.svg">
+          </li>
+          
+            
+              
+                <li>
+                  <a href="http://github.com/honjun" target="_blank" class="social-github" title="github">
+                    <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/social/github.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="http://weibo.com/mashirozx?is_all=1" target="_blank" class="social-github" title="sina">
+                    <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/social/sina.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="http://weibo.com/mashirozx?is_all=1" target="_blank" class="social-github" title="wangyiyun">
+                    <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/social/wangyiyun.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="http://weibo.com/mashirozx?is_all=1" target="_blank" class="social-github" title="zhihu">
+                    <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/social/zhihu.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="http://weibo.com/mashirozx?is_all=1" target="_blank" class="social-github" title="email">
+                    <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/social/email.svg">
+                  </a>
+                </li>
+              
+            
+              
+                <li class="wechat">
+                  <a href="/#">
+                    <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/social/wechat.png">
+                  </a>
+                  <div class="wechatInner">
+                    <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/custom/wechat.jpg">
+                  </div>
+                </li>
+              
+            
+              
+                <li class="wechat">
+                  <a href="/#">
+                    <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/social/wechat.png">
+                  </a>
+                  <div class="wechatInner">
+                    <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/custom/wechat.jpg">
+                  </div>
+                </li>
+              
+            
+          
+          <li id="bg-next">
+            <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/next-b.svg">
+          </li>
+        </div>
+      </div>
+    </div>
+  </figure>
+  <div id="video-container" style="">
+    <video style="object-fit: fill" id="bgvideo" class="video" video-name="" src="" width="auto" preload="auto">
+    </video>
+    <div id="video-btn" class="loadvideo videolive">
+    </div>
+    <div id="video-add">
+    </div>
+    <div class="video-stu">
+    </div>
+  </div>
+  <div class="headertop-down faa-float animated" onclick="headertop_down()">
+    <span>
+      <i class="fa fa-chevron-down" aria-hidden="true">
+      </i>
+    </span>
+  </div>
+</div>
+    <div id="page" class="site wrapper">
+      <header class="site-header no-select gizle sabit" role="banner">
+  <div class="site-top">
+    <div class="site-branding">
+      <span class="site-title">
+        <span class="logolink moe-mashiro">
+          <a href="/">
+            <span class="sakurasono">さくら荘その</span>
+            <span class="shironeko">hojun</span>
+          </a>
+        </span>
+      </span>
+    </div>
+    <div class="searchbox search-form-submit">
+      <i class="iconfont js-toggle-search iconsearch icon-search">
+      </i>
+    </div>
+    <div id="show-nav" class="showNav mobile-fit">
+      <div class="line line1">
+      </div>
+      <div class="line line2">
+      </div>
+      <div class="line line3">
+      </div>
+    </div>
+    <div class="lower-cantiner">
+      <div class="lower">
+        <nav class="mobile-fit-control hide">
+          <ul id="menu-new" class="menu">
+            
+              <li>
+                <a href="/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
+                    首页
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
+                    归档
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/categories/%E6%8A%80%E6%9C%AF/">
+                          <i class="fa fa-code" aria-hidden="true"></i>
+                          技术
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/%E7%94%9F%E6%B4%BB/">
+                          <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                          生活
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/%E8%B5%84%E6%BA%90/">
+                          <i class="fa fa-cloud-download" aria-hidden="true"></i>
+                          资源
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/%E9%9A%8F%E6%83%B3/">
+                          <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                          随想
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/%E8%BD%AC%E8%BD%BD/">
+                          <i class="fa fa-book" aria-hidden="true"></i>
+                          转载
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="javascript:;">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+                    清单
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/tags/%E6%82%A6%E8%AF%BB/">
+                          <i class="fa fa-th-list faa-bounce" aria-hidden="true"></i>
+                          书单
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/bangumi/">
+                          <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
+                          番组
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/music/">
+                          <i class="fa fa-headphones" aria-hidden="true"></i>
+                          歌单
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/tags/%E5%9B%BE%E9%9B%86/">
+                          <i class="fa fa-photo" aria-hidden="true"></i>
+                          图集
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="/comment/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-pencil-square-o faa-tada" aria-hidden="true"></i>
+                    留言板
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/links/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-link faa-shake" aria-hidden="true"></i>
+                    友人帐
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/donate/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-heart faa-pulse" aria-hidden="true"></i>
+                    赞赏
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-leaf faa-wrench" aria-hidden="true"></i>
+                    关于
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/about/">
+                          <i class="fa fa-meetup" aria-hidden="true"></i>
+                          我？
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/theme-sakura/">
+                          <i class="fa iconfont icon-sakura" aria-hidden="true"></i>
+                          主题
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/lab/">
+                          <i class="fa fa-cogs" aria-hidden="true"></i>
+                          Lab
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="/client/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-android faa-vertical" aria-hidden="true"></i>
+                    客户端
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/atom.xml">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-rss faa-pulse" aria-hidden="true"></i>
+                    RSS
+                  </span>
+                </a>
+                
+              </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+<div class="pattern-center-blank"></div>
+
+<div id="content" class="site-content">
+  <div id="primary" class="content-area">
+    <main id="main" class="site-main" role="main">
+      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <div class="toc"></div>
+        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
+        
+          <header class="entry-header">
+            <h1 class="entry-title">【论文】光电测量与传感课题——传感技术稳定性标准</h1>
+            <p class="entry-census">dexfire&nbsp;·&nbsp;2020-3-22&nbsp;·&nbsp;<span id="busuanzi_value_page_pv"></span>次阅读</p></p>
+
+            <hr>
+          </header>
+        
+        <div class="entry-content">
+          <h1 id="论文光电测量与传感课题传感技术稳定性标准"><a class="markdownIt-Anchor" href="#论文光电测量与传感课题传感技术稳定性标准"></a> 【论文】光电测量与传感课题——传感技术稳定性标准</h1>
+<p>标准乍一看是很枯燥的东西，仔细看过之后才知道，原来它是真的枯燥。<br />
+为什么要指定标准呢？那些又算是稳定性标准呢？</p>
+<p>指标，可以用来标准化生产流程，控制产品质量。</p>
+<p>检验合格，合格标准（图），检验员（张全蛋）。</p>
+<p>常见产品中的标准。<br />
+为了达到标准，乃至超越标准所需要做的努力。</p>
+<h2 id="什么是标准化"><a class="markdownIt-Anchor" href="#什么是标准化"></a> 什么是标准化</h2>
+<p>标准化是指在经济、技术、科学和管理等社会实践中，对重复性的事物和概念，通过制订、发布和实施标准达到统一，以获得最佳秩序和社会效益。公司标准化是以获得公司的最佳生产经营秩序和经济效益为目标，对公司生产经营活动范围内的重复性事物和概念，以制定和实施公司标准，以及贯彻实施相关的国家、行业、地方标准等为主要内容的过程。</p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>中文名</td>
+<td>标准化</td>
+</tr>
+<tr>
+<td>外文名</td>
+<td>standardizing，normalizing</td>
+</tr>
+<tr>
+<td>过    程</td>
+<td>制定、发布及实施标准</td>
+</tr>
+<tr>
+<td>基本方法</td>
+<td>简化，统一化，通用化等</td>
+</tr>
+<tr>
+<td>基本原理</td>
+<td>统一原理、简化原理</td>
+</tr>
+<tr>
+<td>基本特性</td>
+<td>抽象性；技术性；经济性等</td>
+</tr>
+<tr>
+<td>作    用</td>
+<td>组织现代化生产的重要手段</td>
+</tr>
+</tbody>
+</table>
+<p>国家标准《标准化工作指南 第1部分：标准化和相关活动的通用词汇》（GB/T20000.1—2002）对“标准化”的定义是：</p>
+<blockquote>
+<p>“为了在一定范围内获得最佳秩序，对现实问题或潜在问题制定共同使用和重复使用的条款的活动。”</p>
+</blockquote>
+<p>同时在定义后注明：</p>
+<blockquote>
+<p>（1）上述活动主要包括编制、发布和实施标准的过程；<br />
+（2）标准化的主要作用在于为了其预期目的改造产品、过程或服务的适用性，防止贸易壁垒，并促进技术合作。</p>
+</blockquote>
+<h2 id="标准有什么用"><a class="markdownIt-Anchor" href="#标准有什么用"></a> 标准有什么用？</h2>
+<p>标准是可以拿来卖钱的，例子：<br />
+<img src="/assets/images/ISO9001%E6%A0%87%E5%87%86.png" alt="ISO9001标准" /><br />
+这是国际标准化组织（ISO）官网上的一个非常有名的标准，</p>
+<h2 id="国际国内标准化组织"><a class="markdownIt-Anchor" href="#国际国内标准化组织"></a> 国际国内标准化组织</h2>
+<h3 id="国际"><a class="markdownIt-Anchor" href="#国际"></a> 国际</h3>
+<h4 id="iec"><a class="markdownIt-Anchor" href="#iec"></a> IEC</h4>
+<h4 id="isointernational-standardlization-organization"><a class="markdownIt-Anchor" href="#isointernational-standardlization-organization"></a> ISO：International Standardlization Organization</h4>
+<p>国际标准化组织。</p>
+<p><strong>ISO9001</strong><br />
+<a href="https://www.zhihu.com/question/278740612" target="_blank" rel="noopener">什么是ISO9001？</a></p>
+<h4 id="itointernational-telephony-organization"><a class="markdownIt-Anchor" href="#itointernational-telephony-organization"></a> ITO：International Telephony Organization</h4>
+<p>国际电信组织。</p>
+<h3 id="国内"><a class="markdownIt-Anchor" href="#国内"></a> 国内</h3>
+<h4 id="gbt国标"><a class="markdownIt-Anchor" href="#gbt国标"></a> GB/T：国标</h4>
+<h2 id="标准化的意义"><a class="markdownIt-Anchor" href="#标准化的意义"></a> 标准化的意义</h2>
+<p>在国民经济的各个领域中，凡具有多次重复使用和需要制定标准的具体产品，以及各种定额、规划、要求、方法、概念等，都可称为标准化对象。</p>
+<p>标准化对象一般可分为两大类：</p>
+<ul>
+<li>
+<p>一类是标准化的具体对象，即需要制定标准的具体事物；</p>
+<ul>
+<li>例如：《茶馆经营服务规范》从制度规范、从业人员的基本条件、职业道德、服务操作、卫生要求等几个方面做出了详细规定，填补了茶馆行业在标准规范上的空白，解决了茶馆行业无标准可依的问题，有利于对茶馆行业进行管理和指导，及茶馆企业进行标准化经营，对推动茶馆行业健康有序发展具有重要意义。</li>
+</ul>
+</li>
+<li>
+<p>另一类是标准化总体对象，即各种具体对象的总和所构成的整体，通过它可以研究各种具体对象的共同属性、本质和普遍规律。</p>
+</li>
+</ul>
+<p><strong>实施标准化的意义如下：</strong></p>
+<ul>
+<li>标准化的主要作用是组织现代化生产的重要手段和必要条件；</li>
+<li>是合理发展产品品种、组织专业化生产的前提；</li>
+<li>是公司实现科学管理和现代化管理的基础；</li>
+<li>是提高产品质量保证安全、卫生的技术保证；</li>
+<li>是国家资源合理利用、节约能源和节约原材料的有效途径；</li>
+<li>是推广新材料、新技术、新科研成果的桥梁；</li>
+<li>是消除贸易障碍、促进国际贸易发展的通行证。</li>
+</ul>
+<p><strong>具体在以下十一个方面</strong>：</p>
+<ol>
+<li>标准化为科学管理奠定了基础。所谓科学管理，就是依据生产技术的发展规律和客观经济规律对企业进行管理，而各种科学管理制度的形式，都以标准化为基础；</li>
+<li>促进经济全面发展，提高经济效益。标准化应用于科学研究，可以避免在研究上的重复劳动；应用于产品设计，可以缩短设计周期；应用于生产，可使生产在科学的和有秩序的基础上进行；应用于管理，可促进统一、协调、高效率等；</li>
+<li>标准化是科研、生产、使用三者之间的桥梁。一项科研成果，一旦纳入相应标准，就能迅速得到推广和应用。因此，标准化可使新技术和新科研成果得到推广应用，从而促进技术进步；</li>
+<li>随着科学技术的发展，生产的社会化程度越来越高，生产规模越来越大，技术要求越来越复杂，分工越来越细，生产协作越来越广泛，这就必须通过制定和使用标准，来保证各生产部门的活动，在技术上保持高度的统一和协调，以使生产正常进行；所以，我们说标准化为组织现代化生产创造了前提条件；</li>
+<li>合理发展产品品种，提高企业应变能力，以更好的满足社会需求；</li>
+<li>保证产品质量，维护消费者利益；</li>
+<li>保障身体健康和生命安全，大量的环保标准、卫生标准和安全标准制定发布后，用法律形式强制执行，对保障人民的身体健康和生命财产安全具有重大作用。</li>
+<li>标准化标志着一个行业新的标准的产生。<br />
+通过标准化以及相关技术政策的实施，可以整合和引导社会资源，激活科技要素，推动自主创新与开放创新，加速技术积累、科技进步、成果推广、创新扩散、产业升级以及经济、社会、环境的全面、协调、可持续发展。</li>
+</ol>
+<p><strong>表现形式：</strong></p>
+<ol>
+<li>标准化为科学管理奠定了基础。所谓科学管理，就是依据生产技术的发展规律和客观经济规律对企业进行管理，而各种科学管理制度的形成，都是以标准化为基础的；</li>
+<li>促进经济全面发展，提高经济效益。标准化应用于科学研究，可以避免在研究上的重复劳动；应用于产品设计，可以缩短设计周期；应用于生产，可使生产在科学的和有秩序的基础上进行；应用于管理，可促进统一、协调、高效率等；</li>
+<li>标准化是科研、生产、使用三者之间的桥梁。一项科研成果，一旦纳入相应标准，就能迅速得到推广和应用。因此，标准化可使新技术和新科研成果得到推广应用，从而促进技术进步；</li>
+<li>随着科学技术的发展，生产的社会化程度越来越高，生产规模越来越大，技术要求越来越复杂，分工越来越细，生产协作越来越广泛，这就必须通过制定和使用标准，来保证各生产部门的活动，在技术上保持高度的统一和协调，以使生产正常进行；所以，我们说标准化为组织现代化生产创造了前提条件；</li>
+<li>促进对自然资源的合理利用，保持生态平衡，维护人类社会当前和长远的利益；</li>
+<li>合理发展产品品种，提高企业应变能力，以更好地满足社会需求；</li>
+<li>保证产品质量，维护消费者利益；<br />
+8.在社会生产组成部分之间进行协调，确立共同遵循的准则，建立稳定的秩序；</li>
+<li>保障身体健康和生命安全。大量的环保标准、卫生标准和安全标准制定发布后，用法律形式强制执行，对保障人民的身体健康和生命财产安全具有重大作用。</li>
+</ol>
+<h2 id="基本原理"><a class="markdownIt-Anchor" href="#基本原理"></a> 基本原理</h2>
+<h3 id="统一原理"><a class="markdownIt-Anchor" href="#统一原理"></a> 统一原理</h3>
+<p>就是为了保证事物发展所必须的秩序和效率，对事物的形成、功能或其他特性，确定适合于一定时期和一定条件的一致规范，并使这种一致规范与被取代的对象在功能上达到等效。<br />
+统一原理包含以下要点：</p>
+<ol>
+<li>统一是为了确定一组对象的一致规范，其目的是保证事物所必须的秩序和效率；</li>
+<li>统一的原则是功能等效，从一组对象中选择确定一致规范，应能包含被取代对象所具备的必要功能；</li>
+<li>统一是相对的，确定的一致规范，只适用于一定时期和一定条件，随着时间的推移和条件的改变，旧的统一就要由新的统一所代替。</li>
+</ol>
+<h3 id="简化原理"><a class="markdownIt-Anchor" href="#简化原理"></a> 简化原理</h3>
+<p>就是为了经济有效地满足需要，对标准化对象的结构、型式、规格或其他性能进行筛选提炼，剔除其中多余的、低效能的、可替换的环节，精炼并确定出满足全面需要所必要的高效能的环节，保持整体构成精简合理，使之功能效率最高。<br />
+简化原理包含以下几个要点：</p>
+<ol>
+<li>简化的目的是为了经济，使之更有效的满足需要；</li>
+<li>简化的原则是从全面满足需要出发，保持整体构成精简合理，使之功能效率最高。所谓功能效率系指功能满足全面需要的能力；</li>
+<li>简化的基本方法是对处于自然状态的对象进行科学的筛选提炼，剔除其中多余的、低效能的、可替换的环节，精练出高效能的能满足全面需要所必要的环节；</li>
+<li>简化的实质不是简单化而是精练化，其结果不是以少替多，而是以少胜多。</li>
+</ol>
+<h3 id="协调原理"><a class="markdownIt-Anchor" href="#协调原理"></a> 协调原理</h3>
+<p>就是为了使标准的整体功能达到最佳，并产生实际效果，必须通过有效的方式协调好系统内外相关因素之间的关系，确定为建立和保持相互一致，适应或平衡关系所必须具备的条件。<br />
+协调原理包含以下要点：</p>
+<ol>
+<li>协调的目的在于使标准系统的整体功能达到最佳并产生实际效果；</li>
+<li>协调对象是系统内相关因素的关系以及系统与外部相关因素的关系；</li>
+<li>相关因素之间需要建立相互一致关系（连接尺寸），相互适应关系（供需交换条件），相互平衡关系（技术经济招标平衡，有关各方利益矛盾的平衡），为此必须确立条件；</li>
+<li>协调的有效方式有：有关各方面的协商一致，多因素的综合效果最优化，多因素矛盾的综合平衡等。<br />
+按照特定的目标，在一定的限制条件下，对标准系统的构成因素及其关系进行选择、设计或调整，使之达到最理想的效果，这样的标准化原理称为最优化原理。</li>
+</ol>
+<h2 id="特性"><a class="markdownIt-Anchor" href="#特性"></a> 特性</h2>
+<ol>
+<li>标准由主要靠摸索和模仿形式产生变为有意识地制定。</li>
+<li>标准化活动涉及范围扩大。</li>
+<li>标准化活动中的政治和军事因素增加。</li>
+<li>标准化还不是一项有组织的活动。</li>
+<li>标准化没有理论指导。</li>
+<li>标准化发展不平衡。</li>
+<li>标准化是总结的结果。</li>
+<li>标准因行业不同也不同。</li>
+<li>标准可以分为框架性标准和细化标准。</li>
+</ol>
+<h2 id="现行标准"><a class="markdownIt-Anchor" href="#现行标准"></a> 现行标准</h2>
+<h3 id="中美标准化差异编辑"><a class="markdownIt-Anchor" href="#中美标准化差异编辑"></a> 中美标准化差异编辑</h3>
+<p>美国标准分为四种：</p>
+<ul>
+<li>国家标准</li>
+<li>政府各部门标准</li>
+<li>专业标准（或行业标准）</li>
+<li>公司标准</li>
+</ul>
+<p>从美国标准体制的构成看，美国政府各部门的标准主要是从保护消费者安全和健康的角度制定的。</p>
+<p>总体来说，政府在标准化活动中扮演的角色是很有限的，而作为民间机构的行业协会和专业学会的标准占据主导地位。</p>
+<p>美国采用自愿标准体制，即自愿参加编写、自愿采用，行业协会和专业学会的成员也是本着自愿原则参加的企业和专业人士。美国的标准团体非常多，约有400多个，其中绝大多数都是行业协会和专业学会。由此可见，美国行业协会和专业学会在标准化活动中发挥主导作用，是美国标准化的一大特点。</p>
+<p>除此之外，各级政府部门也分别在制定其各自领域的标准以及政府的采购标准，如国防部、农业部、环保局、食品与药品管理局、消费品安全委员会等。</p>
+<p>由于主要的标准制定者是各民间的标准化团体，因此，标准的草案提出者主要是各企业和专业人士，在制修订标准的过程中，各个企业、专业人士以及消费者代表都会本着自身利益积极参与讨论，这样的过程确保了协商一致，也能够充分体现行业的发展状况及特性。应该说，各方讨论的过程是某种搏弈，每一方都努力把自己的利益反映到标准中去，这样的结果是既不会出现严重损害某团体利益的问题，同时也推动行业的发展。</p>
+<p>中美两国的标准化工作存在的差异主要在以下几个方面：</p>
+<ul>
+<li>
+<p>一是标准制定的理念不同。</p>
+<ul>
+<li>
+<p>美国在标准制定中倡导“市场驱动、民间主导”的理念，这种理念要求标准化活动必须是由市场掌握主动权，遵行自愿性和协商一致的原则，在民间机构主导的基础上强化政府的参与，其表现出来的特点是一个“自下而上”的标准制定机制。美国的这种标准化理念产生于其自由市场经济体制下“大市场、小政府”的经济发展理念。以我们参观考察的ASTM为例，其标准制定活动从来就以市场需求为导向，欢迎并允许全球各个市场上对标准的建议进入ASTM的标准制定流程，经协商一致最终成为ASTM标准。在制定过程中，从标准建议、起草、投票到发行，都是民间机构起主要作用甚至是决定性作用。当然政府的参与也是必需的，但也仅作为市场上的一个分子参与其中，与民间成员平等协商，政府的行政权力在其中不得体现。</p>
+</li>
+<li>
+<p>中国的标准化活动一直是一种政府行为，标准化活动处于“行政驱动、政府主导”的局面，有时具有指令性性质，专家商定和行政宣贯是其主要手段，虽然民间力量也越来越多地参与标准制定活动，但绝大部分是受邀请参与，成为技术委员会成员需要批准，不能自由、公开地参与。2000年以来，为了适应社会主义市场经济发展的需要，提出了新的“政府引导、企业主体、市场导向”的标准制定理念，在行政驱动的基础上鼓励扩大企业的参与，但是从整体来说，表现出来的特点仍然是“自上而下”的标准制定机制。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>二是标准化活动的视角不同。</p>
+</li>
+</ul>
+<p>美国一直以来就站在全球化的视角上来开展其标准化活动，在其最初期就面向全球；而中国的标准化活动的视角着眼于本国市场，面向全球不够。</p>
+<p>以ASTM为例，该组织是美国乃至世界上最早成立的标准制定机构之一，组建于1898年。在其成立之初，其标准活动就面向全球，ASTM的会员制度是全球性的，参与ASTM标准制定活动的会员是来自众多国家的技术专家，他们虽然不是代表各自的国家，而是代表他们个人或其服务的企业和机构，但却带着各自国家和市场的技术思想和技术资源参与ASTM的标准制定活动，他们制定的标准成果服务于全球市场。<br />
+相对来说，中国的标准化活动，无论是国家标准的制定还是行业标准的制定，大多着眼于中国国内市场，标准活动的指导思想局限于解决国内市场问题，服务于国内市场需求，参与标准制定活动的专家长期以来也局限于中国公民和组织。由此可见，中国的标准化活动，无论在技术来源上还是制定者身份上，长期以来都仅面向国内市场，全球性战略有待加强。</p>
+<ul>
+<li>三是标准制定程序不同。</li>
+</ul>
+<p>在美国，标准从建议、起草、协商表决、批准到发行整个过程都有一个严格的制定流程。在ASTM考察过程中，工作人员给我们介绍了该组织标准从起草到发行要经过这样的流程：工作组起草标准—送交分技术委员会（SC）进行第一次投票表决通过—呈送到主技术委员会（TC）进行更大范围的投票表决通过—提交标准化技术委员会审议通过—批准通过—发行。在分技术委员会和主技术委员会投票过程中，只要出现反对票，整个投票程序就要停下来，直到反对票解决为止。</p>
+<p>在国内，无论是国家标准的制定还是行业标准的制定，也都有建议、立项、起草、表决、审批和发行整个流程，不过在制度安排上，标准的制定、审批、发行三个环节是分开管理和运行的。而在实际运行中，由于标准化技术委员会委员的代表性不够，一项标准的制定往往较难吸收到整个行业或门类的不同的技术思想和建议，协商一致的覆盖面需要加强，标准的市场适应性有待提高。</p>
+<p>除了上述几点之外，美国与中国的标准化工作在标准制定的经费来源、制度安排等诸多方面都存在很大的差异。我国科技水平与国际化程度与美国还有巨大的差距，不同的文化背景和经济发展阶段，决定了我国标准化体系的现状。</p>
+<p>我国正在大力实施转变经济发展方式，经历从“中国制造”向“中国创造”的战略转变，标准化工作是国民经济和社会发展的重要技术基础，是推进我国技术进步、产业升级、提高质量的重要因素，随着经济全球化的日益发展，我国的标准化也必须借鉴发达国家的先进经验，着重做好标准制定的国际化、标准运作的市场化等方面的工作。政府、企业及质检机构应切实加强对国外标准体系和先进标准的研究，在标准管理和标准制定的过程中采用全球化的视角，使我国标准化工作更加适应世界经济发展的要求，以帮助国内企业更好地参与国际竞争。</p>
+<h2 id="光学的标准化举例"><a class="markdownIt-Anchor" href="#光学的标准化举例"></a> 光学的标准化举例</h2>
+<h3 id="5g"><a class="markdownIt-Anchor" href="#5g"></a> 5G</h3>
+
+        </div>
+        <!-- .entry-content -->
+        <div class="single-reward">
+          <div class="reward-open">赏
+            <div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/custom/donate/AliPayQR.jpg"></li>
+                <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/custom/donate/WeChanQR.jpg"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
+        <footer class="post-footer">
+          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
+          <div class="post-tags">
+          </div>
+          <div class="post-share">
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer><!-- .entry-footer -->
+      </article>
+      <!-- #post-## -->
+      <div class="toc" style="background: none;"></div>
+      <section class="post-squares nextprev">
+        
+          
+            <div class="post-nepre half previous">
+          
+            <a href="/2020/03/22/2020-03-22-%E3%80%90CS%E3%80%91%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA%EF%BC%88FSM%EF%BC%89%E6%A8%A1%E5%9E%8B/" rel="prev">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="">
+              </div>
+              <span class="label">
+              Previous Post</span>
+              <div class="info">
+                <h3>
+                【CS】有限状态机（FSM）模型</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+        
+          
+            <div class="post-nepre half next">
+          
+            <a href="/2020/03/22/2020-03-22-%E3%80%90%E5%BF%83%E7%90%86%E3%80%91%E5%BF%83%E7%90%86%E5%AD%A6%E4%B8%AD%E7%9A%84%E4%BE%9D%E6%81%8B%E7%B1%BB%E5%9E%8B/" rel="next">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="">
+              </div>
+              <span class="label">
+              Next Post</span>
+              <div class="info">
+                <h3>
+                【随想】你的时间都去哪了？</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+      </section>
+      
+<div id="vcomments"></div>
+<script>
+  window.onload = function(){
+      var valine = new Valine();
+      valine.init({
+        el: '#vcomments',
+        appId: "GyC3NzMvd0hT9Yyd2hYIC0MN-gzGzoHsz",
+        appKey: "mgOpfzbkHYqU92CV4IDlAUHQ",
+        path: window.location.pathname,
+        placeholder: "你是我一生只会遇见一次的惊喜 ..."
+      })
+  }
+</script>
+
+      <section class="author-profile">
+        <div class="info" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
+          <a href="" class="profile gravatar"><img src="" itemprop="image" alt="dexfire" height="70" width="70"></a>
+          <div class="meta">
+            <span class="title">Author</span>
+            <h3 itemprop="name">
+            <a href="" itemprop="url" rel="author">dexfire</a>
+            </h3>
+          </div>
+        </div>
+        <hr>
+        <p><i class="iconfont icon-write"></i></p>
+      </section>
+    </main><!-- #main -->
+  </div><!-- #primary -->
+</div>
+
+
+
+    </div>    
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..."/>
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            // PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+    <!-- <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      powered_by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer> -->
+<footer id="colophon" class="site-footer" role="contentinfo">
+  <div class="site-info">
+    <div class="footertext">
+      <div class="img-preload">
+        <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/wordpress-rotating-ball-o.svg">
+        <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/disqus-preloader.svg">
+      </div>
+      <p style="color: #666666;">&copy 2018</p>
+    </div>
+    <div class="footer-device">
+    <p style="font-family: 'Ubuntu', sans-serif;">
+        <span style="color: #b9b9b9;">Theme <a href="https://github.com/honjun/hexo-theme-sakura" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Sakura</a> <i class="iconfont icon-sakura rotating" style="color: #ffc0cb;display:inline-block"></i> by <a href="https://2heng.xin/" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Mashiro</a>&<a href="https://www.hojun.cn/" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Hojun</a>, Powered by Hexo, Hosted by Coding Pages</a>
+        </span>
+      </p>
+    </div>
+  </div><!-- .site-info -->
+</footer>
+
+
+
+<!-- <script src="/js/tocbot.js"></script> -->
+<script type="text/javascript" src="/js/lib.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script type="text/javascript" src="/js/InsightSearch.js"></script>
+<script type="text/javascript" src="/js/jquery.fancybox.min.js"></script>
+<script type="text/javascript" src="/js/zoom.min.js"></script>
+<script type="text/javascript" src="/js/sakura-app.js"></script>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine@1.3.4/dist/Valine.min.js'></script>
+<script src="/js/botui.js"></script>
+<!-- 不蒜子 网页计数器 -->
+<script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script> -->
+<script type="text/javascript">
+/* <![CDATA[ */
+if (/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+  var Poi = {"pjax":"1","movies":{"url": "https://cdn.jsdelivr.net/gh/honjun/hojun@1.2","name":"Unbroken.mp4","live":"close"},"windowheight":"fixed","codelamp":"close","ajaxurl":"","order":"asc","formpostion":"bottom"};
+} else {
+  var Poi = {"pjax":"1","movies":{"url": "https://cdn.jsdelivr.net/gh/honjun/hojun@1.2","name":"Unbroken.mp4","live":"open"},"windowheight":"auto","codelamp":"close","ajaxurl":"","order":"asc","formpostion":"bottom"};
+}
+/* ]]> */
+
+</script>
+<script>
+$(document).ready(function() {
+  if ($(".toc").length > 0 && document.body.clientWidth > 1200) {
+    if ($(".pattern-center").length > 0) { //有图的情况
+      tocbot.init({
+          // Where to render the table of contents.
+          tocSelector: '.toc', // 放置目录的容器
+          // Where to grab the headings to build the table of contents.
+          contentSelector: '.entry-content', // 正文内容所在
+          // Which headings to grab inside of the contentSelector element.
+          scrollSmooth: true,
+          headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+          headingsOffset: -400,
+          scrollSmoothOffset: -85
+      });
+    } else {
+      tocbot.init({
+          // Where to render the table of contents.
+          tocSelector: '.toc', // 放置目录的容器
+          // Where to grab the headings to build the table of contents.
+          contentSelector: '.entry-content', // 正文内容所在
+          // Which headings to grab inside of the contentSelector element.
+          scrollSmooth: true,
+          headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+          headingsOffset: -85,
+          scrollSmoothOffset: -85
+      });
+    }
+    var offsetTop = $('.toc').offset().top - 95;
+    window.onscroll = function() {
+      var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+      if (scrollTop >= offsetTop) {
+        $('.toc').addClass('toc-fixed');
+      } else {
+        $('.toc').removeClass('toc-fixed');
+      }
+    }
+  }
+});
+</script>
+
+    <div class="openNav no-select" style="height: 50px;">
+      <div class="iconflat no-select" style="width: 50px; height: 50px;">
+        <div class="icon"></div>
+      </div>
+      <div class="site-branding search-form-submit">
+        <i class="iconfont js-toggle-search iconsearch icon-search"></i>
+      </div>
+    </div>
+  </section>
+  <div id="mo-nav" class="">
+  <div class="m-avatar">
+    <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/custom/avatar.jpg">
+  </div>
+  <p style="text-align: center; color: #333; font-weight: 900; font-family: 'Ubuntu', sans-serif; letter-spacing: 1.5px">さくら荘そのhojun</p>
+  <p style="text-align: center; word-spacing: 20px;">
+    
+      
+        <a href="http://github.com/honjun" class="fa fa-github" target="_blank" style="color: #333; margin-left:20px"></a>
+      
+        <a href="http://weibo.com/mashirozx?is_all=1" class="fa fa-weibo" target="_blank" style="color: #dd4b39; margin-left:20px"></a>
+      
+        <a href="https://wpa.qq.com/msgrd?v=3&uin=954655431&site=qq&menu=yes" class="fa fa-qq" target="_blank" style="color: #25c6fe; margin-left:20px"></a>
+      
+    
+  </p>
+  <ul id="menu-new-1" class="menu">
+    
+      <li>
+        <a href="/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
+            首页
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/archives">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
+            归档
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/categories/%E6%8A%80%E6%9C%AF/">
+                  <i class="fa fa-code" aria-hidden="true"></i>
+                  技术
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/%E7%94%9F%E6%B4%BB/">
+                  <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                  生活
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/%E8%B5%84%E6%BA%90/">
+                  <i class="fa fa-cloud-download" aria-hidden="true"></i>
+                  资源
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/%E9%9A%8F%E6%83%B3/">
+                  <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                  随想
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/%E8%BD%AC%E8%BD%BD/">
+                  <i class="fa fa-book" aria-hidden="true"></i>
+                  转载
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="javascript:;">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+            清单
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/tags/%E6%82%A6%E8%AF%BB/">
+                  <i class="fa fa-th-list faa-bounce" aria-hidden="true"></i>
+                  书单
+                </a>
+              </li>
+            
+              <li>
+                <a href="/bangumi/">
+                  <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
+                  番组
+                </a>
+              </li>
+            
+              <li>
+                <a href="/music/">
+                  <i class="fa fa-headphones" aria-hidden="true"></i>
+                  歌单
+                </a>
+              </li>
+            
+              <li>
+                <a href="/tags/%E5%9B%BE%E9%9B%86/">
+                  <i class="fa fa-photo" aria-hidden="true"></i>
+                  图集
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="/comment/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-pencil-square-o faa-tada" aria-hidden="true"></i>
+            留言板
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/links/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-link faa-shake" aria-hidden="true"></i>
+            友人帐
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/donate/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-heart faa-pulse" aria-hidden="true"></i>
+            赞赏
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-leaf faa-wrench" aria-hidden="true"></i>
+            关于
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/about/">
+                  <i class="fa fa-meetup" aria-hidden="true"></i>
+                  我？
+                </a>
+              </li>
+            
+              <li>
+                <a href="/theme-sakura/">
+                  <i class="fa iconfont icon-sakura" aria-hidden="true"></i>
+                  主题
+                </a>
+              </li>
+            
+              <li>
+                <a href="/lab/">
+                  <i class="fa fa-cogs" aria-hidden="true"></i>
+                  Lab
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="/client/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-android faa-vertical" aria-hidden="true"></i>
+            客户端
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/atom.xml">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-rss faa-pulse" aria-hidden="true"></i>
+            RSS
+          </span>
+        </a>
+        
+      </li>
+    
+  </ul>
+  <p style="text-align: center; font-size: 13px; color: #b9b9b9;">&copy 2019 hexo-sakura</p>
+</div>
+<button onclick="topFunction()" class="mobile-cd-top" id="moblieGoTop" title="Go to top" style="display: none;"><i class="fa fa-chevron-up" aria-hidden="true"></i></button>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<!-- require MetingJS -->
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+<style>
+  .aplayer .aplayer-lrc {
+    height: 35px;
+  }
+  .aplayer .aplayer-lrc p{
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 18px !important;
+  }
+  .aplayer .aplayer-lrc p.aplayer-lrc-current{
+    color: #FF1493;
+  }
+  .aplayer.aplayer-narrow .aplayer-body{
+    left: -66px !important;
+  }
+  .aplayer.aplayer-fixed .aplayer-lrc {
+    display: none;
+  }
+  .aplayer .aplayer-lrc.aplayer-lrc-hide {
+      display:none !important;
+  }
+  .aplayer.aplayer-fixed .lrc-show {
+    display: block;
+    background: rgba(255, 255, 255, 0.8);
+  }
+</style>
+<meting-js
+
+    id="2660651585"
+
+    server="netease"
+
+    type="playlist"
+
+    fixed="true"
+
+    autoplay="false"
+
+    loop="all"
+
+    order="random"
+
+    preload="auto"
+
+    volume="0.7"
+
+    mutex="true"
+
+</meting-js>
+<script>
+  $(function(){
+    $('body').on('click', '.aplayer', function(){
+      if($('.aplayer-button').hasClass('aplayer-play')) {
+        $('.aplayer-lrc').removeClass('lrc-show');
+      } else {
+        $('.aplayer-lrc').addClass('lrc-show');
+      }
+    })
+  });
+</script>
+</body>
+</html>

@@ -544,7 +544,7 @@ Theme by Mashiro
 Python 自带了许多内置的编解码器，它们的实现或者是通过 C 函数，或者是通过映射表。 以下表格是按名称排序的编解码器列表，并提供了一些常见别名以及编码格式通常针对的语言。 别名和语言列表都不是<strong>详尽无遗</strong>的。 请注意仅有大小写区别或使用连字符替代下划线的拼写形式也都是有效的别名；因此，‘utf-8’ 是 ‘utf_8’ 编解码器的有效别名。</p>
 </blockquote>
 <p>这个表格大体是这个格式：</p>
-<p><img src="/assets/images/QQ%E6%88%AA%E5%9B%BE20200311010842.png" alt="Python支持的编码格式" /></p>
+<p><img src="/img/QQ%E6%88%AA%E5%9B%BE20200311010842.png" alt="Python支持的编码格式" /></p>
 <p>我们搜索ASCII关键字，发现其中涉及到ASCII的寥寥无几，反正是为了偷懒，司马当活马医，看上哪个就用哪个了。</p>
 <h2 id="首先是方案一"><a class="markdownIt-Anchor" href="#首先是方案一"></a> 首先是方案一</h2>
 <p>这里，通过python文档并没有看到这种奇奇怪怪的解码函数，因为的确有些小众了，这里实在有些按耐不住，还是动用了外部力量，发现的确曾经有前辈研究过这类问题：</p>
@@ -583,7 +583,7 @@ And turn it into:</p>
 <p><code>&quot;support@psiloc.com&quot;</code><br />
 After I do the conversion, I’ll probe to see if the string I have is encoded in UTF-8 or UTF-16.</p>
 <p>我们看到了几个提供了线索的答案，也就是：<br />
-<img src="/assets/images/QQ%E6%88%AA%E5%9B%BE20200311012229.png" alt="p1" /><br />
+<img src="/img/QQ%E6%88%AA%E5%9B%BE20200311012229.png" alt="p1" /><br />
 这里是使用了编码后解码的方案，这里我也找到了另外一个看起来比较靠谱的代码：</p>
 <p><code>feed.encode('utf8').decode('unicode_escape')</code></p>
 <p>这个代码也就是首先对 <code>str</code> 进行utf8编码，而后作为unicode的escape文本进行解码，完成解码操作，我们实际操作一番：</p>
@@ -600,9 +600,9 @@ After I do the conversion, I’ll probe to see if the string I have is encoded i
 <p>这种操作对中文似乎有致命伤啊，所有中文经过这样操作以后，全成乱码了…这可咋整捏？</p>
 <h2 id="方案二"><a class="markdownIt-Anchor" href="#方案二"></a> 方案二</h2>
 <p>下面验证另外一种方法：<br />
-<img src="/assets/images/QQ%E6%88%AA%E5%9B%BE20200311012330.png" alt="p2" /></p>
+<img src="/img/QQ%E6%88%AA%E5%9B%BE20200311012330.png" alt="p2" /></p>
 <h2 id="方案三使用codecs类进行escape_decode"><a class="markdownIt-Anchor" href="#方案三使用codecs类进行escape_decode"></a> 方案三：使用<code>codecs</code>类进行escape_decode</h2>
-<p><img src="/assets/images/QQ%E6%88%AA%E5%9B%BE20200311013556.png" alt="" /></p>
+<p><img src="/img/QQ%E6%88%AA%E5%9B%BE20200311013556.png" alt="" /></p>
 <h2 id="方案四使用re进行正则替换"><a class="markdownIt-Anchor" href="#方案四使用re进行正则替换"></a> 方案四：使用<code>re</code>进行正则替换</h2>
 
         </div>

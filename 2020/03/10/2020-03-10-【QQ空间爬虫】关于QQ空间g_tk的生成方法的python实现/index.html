@@ -518,11 +518,11 @@ Theme by Mashiro
 <p>我们首先打开QQ空间，发现QQ动态数据是动态加载的，那么一定涉及到了 XHR 请求，也就是在js代码中使用HTTP请求动态调用了数据，我们使用开发工具 Network 监视调用，发现向下刷新时，QQ空间网页请求了这样一个资源：</p>
 <p><code>https://user.qzone.qq.com/proxy/domain/ic2.qzone.qq.com/cgi-bin/feeds/feeds_html_act_all?uin=【你的QQ号】&amp;hostuin=【当前访问用户的QQ号】&amp;scope=7&amp;filter=all&amp;flag=1&amp;refresh=0&amp;firstGetGroup=0&amp;mixnocache=0&amp;scene=0&amp;start=10&amp;count=10&amp;sidomain=qzonestyle.gtimg.cn&amp;useutf8=1&amp;outputhtmlfeed=1&amp;refer=specialcare&amp;r=0.7234408300556543&amp;g_tk=70237777&amp;qzonetoken=【QQ空间加密口令】&amp;g_tk=70237777</code></p>
 <p>其中包含了<code>g_tk</code>字段，而这个参数并非Cookie的一部分，所以我们进一步尝试在 Source 中搜索这个关键字，发现并没有找到，那么可以推断，这个<code>g_tk</code>字段是在独立js文件中进行的调用。</p>
-<p><img src="/assets/images/QQ%E6%88%AA%E5%9B%BE20200310011158.png" alt="Network监控日志" /></p>
+<p><img src="/img/QQ%E6%88%AA%E5%9B%BE20200310011158.png" alt="Network监控日志" /></p>
 <p>在新Tab中打开是这样的，其中可以看到html格式的动态信息！</p>
-<p><img src="/assets/images/QQ%E6%88%AA%E5%9B%BE20200310011349.png" alt="QQ动态feeds" /></p>
+<p><img src="/img/QQ%E6%88%AA%E5%9B%BE20200310011349.png" alt="QQ动态feeds" /></p>
 <p>我们继续观察，发现其中加载了一个名叫 <code>qzfl_v8_[version].js</code> 的文件，在其中我们找到了我们关注的 <code>g_tk</code> 关键字！</p>
-<p><img src="/assets/images/QQ%E6%88%AA%E5%9B%BE20200310011608.png" alt="qzfl_v8.js" /></p>
+<p><img src="/img/QQ%E6%88%AA%E5%9B%BE20200310011608.png" alt="qzfl_v8.js" /></p>
 <p><img src="QQ%E6%88%AA%E5%9B%BE20200310011836.png" alt="g_tk 的线索" /></p>
 <p>发现其调用了一行 <code>&quot;g_tk=&quot; + QZFL.pluginsDefine.getACSRFToken(t);</code> 显然，这正是我们关心的代码，跟踪其调用，发现这个关键函数的定义：<br />
 似乎已经发掘到矿山深处，开心！！(*<sup>▽</sup>*)</p>

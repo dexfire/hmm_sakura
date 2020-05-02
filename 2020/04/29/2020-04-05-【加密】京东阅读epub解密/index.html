@@ -556,7 +556,7 @@ libZBarDecoder.so
 <h2 id="涉及到的加密算法"><a class="markdownIt-Anchor" href="#涉及到的加密算法"></a> 涉及到的加密算法</h2>
 <ul>
 <li>AES, Rijndael算法 <a href="https://blog.csdn.net/thinkerleo1997/article/details/80253635" target="_blank" rel="noopener">https://blog.csdn.net/thinkerleo1997/article/details/80253635</a><br />
-<img src="/assets/images/QQ%E6%88%AA%E5%9B%BE20200405234157.png" alt="AES" /><br />
+<img src="/img/QQ%E6%88%AA%E5%9B%BE20200405234157.png" alt="AES" /><br />
 这个是在 <code>libjdrdrm.so</code> 的符号表中发现的信息，也就是这个算法中采用了AES的算法，但细节可能有变化，需要使用其他的方法来探索。</li>
 <li>数据库，使用的是 sqlcipher 的简单加密算法，解密出来就是正确的数据库文件，密匙存放在 classes.dex 的字节码中。</li>
 <li><code>hmacSHA1</code> 是一种需要密码的哈希散列计算算法。</li>

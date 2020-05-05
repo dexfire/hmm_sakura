@@ -4246,7 +4246,7 @@ i.iconfont.js-toggle-search.iconsearch {
     visibility:visible;
     opacity:.99;
     animation:elastic .5s;
-    background-image:url(<%= theme.cdn %>/images/other/://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/iloli.gif);
+    background-image:url(<%= theme.cdn %>/images/other/:<%= theme.cdn %>/images/other/iloli.gif);
     background-repeat:no-repeat;
     background-position:bottom right
 }

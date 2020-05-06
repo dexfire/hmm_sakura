@@ -69,6 +69,7 @@ Theme by Mashiro
     /*End of Initial Variables*/
   </script>
   <script type="text/javascript">
+    // "&lt;%= theme.cdn %&gt;/images/cover/IMG_7631.JPG,&lt;%= theme.cdn %&gt;/images/cover/IMG_7632.JPG,&lt;%= theme.cdn %&gt;/images/cover/IMG_7633.JPG,&lt;%= theme.cdn %&gt;/images/cover/IMG_7634.JPG,&lt;%= theme.cdn %&gt;/images/cover/IMG_7635.JPG,&lt;%= theme.cdn %&gt;/images/cover/IMG_7636.JPG,&lt;%= theme.cdn %&gt;/images/cover/IMG_7638.JPG,&lt;%= theme.cdn %&gt;/images/cover/IMG_7639.JPG,&lt;%= theme.cdn %&gt;/images/cover/IMG_7642.JPG,&lt;%= theme.cdn %&gt;/images/cover/IMG_7643.jpg,&lt;%= theme.cdn %&gt;/images/cover/IMG_7725.jpg,&lt;%= theme.cdn %&gt;/images/cover/IMG_7760.jpg".split(",")
     var bg = "&lt;%= theme.cdn %&gt;/images/cover/IMG_7631.JPG,&lt;%= theme.cdn %&gt;/images/cover/IMG_7632.JPG,&lt;%= theme.cdn %&gt;/images/cover/IMG_7633.JPG,&lt;%= theme.cdn %&gt;/images/cover/IMG_7634.JPG,&lt;%= theme.cdn %&gt;/images/cover/IMG_7635.JPG,&lt;%= theme.cdn %&gt;/images/cover/IMG_7636.JPG,&lt;%= theme.cdn %&gt;/images/cover/IMG_7638.JPG,&lt;%= theme.cdn %&gt;/images/cover/IMG_7639.JPG,&lt;%= theme.cdn %&gt;/images/cover/IMG_7642.JPG,&lt;%= theme.cdn %&gt;/images/cover/IMG_7643.jpg,&lt;%= theme.cdn %&gt;/images/cover/IMG_7725.jpg,&lt;%= theme.cdn %&gt;/images/cover/IMG_7760.jpg".split(",");
     var bgindex = Math.floor(Math.random() * bg.length);
     if (!!window.ActiveXObject || "ActiveXObject" in window) { //is IE?
@@ -87,7 +88,7 @@ Theme by Mashiro
   <div class="scrollbar" id="bar"></div>
   <a href="#" class="cd-top faa-float animated"></a>
   <section id="main-container">
-    <div class="headertop filter-dot">
+    <div class="headertop ">
   <div id="banner_wave_1"></div>
   <div id="banner_wave_2"></div>
   <figure id="centerbg" class="centerbg">
@@ -419,6 +420,7 @@ Theme by Mashiro
 <div class="pattern-center-blank"></div>
 <div class="pattern-center ">
   <div class="pattern-attachment-img">
+    <!-- data-src="https://view.moezx.cc/images/2017/12/03/writing.jpg" -->
     <img  src="<%= theme.cdn %>/images/loader/orange.progress-bar-stripe-loader.svg" data-src="imgx"  class="lazyload" onerror="imgError(this,3)" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;">
   </div>
   <header class="pattern-header ">

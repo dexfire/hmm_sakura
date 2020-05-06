@@ -379,7 +379,7 @@ try {
             if (ele.src.includes("https://cn.gravatar.com/avatar")) {
                 ele.src = ele.src.replace("https://cn.gravatar.com/avatar/", "https://cdn.v2ex.com/gravatar/");
             } else {
-                ele.src = 'https://view.moezx.cc/images/2017/12/30/Transparent_Akkarin.th.jpg';
+                ele.src = '<%= theme.cdn %>/images/other/Transparent_Akkarin.th.jpg';
             }
             break;
         case 2:
@@ -389,11 +389,11 @@ try {
             if (ele.src.includes("https://static.2heng.xin/")) {
                 ele.src = ele.src.replace("https://static.2heng.xin/wp-content/uploads/", "https://cdn.2heng.xin/");
             } else {
-                ele.src = 'https://view.moezx.cc/images/2018/05/13/image-404.png';
+                ele.src = '<%= theme.cdn %>/images/other/image-404.png';
             }
             break;
         default:
-            ele.src = 'https://view.moezx.cc/images/2018/05/13/image-404.png';
+            ele.src = '<%= theme.cdn %>/images/other/image-404.png';
         }
     }
     mashiro_global.post_list_show_animation = new function() {
@@ -621,7 +621,7 @@ try {
         }
     }
     scrollBar();
-    '主题切换代码好恶心，有空一定要重构';
+    // 注解：'主题切换代码好恶心，有空一定要重构';
     function checkBgImgCookie() {
         var bgurl = getCookie("bgImgSetting");
         if (!bgurl) {
@@ -632,7 +632,7 @@ try {
             $('#banner_wave_2').addClass('banner_wave_hide_fit_skin');
         }
         if (bgurl != "") {
-            if (bgurl == "https://view.moezx.cc/images/2018/01/03/sakura.png" || bgurl == "https://view.moezx.cc/images/2018/01/03/plaid2dbf8.jpg" || bgurl == "https://view.moezx.cc/images/2018/01/10/star02.png" || bgurl == "https://view.moezx.cc/images/2018/01/24/kyotoanimation.png" || bgurl == "https://view.moezx.cc/images/2018/09/17/little-monster.png") {
+            if (bgurl == "<%= theme.cdn %>/images/themebg/sakura.png" || bgurl == "<%= theme.cdn %>/images/themebg/plaid.jpg" || bgurl == "<%= theme.cdn %>/images/themebg/star.png" || bgurl == "<%= theme.cdn %>/images/themebg/kyotoanimation.png" || bgurl == "<%= theme.cdn %>/images/themebg/little-monster.png") {
                 mashiro_global.variables.skinSecter = true;
                 mashiro_global.variables.isNight = false;
                 $("#night-mode-cover").css("visibility", "hidden");
@@ -682,6 +682,7 @@ try {
                 setCookie("bgImgSetting", url, 30);
             });
         }
+        // 注解：切换主题
         function changeBGnoTrans(tagid, url) {
             $(".skin-menu " + tagid).click(function() {
                 mashiro_global.variables.skinSecter = true;
@@ -697,11 +698,11 @@ try {
                 setCookie("bgImgSetting", url, 30);
             });
         }
-        changeBG("#sakura-bg", "https://view.moezx.cc/images/2018/01/03/sakura.png");
-        changeBG("#gribs-bg", "https://view.moezx.cc/images/2018/01/03/plaid2dbf8.jpg");
-        changeBG("#pixiv-bg", "https://view.moezx.cc/images/2018/01/10/star02.png");
-        changeBG("#KAdots-bg", "https://view.moezx.cc/images/2018/01/24/kyotoanimation.png");
-        changeBG("#totem-bg", "https://view.moezx.cc/images/2018/09/17/little-monster.png");
+        changeBG("#sakura-bg", "<%= theme.cdn %>/images/themebg/sakura.png");
+        changeBG("#gribs-bg", "<%= theme.cdn %>/images/themebg/plaid.jpg");
+        changeBG("#pixiv-bg", "<%= theme.cdn %>/images/themebg/star.png");
+        changeBG("#KAdots-bg", "<%= theme.cdn %>/images/themebg/kyotoanimation.png");
+        changeBG("#totem-bg", "<%= theme.cdn %>/images/themebg/little-monster.png");
         changeBGnoTrans("#bing-bg", "https://api.shino.cc/bing/");
         $(".skin-menu #white-bg").click(function() {
             mashiro_global.variables.skinSecter = false;

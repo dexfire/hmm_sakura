@@ -58,13 +58,13 @@ function removeCookie(name) {
 function imgError(ele, type) {
     switch (type) {
         case 1:
-            ele.src = 'https://view.moezx.cc/images/2017/12/30/Transparent_Akkarin.th.jpg';
+            ele.src = '<%= theme.cdn %>/images/other/Transparent_Akkarin.th.jpg';
             break;
         case 2:
-            ele.src = 'https://gravatar.shino.cc/avatar/?s=80&d=mm&r=g';
+            ele.src = 'https://q2.qlogo.cn/headimg_dl?dst_uin=275176629&spec=5';
             break;
         default:
-            ele.src = 'https://view.moezx.cc/images/2018/05/13/image-404.png';
+            ele.src = '<%= theme.cdn %>/images/other/image-404.png';
     }
 }
 

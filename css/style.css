@@ -5415,7 +5415,7 @@ i.iconfont.js-toggle-search.iconsearch {
 }.oshimai {
     height:2em;
     width:6.11em;
-    background:url("<%= theme.cdn %>/images/other/oshimai.svg");
+    background:url("<%= theme.cdn %>/images/elements/oshimai.svg");
     background-size:cover;
     margin:0 auto
 }

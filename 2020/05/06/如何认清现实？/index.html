@@ -1,0 +1,1405 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<!--
+Theme by Mashiro
+                      /^--^\     /^--^\     /^--^\
+                      \____/     \____/     \____/
+                     /      \   /      \   /      \
+                    |        | |        | |        |
+                     \__  __/   \__  __/   \__  __/
+|^|^|^|^|^|^|^|^|^|^|^|^\ \^|^|^|^/ /^|^|^|^|^\ \^|^|^|^|^|^|^|^|^|^|^|^|
+| | | | | | | | | | | | |\ \| | |/ /| | | | | | \ \ | | | | | | | | | | |
+########################/ /######\ \###########/ /#######################
+| | | | | | | | | | | | \/| | | | \/| | | | | |\/ | | | | | | | | | | | |
+|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|
+-->
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  
+  <title itemprop="name">如何认清现实？ | Hexo</title>
+  
+  <link rel="shortcut icon" href="/images/favicon.ico">
+  
+  <meta http-equiv="x-dns-prefetch-control" content="on">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Noto+SerifMerriweather|Merriweather+Sans|Source+Code+Pro|Ubuntu:400,700|Noto+Serif+SC"
+    media="all">
+  <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+  <link rel="stylesheet" id="saukra_css-css" href="/css/autoptimize.css" type="text/css" media="all">
+  <!-- <link rel="stylesheet" id="saukra_css-css" href="/css/style.css" type="text/css" media="all"> -->
+  <link rel="stylesheet" href="/css/lib.css" type="text/css" media="all">
+  <!-- <link rel="stylesheet" href="/css/lib.min.css" media="all"> -->
+  <link rel="stylesheet" href="/css/font.css" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/insight.css" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/jquery.fancybox.min.css" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/zoom.css" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/sharejs.css" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/custom.css" type="text/css" media="all">
+  <!--   <link rel="stylesheet" id="saukra_css-css" href="https://2heng.xin/wp-content/cache/autoptimize/css/autoptimize_ad42a61f4c7d4bdd9f91afcff6b5dda5.css" type="text/css" media="all"> -->
+  <link rel="stylesheet" id="APlayer.min-css" href="https://cdn.jsdelivr.net/gh/moeplayer/hermit-x@2.9.6/assets/css/APlayer.min.css?ver=2.9.6" type="text/css" media="all">
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/moeplayer/hermit-x@2.9.6/assets/js/APlayer.min.js?ver=2.9.6"></script>
+  <script>
+    /*Initial Variables*/
+    var mashiro_option = new Object();
+    var mashiro_global = new Object();
+    mashiro_option.NProgressON = true;
+    /*
+     * 邮箱信息之类的东西可以填在这里，这些js变量基本都作用于sakura-app.js
+     * 这样的设置仅是为了方便在基于PHP开发的主题中设置js变量，既然移植到了Node上，我想或许可以精简这一逻辑吧
+     */
+    mashiro_option.email_domain = "";
+    mashiro_option.email_name = "";
+    mashiro_option.cookie_version_control = "";
+    mashiro_option.qzone_autocomplete = false;
+    mashiro_option.site_name = "さくら荘そのhojun";
+    mashiro_option.author_name = "hojun";
+    mashiro_option.site_url = "https://sakura.hojun.cn";
+    mashiro_option.v_appId = "aFI53WTJYb4qPknwn0l76Lnu-gzGzoHsz";
+    mashiro_option.v_appKey = "2YeldrXS6Hm64JWCCLNgpj3C";
+    mashiro_option.mathjax = "0";
+    mashiro_option.qq_api_url = "https://api.mashiro.top/qqinfo/";
+    mashiro_option.qq_avatar_api_url = "https://api.mashiro.top/qqinfo/";
+
+  // mashiro_option.jsdelivr_css_src = "https://cdn.jsdelivr.net/gh/moezx/cdn@3.4.5/css/lib.min.css";
+  // mashiro_option.float_player_on = true;
+
+    /*End of Initial Variables*/
+  </script>
+  <script type="text/javascript">
+    var bg = "&lt;%= theme.cdn %&gt;/images/cover/(1).jpg.webp,&lt;%= theme.cdn %&gt;/images/cover/(2).jpg.webp,&lt;%= theme.cdn %&gt;/images/cover/(3).jpg.webp,&lt;%= theme.cdn %&gt;/images/cover/(4).jpg.webp,&lt;%= theme.cdn %&gt;/images/cover/(5).jpg.webp,&lt;%= theme.cdn %&gt;/images/cover/(6).jpg.webp,&lt;%= theme.cdn %&gt;/images/cover/(7).jpg.webp,&lt;%= theme.cdn %&gt;/images/cover/(8).jpg.webp".split(",");
+    var bgindex = Math.floor(Math.random() * bg.length);
+    if (!!window.ActiveXObject || "ActiveXObject" in window) { //is IE?
+      alert('朋友，IE浏览器未适配哦~');
+    }
+  </script>
+    <style type="text/css">
+  .hljs-ln{border-collapse:collapse}.hljs-ln td{padding:0}.hljs-ln-n:before{content:attr(data-line-number)}
+  </style>
+  <style type="text/css">.site-top .lower nav{display:block !important;}.author-profile i,.post-like a,.post-share .show-share,.sub-text,.we-info a,span.sitename,.post-more i:hover,#pagination a:hover,.post-content a:hover,.float-content i:hover{color:#FE9600}.feature i,.download,.navigator i:hover,.links ul li:before,.ar-time i,span.ar-circle,.object,.comment .comment-reply-link,.siren-checkbox-radio:checked + .siren-checkbox-radioInput:after{background:#FE9600}::-webkit-scrollbar-thumb{background:#FE9600}.download,.navigator i:hover,.link-title,.links ul li:hover,#pagination a:hover,.comment-respond input[type='submit']:hover{border-color:#FE9600}.entry-content a:hover,.site-info a:hover,.comment h4 a,#comments-navi a.prev,#comments-navi a.next,.comment h4 a:hover,.site-top ul li a:hover,.entry-title a:hover,#archives-temp h3,span.page-numbers.current,.sorry li a:hover,.site-title a:hover,i.iconfont.js-toggle-search.iconsearch:hover,.comment-respond input[type='submit']:hover{color:#FE9600}.comments .comments-main{display:block !important;}.comments .comments-hidden{display:none !important;}.centerbg{background-image: url("https://api.2heng.xin/cover/");background-position: center center;background-attachment: inherit;}
+  </style>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body
+  class="page-template page-template-user page-template-page-analytics page-template-userpage-analytics-php page page-id-1297 chinese-font serif isWebKit">
+  <div class="scrollbar" id="bar"></div>
+  <a href="#" class="cd-top faa-float animated"></a>
+  <section id="main-container">
+    <div class="headertop filter-dot">
+  <div id="banner_wave_1"></div>
+  <div id="banner_wave_2"></div>
+  <figure id="centerbg" class="centerbg">
+    <div class="focusinfo no-select">
+      <div class="header-tou">
+        <a href="https://sakura.hojun.cn" target="_blank" rel="noopener">
+          <img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1/images/custom/avatar.jpg">
+        </a>
+      </div>
+      <div class="header-info">
+        <p>Live your life with passion! With some drive!</p>
+        <div class="top-social_v2">
+          <li id="bg-pre">
+            <img class="flipx" src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1/images/other/next-b.svg">
+          </li>
+          
+            
+              
+                <li>
+                  <a href="http://github.com/honjun" target="_blank" class="social-github" title="github">
+                    <img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1/images/social/github.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="http://weibo.com/mashirozx?is_all=1" target="_blank" class="social-github" title="sina">
+                    <img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1/images/social/sina.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="http://weibo.com/mashirozx?is_all=1" target="_blank" class="social-github" title="wangyiyun">
+                    <img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1/images/social/wangyiyun.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="http://weibo.com/mashirozx?is_all=1" target="_blank" class="social-github" title="zhihu">
+                    <img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1/images/social/zhihu.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="http://weibo.com/mashirozx?is_all=1" target="_blank" class="social-github" title="email">
+                    <img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1/images/social/email.svg">
+                  </a>
+                </li>
+              
+            
+              
+                <li class="wechat">
+                  <a href="/#">
+                    <img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1/images/social/wechat.png">
+                  </a>
+                  <div class="wechatInner">
+                    <img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1/images/custom/wechat.jpg">
+                  </div>
+                </li>
+              
+            
+              
+                <li class="wechat">
+                  <a href="/#">
+                    <img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1/images/social/wechat.png">
+                  </a>
+                  <div class="wechatInner">
+                    <img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1/images/custom/wechat.jpg">
+                  </div>
+                </li>
+              
+            
+          
+          <li id="bg-next">
+            <img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1/images/other/next-b.svg">
+          </li>
+        </div>
+      </div>
+    </div>
+  </figure>
+  <div id="video-container" style="">
+    <video style="object-fit: fill" id="bgvideo" class="video" video-name="" src="" width="auto" preload="auto">
+    </video>
+    <div id="video-btn" class="loadvideo videolive">
+    </div>
+    <div id="video-add">
+    </div>
+    <div class="video-stu">
+    </div>
+  </div>
+  <div class="headertop-down faa-float animated" onclick="headertop_down()">
+    <span>
+      <i class="fa fa-chevron-down" aria-hidden="true">
+      </i>
+    </span>
+  </div>
+</div>
+    <div id="page" class="site wrapper">
+      <header class="site-header no-select gizle sabit" role="banner">
+  <div class="site-top">
+    <div class="site-branding">
+      <span class="site-title">
+        <span class="logolink moe-mashiro">
+          <a href="/">
+            <span class="sakurasono">さくら荘その</span>
+            <span class="shironeko">hojun</span>
+          </a>
+        </span>
+      </span>
+    </div>
+    <div class="searchbox search-form-submit">
+      <i class="iconfont js-toggle-search iconsearch icon-search">
+      </i>
+    </div>
+    <div id="show-nav" class="showNav mobile-fit">
+      <div class="line line1">
+      </div>
+      <div class="line line2">
+      </div>
+      <div class="line line3">
+      </div>
+    </div>
+    <div class="lower-cantiner">
+      <div class="lower">
+        <nav class="mobile-fit-control hide">
+          <ul id="menu-new" class="menu">
+            
+              <li>
+                <a href="/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
+                    首页
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
+                    归档
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/categories/%E6%8A%80%E6%9C%AF/">
+                          <i class="fa fa-code" aria-hidden="true"></i>
+                          技术
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/%E7%94%9F%E6%B4%BB/">
+                          <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                          生活
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/%E8%B5%84%E6%BA%90/">
+                          <i class="fa fa-cloud-download" aria-hidden="true"></i>
+                          资源
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/%E9%9A%8F%E6%83%B3/">
+                          <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                          随想
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/%E8%BD%AC%E8%BD%BD/">
+                          <i class="fa fa-book" aria-hidden="true"></i>
+                          转载
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="javascript:;">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+                    清单
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/tags/%E6%82%A6%E8%AF%BB/">
+                          <i class="fa fa-th-list faa-bounce" aria-hidden="true"></i>
+                          书单
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/bangumi/">
+                          <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
+                          番组
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/music/">
+                          <i class="fa fa-headphones" aria-hidden="true"></i>
+                          歌单
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/tags/%E5%9B%BE%E9%9B%86/">
+                          <i class="fa fa-photo" aria-hidden="true"></i>
+                          图集
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="/comment/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-pencil-square-o faa-tada" aria-hidden="true"></i>
+                    留言板
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/links/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-link faa-shake" aria-hidden="true"></i>
+                    友人帐
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/donate/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-heart faa-pulse" aria-hidden="true"></i>
+                    赞赏
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-leaf faa-wrench" aria-hidden="true"></i>
+                    关于
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/about/">
+                          <i class="fa fa-meetup" aria-hidden="true"></i>
+                          我？
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/theme-sakura/">
+                          <i class="fa iconfont icon-sakura" aria-hidden="true"></i>
+                          主题
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/lab/">
+                          <i class="fa fa-cogs" aria-hidden="true"></i>
+                          Lab
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="/client/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-android faa-vertical" aria-hidden="true"></i>
+                    客户端
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/atom.xml">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-rss faa-pulse" aria-hidden="true"></i>
+                    RSS
+                  </span>
+                </a>
+                
+              </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+<div class="pattern-center-blank"></div>
+
+<div id="content" class="site-content">
+  <div id="primary" class="content-area">
+    <main id="main" class="site-main" role="main">
+      <article id="post-1"
+        class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <div class="toc"></div>
+        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
+        
+        <header class="entry-header">
+          <h1 class="entry-title">如何认清现实？</h1>
+          <p class="entry-census">&nbsp;·&nbsp;2020-5-6&nbsp;·&nbsp;<span
+              id="busuanzi_value_page_pv"></span>次阅读</p>
+          </p>
+
+          <hr>
+        </header>
+        
+        <div class="entry-content">
+          <p>一个人走的快，一群人走的远<br />
+UL 0bili_65030392144 : 要关注周围的人<br />
+自由相对人投喂i御十二1个小电视飞船，点击前往TA的房间去抽奖吧<br />
+UL 0bili_31817625794 : 交朋友的智慧<br />
+Emondage_送给桃核叫我桃道长1个次元之城，应援能量，穿梭时空，点击前往抽奖吧<br />
+UL 0bili_14704790963 : 嗯嗯，小孩子喜欢相互“丘丘”<br />
+你的奶油乀投喂你的阿橘1个小电视飞船，点击前往TA的房间去抽奖吧<br />
+UL 0bili_65030392144 : 因为要做的事情太多，要帮的人太多<br />
+UL 0bili_65030392144 : 所以不想浪费时间<br />
+Ming719投喂猫小毅ぃ2个小电视飞船，点击前往TA的房间去抽奖吧<br />
+UL 0bili_14704790963 : 哈哈<br />
+UL 0bili_14704790963 : 连文<br />
+UL 0bili_31817625794 : 横下一条心<br />
+UL 0bili_65030392144 : 横下一条心是定<br />
+UL 11-彼岸四季- : 藏私货(=・ω・=)，坏主持人<br />
+UL 0bili_42938269170 : 主持人给个提问的机会(⌒▽⌒)<br />
+UL 1七二半瓶水 : 棒喝<br />
+UL 0bili_56705635338 : 这不是一个加强自律的机会吗？<br />
+UL 0只道是浅斟低唱 : 常立志者易无志<br />
+UL 0吾思996 : 刚才也有同学提了这类问题<br />
+Ming719投喂猫小毅ぃ1个小电视飞船，点击前往TA的房间去抽奖吧<br />
+UL 0bili_22631688524 : 打一顿……<br />
+UL 0bili_14704790963 : 哈哈，牛二定律来了～<br />
+UL 0万水千山1230 : 厉害<br />
+UL 0bili_65030392144 : 真正立志，这个问题才能根绝<br />
+UL 0增上心 : 嗯，戒<br />
+UL 0颗粒嘞 : 要先接受真实的自己，再慢慢进步<br />
+UL 0吾思996 : 哈哈<br />
+UL 0bili_36599987141 : 改坏习惯也要遵从客观规律<br />
+UL 0bili_46202130810 : 打破二力平衡<br />
+UL 0舍我其谁666666666666 : 生动<br />
+UL 0乁碗酸辣土豆丝 : 吃亏了才知道改<br />
+西国の蔷薇投喂司夏-西国之海妖1个小电视飞船，点击前往TA的房间去抽奖吧<br />
+UL 0bili_65556573256 : 接受自己<br />
+UL 014070626330_bili : 没声？<br />
+UL 0颗粒嘞 : 有<br />
+Ming719投喂猫小毅ぃ2个小电视飞船，点击前往TA的房间去抽奖吧<br />
+UL 1七二半瓶水 : 有声音<br />
+UL 0bili_80686430579 : 有的<br />
+UL 0万水千山1230 : 有声音<br />
+UL 1仙人球花开啦 : 有声音<br />
+UL 0bili_90648274292 : 有<br />
+UL 0捞帅可真是太捞了 : 捞帅提个问题<br />
+UL 0吾思996 : 有声音<br />
+UL 0乁碗酸辣土豆丝 : 红袖添香夜读书<br />
+UL 057214878381_bili : 安于现状<br />
+UL 0bili_64712638405 : 有的<br />
+UL 0bili_65030392144 : 小日子很被动，图舒服<br />
+UL 057214878381_bili : 没有追求<br />
+UL 0啊捞小鸡 : 刚刚提了两个<br />
+UL 085717858490_bili : 该怎么去教育屡教不改的人呢？<br />
+UL 0bili_14704790963 : 小日子小自由<br />
+UL 0bili_14704790963 : “不自知”<br />
+UL 0bili_55890412831 : 有时候确实感觉小日子还蛮舒服<br />
+UL 1跬步- : 我只是觉得这种的不现实，没觉得不好<br />
+UL 0bili_60211202981 : 小资<br />
+UL 0啊捞小鸡 : 你在记单词？<br />
+UL 0只道是浅斟低唱 : 也没有必要贬低小日子吧，只能说这样是对生<br />
+i派大星12投喂i御十二10个小电视飞船，点击前往TA的房间去抽奖吧<br />
+UL 0增上心 : 假的就是假的，虚假也是假<br />
+UL 0丿谦卑心 : 没有贬低<br />
+UL 0bili_65030392144 : 幸福层次，舒服，惬意，愉快，自豪，美感<br />
+UL 1七二半瓶水 : 只是在说明一个层次问题<br />
+UL 1仙人球花开啦 : 看个人追求<br />
+UL 0bili_14704790963 : 斑驳的树影下有最爱的人<br />
+UL 0bili_48988124728 : 实际上，也挺难过好小日子的<br />
+UL 0舍我其谁666666666666 : 对，是不现实<br />
+UL 1七二半瓶水 : 还有认识水平<br />
+UL 0bili_14704790963 : 不矛盾<br />
+UL 0Sky梦之航 : 小日子在大环境下能过好？<br />
+UL 0bili_31817625794 : 安于小日子，是因为追求也就这种程度了<br />
+UL 1七二半瓶水 : 小日子在现实中是难以实现的<br />
+UL 0bili_65030392144 : 如果不是被迫，大部分人都不想过小日子<br />
+UL 0Sky梦之航 : 孙悟空不也被压五指山了么<br />
+UL 0bili_14704790963 : 崇高感里又舒服<br />
+UL 1七二半瓶水 : 每一次妥协都是让生活退步<br />
+UL 1仙人球花开啦 : 而且在现在难于实现<br />
+UL 0bili_65030392144 : 是现实太过于残酷大家渐渐不想努力而佛系了<br />
+UL 0bili_22631688524 : 可以有，但不是天天都这样<br />
+甜酱永远的班酱投喂桃核叫我桃道长1个小电视飞船，点击前往TA的房间去抽奖吧<br />
+UL 0bili_56705635338 : 幸福可以越级实现吗<br />
+UL 0bili_65030392144 : 当然可以<br />
+UL 089069902754_bili : 感觉，后弦代在大城市非常明显<br />
+甜酱永远的班酱送给桃核叫我桃道长1个次元之城，应援能量，穿梭时空，点击前往抽奖吧<br />
+UL 0bili_26214438989 : 师兄说的这个推翻了马斯洛需求曲线<br />
+坚毅仙人自来也投喂白金Saki1个小电视飞船，点击前往TA的房间去抽奖吧<br />
+UL 0只道是浅斟低唱 : 小日子的幸福不能长久，感觉对我挺有诱惑的<br />
+UL 0Sky梦之航 : 因为农村各方面压力太大，教育，医疗等等<br />
+UL 0bili_26214438989 : 他说的人要满足低级的需求才能有高级的需求<br />
+UL 0bili_14704790963 : 顿时就有了力量<br />
+UL 0该昵称为被使用 : 若追求幸福，在虚拟世界中实现幸福可以吗？<br />
+风珉之送给酸奶Elf1个次元之城，应援能量，穿梭时空，点击前往抽奖吧<br />
+UL 0bili_65030392144 : 马斯诺需求曲线最高是个人价值的实现<br />
+UL 0吾思996 : 这是相对更高层次的理论啦吧<br />
+UL 0Sky梦之航 : 现在还有饿死的吗？低级的不是已经满足了吗<br />
+Ashes灬蕉投喂:琉绮Ruki1个摩天大楼，点击前往TA的房间去抽奖吧<br />
+UL 0bili_65030392144 : 虚拟世界能体会到为他人服务的崇高感吗<br />
+UL 0bili_98990627127 : 有啊，师兄刚刚讲了</p>
+<p>UL 0七夜离若雪 : 辛苦了师兄<br />
+UL 042264166140_bili : 感谢师兄<br />
+UL 0bili_14704790963 : 体验积累意向<br />
+UL 0bili_49653097586 : 辛苦了师兄<br />
+UL 0bili_14554832487 : 师兄辛苦了，谢谢师兄<br />
+UL 0jqq江清月近人 : 师兄辛苦了<br />
+UL 0bili_47238900644 : 师兄辛苦啦<br />
+UL 0bili_65030392144 : 没有体验的人是很难懂的<br />
+UL 1跬步- : 真正的幸福<br />
+UL 0不怕风吹雨打的棚子 : 这样其实更幸福嘿嘿<br />
+UL 0666陈洁儿 : 关键自己要体验<br />
+UL 0tuiyp0956 : 师兄辛苦了<br />
+UL 0OliveDS : 辛苦了<br />
+UL 089069902754_bili : 这种体验，感觉很奇妙<br />
+UL 0lovelyhai : 辛苦了师兄<br />
+UL 1七二半瓶水 : 谢谢师兄<br />
+UL 0半场 : freedom！<br />
+UL 0WAVE614 : 主动多去尝试<br />
+UL 0bili_86206803618 : 辛苦了，师兄<br />
+UL 0迷人修福不修道 : 感觉自己是最幸福的<br />
+UL 0bili_14704790963 : 创造幸福的过程就是升华幸福<br />
+UL 0bili_31817625794 : 幸福的体验<br />
+UL 0lisa666777 : 对滴<br />
+UL 014070626330_bili : 师兄好棒<br />
+UL 0迷人修福不修道 : 再给别人带去幸福的时候<br />
+UL 1跬步- : 感觉师姐的体验也非常足<br />
+UL 0悟他 : 物我一体<br />
+UL 0bili_65030392144 : 人要主动生活，主动把握自己<br />
+国产达闻西送给白银诺艾尔Official1个次元之城，应援能量，穿梭时空，点击前往抽奖吧<br />
+UL 0吾思996 : 哈哈，赞一个<br />
+UL 0bili_56705635338 : 但面对时间不够仍然会痛苦怎么办<br />
+UL 0bili_65030392144 : 不然就被动接受，被别人规定生活<br />
+UL 0不怕风吹雨打的棚子 : 主持人开始连连啧嘴了<br />
+UL 0槐序デヅ : 怎么看待比尔盖茨这些为了资本，却为社会带<br />
+UL 0bili_14704790963 : we<br />
+UL 0吾思996 : 希望在何方<br />
+主播韩小沐完成今日小电视地图历险啦~点击前往TA的直播间抽奖吧！<br />
+UL 0bili_65030392144 : 希望要自己找，希望不是别人给你的<br />
+UL 0颗粒嘞 : 整的自己很抑郁<br />
+UL 028190840606_bili : 是的有些悲观<br />
+UL 0增上心 : 鲁迅知道人民群众是咋样，但该咋样还是咋样<br />
+UL 0bili_65030392144 : 要别人给希望是弱者<br />
+UL 026275555391_bili : 对客观世界要悲观，对主观世界要乐观<br />
+UL 0bili_65030392144 : 老人与海中的老人在那样的绝境下仍然搏斗<br />
+UL 0bili_65030392144 : 要反抗绝望<br />
+予挽子一世情思投喂不叫阿仔1个小电视飞船，点击前往TA的房间去抽奖吧<br />
+愛喝粥de鳶太后投喂是你清晨的粥1个小电视飞船，点击前往TA的房间去抽奖吧<br />
+UL 0bili_56705635338 : 温和才可怕<br />
+UL 0bili_60211202981 : 想起了毛爷爷发起人生中最后的一次运动<br />
+UL 0bili_26214438989 : 温水煮青蛙<br />
+UL 0吾思996 : 但是<br />
+UL 0bili_31817625794 : 盲目自信的火烧不了多久<br />
+UL 0bili_65030392144 : 人究其一生都在寻找自己的价值和内心的安宁<br />
+UL 0怼天怼地-怼空气放屁 : 一生都没找到也挺遗憾的<br />
+UL 0bili_31817625794 : 诸恶莫作，众善奉行，但行好事，莫问前程。<br />
+UL 0bili_97034017697 : 有人的地方世界就不会冰冷<br />
+愛喝粥de鳶太后投喂是你清晨的粥1个小电视飞船，点击前往TA的房间去抽奖吧<br />
+UL 0bili_65030392144 : 要发挥愚公移山的精神<br />
+UL 2生而为人为何而生 : 现在社会不是很好吗？<br />
+UL 0万水千山1230 : 前途是光明的，道路是曲折的<br />
+UL 0bili_65030392144 : 愚公移山的智慧<br />
+UL 0怼天怼地-怼空气放屁 : 物质高度充足，精神十分压抑<br />
+UL 1七二半瓶水 : 也不要指望我回来，我离开以后，<br />
+UL 0bili_55890412831 : 黑夜给了我黑暗的眼睛，而我却去寻找光明<br />
+UL 1七二半瓶水 : 你们就是我<br />
+UL 0bili_14704790963 : we在，认识实践，非自潜感受<br />
+UL 2生而为人为何而生 : 懂得知足，就没那么多事了。<br />
+黑心棉花枕头投喂电流妹Delia1个小电视飞船，点击前往TA的房间去抽奖吧<br />
+UL 089069902754_bili : 自觉掌握理论工具，修习人生哲学，积累幸福<br />
+UL 0bili_14704790963 : 通体燃烧，唤醒，何乐而不为<br />
+UL 0怼天怼地-怼空气放屁 : 知足挺好，可是你能挡住老板的贪婪吗<br />
+UL 0吾思996 : 师兄的话很鼓舞人<br />
+UL 089069902754_bili : 怎么样帮助他人认识现实，或认识现实没希望<br />
+UL 0捞帅可真是太捞了 : 不破不立，破而后立<br />
+UL 0只道是浅斟低唱 : 骆驼狮子婴儿<br />
+78664752928_bili投喂A-with-B1个小电视飞船，点击前往TA的房间去抽奖吧<br />
+UL 0生活艺术师 : 啊朋友再见<br />
+UL 0肩起黑暗的闸门 : 啊朋友再加？<br />
+UL 097432990477_bili : 歌名是什么呢<br />
+UL 0吾思996 : 太美了<br />
+UL 0bili_31817625794 : 个体的生命获得永恒<br />
+UL 020382912836_bili : 啊朋友再见<br />
+什么S゜投喂什么阿莱1个小电视飞船，点击前往TA的房间去抽奖吧<br />
+哔哩哔哩广告娘投喂哔哩哔哩直播1个小电视飞船，点击前往TA的房间去抽奖吧<br />
+UL 1七二半瓶水 : 不确定的语气……<br />
+ヒロ_投喂:花丸晴琉Official1个摩天大楼，点击前往TA的房间去抽奖吧<br />
+UL 0只道是浅斟低唱 : 马革裹尸，魂归狼烟也挺好的<br />
+UL 0怼天怼地-怼空气放屁 : 为了谁？<br />
+UL 0bili_14704790963 : 为人民服务的真谛与幸福的源泉<br />
+UL 1推俗抵俗 : 留下点什么，有意思<br />
+UL 0吾思996 : 死而无憾<br />
+UL 089069902754_bili : 低级趣味都指什么</p>
+<p>UL 0bili_65030392144 : 要反抗绝望<br />
+予挽子一世情思投喂不叫阿仔1个小电视飞船，点击前往TA的房间去抽奖吧<br />
+愛喝粥de鳶太后投喂是你清晨的粥1个小电视飞船，点击前往TA的房间去抽奖吧<br />
+UL 0bili_56705635338 : 温和才可怕<br />
+UL 0bili_60211202981 : 想起了毛爷爷发起人生中最后的一次运动<br />
+UL 0bili_26214438989 : 温水煮青蛙<br />
+UL 0吾思996 : 但是<br />
+UL 0bili_31817625794 : 盲目自信的火烧不了多久<br />
+UL 0bili_65030392144 : 人究其一生都在寻找自己的价值和内心的安宁<br />
+UL 0怼天怼地-怼空气放屁 : 一生都没找到也挺遗憾的<br />
+UL 0bili_31817625794 : 诸恶莫作，众善奉行，但行好事，莫问前程。<br />
+UL 0bili_97034017697 : 有人的地方世界就不会冰冷<br />
+愛喝粥de鳶太后投喂是你清晨的粥1个小电视飞船，点击前往TA的房间去抽奖吧<br />
+UL 0bili_65030392144 : 要发挥愚公移山的精神<br />
+UL 2生而为人为何而生 : 现在社会不是很好吗？<br />
+UL 0万水千山1230 : 前途是光明的，道路是曲折的<br />
+UL 0bili_65030392144 : 愚公移山的智慧<br />
+UL 0怼天怼地-怼空气放屁 : 物质高度充足，精神十分压抑<br />
+UL 1七二半瓶水 : 也不要指望我回来，我离开以后，<br />
+UL 0bili_55890412831 : 黑夜给了我黑暗的眼睛，而我却去寻找光明<br />
+UL 1七二半瓶水 : 你们就是我<br />
+UL 0bili_14704790963 : we在，认识实践，非自潜感受<br />
+UL 2生而为人为何而生 : 懂得知足，就没那么多事了。<br />
+黑心棉花枕头投喂电流妹Delia1个小电视飞船，点击前往TA的房间去抽奖吧<br />
+UL 089069902754_bili : 自觉掌握理论工具，修习人生哲学，积累幸福<br />
+UL 0bili_14704790963 : 通体燃烧，唤醒，何乐而不为<br />
+UL 0怼天怼地-怼空气放屁 : 知足挺好，可是你能挡住老板的贪婪吗<br />
+UL 0吾思996 : 师兄的话很鼓舞人<br />
+UL 089069902754_bili : 怎么样帮助他人认识现实，或认识现实没希望<br />
+UL 0捞帅可真是太捞了 : 不破不立，破而后立<br />
+UL 0只道是浅斟低唱 : 骆驼狮子婴儿<br />
+78664752928_bili投喂A-with-B1个小电视飞船，点击前往TA的房间去抽奖吧<br />
+UL 0生活艺术师 : 啊朋友再见<br />
+UL 0肩起黑暗的闸门 : 啊朋友再加？<br />
+UL 097432990477_bili : 歌名是什么呢<br />
+UL 0吾思996 : 太美了<br />
+UL 0bili_31817625794 : 个体的生命获得永恒<br />
+UL 020382912836_bili : 啊朋友再见<br />
+什么S゜投喂什么阿莱1个小电视飞船，点击前往TA的房间去抽奖吧<br />
+哔哩哔哩广告娘投喂哔哩哔哩直播1个小电视飞船，点击前往TA的房间去抽奖吧<br />
+UL 1七二半瓶水 : 不确定的语气……<br />
+ヒロ_投喂:花丸晴琉Official1个摩天大楼，点击前往TA的房间去抽奖吧<br />
+UL 0只道是浅斟低唱 : 马革裹尸，魂归狼烟也挺好的<br />
+UL 0怼天怼地-怼空气放屁 : 为了谁？<br />
+UL 0bili_14704790963 : 为人民服务的真谛与幸福的源泉<br />
+UL 1推俗抵俗 : 留下点什么，有意思<br />
+UL 0吾思996 : 死而无憾<br />
+UL 089069902754_bili : 低级趣味都指什么<br />
+UL 0丰富内心世界 : 纪念白求恩<br />
+UL 0丿谦卑心 : 写人只两笔，做人需一生<br />
+UL 0增上心 : 寄托我们的哀思<br />
+UL 0bili_14704790963 : 肩住黑暗的闸门！<br />
+UL 089069902754_bili : 为别人服务在一点一滴<br />
+KKotsama投喂甜菜酥酥-1个小电视飞船，点击前往TA的房间去抽奖吧<br />
+UL 0丿谦卑心 : 低级趣味一般指短暂性的那种快感的东西，<br />
+暗影幽灵送给韩小沐1个次元之城，应援能量，穿梭时空，点击前往抽奖吧<br />
+UL 0丿谦卑心 : 没有美好的回忆<br />
+UL 0bili_14704790963 : 自我成长<br />
+UL 0只道是浅斟低唱 : 唉<br />
+UL 0i精疲力尽 : 好<br />
+UL 0吾思996 : 走出小我<br />
+UL 0Dante-TCM : 有回答到<br />
+UL 1夜行墨竹林 : 哈哈，这笑声<br />
+UL 0怼天怼地-怼空气放屁 : 赠人玫瑰，手有余香<br />
+UL 0bili_87009538138 : 奉献<br />
+UL 0氵衤勹 : 菩萨<br />
+UL 0bili_14704790963 : 主持人接着来哈<br />
+UL 0bili_14704790963 : 哈哈哈<br />
+UL 0nnyxc : 对<br />
+UL 0吾思996 : 自度度他<br />
+UL 0bili_84736242987 : 小太阳小太阳<br />
+主播鳗鱼霏儿完成今日小电视地图历险啦~点击前往TA的直播间抽奖吧！<br />
+UL 0bili_87009538138 : 很辩证啊<br />
+UL 0bili_20583837445 : 莫比乌斯环<br />
+UL 0万水千山1230 : (=・ω・=)<br />
+UL 0bili_14704790963 : 哈哈哈<br />
+UL 0颗粒嘞 : 哈哈<br />
+UL 0nnyxc : 哈哈哈哈<br />
+UL 0bili_65030392144 : 主持人飘了<br />
+UL 0半场 : 灵魂讨论<br />
+UL 0bili_60211202981 : 呵呵<br />
+残月TGB投喂顾离离1个小电视飞船，点击前往TA的房间去抽奖吧<br />
+UL 0bili_14704790963 : 小讨论被听到了<br />
+UL 035548120138_bili : 哈哈哈<br />
+UL 0bili_48988124728 : 哈哈哈哈哈<br />
+UL 0柚青哟 : 哈哈哈哈<br />
+UL 0ZeroJ1994 : 哈哈哈哈哈哈哈哈哈哈哈哈<br />
+UL 0666陈洁儿 : 爱提问的主持人<br />
+UL 0半场 : 提问警告<br />
+UL 0你好天蝎 : 哈哈哈哈<br />
+UL 0吾思996 : 哈哈，赞<br />
+UL 0小老鼠怕猫咪 : 主持人听醉了<br />
+UL 0只道是浅斟低唱 : 实际中两者常常发生矛盾啊<br />
+UL 0明眸善睐8 : 哪里矛盾啦？<br />
+星爷3UL 18Cever_ : 思想水平不够的缘故<br />
+UL 0丿谦卑心 : 矛盾？ 认识自己的能力<br />
+UL 0万水千山1230 : 怎么矛盾了？<br />
+UL 0bili_14704790963 : 主观能动性与成长的突破读</p>
+<p>首先认识自己的能力能不能帮别人<br />
+UL 0颗粒嘞 : 但行好事，莫问前程<br />
+UL 0半场 : 哼哼哼哼</p>
+
+        </div>
+        <!-- .entry-content -->
+        <div class="single-reward">
+          <div class="reward-open">赏
+            <div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1/images/custom/donate/AliPayQR.jpg"></li>
+                <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1/images/custom/donate/WeChanQR.jpg"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent">
+        </div>
+        <footer class="post-footer">
+          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh"
+              target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i>
+              知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
+          <div class="post-tags">
+          </div>
+          <div class="post-share">
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer><!-- .entry-footer -->
+      </article>
+      <!-- #post-## -->
+      <div class="toc" style="background: none;"></div>
+      <section class="post-squares nextprev">
+        
+        
+        <div class="post-nepre half previous">
+          
+            <a href="/2020/05/06/NX563J%E5%88%B7%E5%85%A5%E6%9C%80%E6%96%B0Havoc-OS-v3-4%E6%95%99%E7%A8%8B/" rel="prev">
+              <div class="background">
+                <img class="lazyload" src="<%= theme.cdn %>/images/loader/orange.progress-bar-stripe-loader.svg" data-src="/img/20200503135002.jpg"
+                  style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)"
+                  src="/img/20200503135002.jpg">
+              </div>
+              <span class="label">
+                Previous Post</span>
+              <div class="info">
+                <h3>
+                  NX563J刷入最新Havoc OS v3.4教程</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+          
+          
+          
+          <div class="post-nepre half next">
+            
+              <a href="/2020/05/05/%E8%87%AA%E6%81%8B%E5%9E%8B%E4%BA%BA%E6%A0%BC%EF%BC%9A%E8%B6%8A%E6%98%AF%E6%97%A0%E7%9F%A5%E7%9A%84%E4%BA%BA%E8%B6%8A%E6%9C%89%E7%A7%8D%E8%BF%B7%E4%B9%8B%E8%87%AA%E4%BF%A1/" rel="next">
+                <div class="background">
+                  <img class="lazyload" src="<%= theme.cdn %>/images/loader/orange.progress-bar-stripe-loader.svg" data-src="/img/20200503135002.jpg"
+                    style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;"
+                    onerror="imgError(this,3)" src="/img/20200503135002.jpg">
+                </div>
+                <span class="label">
+                  Next Post</span>
+                <div class="info">
+                  <h3>
+                    自恋型人格：越是无知的人越有种迷之自信</h3>
+                  <hr>
+                </div>
+              </a>
+            </div>
+            
+      </section>
+      
+<div id="vcomments"></div>
+<script>
+  window.onload = function(){
+      var valine = new Valine();
+      valine.init({
+        el: '#vcomments',
+        appId: "aFI53WTJYb4qPknwn0l76Lnu-gzGzoHsz",
+        appKey: "2YeldrXS6Hm64JWCCLNgpj3C",
+        path: window.location.pathname,
+        placeholder: "你是我一生只会遇见一次的惊喜 ..."
+      })
+  }
+</script>
+
+      <section class="author-profile">
+        <div class="info" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
+          <a href="" class="profile gravatar"><img src="" itemprop="image"
+              alt="" height="70" width="70"></a>
+          <div class="meta">
+            <span class="title">Author</span>
+            <h3 itemprop="name">
+              <a href="" itemprop="url" rel="author"></a>
+            </h3>
+          </div>
+        </div>
+        <hr>
+        <p><i class="iconfont icon-write"></i></p>
+      </section>
+    </main><!-- #main -->
+  </div><!-- #primary -->
+</div>
+
+
+    </div>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..."/>
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            // PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+    <!-- <footer id="footer">  <div class="outer"> <div id="footer-info" class="inner"> &copy; 2020 John Doe<br> powered_by <a href="http://hexo.io/" target="_blank">Hexo</a> </div> </div> </footer> -->
+
+<footer id="colophon" class="site-footer" role="contentinfo">
+  <div class="site-info">
+    <div class="footertext">
+      <div class="img-preload">
+        <img src="https://cdn.jsdelivr.net/gh/moezx/cdn@3.1.9/img/Sakura/images/wordpress-rotating-ball-o.svg">
+        <img src="https://cdn.jsdelivr.net/gh/moezx/cdn@3.1.9/img/Sakura/images/disqus-preloader.svg"></div>
+      <p class="foo-logo"
+        style="background-image: url('https://cdn.jsdelivr.net/gh/moezx/cdn@3.1.9/img/Sakura/images/sakura.svg');"></p>
+
+      <!--p style="color: #666666;">Copyright &copy 2018 - 2020 hojun. <br> All Rights Reserved.</p-->
+      <p style="font-family: 'Ubuntu', sans-serif;">
+        <span style="color: #666666;">Crafted with
+          <i class="fa fa-heart animated" style="color: #e74c3c;"></i>
+          by
+          <a rel="me" href="https://hello.2heng.xin/@mashiro" target="_blank"
+            style="color: #000000;text-decoration:none;">Mashiro</a></span></p>
+      <p>Copyright &copy 2018 - 2020
+        hojun<br>
+        <a href="http://www.beian.miit.gov.cn" target="_blank">沪ICP备17028213号</a>
+      </p>
+    </div>
+    <div class="footer-device">
+      <p style="font-family: 'Ubuntu', sans-serif;">
+        <span style="color: #b9b9b9;">Theme
+          <a href="https://github.com/honjun/hexo-theme-sakura" target="_blank"
+            style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Sakura</a>
+          <i class="iconfont icon-sakura rotating" style="color: #ffc0cb;display:inline-block"></i>
+          by
+          <a href="https://2heng.xin/" target="_blank"
+            style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Mashiro</a>&<a
+            href="https://www.hojun.cn/" target="_blank"
+            style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">hojun</a>,
+          Powered by Hexo,
+          Hosted by Github Pages</a>
+        </span>
+      </p>
+      <p>
+        <span id="busuanzi_container_site_pv" style="color: #b9b9b9;">
+          本站总访问量<span id="busuanzi_value_site_pv">1</span>次
+        </span>
+      </p>
+    </div>
+
+    <p id="footer-sponsor">
+      <a href="#" target="_blank" alt="CDN Sponsor" rel="nofollow"><img
+          src="/images/Tencent_Cloud_logo.svg" alt="CDN Sponsor"
+          style="height: 1.5em;"></a>&nbsp;&nbsp;&nbsp;<a href="https://www.vultr.com/?ref=7196564" target="_blank"
+        alt="Server provider" rel="nofollow"><img
+          src="/images/vultr_logo__on-white.svg" alt="Server provider"
+          style="height: 1.5em;"></a>&nbsp;&nbsp;&nbsp;<a href="#" target="_blank" alt="Free CDN" rel="nofollow"><img
+          src="/images/baidu_cdn.svg" alt="jsDelivr"
+          style="height: 1.5em;"></a>&nbsp;&nbsp;&nbsp;<a href="https://www.google.com/intl/ja/analytics/"
+        target="_blank" alt="Analytics solution" rel="nofollow"><img
+          src="/images/Google.svg" alt="Google Analytics"
+          style="height: 1.5em; "></a>
+    </p>
+  </div>
+  <!-- .site-info -->
+</footer>
+
+<div class="changeSkin-gear no-select" style="bottom: -999px;">
+    <div class="keys">
+        <span id="open-skinMenu">
+            <i class="iconfont icon-gear inline-block rotating"></i>&nbsp; 切换主题 | SCHEME TOOL
+        </span>
+    </div>
+</div>
+<div class="skin-menu no-select">
+    <div class="theme-controls row-container">
+        <ul class="menu-list">
+            <li id="white-bg">
+                <i class="fa fa-television" aria-hidden="true"></i>
+            </li>
+            <!--Default-->
+            <li id="sakura-bg">
+                <i class="iconfont icon-sakura"></i>
+            </li>
+            <!--Sakura-->
+            <li id="gribs-bg">
+                <i class="fa fa-slack" aria-hidden="true"></i>
+            </li>
+            <!--Grids-->
+            <li id="KAdots-bg">
+                <i class="iconfont icon-dots"></i>
+            </li>
+            <!--Dots-->
+            <li id="totem-bg">
+                <i class="fa fa-superpowers" aria-hidden="true"></i>
+            </li>
+            <!--Orange-->
+            <li id="pixiv-bg">
+                <i class="iconfont icon-pixiv"></i>
+            </li>
+            <!--Start-->
+            <li id="bing-bg">
+                <i class="iconfont icon-bing"></i>
+            </li>
+            <!--Bing-->
+            <li id="dark-bg">
+                <i class="fa fa-moon-o" aria-hidden="true"></i>
+            </li>
+            <!--Night-->
+        </ul>
+    </div>
+    <div class="font-family-controls row-container">
+        <button type="button" class="control-btn-serif selected" data-mode="serif"
+            onclick="mashiro_global.font_control.change_font()">Serif</button>
+        <button type="button" class="control-btn-sans-serif" data-mode="sans-serif"
+            onclick="mashiro_global.font_control.change_font()">Sans Serif</button>
+    </div>
+</div>
+<canvas id="night-mode-cover"></canvas>
+<div class="prpr" style="visibility: hidden;">
+    <div class="mashiro-tips" style="opacity: 0;">你一直相信的事，也让我相信吧。活着，是件美好的事。</div>
+    <canvas id="live2d" width="280" height="250" class="live2d"></canvas>
+</div>
+<div class="live2d-tool hide-live2d no-select" onclick="hide_live2d()">
+    <div class="keys">Show</div>
+</div>
+<div class="live2d-tool switch-live2d no-select" onclick="switch_pio()">
+    <div class="keys">Switch</div>
+</div>
+<div class="live2d-tool save-live2d no-select" onclick="save_pio()">
+    <div class="keys">Save</div>
+</div>
+
+<script type="text/javascript" src="/js/lib.js"></script>
+<!-- <script type="text/javascript" src="/js/lib.min.js"></script> -->
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script type="text/javascript" src="/js/InsightSearch.js"></script>
+<script type="text/javascript" src="/js/jquery.fancybox.min.js"></script>
+<script type="text/javascript" src="/js/zoom.min.js"></script>
+<script type="text/javascript" src="/js/sakura-app_v3.js"></script>
+<script type="text/javascript" src="/js/autoptimize.js"></script>
+<!-- //cdn1.lncld.net/static/js/3.0.4/av-min.js -->
+<script type="text/javascript" src="/js/av-min.js"></script>
+<!-- Valine评论 -->>
+<script type="text/javascript" src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script type="text/javascript" src="/js/botui.js"></script>
+<!-- 不蒜子 网页计数器 -->
+<script async type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- TOC目录 -->
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script> -->
+<script type="text/javascript">
+  /* <![CDATA[ */
+  if (/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+    var Poi = {
+      "pjax": "1",
+      "movies": {
+        "url": "https://cdn.jsdelivr.net/gh/honjun/hojun@1.2",
+        "name": "Unbroken.mp4",
+        "live": "close"
+      },
+      "windowheight": "fixed",
+      "codelamp": "close",
+      "ajaxurl": "",
+      "order": "asc",
+      "formpostion": "bottom"
+    };
+  } else {
+    var Poi = {
+      "pjax": "1",
+      "movies": {
+        "url": "https://cdn.jsdelivr.net/gh/honjun/hojun@1.2",
+        "name": "Unbroken.mp4",
+        "live": "open"
+      },
+      "windowheight": "auto",
+      "codelamp": "close",
+      "ajaxurl": "",
+      "order": "asc",
+      "formpostion": "bottom"
+    };
+  }
+  /* ]]> */
+</script>
+
+
+
+
+
+
+
+
+<!-- baidu Analytics -->
+<script>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement('script');
+        hm.src = 'https://hm.baidu.com/hm.js?18d22dda3acd079101f04a6eacf3781e';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+<script>
+  $(document).ready(function () {
+    if ($(".toc").length > 0 && document.body.clientWidth > 1200) {
+      if ($(".pattern-center").length > 0) { //有图的情况
+        tocbot.init({
+          // Where to render the table of contents.
+          tocSelector: '.toc', // 放置目录的容器
+          // Where to grab the headings to build the table of contents.
+          contentSelector: '.entry-content', // 正文内容所在
+          // Which headings to grab inside of the contentSelector element.
+          scrollSmooth: true,
+          headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+          collapseDepth: 3,
+          headingsOffset: -300,
+          scrollSmoothOffset: -85
+        });
+      } else {
+        tocbot.init({
+          // Where to render the table of contents.
+          tocSelector: '.toc', // 放置目录的容器
+          // Where to grab the headings to build the table of contents.
+          contentSelector: '.entry-content', // 正文内容所在
+          // Which headings to grab inside of the contentSelector element.
+          scrollSmooth: true,
+          headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+          collapseDepth: 3,
+          headingsOffset: -85,
+          scrollSmoothOffset: -85
+        });
+      }
+      var offsetTop = $('.toc')
+        .offset()
+        .top - 95;
+      window.onscroll = function () {
+        var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+        if (scrollTop >= offsetTop) {
+          $('.toc').addClass('toc-fixed');
+        } else {
+          $('.toc').removeClass('toc-fixed');
+        }
+      }
+    }
+  });
+</script>
+
+    <!-- openNav -->
+    <div class="openNav no-select">
+      <div class="iconflat no-select">
+        <div class="icon"></div>
+      </div>
+      <div class="site-branding">
+        
+        <h1 class="site-title">
+          <a href="">
+            
+          </a>
+        </h1>
+        
+      </div>
+    </div>
+  </section>
+
+  <div id="mo-nav" class="">
+  <div class="m-avatar">
+    <img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1/images/custom/avatar.jpg">
+  </div>
+  <p
+    style="text-align: center; color: #333; font-weight: 900; font-family: 'Ubuntu', sans-serif; letter-spacing: 1.5px">
+    さくら荘そのhojun</p>
+  <p style="text-align: center; word-spacing: 20px;">
+    
+    
+    <a href="http://github.com/honjun" class="fa fa-github" target="_blank"
+      style="color: #333; margin-left:20px"></a>
+    
+    <a href="http://weibo.com/mashirozx?is_all=1" class="fa fa-weibo" target="_blank"
+      style="color: #dd4b39; margin-left:20px"></a>
+    
+    <a href="https://wpa.qq.com/msgrd?v=3&uin=954655431&site=qq&menu=yes" class="fa fa-qq" target="_blank"
+      style="color: #25c6fe; margin-left:20px"></a>
+    
+    
+  </p>
+  <ul id="menu-new-1" class="menu">
+    
+    <li>
+      <a href="/">
+        <span class="faa-parent animated-hover">
+          <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
+          首页
+        </span>
+      </a>
+      
+    </li>
+    
+    <li>
+      <a href="/archives">
+        <span class="faa-parent animated-hover">
+          <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
+          归档
+        </span>
+      </a>
+      
+      <ul class="sub-menu">
+        
+        <li>
+          <a href="/categories/%E6%8A%80%E6%9C%AF/">
+            <i class="fa fa-code" aria-hidden="true"></i>
+            技术
+          </a>
+        </li>
+        
+        <li>
+          <a href="/categories/%E7%94%9F%E6%B4%BB/">
+            <i class="fa fa-file-text-o" aria-hidden="true"></i>
+            生活
+          </a>
+        </li>
+        
+        <li>
+          <a href="/categories/%E8%B5%84%E6%BA%90/">
+            <i class="fa fa-cloud-download" aria-hidden="true"></i>
+            资源
+          </a>
+        </li>
+        
+        <li>
+          <a href="/categories/%E9%9A%8F%E6%83%B3/">
+            <i class="fa fa-commenting-o" aria-hidden="true"></i>
+            随想
+          </a>
+        </li>
+        
+        <li>
+          <a href="/categories/%E8%BD%AC%E8%BD%BD/">
+            <i class="fa fa-book" aria-hidden="true"></i>
+            转载
+          </a>
+        </li>
+        
+      </ul>
+      
+    </li>
+    
+    <li>
+      <a href="javascript:;">
+        <span class="faa-parent animated-hover">
+          <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+          清单
+        </span>
+      </a>
+      
+      <ul class="sub-menu">
+        
+        <li>
+          <a href="/tags/%E6%82%A6%E8%AF%BB/">
+            <i class="fa fa-th-list faa-bounce" aria-hidden="true"></i>
+            书单
+          </a>
+        </li>
+        
+        <li>
+          <a href="/bangumi/">
+            <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
+            番组
+          </a>
+        </li>
+        
+        <li>
+          <a href="/music/">
+            <i class="fa fa-headphones" aria-hidden="true"></i>
+            歌单
+          </a>
+        </li>
+        
+        <li>
+          <a href="/tags/%E5%9B%BE%E9%9B%86/">
+            <i class="fa fa-photo" aria-hidden="true"></i>
+            图集
+          </a>
+        </li>
+        
+      </ul>
+      
+    </li>
+    
+    <li>
+      <a href="/comment/">
+        <span class="faa-parent animated-hover">
+          <i class="fa  fa-pencil-square-o faa-tada" aria-hidden="true"></i>
+          留言板
+        </span>
+      </a>
+      
+    </li>
+    
+    <li>
+      <a href="/links/">
+        <span class="faa-parent animated-hover">
+          <i class="fa  fa-link faa-shake" aria-hidden="true"></i>
+          友人帐
+        </span>
+      </a>
+      
+    </li>
+    
+    <li>
+      <a href="/donate/">
+        <span class="faa-parent animated-hover">
+          <i class="fa  fa-heart faa-pulse" aria-hidden="true"></i>
+          赞赏
+        </span>
+      </a>
+      
+    </li>
+    
+    <li>
+      <a href="/">
+        <span class="faa-parent animated-hover">
+          <i class="fa  fa-leaf faa-wrench" aria-hidden="true"></i>
+          关于
+        </span>
+      </a>
+      
+      <ul class="sub-menu">
+        
+        <li>
+          <a href="/about/">
+            <i class="fa fa-meetup" aria-hidden="true"></i>
+            我？
+          </a>
+        </li>
+        
+        <li>
+          <a href="/theme-sakura/">
+            <i class="fa iconfont icon-sakura" aria-hidden="true"></i>
+            主题
+          </a>
+        </li>
+        
+        <li>
+          <a href="/lab/">
+            <i class="fa fa-cogs" aria-hidden="true"></i>
+            Lab
+          </a>
+        </li>
+        
+      </ul>
+      
+    </li>
+    
+    <li>
+      <a href="/client/">
+        <span class="faa-parent animated-hover">
+          <i class="fa  fa-android faa-vertical" aria-hidden="true"></i>
+          客户端
+        </span>
+      </a>
+      
+    </li>
+    
+    <li>
+      <a href="/atom.xml">
+        <span class="faa-parent animated-hover">
+          <i class="fa  fa-rss faa-pulse" aria-hidden="true"></i>
+          RSS
+        </span>
+      </a>
+      
+    </li>
+    
+  </ul>
+  <p style="text-align: center; font-size: 13px; color: #b9b9b9;">&copy 2020 hexo-sakura</p>
+</div>
+<button onclick="topFunction()" class="mobile-cd-top" id="moblieGoTop" title="Go to top" style="display: none;"><i
+    class="fa fa-chevron-up" aria-hidden="true"></i></button>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<!-- require MetingJS -->
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+<style>
+  .aplayer .aplayer-lrc {
+    height: 35px;
+  }
+  .aplayer .aplayer-lrc p{
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 18px !important;
+  }
+  .aplayer .aplayer-lrc p.aplayer-lrc-current{
+    color: #FF1493;
+  }
+  .aplayer.aplayer-narrow .aplayer-body{
+    left: -66px !important;
+  }
+  .aplayer.aplayer-fixed .aplayer-lrc {
+    display: none;
+  }
+  .aplayer .aplayer-lrc.aplayer-lrc-hide {
+      display:none !important;
+  }
+  .aplayer.aplayer-fixed .lrc-show {
+    display: block;
+    background: rgba(255, 255, 255, 0.8);
+  }
+</style>
+<meting-js
+
+    id="2660651585"
+
+    server="netease"
+
+    type="playlist"
+
+    fixed="true"
+
+    autoplay="false"
+
+    loop="all"
+
+    order="random"
+
+    preload="auto"
+
+    volume="0.7"
+
+    mutex="true"
+
+</meting-js>
+<script>
+  $(function(){
+    $('body').on('click', '.aplayer', function(){
+      if($('.aplayer-button').hasClass('aplayer-play')) {
+        $('.aplayer-lrc').removeClass('lrc-show');
+      } else {
+        $('.aplayer-lrc').addClass('lrc-show');
+      }
+    })
+  });
+</script>
+</body>
+
+</html>

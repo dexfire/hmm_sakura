@@ -86,7 +86,7 @@ Theme by Mashiro
     <div class="headertop filter-dot">
   <div id="banner_wave_1"></div>
   <div id="banner_wave_2"></div>
-  <figure id="centerbg" class="centerbg" onerror="randBG()">
+  <figure id="centerbg" class="centerbg" onerror="randBG()" style="height: 0;">
     <div class="focusinfo no-select">
       <div class="header-tou">
         <a href="https://dexfire.cn">
@@ -947,9 +947,11 @@ UL 0bil...
     <div id="pagination"><a href="/page/2/" class="">Previous</a></div>
   
   <script type="text/javascript">
-    // 生成主页图
-    bgs = "https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0/images/cover/IMG_7631.JPG,https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0/images/cover/IMG_7632.JPG,https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0/images/cover/IMG_7633.JPG,https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0/images/cover/IMG_7634.JPG,https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0/images/cover/IMG_7635.JPG,https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0/images/cover/IMG_7636.JPG,https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0/images/cover/IMG_7638.JPG,https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0/images/cover/IMG_7639.JPG,https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0/images/cover/IMG_7642.JPG,https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0/images/cover/IMG_7643.jpg,https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0/images/cover/IMG_7725.jpg,https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0/images/cover/IMG_7760.jpg".split(",");
-    $(".headertop")[0].style.height = 550;
+    $(document).ready(function () {
+      // 生成主页图
+      bgs = "https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0/images/cover/IMG_7631.JPG,https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0/images/cover/IMG_7632.JPG,https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0/images/cover/IMG_7633.JPG,https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0/images/cover/IMG_7634.JPG,https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0/images/cover/IMG_7635.JPG,https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0/images/cover/IMG_7636.JPG,https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0/images/cover/IMG_7638.JPG,https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0/images/cover/IMG_7639.JPG,https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0/images/cover/IMG_7642.JPG,https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0/images/cover/IMG_7643.jpg,https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0/images/cover/IMG_7725.jpg,https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0/images/cover/IMG_7760.jpg".split(",");
+      $(".headertop")[0].style.height = 550;
+    });
   </script>
 </div>
 
@@ -1223,7 +1225,6 @@ UL 0bil...
         }
       }
     }
-    $(".headertop")[0].style.height = 0;
   });
 </script>
 

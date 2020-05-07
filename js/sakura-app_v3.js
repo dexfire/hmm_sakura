@@ -55,16 +55,40 @@ function removeCookie(name) {
     document.cookie = name + mashiro_option.cookie_version_control + '=; Max-Age=-99999999;';
 }
 
+// function imgError(ele, type) {
+//     switch (type) {
+//         case 1:
+//             ele.src = 'https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0/images/other/Transparent_Akkarin.th.jpg';
+//             break;
+//         case 2:
+//             ele.src = 'https://q2.qlogo.cn/headimg_dl?dst_uin=275176629&spec=5';
+//             break;
+//         default:
+//             ele.src = 'https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0/images/other/image-404.png';
+//     }
+// }
+
 function imgError(ele, type) {
     switch (type) {
-        case 1:
-            ele.src = '<%= theme.cdn %>/images/other/Transparent_Akkarin.th.jpg';
-            break;
-        case 2:
-            ele.src = 'https://q2.qlogo.cn/headimg_dl?dst_uin=275176629&spec=5';
-            break;
-        default:
-            ele.src = '<%= theme.cdn %>/images/other/image-404.png';
+    case 1:
+        if (ele.src.includes("https://cn.gravatar.com/avatar")) {
+            ele.src = ele.src.replace("https://cn.gravatar.com/avatar/", "https://cdn.v2ex.com/gravatar/");
+        } else {
+            ele.src = 'https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0/images/other/Transparent_Akkarin.th.jpg';
+        }
+        break;
+    case 2:
+        ele.src = 'https://gravatar.shino.cc/avatar/?s=80&d=mm&r=g';
+        break;
+    case 3:
+        if (ele.src.includes("https://static.2heng.xin/")) {
+            ele.src = ele.src.replace("https://static.2heng.xin/wp-content/uploads/", "https://cdn.2heng.xin/");
+        } else {
+            ele.src = 'https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0/images/other/image-404.png';
+        }
+        break;
+    default:
+        ele.src = 'https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0/images/other/image-404.png';
     }
 }
 
@@ -463,25 +487,7 @@ $(document).ready(function () {
     });
     add_upload_tips();
 });
-var bgn = 1;
 
-function nextBG() {
-    $(".centerbg").css("background-image", "url(" + mashiro_option.cover_api + "?" + bgn + ")");
-    bgn = bgn + 1;
-}
-
-function preBG() {
-    bgn = bgn - 1;
-    $(".centerbg").css("background-image", "url(" + mashiro_option.cover_api + "?" + bgn + ")");
-}
-$(document).ready(function () {
-    $("#bg-next").click(function () {
-        nextBG();
-    });
-    $("#bg-pre").click(function () {
-        preBG();
-    });
-});
 
 function topFunction() {
     $('body,html').animate({

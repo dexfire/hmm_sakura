@@ -2,26 +2,31 @@
     width: 200px;
     height: auto;
     z-index: 98;
-    background-color: rgba(255,255,255,0);
+    background-color: rgba(255, 255, 255, 0);
     transform: translateX(0);
     right: calc((100% - 950px - 250px) / 2);
-    top:10px;
+    top: 10px;
     position: absolute;
     padding-top: 10px;
     padding-bottom: 10px;
 }
+
 .toc-fixed {
     position: fixed !important;
     top: 85px;
 }
 
 @media(max-width:1200px) {
-    .toc {display: none;}
+    .toc {
+        display: none;
+    }
 }
+
 
 /* checkbox */
 
-input[type=checkbox], input[type=radio] {
+input[type=checkbox],
+input[type=radio] {
     box-sizing: border-box;
     padding: 0;
 }
@@ -35,18 +40,23 @@ input[type=checkbox], input[type=radio] {
     opacity: 0;
 }
 
-button, input {
+button,
+input {
     overflow: visible;
 }
 
-button, input, optgroup, select, textarea {
+button,
+input,
+optgroup,
+select,
+textarea {
     margin: 0;
     font-family: inherit;
     font-size: inherit;
     line-height: inherit;
 }
 
-input[type="checkbox" i] {
+input[type="checkbox"i] {
     background-color: initial;
     cursor: default;
     -webkit-appearance: checkbox;
@@ -56,3 +66,188 @@ input[type="checkbox" i] {
     border: initial;
 }
 
+/* Highlit.js */
+
+.hljs-ln {
+    border-collapse: collapse
+}
+
+.hljs-ln td {
+    padding: 0
+}
+
+.hljs-ln-n:before {
+    content: attr(data-line-number)
+}
+
+/* 个性化，优化 */
+
+.site-top .lower nav {
+    display: block !important;
+}
+
+.author-profile i,
+.post-like a,
+.post-share .show-share,
+.sub-text,
+.we-info a,
+span.sitename,
+.post-more i:hover,
+#pagination a:hover,
+.post-content a:hover,
+.float-content i:hover {
+    color: #FE9600
+}
+
+.feature i,
+.download,
+.navigator i:hover,
+.links ul li:before,
+.ar-time i,
+span.ar-circle,
+.object,
+.comment .comment-reply-link,
+.siren-checkbox-radio:checked+.siren-checkbox-radioInput:after {
+    background: #FE9600
+}
+
+::-webkit-scrollbar-thumb {
+    background: #FE9600
+}
+
+.download,
+.navigator i:hover,
+.link-title,
+.links ul li:hover,
+#pagination a:hover,
+.comment-respond input[type='submit']:hover {
+    border-color: #FE9600
+}
+
+.entry-content a:hover,
+.site-info a:hover,
+.comment h4 a,
+#comments-navi a.prev,
+#comments-navi a.next,
+.comment h4 a:hover,
+.site-top ul li a:hover,
+.entry-title a:hover,
+#archives-temp h3,
+span.page-numbers.current,
+.sorry li a:hover,
+.site-title a:hover,
+i.iconfont.js-toggle-search.iconsearch:hover,
+.comment-respond input[type='submit']:hover {
+    color: #FE9600
+}
+
+.comments .comments-main {
+    display: block !important;
+}
+
+.comments .comments-hidden {
+    display: none !important;
+}
+
+/* 有关背景部分 */
+
+.headertop {
+    position: relative;
+    overflow: hidden;
+    /* height: 0 */
+}
+
+.headertop:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 3;
+    background-attachment: fixed
+}
+
+.headertop.filter-undertint:before {
+    background-color: rgba(255,255,255,.3)
+}
+
+.headertop.filter-dim:before {
+    background-color: rgba(0,0,0,.3)
+}
+
+.headertop.filter-grid:before {
+    background-image: url("https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0/images/elements/grid.png")
+}
+
+.headertop.filter-dot:before {
+    background-image: url("https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0/images/elements/dot.gif")
+}
+
+@media (max-width: 860px) {
+    .headertop.filter-dot:before {
+        background-image:url("https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0/images/elements/grid.png")
+    }
+}
+
+.headertop-bar:after {
+    content: '';
+    width: 150%;
+    height: 4.375rem;
+    background: #fff;
+    left: -25%;
+    bottom: -2.875rem;
+    border-radius: 100%;
+    position: absolute;
+    z-index: 4
+}
+
+.headertop-down {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    cursor: pointer;
+    z-index: 5
+}
+
+@media (max-width: 860px) {
+    .headertop-down {
+        display:none
+    }
+}
+
+.headertop-down i {
+    font-size: 28px;
+    color: #fff;
+    -ms-transform: scale(1.5,1);
+    -webkit-transform: scale(1.5,1);
+    transform: scale(1.5,1)
+}
+
+#centerbg {
+    width: 100%;
+    height: 550px;
+    margin: 0;
+    padding: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    z-index: -1
+}
+
+@media (max-width: 860px) {
+    #centerbg {
+        height:300px;
+        background-attachment: scroll
+    }
+
+    .focusinfo,#video-container {
+        display: none
+    }
+}
+
+.centerbg {
+    /* background-image: url("https://api.2heng.xin/cover/"); */
+    background-position: center center;
+    background-attachment: inherit;
+}

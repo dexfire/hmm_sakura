@@ -4158,7 +4158,7 @@ function bot_ui_ini() {
     end = function() {
         botui.message.add({
             delay: 600,
-            content: "![...](<%= theme.cdn %>/images/other/nolistenning.jpg)"
+            content: "![...](https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0/images/other/nolistenning.jpg)"
         })
     },
     secondpart = function() {

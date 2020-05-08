@@ -21,7 +21,7 @@ Theme by Mashiro
   
   <title itemprop="name">
     
-    [Hexo美化][Debug日志]处理js代码过程中遇到的一些问题集合 |
+    Tag: 考研 |
     
     你终于回来啦~ ♪(＾∀＾●)ﾉ
   </title>
@@ -413,191 +413,65 @@ Theme by Mashiro
   </div>
 </header>
 
-      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+      
 <div class="pattern-center-blank"></div>
-
-<div class="pattern-center single-center">
-  <!-- 头图：有配图默认渲染第一张，出错则没有配图 -->
-  <div class="pattern-attachment-img lazyload" style="background-image: url(/img/20200503135002.jpg);"
-    src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0/images/loader/orange.progress-bar-stripe-loader.svg" data-src="/img/20200503135002.jpg">
+<div class="pattern-center ">
+  <div class="pattern-attachment-img">
+    <!-- data-src="https://view.moezx.cc/images/2017/12/03/writing.jpg" -->
+    <img  src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0/images/loader/orange.progress-bar-stripe-loader.svg" data-src="imgx"  class="lazyload" onerror="imgError(this,3)" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;">
   </div>
-  <header class="pattern-header single-header">
-    <h1 class="entry-title">
-      [Hexo美化][Debug日志]处理js代码过程中遇到的一些问题集合</h1>
-    <!-- 顶部信息栏：作者信息，日期，浏览量。TODO: 标签，分类 -->
-    <p class="entry-census">
-      <span>
-        <a href="dexfire.cn">
-          <img src="//q2.qlogo.cn/headimg_dl?dst_uin=1944404463&spec=5">
-        </a>
-      </span>
-      <span>
-        <a href="dexfire.cn">dexfire</a>
-      </span>
-      <span class="bull">
-        ·</span>
-      2020-5-8<span class="bull">
-        ·</span>
-      <span id="busuanzi_value_page_pv">1</span>次阅读</p>
+  <header class="pattern-header ">
+    <h1 class="cat-title">考研</h1>
   </header>
 </div>
-
 <div id="content" class="site-content">
   <div id="primary" class="content-area">
     <main id="main" class="site-main" role="main">
-      <article id="post-1"
-        class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
-        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
-        
-        <div class="entry-content">
-          <h1 id="hexo美化debug日志处理js代码过程中遇到的一些问题集合"><a class="markdownIt-Anchor" href="#hexo美化debug日志处理js代码过程中遇到的一些问题集合"></a> [Hexo美化][Debug日志]处理js代码过程中遇到的一些问题集合</h1>
-<p>本身就是静态站，要是再没有js帮忙撑场面，就真的安静了…处理js代码中遇到了一些问题，这里简单说明一下解决的方法，帮助踩坑的同学找到思路。</p>
-<h2 id="1-js文件防在主题哪个位置可以使用hexo脚本代码么"><a class="markdownIt-Anchor" href="#1-js文件防在主题哪个位置可以使用hexo脚本代码么"></a> 1. js文件防在主题哪个位置？可以使用hexo脚本代码么？</h2>
-<p>js代码，一般放在主题的<code>/source/js/</code>文件夹下，且<strong>不支持</strong>采用hexo脚本语法，这一点是比较蛋疼的，有些需要结合主题配置的部分都无法用hexo处理了。</p>
-<p>当然，不支持也是有好处的，那么这一部分代码就可以采用免费的cdn，比如<a href="https://www.jsdelivr.com/" target="_blank" rel="noopener"><img src="https://www.jsdelivr.com/img/logo-horizontal.svg" alt="jsDelivr" /></a>来进行缓存加速，毕竟免费的午餐还要吃得酸爽，不掏腰包就得动动脑子呢。</p>
-<h2 id="2-js代码要动态处理怎么办呢"><a class="markdownIt-Anchor" href="#2-js代码要动态处理怎么办呢"></a> 2. js代码要动态处理怎么办呢？</h2>
-<p><code>source/js/</code> 下的js文件不支持，但是<code>layout/*.ejs</code>是支持的呀，所以有些需要动态处理的脚本，可以添加到到模板的 ejs文件内，比如：</p>
-<p>用于生成博客首页的index.ejs：</p>
-<pre class="highlight"><code class="js">&lt;script type=<span class="hljs-string">"text/javascript"</span>&gt;
-    $(<span class="hljs-built_in">document</span>).ready(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
-        <span class="hljs-comment">// 生成主页图</span>
-        bgs = <span class="hljs-string">"&lt;%= theme.bg %&gt;"</span>.split(<span class="hljs-string">","</span>);
-        $(<span class="hljs-string">".headertop"</span>)[<span class="hljs-number">0</span>].style.height = <span class="hljs-string">"550px"</span>;
-    });
-&lt;<span class="hljs-regexp">/script&gt;
-</span></code></pre>
-<p>这里的theme.bg是在<code>_config.yml</code>中定义的一个字符串数组，这里输出的结果为（<code>bgs</code>）：</p>
-<pre class="highlight"><code class="js">bgs = 
-[
-    <span class="hljs-string">"https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0/images/cover/IMG_7631.JPG"</span>, 
-    <span class="hljs-string">"https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0/images/cover/IMG_7632.JPG"</span>, 
-    <span class="hljs-string">"https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0/images/cover/IMG_7633.JPG"</span>, 
-    <span class="hljs-string">"https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0/images/cover/IMG_7634.JPG"</span>, 
-    <span class="hljs-string">"https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0/images/cover/IMG_7635.JPG"</span>, 
-    ...
-]
-</code></pre>
-<p>可以看到已经实现了在主题配置<code>_config.yml</code>中自定义的图片到js代码变量数组的转换。</p>
-<h2 id="3-js代码在html中的放置有何区别"><a class="markdownIt-Anchor" href="#3-js代码在html中的放置有何区别"></a> 3. js代码在html中的放置有何区别？</h2>
-<p>按道理来说，html是顺序加载的，而且是一边还在读取，另一边同时就开始执行格式化了，所以也就产生了一个js代码的插入顺序问题。</p>
-<ul>
-<li>html头部最先被读取，所以说<code>*.css</code>格式定义文件会放在头部，即<code>&lt;head&gt;&lt;/head&gt;</code>标签中，在所有实体标签加载之前就读取完成了，才能无遗漏地应用于全部应有标签；</li>
-<li>通常的js脚本文件会放置于html末尾，是因为放在中途的js脚本，一旦读取完成后即开始执行，可能代码的目标作用对象尚未加载完成，导致访问错误。</li>
-</ul>
-<p>e.g. 还是刚刚那段代码，放置于<code>index.ejs</code>之中，而非<code>footer.ejs</code>中，所以产生了这样一个结果：</p>
-<pre class="highlight"><code class="text">(index):953 
-    Uncaught ReferenceError: $ is not defined
-        (anonymous) @ (index):953
-</code></pre>
-<p>这个结果很显然，<code>jquery.js</code>是放在<code>&lt;/body&gt;</code>前面，即html末尾位置，所以加载之时jQuery尚未初始化完成，所以考虑改用DOM模型访问，即：</p>
-<pre class="highlight"><code class="js"><span class="hljs-built_in">document</span>.getElementsByClassName(<span class="hljs-string">"headertop"</span>)[<span class="hljs-number">0</span>].style.height = <span class="hljs-string">"550px"</span>;
-</code></pre>
-
-        </div>
-        <!-- .entry-content -->
-        <div class="single-reward">
-          <div class="reward-open">赏
-            <div class="reward-main">
-              <ul class="reward-row">
-                <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/custom/donate/AliPayQR.jpg"></li>
-                <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/custom/donate/WeChanQR.jpg"></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent">
-        </div>
-        <footer class="post-footer">
-          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh"
-              target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i>
-              知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
-          <div class="post-tags">
-          </div>
-          <div class="post-share">
-            <div class="social-share sharehidden share-component"></div>
-            <i class="iconfont show-share icon-forward"></i>
-          </div>
-        </footer><!-- .entry-footer -->
-      </article>
-      <!-- #post-## -->
-      <div class="toc" style="background: none;"></div>
-      <section class="post-squares nextprev">
-        
-        
-        <div class="post-nepre half previous">
-          
-            <a href="/2020/05/08/%E8%80%83%E7%A0%94-%E8%80%83%E7%A0%94%E8%AE%A1%E5%88%922021/" rel="prev">
-              <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0/images/loader/orange.progress-bar-stripe-loader.svg" data-src=""
-                  style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)"
-                  src="">
-              </div>
-              <span class="label">
-                Previous Post</span>
-              <div class="info">
-                <h3>
-                  [考研]考研计划2021</h3>
-                <hr>
-              </div>
-            </a>
-          </div>
-          
-          
-          
-          <div class="post-nepre half next">
-            
-              <a href="/2020/05/08/%E5%89%8D%E7%AB%AF-JavaScript-JS%E4%BB%A3%E7%A0%81%E6%94%BE%E5%88%B0HTML%E4%B8%AD%E7%9A%84%E4%B8%8D%E5%90%8C%E4%BD%8D%E7%BD%AE%E6%9C%89%E4%BD%95%E5%8C%BA%E5%88%AB%EF%BC%9F/" rel="next">
-                <div class="background">
-                  <img class="lazyload" src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0/images/loader/orange.progress-bar-stripe-loader.svg" data-src="/img/20200503135002.jpg"
-                    style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;"
-                    onerror="imgError(this,3)" src="/img/20200503135002.jpg">
-                </div>
-                <span class="label">
-                  Next Post</span>
-                <div class="info">
-                  <h3>
-                    [前端][JavaScript]JS代码放到HTML中的不同位置有何区别？</h3>
-                  <hr>
-                </div>
-              </a>
-            </div>
-            
-      </section>
       
-<div id="vcomments"></div>
-<script>
-  window.onload = function(){
-      var valine = new Valine();
-      valine.init({
-        el: '#vcomments',
-        appId: "aFI53WTJYb4qPknwn0l76Lnu-gzGzoHsz",
-        appKey: "2YeldrXS6Hm64JWCCLNgpj3C",
-        path: window.location.pathname,
-        placeholder: "你是我一生只会遇见一次的惊喜 ..."
-      })
-  }
-</script>
-
-      <section class="author-profile">
-        <div class="info" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
-          <a href="dexfire.cn" class="profile gravatar"><img src="//q2.qlogo.cn/headimg_dl?dst_uin=1944404463&spec=5" itemprop="image"
-              alt="dexfire" height="70" width="70"></a>
-          <div class="meta">
-            <span class="title">Author</span>
-            <h3 itemprop="name">
-              <a href="dexfire.cn" itemprop="url" rel="author">dexfire</a>
-            </h3>
-          </div>
+  <!-- 首页默认取最最新文章集 -->
+  
+    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
+  <div class="post-entry">
+    <div class="feature">
+      <a href="/2020/05/08/%E8%80%83%E7%A0%94-%E8%80%83%E7%A0%94%E8%AE%A1%E5%88%922021/">
+        <div class="overlay">
+          <i class="iconfont icon-text">
+          </i>
         </div>
-        <hr>
-        <p><i class="iconfont icon-write"></i></p>
-      </section>
-    </main><!-- #main -->
-  </div><!-- #primary -->
+        <img width="150" height="150" src="" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
+      </a>
+    </div>
+    <h1 class="entry-title">
+    <a href="/2020/05/08/%E8%80%83%E7%A0%94-%E8%80%83%E7%A0%94%E8%AE%A1%E5%88%922021/">
+    [考研]考研计划2021</a>
+    </h1>
+    <div class="p-time">
+      <i class="iconfont icon-time">
+      </i>
+    2020-5-8</div>
+    <p>
+    </p>
+    <footer class="entry-footer">
+      <div class="post-more">
+        <a href="/2020/05/08/%E8%80%83%E7%A0%94-%E8%80%83%E7%A0%94%E8%AE%A1%E5%88%922021/">
+          <i class="iconfont icon-caidan">
+          </i>
+        </a>
+      </div>
+    </footer>
+  </div>
+  <hr>
+</article>
+  
+
+
+      <div class="clearer">
+      </div>
+    </main>
+    <!--  -->
+    
+  </div>
 </div>
-
-
     </div>
     <div class="ins-search">
     <div class="ins-search-mask"></div>

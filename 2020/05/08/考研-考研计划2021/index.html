@@ -21,7 +21,7 @@ Theme by Mashiro
   
   <title itemprop="name">
     
-    [Hexo美化][Debug日志]处理js代码过程中遇到的一些问题集合 |
+    [考研]考研计划2021 |
     
     你终于回来啦~ ♪(＾∀＾●)ﾉ
   </title>
@@ -417,32 +417,6 @@ Theme by Mashiro
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
 <div class="pattern-center-blank"></div>
 
-<div class="pattern-center single-center">
-  <!-- 头图：有配图默认渲染第一张，出错则没有配图 -->
-  <div class="pattern-attachment-img lazyload" style="background-image: url(/img/20200503135002.jpg);"
-    src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0/images/loader/orange.progress-bar-stripe-loader.svg" data-src="/img/20200503135002.jpg">
-  </div>
-  <header class="pattern-header single-header">
-    <h1 class="entry-title">
-      [Hexo美化][Debug日志]处理js代码过程中遇到的一些问题集合</h1>
-    <!-- 顶部信息栏：作者信息，日期，浏览量。TODO: 标签，分类 -->
-    <p class="entry-census">
-      <span>
-        <a href="dexfire.cn">
-          <img src="//q2.qlogo.cn/headimg_dl?dst_uin=1944404463&spec=5">
-        </a>
-      </span>
-      <span>
-        <a href="dexfire.cn">dexfire</a>
-      </span>
-      <span class="bull">
-        ·</span>
-      2020-5-8<span class="bull">
-        ·</span>
-      <span id="busuanzi_value_page_pv">1</span>次阅读</p>
-  </header>
-</div>
-
 <div id="content" class="site-content">
   <div id="primary" class="content-area">
     <main id="main" class="site-main" role="main">
@@ -450,49 +424,149 @@ Theme by Mashiro
         class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
+        <header class="entry-header">
+          <h1 class="entry-title">[考研]考研计划2021</h1>
+          <p class="entry-census">dexfire&nbsp;·&nbsp;2020-5-8&nbsp;·&nbsp;<span
+              id="busuanzi_value_page_pv"></span>次阅读</p>
+          </p>
+
+          <hr>
+        </header>
+        
         <div class="entry-content">
-          <h1 id="hexo美化debug日志处理js代码过程中遇到的一些问题集合"><a class="markdownIt-Anchor" href="#hexo美化debug日志处理js代码过程中遇到的一些问题集合"></a> [Hexo美化][Debug日志]处理js代码过程中遇到的一些问题集合</h1>
-<p>本身就是静态站，要是再没有js帮忙撑场面，就真的安静了…处理js代码中遇到了一些问题，这里简单说明一下解决的方法，帮助踩坑的同学找到思路。</p>
-<h2 id="1-js文件防在主题哪个位置可以使用hexo脚本代码么"><a class="markdownIt-Anchor" href="#1-js文件防在主题哪个位置可以使用hexo脚本代码么"></a> 1. js文件防在主题哪个位置？可以使用hexo脚本代码么？</h2>
-<p>js代码，一般放在主题的<code>/source/js/</code>文件夹下，且<strong>不支持</strong>采用hexo脚本语法，这一点是比较蛋疼的，有些需要结合主题配置的部分都无法用hexo处理了。</p>
-<p>当然，不支持也是有好处的，那么这一部分代码就可以采用免费的cdn，比如<a href="https://www.jsdelivr.com/" target="_blank" rel="noopener"><img src="https://www.jsdelivr.com/img/logo-horizontal.svg" alt="jsDelivr" /></a>来进行缓存加速，毕竟免费的午餐还要吃得酸爽，不掏腰包就得动动脑子呢。</p>
-<h2 id="2-js代码要动态处理怎么办呢"><a class="markdownIt-Anchor" href="#2-js代码要动态处理怎么办呢"></a> 2. js代码要动态处理怎么办呢？</h2>
-<p><code>source/js/</code> 下的js文件不支持，但是<code>layout/*.ejs</code>是支持的呀，所以有些需要动态处理的脚本，可以添加到到模板的 ejs文件内，比如：</p>
-<p>用于生成博客首页的index.ejs：</p>
-<pre class="highlight"><code class="js">&lt;script type=<span class="hljs-string">"text/javascript"</span>&gt;
-    $(<span class="hljs-built_in">document</span>).ready(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
-        <span class="hljs-comment">// 生成主页图</span>
-        bgs = <span class="hljs-string">"&lt;%= theme.bg %&gt;"</span>.split(<span class="hljs-string">","</span>);
-        $(<span class="hljs-string">".headertop"</span>)[<span class="hljs-number">0</span>].style.height = <span class="hljs-string">"550px"</span>;
-    });
-&lt;<span class="hljs-regexp">/script&gt;
-</span></code></pre>
-<p>这里的theme.bg是在<code>_config.yml</code>中定义的一个字符串数组，这里输出的结果为（<code>bgs</code>）：</p>
-<pre class="highlight"><code class="js">bgs = 
-[
-    <span class="hljs-string">"https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0/images/cover/IMG_7631.JPG"</span>, 
-    <span class="hljs-string">"https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0/images/cover/IMG_7632.JPG"</span>, 
-    <span class="hljs-string">"https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0/images/cover/IMG_7633.JPG"</span>, 
-    <span class="hljs-string">"https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0/images/cover/IMG_7634.JPG"</span>, 
-    <span class="hljs-string">"https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0/images/cover/IMG_7635.JPG"</span>, 
-    ...
-]
-</code></pre>
-<p>可以看到已经实现了在主题配置<code>_config.yml</code>中自定义的图片到js代码变量数组的转换。</p>
-<h2 id="3-js代码在html中的放置有何区别"><a class="markdownIt-Anchor" href="#3-js代码在html中的放置有何区别"></a> 3. js代码在html中的放置有何区别？</h2>
-<p>按道理来说，html是顺序加载的，而且是一边还在读取，另一边同时就开始执行格式化了，所以也就产生了一个js代码的插入顺序问题。</p>
+          <h1 id="考研考研计划2021"><a class="markdownIt-Anchor" href="#考研考研计划2021"></a> [考研]考研计划2021</h1>
+<p>关于考研的一些琐碎的想法。考研不是一件轻松的事，想考或是不想考，不可以一笔带过。头脑不清醒，或者不愿意情形，都是非常可笑且可悲的事。</p>
+<h2 id="学习计划"><a class="markdownIt-Anchor" href="#学习计划"></a> 学习计划</h2>
+<p>3.4月份开始，制定表格。</p>
+<p>6点半起床，起点开始早饭晨读。复习前一天的笔记。<br />
+8点开始正式学习，上课。<br />
+11点后吃饭，<br />
+中午午休，<br />
+下午一两点开始，<br />
+下午5点吃饭。<br />
+7.8点开始，学到9点。</p>
+<p>时间比较多的。<br />
+相关书籍。<br />
+每周计划。</p>
+<p>能保持没天9小时，就很。苏菲的世界，把哲学讲的很有意思的书，月亮与六便士，电影。</p>
+<p>暑假：</p>
+<table>
+<thead>
+<tr>
+<th>时间</th>
+<th>活动</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>6:00</td>
+<td>起床</td>
+</tr>
+<tr>
+<td>7:00~8:00</td>
+<td>早读英语（单词、真题）</td>
+</tr>
+<tr>
+<td>8:00~11:00</td>
+<td>数学</td>
+</tr>
+<tr>
+<td>中午</td>
+<td>午饭、午睡、娱乐、回顾、总结</td>
+</tr>
+<tr>
+<td>13:00~14:00</td>
+<td>英语真题</td>
+</tr>
+<tr>
+<td>14:00~17:00</td>
+<td>政治视频、专业参考书</td>
+</tr>
+<tr>
+<td>傍晚</td>
+<td>吃晚饭</td>
+</tr>
+<tr>
+<td>18:00~21:00</td>
+<td>数学</td>
+</tr>
+<tr>
+<td>晚间</td>
+<td>整理、休息</td>
+</tr>
+<tr>
+<td>21:00~21:40</td>
+<td>锻炼</td>
+</tr>
+<tr>
+<td>22:00~23:00</td>
+<td>洗漱</td>
+</tr>
+<tr>
+<td>23:30</td>
+<td>睡觉</td>
+</tr>
+</tbody>
+</table>
+<h2 id="整体规划"><a class="markdownIt-Anchor" href="#整体规划"></a> 整体规划</h2>
 <ul>
-<li>html头部最先被读取，所以说<code>*.css</code>格式定义文件会放在头部，即<code>&lt;head&gt;&lt;/head&gt;</code>标签中，在所有实体标签加载之前就读取完成了，才能无遗漏地应用于全部应有标签；</li>
-<li>通常的js脚本文件会放置于html末尾，是因为放在中途的js脚本，一旦读取完成后即开始执行，可能代码的目标作用对象尚未加载完成，导致访问错误。</li>
+<li>英语：恋恋有词 何凯文<br />
+每天看一句，4月份做真题（英语）<br />
+唐迟，阅读理解课程<br />
+12月背诵作文。模拟考试</li>
+<li>数学：汤家凤 朱伟<br />
+不要想走捷径。</li>
 </ul>
-<p>e.g. 还是刚刚那段代码，放置于<code>index.ejs</code>之中，而非<code>footer.ejs</code>中，所以产生了这样一个结果：</p>
-<pre class="highlight"><code class="text">(index):953 
-    Uncaught ReferenceError: $ is not defined
-        (anonymous) @ (index):953
-</code></pre>
-<p>这个结果很显然，<code>jquery.js</code>是放在<code>&lt;/body&gt;</code>前面，即html末尾位置，所以加载之时jQuery尚未初始化完成，所以考虑改用DOM模型访问，即：</p>
-<pre class="highlight"><code class="js"><span class="hljs-built_in">document</span>.getElementsByClassName(<span class="hljs-string">"headertop"</span>)[<span class="hljs-number">0</span>].style.height = <span class="hljs-string">"550px"</span>;
-</code></pre>
+<h2 id="数学高数-线代"><a class="markdownIt-Anchor" href="#数学高数-线代"></a> 数学：高数、线代</h2>
+<ul>
+<li>数学，三四月份看高数，汤家凤[前期]。张宇。</li>
+<li>同济教材，整理笔记。</li>
+<li>汤家凤1800</li>
+<li>五月看完。</li>
+<li>五月开始线代。李永乐，汤家凤。</li>
+<li>暑假，复习全书。综合的，等知识全面再看。【刷了三次】</li>
+<li>张宇，强化视频。</li>
+<li>数学看视频是辅助方式。</li>
+<li>9.复习全书第二遍</li>
+<li>李永乐基础过关660题</li>
+<li>十月份，复习全书第三便。</li>
+<li>真题。十月开始。</li>
+<li>方浩的视频。比较难；</li>
+<li>难题，拔高题；不要导致简单题目失分。</li>
+<li>看复习全书。查漏补缺</li>
+<li>11.12月份做模拟题。</li>
+<li>模拟试题可以多做。</li>
+</ul>
+<h2 id="政治"><a class="markdownIt-Anchor" href="#政治"></a> 政治</h2>
+<ul>
+<li>10月份。开始</li>
+<li>暑假开始。最好。</li>
+<li>七月份徐涛视频。</li>
+<li>肖秀荣精讲精练三件套。</li>
+<li>78，完成，马原，史纲，思修。</li>
+<li>9月，毛中特。半个月。</li>
+<li>画思维导图。（A4）</li>
+<li>帮助超级大，配合精讲精练。</li>
+<li>10.思维导图。1000题。</li>
+<li>11.继续看书。徐涛，冲刺背诵笔记。</li>
+<li>名师预测卷选择题。</li>
+<li>肖四，肖八，徐八。腿四，米六，米三。</li>
+<li>11月，时政。米鹏，徐涛。</li>
+<li>12。预测卷，错题。肖秀荣，4套卷；徐涛考研政治必背20题</li>
+<li>需要模拟一次，考虑有些是重点，有些不是。</li>
+</ul>
+<h2 id="专业课"><a class="markdownIt-Anchor" href="#专业课"></a> 专业课</h2>
+<ul>
+<li>不考数学：4月开始专业课。</li>
+<li>4月开始。借书，参考书。</li>
+<li>5月份，大致过一遍。</li>
+<li>6月没看。</li>
+<li>7、8月，参考书，学长笔记，自己的笔记。</li>
+<li>一定要自己总结笔记。</li>
+<li>专业课很难背诵，关键词，串联阐述。</li>
+<li>不停背。</li>
+<li>十月份+：整理，笔记，做题，出题规律，参考书，学长学姐。</li>
+</ul>
 
         </div>
         <!-- .entry-content -->
@@ -524,30 +598,11 @@ Theme by Mashiro
       <div class="toc" style="background: none;"></div>
       <section class="post-squares nextprev">
         
-        
-        <div class="post-nepre half previous">
-          
-            <a href="/2020/05/08/%E8%80%83%E7%A0%94-%E8%80%83%E7%A0%94%E8%AE%A1%E5%88%922021/" rel="prev">
-              <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0/images/loader/orange.progress-bar-stripe-loader.svg" data-src=""
-                  style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)"
-                  src="">
-              </div>
-              <span class="label">
-                Previous Post</span>
-              <div class="info">
-                <h3>
-                  [考研]考研计划2021</h3>
-                <hr>
-              </div>
-            </a>
-          </div>
           
           
-          
-          <div class="post-nepre half next">
-            
-              <a href="/2020/05/08/%E5%89%8D%E7%AB%AF-JavaScript-JS%E4%BB%A3%E7%A0%81%E6%94%BE%E5%88%B0HTML%E4%B8%AD%E7%9A%84%E4%B8%8D%E5%90%8C%E4%BD%8D%E7%BD%AE%E6%9C%89%E4%BD%95%E5%8C%BA%E5%88%AB%EF%BC%9F/" rel="next">
+            <div class="post-nepre full next">
+              
+              <a href="/2020/05/08/Hexo%E7%BE%8E%E5%8C%96-Debug%E6%97%A5%E5%BF%97-%E5%A4%84%E7%90%86js%E4%BB%A3%E7%A0%81%E8%BF%87%E7%A8%8B%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98%E9%9B%86%E5%90%88/" rel="next">
                 <div class="background">
                   <img class="lazyload" src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0/images/loader/orange.progress-bar-stripe-loader.svg" data-src="/img/20200503135002.jpg"
                     style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;"
@@ -557,7 +612,7 @@ Theme by Mashiro
                   Next Post</span>
                 <div class="info">
                   <h3>
-                    [前端][JavaScript]JS代码放到HTML中的不同位置有何区别？</h3>
+                    [Hexo美化][Debug日志]处理js代码过程中遇到的一些问题集合</h3>
                   <hr>
                 </div>
               </a>

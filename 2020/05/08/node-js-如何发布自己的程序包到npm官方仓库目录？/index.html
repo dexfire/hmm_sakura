@@ -442,6 +442,43 @@ Theme by Mashiro
         
         <div class="entry-content">
           <h1 id="-0-"><a class="markdownIt-Anchor" href="#-0-"></a> </h1>
+<p>对于原创或修改的npm包，可以发布到npm服务器上以获得更简便的安装方式（获得各大镜像站的cdn加速），那么问题来了怎么发布一个项目呢？</p>
+<h2 id="创建一个npm项目"><a class="markdownIt-Anchor" href="#创建一个npm项目"></a> 创建一个npm项目</h2>
+<p>创建一个项目文件夹:<br />
+<code>mkdir myProject &amp;&amp; cd myProject</code></p>
+<p>初始化npm项目:<br />
+<code>npm Init</code></p>
+<p>这时会要求输入一些基本信息，会用于作为包的识别信息，当然你也可以后续在 <code>package.json</code> 中修改这些信息。</p>
+<p>创建好的配置文件大致如下：</p>
+<pre class="highlight"><code class="json">{
+  <span class="hljs-attr">"name"</span>: <span class="hljs-string">"myProject"</span>,
+  <span class="hljs-attr">"version"</span>: <span class="hljs-string">"1.0.0"</span>,
+  <span class="hljs-attr">"description"</span>: <span class="hljs-string">"descriptions goes here."</span>,
+  <span class="hljs-attr">"author"</span>: <span class="hljs-string">"Lvhua Wu &lt;dexfire29@foxmail.com&gt;"</span>,
+  <span class="hljs-attr">"engines"</span>: {
+    <span class="hljs-attr">"node"</span>: <span class="hljs-string">"&gt;=4"</span>
+  },
+  <span class="hljs-attr">"files"</span>: [
+    <span class="hljs-string">"index.js"</span>
+  ],
+  <span class="hljs-attr">"keywords"</span>: [],
+  <span class="hljs-attr">"devDependencies"</span>: {}
+}
+</code></pre>
+<h2 id="注册npm账号"><a class="markdownIt-Anchor" href="#注册npm账号"></a> 注册npm账号</h2>
+<p>发布npm包需要首先在npmjs.com上完成注册，注册地址：</p>
+<ul>
+<li><a href="https://www.npmjs.com/" target="_blank" rel="noopener">ヽ(✿ﾟ▽ﾟ)ノ npm ♥ you!</a></li>
+</ul>
+<p>在本地npm管理器中注册用户信息：<br />
+<code>npm adduser</code></p>
+<p>输入自己的注册账号、密码、邮箱即可。</p>
+<h2 id="发布npm包"><a class="markdownIt-Anchor" href="#发布npm包"></a> 发布npm包</h2>
+<p>当编辑完成后，使用这一简单命令即可发布：<br />
+<code>npm publish</code></p>
+<p>发布结果：<br />
+<img src="/img/2020-05-08_225624.jpg" alt="" /></p>
+<p>当然，npm官方要求必须有 <code>README.md</code> 项目自述文件，需要添加进项目中来。</p>
 
         </div>
         <!-- .entry-content -->

@@ -24,6 +24,10 @@ function randBG() {
     $(".centerbg").css("background-image", "url('http://www.dmoe.cc/random.php')");
 }
 
+function loading_main_bg(){
+    var progressBar = $("");
+}
+
 $(document).ready(function () {
     if (bgs) {
         bgn = parseInt(Math.random() * bgs.length);

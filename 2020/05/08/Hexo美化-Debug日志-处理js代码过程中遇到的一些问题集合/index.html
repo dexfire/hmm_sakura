@@ -463,7 +463,7 @@ Theme by Mashiro
 <h2 id="1-js文件防在主题哪个位置可以使用hexo脚本代码么"><a class="markdownIt-Anchor" href="#1-js文件防在主题哪个位置可以使用hexo脚本代码么"></a> 1. js文件防在主题哪个位置？可以使用hexo脚本代码么？</h2>
 <p>js代码，一般放在主题的<code>/source/js/</code>文件夹下，且<strong>不支持</strong>采用hexo脚本语法，这一点是比较蛋疼的，有些需要结合主题配置的部分都无法用hexo处理了。</p>
 <p>当然，不支持也是有好处的，那么这一部分代码就可以采用免费的cdn，比如<a href="https://www.jsdelivr.com/" target="_blank" rel="noopener"><img src="https://www.jsdelivr.com/img/logo-horizontal.svg" alt="jsDelivr" /></a>来进行缓存加速，毕竟免费的午餐还要吃得酸爽，不掏腰包就得动动脑子呢。</p>
-<h2 id="2-js代码要动态处理怎么办呢"><a class="markdownIt-Anchor" href="#2-js代码要动态处理怎么办呢"></a> 2. js代码要动态处理怎么办呢？</h2>
+<h2 id="2-js中想放代码要动态处理怎么办呢"><a class="markdownIt-Anchor" href="#2-js中想放代码要动态处理怎么办呢"></a> 2. js中想放代码要动态处理怎么办呢？</h2>
 <p><code>source/js/</code> 下的js文件不支持，但是<code>layout/*.ejs</code>是支持的呀，所以有些需要动态处理的脚本，可以添加到到模板的 ejs文件内，比如：</p>
 <p>用于生成博客首页的index.ejs：</p>
 <pre class="highlight"><code class="js">&lt;script type=<span class="hljs-string">"text/javascript"</span>&gt;
@@ -500,6 +500,7 @@ Theme by Mashiro
 <p>这个结果很显然，<code>jquery.js</code>是放在<code>&lt;/body&gt;</code>前面，即html末尾位置，所以加载之时jQuery尚未初始化完成，所以考虑改用DOM模型访问，即：</p>
 <pre class="highlight"><code class="js"><span class="hljs-built_in">document</span>.getElementsByClassName(<span class="hljs-string">"headertop"</span>)[<span class="hljs-number">0</span>].style.height = <span class="hljs-string">"550px"</span>;
 </code></pre>
+<h3 id=""><a class="markdownIt-Anchor" href="#"></a> </h3>
 
         </div>
         <!-- .entry-content -->

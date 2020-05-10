@@ -1,0 +1,1172 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  
+  
+    <meta name="description" content="樱花博客，一个记录个人成长的地方。">
+  
+  <meta name="keywords" content="关键词,关键词,关键词" />
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="author" content="dexfire, dexfire@gmail.com" />
+  
+  <title itemprop="name">
+    
+    【衍射】光学中的衍射现象推论与计算 |
+    
+    你终于回来啦~ ♪(＾∀＾●)ﾉ
+  </title>
+  
+  <link rel="shortcut icon" href="/images/favicon.ico">
+  
+  <meta http-equiv="x-dns-prefetch-control" content="on">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Noto+SerifMerriweather|Merriweather+Sans|Source+Code+Pro|Ubuntu:400,700|Noto+Serif+SC"
+    media="all">
+  <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+  <link rel="stylesheet" id="saukra_css-css" href="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/css/autoptimize.css" type="text/css" media="all">
+  <!-- <link rel="stylesheet" id="saukra_css-css" href="/css/style.css" type="text/css" media="all"> -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/css/lib.css" type="text/css" media="all">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/css/font.css" type="text/css" media="all">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/css/insight.css" type="text/css" media="all">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/css/jquery.fancybox.min.css" type="text/css" media="all">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/css/zoom.css" type="text/css" media="all">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/css/sharejs.css" type="text/css" media="all">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/css/custom.css" type="text/css" media="all">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+  <script>
+    /*Initial Variables*/
+    var mashiro_option = new Object();
+    var mashiro_global = new Object();
+    mashiro_option.NProgressON = true;
+    /*
+     * 邮箱信息之类的东西可以填在这里，这些js变量基本都作用于sakura-app.js
+     * 这样的设置仅是为了方便在基于PHP开发的主题中设置js变量，既然移植到了Node上，我想或许可以精简这一逻辑吧
+     */
+    mashiro_option.email_domain = "";
+    mashiro_option.email_name = "";
+    mashiro_option.cookie_version_control = "";
+    mashiro_option.qzone_autocomplete = false;
+    mashiro_option.site_name = "さくら荘そのdexfire";
+    mashiro_option.author_name = "dexfire";
+    mashiro_option.site_url = "https://dexfire.cn";
+    mashiro_option.v_appId = "aFI53WTJYb4qPknwn0l76Lnu-gzGzoHsz";
+    mashiro_option.v_appKey = "2YeldrXS6Hm64JWCCLNgpj3C";
+    mashiro_option.mathjax = "0";
+    mashiro_option.qq_api_url = "https://api.mashiro.top/qqinfo/";
+    mashiro_option.qq_avatar_api_url = "https://api.mashiro.top/qqinfo/";
+                    // mashiro_option.float_player_on = true;
+
+    /*End of Initial Variables*/
+  </script>
+  <script type="text/javascript">
+    var bg = "https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0/images/cover/IMG_0001.JPG,https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0/images/cover/IMG_0002.JPG,https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0/images/cover/IMG_7631.JPG,https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0/images/cover/IMG_7632.JPG,https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0/images/cover/IMG_7633.JPG,https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0/images/cover/IMG_7634.JPG,https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0/images/cover/IMG_7635.JPG,https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0/images/cover/IMG_7636.JPG,https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0/images/cover/IMG_7638.JPG,https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0/images/cover/IMG_7639.JPG,https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0/images/cover/IMG_7642.JPG,https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0/images/cover/IMG_7643.jpg,https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0/images/cover/IMG_7725.jpg,https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0/images/cover/IMG_7760.jpg".split(",");
+    var bgindex = Math.floor(Math.random() * bg.length);
+    if (!!window.ActiveXObject || "ActiveXObject" in window) { //is IE?
+      alert('朋友，IE浏览器未适配哦~');
+    }
+  </script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body
+  class="page-template page-template-user page-template-page-analytics page-template-userpage-analytics-php page page-id-1297 chinese-font serif isWebKit">
+  <div class="scrollbar" id="bar"></div>
+  <a href="#" class="cd-top faa-float animated"></a>
+  <section id="main-container">
+    <div class="headertop filter-dot" style="height: 0;">
+  <div id="banner_wave_1"></div>
+  <div id="banner_wave_2"></div>
+  <figure id="centerbg" class="centerbg" onerror="randBG()">
+    <div class="focusinfo no-select">
+      <div class="header-tou">
+        <a href="https://dexfire.cn">
+          <img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/custom/avatar.jpg">
+        </a>
+      </div>
+      <div class="header-info">
+        <p>Live your life with passion! With some drive!</p>
+        <div class="top-social_v2">
+          <li id="bg-pre">
+            <img class="flipx" src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/other/next-b.svg">
+          </li>
+          
+            
+              
+                <li>
+                  <a href="http://github.com/honjun" target="_blank" class="social-github" title="github">
+                    <img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/social/github.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="http://weibo.com/mashirozx?is_all=1" target="_blank" class="social-github" title="sina">
+                    <img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/social/sina.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="http://weibo.com/mashirozx?is_all=1" target="_blank" class="social-github" title="wangyiyun">
+                    <img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/social/wangyiyun.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="http://weibo.com/mashirozx?is_all=1" target="_blank" class="social-github" title="zhihu">
+                    <img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/social/zhihu.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="http://weibo.com/mashirozx?is_all=1" target="_blank" class="social-github" title="email">
+                    <img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/social/email.svg">
+                  </a>
+                </li>
+              
+            
+              
+                <li class="wechat">
+                  <a href="/#">
+                    <img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/social/wechat.png">
+                  </a>
+                  <div class="wechatInner">
+                    <img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/custom/wechat.jpg">
+                  </div>
+                </li>
+              
+            
+              
+                <li class="wechat">
+                  <a href="/#">
+                    <img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/social/wechat.png">
+                  </a>
+                  <div class="wechatInner">
+                    <img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/custom/wechat.jpg">
+                  </div>
+                </li>
+              
+            
+          
+          <li id="bg-next">
+            <img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/other/next-b.svg">
+          </li>
+        </div>
+      </div>
+    </div>
+  </figure>
+  <div id="video-container" style="">
+    <video style="object-fit: fill" id="bgvideo" class="video" video-name="" src="" width="auto" preload="auto">
+    </video>
+    <div id="video-btn" class="loadvideo videolive">
+    </div>
+    <div id="video-add">
+    </div>
+    <div class="video-stu">
+    </div>
+  </div>
+  <div class="headertop-down faa-float animated" onclick="headertop_down()">
+    <span>
+      <i class="fa fa-chevron-down" aria-hidden="true">
+      </i>
+    </span>
+  </div>
+</div>
+    <div id="page" class="site wrapper">
+      <header class="site-header no-select gizle sabit" role="banner">
+  <div class="site-top">
+    <div class="site-branding">
+      <span class="site-title">
+        <span class="logolink moe-mashiro">
+          <a href="/">
+            <span class="sakurasono">さくら荘その</span>
+            <span class="shironeko">dexfire</span>
+          </a>
+        </span>
+      </span>
+    </div>
+    <div class="searchbox search-form-submit">
+      <i class="iconfont js-toggle-search iconsearch icon-search">
+      </i>
+    </div>
+    <div id="show-nav" class="showNav mobile-fit">
+      <div class="line line1">
+      </div>
+      <div class="line line2">
+      </div>
+      <div class="line line3">
+      </div>
+    </div>
+    <div class="lower-cantiner">
+      <div class="lower">
+        <nav class="mobile-fit-control hide">
+          <ul id="menu-new" class="menu">
+            
+              <li>
+                <a href="/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
+                    首页
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
+                    时间线
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/categories/%E6%8A%80%E6%9C%AF/">
+                          <i class="fa fa-code" aria-hidden="true"></i>
+                          技术
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/%E7%94%9F%E6%B4%BB/">
+                          <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                          生活
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/%E8%B5%84%E6%BA%90/">
+                          <i class="fa fa-cloud-download" aria-hidden="true"></i>
+                          资源
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/%E9%9A%8F%E6%83%B3/">
+                          <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                          随想
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/%E8%BD%AC%E8%BD%BD/">
+                          <i class="fa fa-book" aria-hidden="true"></i>
+                          转载
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="javascript:;">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+                    清单
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/tags/%E6%82%A6%E8%AF%BB/">
+                          <i class="fa fa-th-list faa-bounce" aria-hidden="true"></i>
+                          书单
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/bangumi/">
+                          <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
+                          番组
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/music/">
+                          <i class="fa fa-headphones" aria-hidden="true"></i>
+                          歌单
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/tags/%E5%9B%BE%E9%9B%86/">
+                          <i class="fa fa-photo" aria-hidden="true"></i>
+                          图集
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="/comment/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-pencil-square-o faa-tada" aria-hidden="true"></i>
+                    留言板
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/links/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-link faa-shake" aria-hidden="true"></i>
+                    友人帐
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/donate/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-heart faa-pulse" aria-hidden="true"></i>
+                    赞赏
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-leaf faa-wrench" aria-hidden="true"></i>
+                    关于
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/about/">
+                          <i class="fa fa-meetup" aria-hidden="true"></i>
+                          我？
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/theme-sakura/">
+                          <i class="fa iconfont icon-sakura" aria-hidden="true"></i>
+                          主题
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/theme-sakura/update_logs.html">
+                          <i class="fa iconfont fa-bug" aria-hidden="true"></i>
+                          更新
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/lab/">
+                          <i class="fa fa-cogs" aria-hidden="true"></i>
+                          Lab
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="/client/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-android faa-vertical" aria-hidden="true"></i>
+                    客户端
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/atom.xml">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-rss faa-pulse" aria-hidden="true"></i>
+                    RSS
+                  </span>
+                </a>
+                
+              </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+<div class="pattern-center-blank"></div>
+
+<div id="content" class="site-content">
+  <div id="primary" class="content-area">
+    <main id="main" class="site-main" role="main">
+      <article id="post-1"
+        class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
+        
+        <header class="entry-header">
+          <h1 class="entry-title">【衍射】光学中的衍射现象推论与计算</h1>
+          <p class="entry-census">dexfire&nbsp;·&nbsp;2020-3-13&nbsp;·&nbsp;<span
+              id="busuanzi_value_page_pv"></span>次阅读</p>
+          </p>
+
+          <hr>
+        </header>
+        
+        <div class="entry-content">
+          <h1 id="亥姆霍兹方程是如何推导出球面波表达式的"><a class="markdownIt-Anchor" href="#亥姆霍兹方程是如何推导出球面波表达式的"></a> 亥姆霍兹方程是如何推导出球面波表达式的？</h1>
+<p>首先写下球面坐标系下的亥姆霍兹方程：</p>
+\frac{1}{r^2}\frac{\partial}{\partial r}\left(r^2+\frac{\partial u}{\partial r}\right)+\frac{1}{r^2\sin \theta}\frac{\partial}{\partial \theta}\left(\sin \theta \cdot \frac{\partial u}{\partial \theta}\right)+\frac{1}{r^2\sin^2\theta}\frac{\partial^2u}{\partial\varPhi^2}+k^2u=0
+
+<p>由于是球面坐标系，利用球谐函数分离变量作试探解，即代入下式到方程中：</p>
+u=R(r)Y ^m _l (\theta,\text{\o})
+
+<p>得到径向的方程为：</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mfrac><mrow><mn>1</mn></mrow><mrow><msup><mi>r</mi><mn>2</mn></msup></mrow></mfrac><mfrac><mrow><mrow><mi mathvariant="normal">d</mi></mrow></mrow><mrow><mrow><mi mathvariant="normal">d</mi></mrow><mi>r</mi></mrow></mfrac><mrow><mo fence="true">(</mo><msup><mi>r</mi><mn>2</mn></msup><mfrac><mrow><mrow><mi mathvariant="normal">d</mi></mrow><mi>R</mi><mo>(</mo><mi>r</mi><mo>)</mo></mrow><mrow><mrow><mi mathvariant="normal">d</mi></mrow><mi>r</mi></mrow></mfrac><mo fence="true">)</mo></mrow><mo>+</mo><mrow><mo fence="true">[</mo><msup><mi>k</mi><mn>2</mn></msup><mo>−</mo><mfrac><mrow><mi>l</mi><mo>(</mo><mi>l</mi><mo>+</mo><mn>1</mn><mo>)</mo></mrow><mrow><msup><mi>r</mi><mn>2</mn></msup></mrow></mfrac><mo fence="true">]</mo></mrow><mi>R</mi><mo>(</mo><mi>r</mi><mo>)</mo><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\frac{1}{r^2}\frac{\mathrm{d}}{\mathrm{d}r}\left(r^2\frac{\mathrm{d}R(r)}{\mathrm{d}r}\right) + \left[k^2-\frac{l(l+1)}{r^2}\right]R(r)=0
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:1.45em;"></span><span class="strut bottom" style="height:2.40003em;vertical-align:-0.95003em;"></span><span class="base displaystyle textstyle uncramped"><span class="mord reset-textstyle displaystyle textstyle uncramped"><span class="sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span><span class="mfrac"><span class="vlist"><span style="top:0.686em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle cramped"><span class="mord textstyle cramped"><span class="mord"><span class="mord mathit" style="margin-right:0.02778em;">r</span><span class="vlist"><span style="top:-0.289em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathrm">2</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span><span style="top:-0.22999999999999998em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle uncramped frac-line"></span></span><span style="top:-0.677em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle uncramped"><span class="mord textstyle uncramped"><span class="mord mathrm">1</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span></span><span class="mord reset-textstyle displaystyle textstyle uncramped"><span class="sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span><span class="mfrac"><span class="vlist"><span style="top:0.686em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle cramped"><span class="mord textstyle cramped"><span class="mord textstyle cramped"><span class="mord mathrm">d</span></span><span class="mord mathit" style="margin-right:0.02778em;">r</span></span></span></span><span style="top:-0.22999999999999998em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle uncramped frac-line"></span></span><span style="top:-0.677em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle uncramped"><span class="mord textstyle uncramped"><span class="mord textstyle uncramped"><span class="mord mathrm">d</span></span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span></span><span class="minner displaystyle textstyle uncramped"><span class="style-wrap reset-textstyle textstyle uncramped" style="top:0em;"><span class="delimsizing size3">(</span></span><span class="mord"><span class="mord mathit" style="margin-right:0.02778em;">r</span><span class="vlist"><span style="top:-0.413em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord mathrm">2</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mord reset-textstyle displaystyle textstyle uncramped"><span class="sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span><span class="mfrac"><span class="vlist"><span style="top:0.686em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle cramped"><span class="mord textstyle cramped"><span class="mord textstyle cramped"><span class="mord mathrm">d</span></span><span class="mord mathit" style="margin-right:0.02778em;">r</span></span></span></span><span style="top:-0.22999999999999998em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle uncramped frac-line"></span></span><span style="top:-0.677em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle uncramped"><span class="mord textstyle uncramped"><span class="mord textstyle uncramped"><span class="mord mathrm">d</span></span><span class="mord mathit" style="margin-right:0.00773em;">R</span><span class="mopen">(</span><span class="mord mathit" style="margin-right:0.02778em;">r</span><span class="mclose">)</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span></span><span class="style-wrap reset-textstyle textstyle uncramped" style="top:0em;"><span class="delimsizing size3">)</span></span></span><span class="mbin">+</span><span class="minner displaystyle textstyle uncramped"><span class="style-wrap reset-textstyle textstyle uncramped" style="top:0em;"><span class="delimsizing size3">[</span></span><span class="mord"><span class="mord mathit" style="margin-right:0.03148em;">k</span><span class="vlist"><span style="top:-0.413em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord mathrm">2</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mbin">−</span><span class="mord reset-textstyle displaystyle textstyle uncramped"><span class="sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span><span class="mfrac"><span class="vlist"><span style="top:0.686em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle cramped"><span class="mord textstyle cramped"><span class="mord"><span class="mord mathit" style="margin-right:0.02778em;">r</span><span class="vlist"><span style="top:-0.289em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathrm">2</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span><span style="top:-0.22999999999999998em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle uncramped frac-line"></span></span><span style="top:-0.677em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle uncramped"><span class="mord textstyle uncramped"><span class="mord mathit" style="margin-right:0.01968em;">l</span><span class="mopen">(</span><span class="mord mathit" style="margin-right:0.01968em;">l</span><span class="mbin">+</span><span class="mord mathrm">1</span><span class="mclose">)</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span></span><span class="style-wrap reset-textstyle textstyle uncramped" style="top:0em;"><span class="delimsizing size3">]</span></span></span><span class="mord mathit" style="margin-right:0.00773em;">R</span><span class="mopen">(</span><span class="mord mathit" style="margin-right:0.02778em;">r</span><span class="mclose">)</span><span class="mrel">=</span><span class="mord mathrm">0</span></span></span></span></span></p>
+<p>作一次标度变换，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi><mo>=</mo><mi>k</mi><mi>r</mi><mo separator="true">,</mo><mtext> </mtext><mi>y</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mi>R</mi><mo>(</mo><mi>r</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">x=kr,\ y(x)=R(r)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit">x</span><span class="mrel">=</span><span class="mord mathit" style="margin-right:0.03148em;">k</span><span class="mord mathit" style="margin-right:0.02778em;">r</span><span class="mpunct">,</span><span class="mord mspace"> </span><span class="mord mathit" style="margin-right:0.03588em;">y</span><span class="mopen">(</span><span class="mord mathit">x</span><span class="mclose">)</span><span class="mrel">=</span><span class="mord mathit" style="margin-right:0.00773em;">R</span><span class="mopen">(</span><span class="mord mathit" style="margin-right:0.02778em;">r</span><span class="mclose">)</span></span></span></span> ，得到球贝塞尔方程：</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mfrac><mrow><mn>1</mn></mrow><mrow><msup><mi>x</mi><mn>2</mn></msup></mrow></mfrac><mfrac><mrow><mrow><mi mathvariant="normal">d</mi></mrow></mrow><mrow><mrow><mi mathvariant="normal">d</mi></mrow><mi>x</mi></mrow></mfrac><mrow><mo fence="true">(</mo><mi>x</mi><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo fence="true">)</mo></mrow><mo>+</mo><mrow><mo fence="true">[</mo><mn>1</mn><mo>−</mo><mfrac><mrow><mi>l</mi><mo>(</mo><mi>l</mi><mo>+</mo><mn>1</mn><mo>)</mo></mrow><mrow><msup><mi>x</mi><mn>2</mn></msup></mrow></mfrac><mo fence="true">]</mo></mrow><mi>y</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\frac{1}{x^2}\frac{\mathrm{d}}{\mathrm{d}x}\left(x\frac{dy}{dx}\right)+\left[1-\frac{l(l+1)}{x^2}\right]y=0
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:1.45em;"></span><span class="strut bottom" style="height:2.40003em;vertical-align:-0.95003em;"></span><span class="base displaystyle textstyle uncramped"><span class="mord reset-textstyle displaystyle textstyle uncramped"><span class="sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span><span class="mfrac"><span class="vlist"><span style="top:0.686em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle cramped"><span class="mord textstyle cramped"><span class="mord"><span class="mord mathit">x</span><span class="vlist"><span style="top:-0.289em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathrm">2</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span><span style="top:-0.22999999999999998em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle uncramped frac-line"></span></span><span style="top:-0.677em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle uncramped"><span class="mord textstyle uncramped"><span class="mord mathrm">1</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span></span><span class="mord reset-textstyle displaystyle textstyle uncramped"><span class="sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span><span class="mfrac"><span class="vlist"><span style="top:0.686em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle cramped"><span class="mord textstyle cramped"><span class="mord textstyle cramped"><span class="mord mathrm">d</span></span><span class="mord mathit">x</span></span></span></span><span style="top:-0.22999999999999998em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle uncramped frac-line"></span></span><span style="top:-0.677em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle uncramped"><span class="mord textstyle uncramped"><span class="mord textstyle uncramped"><span class="mord mathrm">d</span></span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span></span><span class="minner displaystyle textstyle uncramped"><span class="style-wrap reset-textstyle textstyle uncramped" style="top:0em;"><span class="delimsizing size3">(</span></span><span class="mord mathit">x</span><span class="mord reset-textstyle displaystyle textstyle uncramped"><span class="sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span><span class="mfrac"><span class="vlist"><span style="top:0.686em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle cramped"><span class="mord textstyle cramped"><span class="mord mathit">d</span><span class="mord mathit">x</span></span></span></span><span style="top:-0.22999999999999998em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle uncramped frac-line"></span></span><span style="top:-0.677em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle uncramped"><span class="mord textstyle uncramped"><span class="mord mathit">d</span><span class="mord mathit" style="margin-right:0.03588em;">y</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span></span><span class="style-wrap reset-textstyle textstyle uncramped" style="top:0em;"><span class="delimsizing size3">)</span></span></span><span class="mbin">+</span><span class="minner displaystyle textstyle uncramped"><span class="style-wrap reset-textstyle textstyle uncramped" style="top:0em;"><span class="delimsizing size3">[</span></span><span class="mord mathrm">1</span><span class="mbin">−</span><span class="mord reset-textstyle displaystyle textstyle uncramped"><span class="sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span><span class="mfrac"><span class="vlist"><span style="top:0.686em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle cramped"><span class="mord textstyle cramped"><span class="mord"><span class="mord mathit">x</span><span class="vlist"><span style="top:-0.289em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathrm">2</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span><span style="top:-0.22999999999999998em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle uncramped frac-line"></span></span><span style="top:-0.677em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle uncramped"><span class="mord textstyle uncramped"><span class="mord mathit" style="margin-right:0.01968em;">l</span><span class="mopen">(</span><span class="mord mathit" style="margin-right:0.01968em;">l</span><span class="mbin">+</span><span class="mord mathrm">1</span><span class="mclose">)</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span></span><span class="style-wrap reset-textstyle textstyle uncramped" style="top:0em;"><span class="delimsizing size3">]</span></span></span><span class="mord mathit" style="margin-right:0.03588em;">y</span><span class="mrel">=</span><span class="mord mathrm">0</span></span></span></span></span></p>
+<p>再作变换 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>y</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mstyle mathsize="1.73em"><mfrac><mrow><mi>v</mi><mo>(</mo><mi>x</mi><mo>)</mo></mrow><mrow><msqrt><mrow><mi>x</mi></mrow></msqrt></mrow></mfrac></mstyle></mrow><annotation encoding="application/x-tex">y(x)=\LARGE \frac{v(x)}{\sqrt{x}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:1.7473em;"></span><span class="strut bottom" style="height:2.6988em;vertical-align:-0.9514999999999999em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.03588em;">y</span><span class="mopen">(</span><span class="mord mathit">x</span><span class="mclose">)</span><span class="mrel">=</span><span class="mord"><span class="sizing reset-size5 size8 textstyle uncramped"><span class="mord reset-textstyle textstyle uncramped"><span class="sizing reset-size8 size5 reset-textstyle textstyle uncramped nulldelimiter"></span><span class="mfrac"><span class="vlist"><span style="top:0.3956959999999998em;"><span class="fontsize-ensurer reset-size8 size5"><span style="font-size:1em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord scriptstyle cramped"><span class="sqrt mord"><span class="sqrt-sign" style="top:0.02043428571428585em;"><span class="style-wrap reset-scriptstyle scriptstyle uncramped">√</span></span><span class="vlist"><span style="top:0em;"><span class="fontsize-ensurer reset-size8 size5"><span style="font-size:1.4285714285714286em;">​</span></span><span class="mord scriptstyle cramped"><span class="mord mathit">x</span></span></span><span style="top:-0.722422857142857em;"><span class="fontsize-ensurer reset-size8 size5"><span style="font-size:1.4285714285714286em;">​</span></span><span class="reset-scriptstyle textstyle uncramped sqrt-line"></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size8 size5"><span style="font-size:1.4285714285714286em;">​</span></span>​</span></span></span></span></span></span><span style="top:-0.22999999999999998em;"><span class="fontsize-ensurer reset-size8 size5"><span style="font-size:1em;">​</span></span><span class="reset-textstyle textstyle uncramped frac-line"></span></span><span style="top:-0.485em;"><span class="fontsize-ensurer reset-size8 size5"><span style="font-size:1em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord scriptstyle uncramped"><span class="mord mathit" style="margin-right:0.03588em;">v</span><span class="mopen">(</span><span class="mord mathit">x</span><span class="mclose">)</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size8 size5"><span style="font-size:1em;">​</span></span>​</span></span></span><span class="sizing reset-size8 size5 reset-textstyle textstyle uncramped nulldelimiter"></span></span></span></span></span></span></span> ，代回球贝塞尔方程，得到：</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mfrac><mrow><mn>1</mn></mrow><mrow><mi>x</mi></mrow></mfrac><mfrac><mrow><mi>d</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mrow><mo fence="true">(</mo><mi>x</mi><mfrac><mrow><mi>d</mi><mi>v</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo fence="true">)</mo></mrow><mo>+</mo><mrow><mo fence="true">[</mo><mn>1</mn><mo>−</mo><mfrac><mrow><msup><mrow><mo fence="true">(</mo><mi>l</mi><mo>+</mo><mn>1</mn><mi mathvariant="normal">/</mi><mn>2</mn><mo fence="true">)</mo></mrow><mn>2</mn></msup></mrow><mrow><msup><mi>x</mi><mn>2</mn></msup></mrow></mfrac><mo fence="true">]</mo></mrow><mi>v</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\frac{1}{x}\frac{d}{dx}\left(x\frac{dv}{dx}\right)+\left[1-\frac{\left(l+1/2\right)^2}{x^2}\right]v = 0
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:1.492108em;"></span><span class="strut bottom" style="height:2.442138em;vertical-align:-0.95003em;"></span><span class="base displaystyle textstyle uncramped"><span class="mord reset-textstyle displaystyle textstyle uncramped"><span class="sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span><span class="mfrac"><span class="vlist"><span style="top:0.686em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle cramped"><span class="mord textstyle cramped"><span class="mord mathit">x</span></span></span></span><span style="top:-0.22999999999999998em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle uncramped frac-line"></span></span><span style="top:-0.677em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle uncramped"><span class="mord textstyle uncramped"><span class="mord mathrm">1</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span></span><span class="mord reset-textstyle displaystyle textstyle uncramped"><span class="sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span><span class="mfrac"><span class="vlist"><span style="top:0.686em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle cramped"><span class="mord textstyle cramped"><span class="mord mathit">d</span><span class="mord mathit">x</span></span></span></span><span style="top:-0.22999999999999998em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle uncramped frac-line"></span></span><span style="top:-0.677em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle uncramped"><span class="mord textstyle uncramped"><span class="mord mathit">d</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span></span><span class="minner displaystyle textstyle uncramped"><span class="style-wrap reset-textstyle textstyle uncramped" style="top:0em;"><span class="delimsizing size3">(</span></span><span class="mord mathit">x</span><span class="mord reset-textstyle displaystyle textstyle uncramped"><span class="sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span><span class="mfrac"><span class="vlist"><span style="top:0.686em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle cramped"><span class="mord textstyle cramped"><span class="mord mathit">d</span><span class="mord mathit">x</span></span></span></span><span style="top:-0.22999999999999998em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle uncramped frac-line"></span></span><span style="top:-0.677em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle uncramped"><span class="mord textstyle uncramped"><span class="mord mathit">d</span><span class="mord mathit" style="margin-right:0.03588em;">v</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span></span><span class="style-wrap reset-textstyle textstyle uncramped" style="top:0em;"><span class="delimsizing size3">)</span></span></span><span class="mbin">+</span><span class="minner displaystyle textstyle uncramped"><span class="style-wrap reset-textstyle textstyle uncramped" style="top:0em;"><span class="delimsizing size3">[</span></span><span class="mord mathrm">1</span><span class="mbin">−</span><span class="mord reset-textstyle displaystyle textstyle uncramped"><span class="sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span><span class="mfrac"><span class="vlist"><span style="top:0.686em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:1em;">​</span></span><span class="reset-textstyle textstyle cramped"><span class="mord textstyle cramped"><span class="mord"><span class="mord mathit">x</span><span class="vlist"><span style="top:-0.289em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathrm">2</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span><span style="top:-0.22999999999999998em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:1em;">​</span></span><span class="reset-textstyle textstyle uncramped frac-line"></span></span><span style="top:-0.677em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:1em;">​</span></span><span class="reset-textstyle textstyle uncramped"><span class="mord textstyle uncramped"><span class="minner"><span class="minner textstyle uncramped"><span class="style-wrap reset-textstyle textstyle uncramped" style="top:0em;">(</span><span class="mord mathit" style="margin-right:0.01968em;">l</span><span class="mbin">+</span><span class="mord mathrm">1</span><span class="mord mathrm">/</span><span class="mord mathrm">2</span><span class="style-wrap reset-textstyle textstyle uncramped" style="top:0em;">)</span></span><span class="vlist"><span style="top:-0.364em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord mathrm">2</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:1em;">​</span></span>​</span></span></span><span class="sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span></span><span class="style-wrap reset-textstyle textstyle uncramped" style="top:0em;"><span class="delimsizing size3">]</span></span></span><span class="mord mathit" style="margin-right:0.03588em;">v</span><span class="mrel">=</span><span class="mord mathrm">0</span></span></span></span></span></p>
+<p>这就是柱坐标和平面极坐标系下常见的贝塞尔方程，不过在柱坐标下常见的是整数阶的贝塞尔函数，而这里是 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mstyle scriptlevel="0" displaystyle="true"><mi>l</mi><mo>+</mo><mrow><mfrac><mrow><mn>1</mn></mrow><mrow><mn>2</mn></mrow></mfrac></mrow></mstyle></mrow><annotation encoding="application/x-tex">\displaystyle l+ {\frac{1}{2}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:1.32144em;"></span><span class="strut bottom" style="height:2.00744em;vertical-align:-0.686em;"></span><span class="base textstyle uncramped"><span class="reset-textstyle displaystyle textstyle uncramped"><span class="mord mathit" style="margin-right:0.01968em;">l</span><span class="mbin">+</span><span class="mord displaystyle textstyle uncramped"><span class="mord reset-textstyle displaystyle textstyle uncramped"><span class="sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span><span class="mfrac"><span class="vlist"><span style="top:0.686em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle cramped"><span class="mord textstyle cramped"><span class="mord mathrm">2</span></span></span></span><span style="top:-0.22999999999999998em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle uncramped frac-line"></span></span><span style="top:-0.677em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle uncramped"><span class="mord textstyle uncramped"><span class="mord mathrm">1</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span></span></span></span></span></span></span> 阶的贝塞尔方程，<br />
+显然可以定义：</p>
+<ul>
+<li>球贝塞尔函数：</li>
+</ul>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>j</mi><mi>l</mi></msub><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><msqrt><mrow><mfrac><mrow><mi>π</mi></mrow><mrow><mn>2</mn><mi>x</mi></mrow></mfrac></mrow></msqrt><msub><mi>J</mi><mrow><mi>l</mi><mo>+</mo><mn>1</mn><mi mathvariant="normal">/</mi><mn>2</mn></mrow></msub><mrow><mo fence="true">(</mo><mi>x</mi><mo fence="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">j_l(x)=\sqrt{\frac{\pi}{2x}}J_{l+1/2}\left(x\right)
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:1.5446700000000002em;"></span><span class="strut bottom" style="height:2.44003em;vertical-align:-0.89536em;"></span><span class="base displaystyle textstyle uncramped"><span class="mord"><span class="mord mathit" style="margin-right:0.05724em;">j</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.05724em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathit" style="margin-right:0.01968em;">l</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mopen">(</span><span class="mord mathit">x</span><span class="mclose">)</span><span class="mrel">=</span><span class="sqrt mord"><span class="sqrt-sign" style="top:-0.054669999999999996em;"><span class="style-wrap reset-textstyle textstyle uncramped"><span class="delimsizing size3">√</span></span></span><span class="vlist"><span style="top:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:1em;">​</span></span><span class="mord displaystyle textstyle cramped"><span class="mord reset-textstyle displaystyle textstyle cramped"><span class="sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span><span class="mfrac"><span class="vlist"><span style="top:0.686em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle cramped"><span class="mord textstyle cramped"><span class="mord mathrm">2</span><span class="mord mathit">x</span></span></span></span><span style="top:-0.22999999999999998em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle uncramped frac-line"></span></span><span style="top:-0.677em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle cramped"><span class="mord textstyle cramped"><span class="mord mathit" style="margin-right:0.03588em;">π</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span></span></span></span><span style="top:-1.4646700000000001em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:1em;">​</span></span><span class="reset-textstyle textstyle uncramped sqrt-line"></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:1em;">​</span></span>​</span></span></span><span class="mord"><span class="mord mathit" style="margin-right:0.09618em;">J</span><span class="vlist"><span style="top:0.18019999999999992em;margin-right:0.05em;margin-left:-0.09618em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord scriptstyle cramped"><span class="mord mathit" style="margin-right:0.01968em;">l</span><span class="mbin">+</span><span class="mord mathrm">1</span><span class="mord mathrm">/</span><span class="mord mathrm">2</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="minner displaystyle textstyle uncramped"><span class="style-wrap reset-textstyle textstyle uncramped" style="top:0em;">(</span><span class="mord mathit">x</span><span class="style-wrap reset-textstyle textstyle uncramped" style="top:0em;">)</span></span></span></span></span></span></p>
+<ul>
+<li>球诺依曼函数：</li>
+</ul>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msubsup><mi>n</mi><mi>l</mi><mrow><mo>(</mo><mn>1</mn><mo separator="true">,</mo><mn>2</mn><mo>)</mo></mrow></msubsup><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><msqrt><mrow><mfrac><mrow><mi>π</mi></mrow><mrow><mn>2</mn><mi>x</mi></mrow></mfrac></mrow></msqrt><msub><mi>N</mi><mrow><mi>l</mi><mo>+</mo><mn>1</mn><mi mathvariant="normal">/</mi><mn>2</mn></mrow></msub><mo>(</mo><mi>x</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">n_l^{(1,2)}(x)=\sqrt{\frac{\pi}{2x}}N_{l+1/2}(x)
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:1.5446700000000002em;"></span><span class="strut bottom" style="height:2.44003em;vertical-align:-0.89536em;"></span><span class="base displaystyle textstyle uncramped"><span class="mord"><span class="mord mathit">n</span><span class="vlist"><span style="top:0.3013079999999999em;margin-left:0em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathit" style="margin-right:0.01968em;">l</span></span></span><span style="top:-0.5198em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord scriptstyle uncramped"><span class="mopen">(</span><span class="mord mathrm">1</span><span class="mpunct">,</span><span class="mord mathrm">2</span><span class="mclose">)</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mopen">(</span><span class="mord mathit">x</span><span class="mclose">)</span><span class="mrel">=</span><span class="sqrt mord"><span class="sqrt-sign" style="top:-0.054669999999999996em;"><span class="style-wrap reset-textstyle textstyle uncramped"><span class="delimsizing size3">√</span></span></span><span class="vlist"><span style="top:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:1em;">​</span></span><span class="mord displaystyle textstyle cramped"><span class="mord reset-textstyle displaystyle textstyle cramped"><span class="sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span><span class="mfrac"><span class="vlist"><span style="top:0.686em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle cramped"><span class="mord textstyle cramped"><span class="mord mathrm">2</span><span class="mord mathit">x</span></span></span></span><span style="top:-0.22999999999999998em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle uncramped frac-line"></span></span><span style="top:-0.677em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle cramped"><span class="mord textstyle cramped"><span class="mord mathit" style="margin-right:0.03588em;">π</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span></span></span></span><span style="top:-1.4646700000000001em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:1em;">​</span></span><span class="reset-textstyle textstyle uncramped sqrt-line"></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:1em;">​</span></span>​</span></span></span><span class="mord"><span class="mord mathit" style="margin-right:0.10903em;">N</span><span class="vlist"><span style="top:0.18019999999999992em;margin-right:0.05em;margin-left:-0.10903em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord scriptstyle cramped"><span class="mord mathit" style="margin-right:0.01968em;">l</span><span class="mbin">+</span><span class="mord mathrm">1</span><span class="mord mathrm">/</span><span class="mord mathrm">2</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mopen">(</span><span class="mord mathit">x</span><span class="mclose">)</span></span></span></span></span></p>
+<p><em>注：此函数在 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x=0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.64444em;"></span><span class="strut bottom" style="height:0.64444em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">x</span><span class="mrel">=</span><span class="mord mathrm">0</span></span></span></span> 处是发散的。</em></p>
+<ul>
+<li>球汉克尔函数：</li>
+</ul>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msubsup><mi>h</mi><mi>l</mi><mrow><mo>(</mo><mn>1</mn><mo separator="true">,</mo><mn>2</mn><mo>)</mo></mrow></msubsup><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><msub><mi>j</mi><mi>l</mi></msub><mo>(</mo><mi>x</mi><mo>)</mo><mo>∓</mo><mrow><mi mathvariant="normal">i</mi></mrow><mo>⋅</mo><msub><mi>n</mi><mi>l</mi></msub><mo>(</mo><mi>x</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">h_l^{(1,2)}(x)=j_l(x)\mp \mathrm{i} \cdot n_l(x)
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:1.0448em;"></span><span class="strut bottom" style="height:1.3461079999999999em;vertical-align:-0.3013079999999999em;"></span><span class="base displaystyle textstyle uncramped"><span class="mord"><span class="mord mathit">h</span><span class="vlist"><span style="top:0.3013079999999999em;margin-left:0em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathit" style="margin-right:0.01968em;">l</span></span></span><span style="top:-0.5198em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord scriptstyle uncramped"><span class="mopen">(</span><span class="mord mathrm">1</span><span class="mpunct">,</span><span class="mord mathrm">2</span><span class="mclose">)</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mopen">(</span><span class="mord mathit">x</span><span class="mclose">)</span><span class="mrel">=</span><span class="mord"><span class="mord mathit" style="margin-right:0.05724em;">j</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.05724em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathit" style="margin-right:0.01968em;">l</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mopen">(</span><span class="mord mathit">x</span><span class="mclose">)</span><span class="mbin">∓</span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">i</span></span><span class="mbin">⋅</span><span class="mord"><span class="mord mathit">n</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathit" style="margin-right:0.01968em;">l</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mopen">(</span><span class="mord mathit">x</span><span class="mclose">)</span></span></span></span></span></p>
+<p><em>注：贝塞尔函数 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>J</mi></mrow><annotation encoding="application/x-tex">J</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.09618em;">J</span></span></span></span> ，诺依曼函数 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.10903em;">N</span></span></span></span> 都是贝塞尔函数方程的解，可以通过级数展开来获得级数解，对于 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>J</mi></mrow><annotation encoding="application/x-tex">J</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.09618em;">J</span></span></span></span> ，直接在原点处展开就可以，对于 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.10903em;">N</span></span></span></span> 要通过 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>J</mi></mrow><annotation encoding="application/x-tex">J</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.09618em;">J</span></span></span></span> 进行构造。这两者是贝塞尔方程的两个线性无关解。</em></p>
+<p>由此，亥姆霍兹方程的一般解就是：</p>
+u=\mathrm{\sum^\infty_{l=0}\sum^l_{m=-l}}A_{lm}j_l(kr)Y_l^m(\theta,\text{\o})+\mathrm{\sum^\infty_{l=0}\sum^l_{m=-l}}B_{lm}n_l(kr)Y_l^m(\theta,\text{\o})
+
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>A</mi><mo separator="true">,</mo><mtext> </mtext><mi>B</mi></mrow><annotation encoding="application/x-tex">A,\ B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="base textstyle uncramped"><span class="mord mathit">A</span><span class="mpunct">,</span><span class="mord mspace"> </span><span class="mord mathit" style="margin-right:0.05017em;">B</span></span></span></span> 由方程的边界条件和初始条件给定。这种展开的完备性由<strong>斯图姆刘维尔定理</strong>保证。特别地，对于 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>l</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">l=0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.69444em;"></span><span class="strut bottom" style="height:0.69444em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.01968em;">l</span><span class="mrel">=</span><span class="mord mathrm">0</span></span></span></span> 的情况，可以验证 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mstyle scriptlevel="0" displaystyle="true"><msub><mi>j</mi><mn>0</mn></msub><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mfrac><mrow><mi>sin</mi><mi>x</mi></mrow><mrow><mi>x</mi></mrow></mfrac><mo separator="true">,</mo><mtext> </mtext><msub><mi>n</mi><mn>0</mn></msub><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mo>−</mo><mfrac><mrow><mi>cos</mi><mi>x</mi></mrow><mrow><mi>x</mi></mrow></mfrac></mstyle></mrow><annotation encoding="application/x-tex">\displaystyle j_0(x)=\frac{\sin x}{x},\ n_0(x)=-\frac{\cos x}{x}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:1.3448600000000002em;"></span><span class="strut bottom" style="height:2.03086em;vertical-align:-0.686em;"></span><span class="base textstyle uncramped"><span class="reset-textstyle displaystyle textstyle uncramped"><span class="mord"><span class="mord mathit" style="margin-right:0.05724em;">j</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.05724em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathrm">0</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mopen">(</span><span class="mord mathit">x</span><span class="mclose">)</span><span class="mrel">=</span><span class="mord reset-textstyle displaystyle textstyle uncramped"><span class="sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span><span class="mfrac"><span class="vlist"><span style="top:0.686em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle cramped"><span class="mord textstyle cramped"><span class="mord mathit">x</span></span></span></span><span style="top:-0.22999999999999998em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle uncramped frac-line"></span></span><span style="top:-0.677em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle uncramped"><span class="mord textstyle uncramped"><span class="mop">sin</span><span class="mord mathit">x</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span></span><span class="mpunct">,</span><span class="mord mspace"> </span><span class="mord"><span class="mord mathit">n</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathrm">0</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mopen">(</span><span class="mord mathit">x</span><span class="mclose">)</span><span class="mrel">=</span><span class="mord">−</span><span class="mord reset-textstyle displaystyle textstyle uncramped"><span class="sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span><span class="mfrac"><span class="vlist"><span style="top:0.686em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle cramped"><span class="mord textstyle cramped"><span class="mord mathit">x</span></span></span></span><span style="top:-0.22999999999999998em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle uncramped frac-line"></span></span><span style="top:-0.677em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle uncramped"><span class="mord textstyle uncramped"><span class="mop">cos</span><span class="mord mathit">x</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span></span></span></span></span></span>，又因为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msubsup><mi>Y</mi><mn>0</mn><mn>0</mn></msubsup><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">Y_0^0=1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.8141079999999999em;"></span><span class="strut bottom" style="height:1.0622159999999998em;vertical-align:-0.24810799999999997em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit" style="margin-right:0.22222em;">Y</span><span class="vlist"><span style="top:0.24810799999999997em;margin-left:-0.22222em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathrm">0</span></span></span><span style="top:-0.363em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord mathrm">0</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mrel">=</span><span class="mord mathrm">1</span></span></span></span> ，此时球汉克尔函数对应的解就是\displaystyle u = \frac{e^{\plusmn\mathrm{i}kr}}{r}这个最常见的形式。</p>
+<hr />
+<p>参考：</p>
+<ul>
+<li><a href="https://www.zhihu.com/question/35163381?sort=created" target="_blank" rel="noopener">通过亥姆霍兹方程是如何推导出球面波表达式的？ - 知乎</a></li>
+<li>用到的部分 Katex语法
+<ul>
+<li><code>$\displaystyle$</code>  <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mstyle scriptlevel="0" displaystyle="true"><msubsup><mo>∑</mo><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow><mrow><mn>1</mn><mn>0</mn><mn>0</mn></mrow></msubsup><mi>x</mi></mstyle></mrow><annotation encoding="application/x-tex">\displaystyle \sum_{x=0}^{100}x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:1.8011130000000004em;"></span><span class="strut bottom" style="height:3.068226em;vertical-align:-1.267113em;"></span><span class="base textstyle uncramped"><span class="reset-textstyle displaystyle textstyle uncramped"><span class="mop op-limits"><span class="vlist"><span style="top:1.1671129999999998em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord scriptstyle cramped"><span class="mord mathit">x</span><span class="mrel">=</span><span class="mord mathrm">0</span></span></span></span><span style="top:-0.000005000000000143778em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span><span class="op-symbol large-op mop">∑</span></span></span><span style="top:-1.2500050000000003em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord scriptstyle uncramped"><span class="mord mathrm">1</span><span class="mord mathrm">0</span><span class="mord mathrm">0</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mord mathit">x</span></span></span></span></span></li>
+<li><code>$\mathrm{d}$</code>   <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mstyle scriptlevel="0" displaystyle="true"><mfrac><mrow><mrow><mi mathvariant="normal">d</mi></mrow><mi>y</mi></mrow><mrow><mrow><mi mathvariant="normal">d</mi></mrow><mi>x</mi></mrow></mfrac></mstyle></mrow><annotation encoding="application/x-tex">\displaystyle \frac{\mathrm{d}y}{\mathrm{d}x}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:1.37144em;"></span><span class="strut bottom" style="height:2.05744em;vertical-align:-0.686em;"></span><span class="base textstyle uncramped"><span class="reset-textstyle displaystyle textstyle uncramped"><span class="mord reset-textstyle displaystyle textstyle uncramped"><span class="sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span><span class="mfrac"><span class="vlist"><span style="top:0.686em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle cramped"><span class="mord textstyle cramped"><span class="mord textstyle cramped"><span class="mord mathrm">d</span></span><span class="mord mathit">x</span></span></span></span><span style="top:-0.22999999999999998em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle uncramped frac-line"></span></span><span style="top:-0.677em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle uncramped"><span class="mord textstyle uncramped"><span class="mord textstyle uncramped"><span class="mord mathrm">d</span></span><span class="mord mathit" style="margin-right:0.03588em;">y</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span></span></span></span></span></span></li>
+<li><code>$\left( 1 + \frac{a}{b} \right)$</code>   <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mstyle scriptlevel="0" displaystyle="true"><mrow><mo fence="true">(</mo><mn>1</mn><mo>+</mo><mfrac><mrow><mi>a</mi></mrow><mrow><mi>b</mi></mrow></mfrac><mo fence="true">)</mo></mrow></mstyle></mrow><annotation encoding="application/x-tex">\displaystyle  \left( 1 + \frac{a}{b} \right)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:1.15em;"></span><span class="strut bottom" style="height:1.8359999999999999em;vertical-align:-0.686em;"></span><span class="base textstyle uncramped"><span class="reset-textstyle displaystyle textstyle uncramped"><span class="minner displaystyle textstyle uncramped"><span class="style-wrap reset-textstyle textstyle uncramped" style="top:0em;"><span class="delimsizing size2">(</span></span><span class="mord mathrm">1</span><span class="mbin">+</span><span class="mord reset-textstyle displaystyle textstyle uncramped"><span class="sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span><span class="mfrac"><span class="vlist"><span style="top:0.686em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle cramped"><span class="mord textstyle cramped"><span class="mord mathit">b</span></span></span></span><span style="top:-0.22999999999999998em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle uncramped frac-line"></span></span><span style="top:-0.677em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle uncramped"><span class="mord textstyle uncramped"><span class="mord mathit">a</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span></span><span class="style-wrap reset-textstyle textstyle uncramped" style="top:0em;"><span class="delimsizing size2">)</span></span></span></span></span></span></span></li>
+<li><code>$\plusmn$</code> \plusmn</li>
+<li><code>$\cdot$</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>⋅</mo></mrow><annotation encoding="application/x-tex">\cdot</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.44445em;"></span><span class="strut bottom" style="height:0.44445em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord">⋅</span></span></span></span></li>
+<li><code>$\varPhi$</code> \varPhi</li>
+<li><code>$\text{\o}$</code> \text{\o}</li>
+<li><code>$\begin{aligned} a &amp; = b +c \\ &amp;= d \end{aligned}$</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mstyle scriptlevel="0" displaystyle="true"><mtable><mtr><mtd><mrow><mi>a</mi></mrow></mtd><mtd><mrow><mrow></mrow><mo>=</mo><mi>b</mi><mo>+</mo><mi>c</mi></mrow></mtd></mtr><mtr><mtd><mrow></mrow></mtd><mtd><mrow><mrow></mrow><mo>=</mo><mi>d</mi></mrow></mtd></mtr></mtable></mstyle></mrow><annotation encoding="application/x-tex">\displaystyle \begin{aligned} a &amp; = b +c \\ &amp;= d \end{aligned}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:1.45em;"></span><span class="strut bottom" style="height:2.4000000000000004em;vertical-align:-0.9500000000000004em;"></span><span class="base textstyle uncramped"><span class="reset-textstyle displaystyle textstyle uncramped"><span class="mord"><span class="mtable"><span class="col-align-r"><span class="vlist"><span style="top:-0.6099999999999999em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathit">a</span></span></span><span style="top:0.5900000000000003em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="col-align-l"><span class="vlist"><span style="top:-0.6099999999999999em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord displaystyle textstyle uncramped"></span><span class="mrel">=</span><span class="mord mathit">b</span><span class="mbin">+</span><span class="mord mathit">c</span></span></span><span style="top:0.5900000000000003em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord displaystyle textstyle uncramped"></span><span class="mrel">=</span><span class="mord mathit">d</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span></span></span></span></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+        <!-- .entry-content -->
+        <div class="single-reward">
+          <div class="reward-open">赏
+            <div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/custom/donate/AliPayQR.jpg"></li>
+                <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/custom/donate/WeChanQR.jpg"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent">
+        </div>
+        <footer class="post-footer">
+          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh"
+              target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i>
+              知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
+          <div class="post-tags">
+          </div>
+          <div class="post-share">
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer><!-- .entry-footer -->
+      </article>
+      <!-- #post-## -->
+	  <div class="toc-container">
+		<div class="toc" style="background: none;"></div>
+	  </div>
+      <section class="post-squares nextprev">
+        
+        
+        <div class="post-nepre half previous">
+          
+            <a href="/2020/03/13/2020-03-15-%E3%80%90%E5%8F%A5%E5%AD%90%E3%80%91%E5%9C%A8%E4%B8%80%E8%B5%B7%E4%BA%86%E5%8F%88%E8%83%BD%E6%80%8E%E6%A0%B7%EF%BC%9F/" rel="prev">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0/images/loader/orange.progress-bar-stripe-loader.svg" data-src=""
+                  style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)"
+                  src="">
+              </div>
+              <span class="label">
+                Previous Post</span>
+              <div class="info">
+                <h3>
+                  【衍射】光学中的衍射现象推论与计算</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+          
+          
+          
+          <div class="post-nepre half next">
+            
+              <a href="/2020/03/13/2020-03-15-%E3%80%90%E9%9A%8F%E6%83%B3%E3%80%91%E6%AF%8F%E4%B8%AA%E4%BA%BA%E9%83%BD%E6%9C%89%E5%88%9B%E9%80%A0%E5%8A%9B%E2%80%94%E2%80%94%E7%81%B5%E9%AD%82%E7%9A%84%E9%97%AA%E5%85%89%E7%82%B9/" rel="next">
+                <div class="background">
+                  <img class="lazyload" src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0/images/loader/orange.progress-bar-stripe-loader.svg" data-src=""
+                    style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;"
+                    onerror="imgError(this,3)" src="">
+                </div>
+                <span class="label">
+                  Next Post</span>
+                <div class="info">
+                  <h3>
+                    【衍射】光学中的衍射现象推论与计算</h3>
+                  <hr>
+                </div>
+              </a>
+            </div>
+            
+      </section>
+      
+<div id="vcomments"></div>
+<script>
+  window.onload = function(){
+      var valine = new Valine();
+      valine.init({
+        el: '#vcomments',
+        appId: "aFI53WTJYb4qPknwn0l76Lnu-gzGzoHsz",
+        appKey: "2YeldrXS6Hm64JWCCLNgpj3C",
+        path: window.location.pathname,
+        placeholder: "你是我一生只会遇见一次的惊喜 ..."
+      })
+  }
+</script>
+
+      <section class="author-profile">
+        <div class="info" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
+          <a href="" class="profile gravatar"><img src="" itemprop="image"
+              alt="dexfire" height="70" width="70"></a>
+          <div class="meta">
+            <span class="title">Author</span>
+            <h3 itemprop="name">
+              <a href="" itemprop="url" rel="author">dexfire</a>
+            </h3>
+          </div>
+        </div>
+        <hr>
+        <p><i class="iconfont icon-write"></i></p>
+      </section>
+    </main><!-- #main -->
+  </div><!-- #primary -->
+</div>
+
+
+    </div>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            // PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+    <!-- <footer id="footer">  <div class="outer"> <div id="footer-info" class="inner"> &copy; 2020 dexfire<br> powered_by <a href="http://hexo.io/" target="_blank">Hexo</a> </div> </div> </footer> -->
+
+<footer id="colophon" class="site-footer" role="contentinfo">
+  <div class="site-info">
+    <div class="footertext">
+      <div class="img-preload">
+        <img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/other/wordpress-rotating-ball-o.svg">
+        <img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/other/disqus-preloader.svg"></div>
+      <p class="foo-logo"
+        style="background-image: url('https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/elements/sakura.svg');"></p>
+
+      <!--p style="color: #666666;">Copyright &copy 2018 - 2020 dexfire. <br> All Rights Reserved.</p-->
+      <p style="font-family: 'Ubuntu', sans-serif;">
+        <span style="color: #666666;">Crafted with
+          <i class="fa fa-heart animated" style="color: #e74c3c;"></i>
+          by
+          <a rel="me" href="https://hello.2heng.xin/@mashiro" target="_blank"
+            style="color: #000000;text-decoration:none;">Mashiro</a></span></p>
+      <p>Copyright &copy 2018 - 2020
+        dexfire<br>
+        <a href="http://www.beian.miit.gov.cn" target="_blank">沪ICP备17028213号</a>
+      </p>
+    </div>
+    <div class="footer-device">
+      <p style="font-family: 'Ubuntu', sans-serif;">
+        <span style="color: #b9b9b9;">Theme
+          <a href="https://github.com/honjun/hexo-theme-sakura" target="_blank"
+            style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Sakura</a>
+          <i class="iconfont icon-sakura rotating" style="color: #ffc0cb;display:inline-block"></i>
+          by
+          <a href="https://2heng.xin/" target="_blank"
+            style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Mashiro</a>&<a
+            href="https://www.hojun.cn/" target="_blank"
+            style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">dexfire</a>,
+          Powered by Hexo,
+          Hosted by Github Pages</a>
+        </span>
+      </p>
+      <p>
+        <span id="busuanzi_container_site_pv" style="color: #b9b9b9;">
+          本站总访问量<span id="busuanzi_value_site_pv">1</span>次
+        </span>
+      </p>
+    </div>
+
+    <p id="footer-sponsor">
+      <a href="#" target="_blank" alt="CDN Sponsor" rel="nofollow"><img
+          src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/support/Tencent_Cloud_logo.svg" alt="CDN Sponsor"
+          style="height: 1.5em;"></a>&nbsp;&nbsp;&nbsp;<a href="https://www.vultr.com/?ref=7196564" target="_blank"
+        alt="Server provider" rel="nofollow"><img
+          src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/support/vultr_logo__on-white.svg" alt="Server provider"
+          style="height: 1.5em;"></a>&nbsp;&nbsp;&nbsp;<a href="#" target="_blank" alt="Free CDN" rel="nofollow"><img
+          src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/support/baidu_cdn.svg" alt="jsDelivr"
+          style="height: 1.5em;"></a>&nbsp;&nbsp;&nbsp;<a href="https://www.google.com/intl/ja/analytics/"
+        target="_blank" alt="Analytics solution" rel="nofollow"><img
+          src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/support/Google.svg" alt="Google Analytics"
+          style="height: 1.5em; "></a>
+    </p>
+  </div>
+  <!-- .site-info -->
+</footer>
+
+<div class="changeSkin-gear no-select" style="bottom: -999px;">
+    <div class="keys">
+        <span id="open-skinMenu">
+            <i class="iconfont icon-gear inline-block rotating"></i>&nbsp; 切换主题 | SCHEME TOOL
+        </span>
+    </div>
+</div>
+<div class="skin-menu no-select">
+    <div class="theme-controls row-container">
+        <ul class="menu-list">
+            <li id="white-bg">
+                <i class="fa fa-television" aria-hidden="true"></i>
+            </li>
+            <!--Default-->
+            <li id="sakura-bg">
+                <i class="iconfont icon-sakura"></i>
+            </li>
+            <!--Sakura-->
+            <li id="gribs-bg">
+                <i class="fa fa-slack" aria-hidden="true"></i>
+            </li>
+            <!--Grids-->
+            <li id="KAdots-bg">
+                <i class="iconfont icon-dots"></i>
+            </li>
+            <!--Dots-->
+            <li id="totem-bg">
+                <i class="fa fa-superpowers" aria-hidden="true"></i>
+            </li>
+            <!--Orange-->
+            <li id="pixiv-bg">
+                <i class="iconfont icon-pixiv"></i>
+            </li>
+            <!--Start-->
+            <li id="bing-bg">
+                <i class="iconfont icon-bing"></i>
+            </li>
+            <!--Bing-->
+            <li id="dark-bg">
+                <i class="fa fa-moon-o" aria-hidden="true"></i>
+            </li>
+            <!--Night-->
+        </ul>
+    </div>
+    <div class="font-family-controls row-container">
+        <button type="button" class="control-btn-serif selected" data-mode="serif"
+            onclick="mashiro_global.font_control.change_font()">Serif</button>
+        <button type="button" class="control-btn-sans-serif" data-mode="sans-serif"
+            onclick="mashiro_global.font_control.change_font()">Sans Serif</button>
+    </div>
+</div>
+<canvas id="night-mode-cover"></canvas>
+<div class="prpr" style="visibility: hidden;">
+    <div class="mashiro-tips" style="opacity: 0;">你一直相信的事，也让我相信吧。活着，是件美好的事。</div>
+    <canvas id="live2d" width="280" height="250" class="live2d"></canvas>
+</div>
+<div class="live2d-tool hide-live2d no-select" onclick="hide_live2d()">
+    <div class="keys">Show</div>
+</div>
+<div class="live2d-tool switch-live2d no-select" onclick="switch_pio()">
+    <div class="keys">Switch</div>
+</div>
+<div class="live2d-tool save-live2d no-select" onclick="save_pio()">
+    <div class="keys">Save</div>
+</div>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/js/lib.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/js/InsightSearch.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/js/jquery.fancybox.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/js/zoom.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/js/sakura-app_v3.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/js/autoptimize.js"></script>
+<!-- //cdn1.lncld.net/static/js/3.0.4/av-min.js -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/js/av-min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/js/botui.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/js/custom.js"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<!-- Valine评论 -->>
+<script type="text/javascript" src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<!-- 不蒜子 网页计数器 -->
+<script async type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- TOC目录 -->
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+
+<script type="text/javascript">
+  /* <![CDATA[ */
+  if (/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+    var Poi = {
+      "pjax": "1",
+      "movies": {
+        "url": "https://cdn.jsdelivr.net/gh/honjun/hojun@1.2",
+        "name": "Unbroken.mp4",
+        "live": "close"
+      },
+      "windowheight": "fixed",
+      "codelamp": "close",
+      "ajaxurl": "",
+      "order": "asc",
+      "formpostion": "bottom"
+    };
+  } else {
+    var Poi = {
+      "pjax": "1",
+      "movies": {
+        "url": "https://cdn.jsdelivr.net/gh/honjun/hojun@1.2",
+        "name": "Unbroken.mp4",
+        "live": "open"
+      },
+      "windowheight": "auto",
+      "codelamp": "close",
+      "ajaxurl": "",
+      "order": "asc",
+      "formpostion": "bottom"
+    };
+  }
+  /* ]]> */
+</script>
+
+
+
+
+
+
+
+
+<!-- baidu Analytics -->
+<script>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement('script');
+        hm.src = 'https://hm.baidu.com/hm.js?18d22dda3acd079101f04a6eacf3781e';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+<script>
+  $(document).ready(function () {
+    // 处理目录
+    if ($(".toc").length > 0 && document.body.clientWidth > 1200) {
+      if ($(".pattern-center").length > 0) { //有图的情况
+        tocbot.init({
+          // Where to render the table of contents.
+          tocSelector: '.toc', // 放置目录的容器
+          // Where to grab the headings to build the table of contents.
+          contentSelector: '.entry-content', // 正文内容所在
+          // Which headings to grab inside of the contentSelector element.
+          scrollSmooth: true,
+          headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+          collapseDepth: 3,
+          headingsOffset: -300,
+          scrollSmoothOffset: -85
+        });
+      } else {
+        tocbot.init({
+          // Where to render the table of contents.
+          tocSelector: '.toc', // 放置目录的容器
+          // Where to grab the headings to build the table of contents.
+          contentSelector: '.entry-content', // 正文内容所在
+          // Which headings to grab inside of the contentSelector element.
+          scrollSmooth: true,
+          headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+          collapseDepth: 3,
+          headingsOffset: -85,
+          scrollSmoothOffset: -85
+        });
+      }
+      var offsetTop = $('.toc')
+        .offset()
+        .top - 95;
+      window.onscroll = function () {
+        var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+        if (scrollTop >= offsetTop) {
+          $('.toc').addClass('toc-fixed');
+        } else {
+          $('.toc').removeClass('toc-fixed');
+        }
+      }
+    }
+  });
+</script>
+
+    <!-- openNav -->
+    <div class="openNav no-select">
+      <div class="iconflat no-select">
+        <div class="icon"></div>
+      </div>
+      <div class="site-branding">
+        
+        <h1 class="site-title">
+          <a href="">
+            
+          </a>
+        </h1>
+        
+      </div>
+    </div>
+  </section>
+
+  <div id="mo-nav" class="">
+  <div class="m-avatar">
+    <img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/custom/avatar.jpg">
+  </div>
+  <p
+    style="text-align: center; color: #333; font-weight: 900; font-family: 'Ubuntu', sans-serif; letter-spacing: 1.5px">
+    さくら荘そのdexfire</p>
+  <p style="text-align: center; word-spacing: 20px;">
+    
+    
+    <a href="http://github.com/honjun" class="fa fa-github" target="_blank"
+      style="color: #333; margin-left:20px"></a>
+    
+    <a href="http://weibo.com/mashirozx?is_all=1" class="fa fa-weibo" target="_blank"
+      style="color: #dd4b39; margin-left:20px"></a>
+    
+    <a href="https://wpa.qq.com/msgrd?v=3&uin=954655431&site=qq&menu=yes" class="fa fa-qq" target="_blank"
+      style="color: #25c6fe; margin-left:20px"></a>
+    
+    
+  </p>
+  <ul id="menu-new-1" class="menu">
+    
+    <li>
+      <a href="/">
+        <span class="faa-parent animated-hover">
+          <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
+          首页
+        </span>
+      </a>
+      
+    </li>
+    
+    <li>
+      <a href="/archives">
+        <span class="faa-parent animated-hover">
+          <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
+          时间线
+        </span>
+      </a>
+      
+      <ul class="sub-menu">
+        
+        <li>
+          <a href="/categories/%E6%8A%80%E6%9C%AF/">
+            <i class="fa fa-code" aria-hidden="true"></i>
+            技术
+          </a>
+        </li>
+        
+        <li>
+          <a href="/categories/%E7%94%9F%E6%B4%BB/">
+            <i class="fa fa-file-text-o" aria-hidden="true"></i>
+            生活
+          </a>
+        </li>
+        
+        <li>
+          <a href="/categories/%E8%B5%84%E6%BA%90/">
+            <i class="fa fa-cloud-download" aria-hidden="true"></i>
+            资源
+          </a>
+        </li>
+        
+        <li>
+          <a href="/categories/%E9%9A%8F%E6%83%B3/">
+            <i class="fa fa-commenting-o" aria-hidden="true"></i>
+            随想
+          </a>
+        </li>
+        
+        <li>
+          <a href="/categories/%E8%BD%AC%E8%BD%BD/">
+            <i class="fa fa-book" aria-hidden="true"></i>
+            转载
+          </a>
+        </li>
+        
+      </ul>
+      
+    </li>
+    
+    <li>
+      <a href="javascript:;">
+        <span class="faa-parent animated-hover">
+          <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+          清单
+        </span>
+      </a>
+      
+      <ul class="sub-menu">
+        
+        <li>
+          <a href="/tags/%E6%82%A6%E8%AF%BB/">
+            <i class="fa fa-th-list faa-bounce" aria-hidden="true"></i>
+            书单
+          </a>
+        </li>
+        
+        <li>
+          <a href="/bangumi/">
+            <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
+            番组
+          </a>
+        </li>
+        
+        <li>
+          <a href="/music/">
+            <i class="fa fa-headphones" aria-hidden="true"></i>
+            歌单
+          </a>
+        </li>
+        
+        <li>
+          <a href="/tags/%E5%9B%BE%E9%9B%86/">
+            <i class="fa fa-photo" aria-hidden="true"></i>
+            图集
+          </a>
+        </li>
+        
+      </ul>
+      
+    </li>
+    
+    <li>
+      <a href="/comment/">
+        <span class="faa-parent animated-hover">
+          <i class="fa  fa-pencil-square-o faa-tada" aria-hidden="true"></i>
+          留言板
+        </span>
+      </a>
+      
+    </li>
+    
+    <li>
+      <a href="/links/">
+        <span class="faa-parent animated-hover">
+          <i class="fa  fa-link faa-shake" aria-hidden="true"></i>
+          友人帐
+        </span>
+      </a>
+      
+    </li>
+    
+    <li>
+      <a href="/donate/">
+        <span class="faa-parent animated-hover">
+          <i class="fa  fa-heart faa-pulse" aria-hidden="true"></i>
+          赞赏
+        </span>
+      </a>
+      
+    </li>
+    
+    <li>
+      <a href="/">
+        <span class="faa-parent animated-hover">
+          <i class="fa  fa-leaf faa-wrench" aria-hidden="true"></i>
+          关于
+        </span>
+      </a>
+      
+      <ul class="sub-menu">
+        
+        <li>
+          <a href="/about/">
+            <i class="fa fa-meetup" aria-hidden="true"></i>
+            我？
+          </a>
+        </li>
+        
+        <li>
+          <a href="/theme-sakura/">
+            <i class="fa iconfont icon-sakura" aria-hidden="true"></i>
+            主题
+          </a>
+        </li>
+        
+        <li>
+          <a href="/theme-sakura/update_logs.html">
+            <i class="fa iconfont fa-bug" aria-hidden="true"></i>
+            更新
+          </a>
+        </li>
+        
+        <li>
+          <a href="/lab/">
+            <i class="fa fa-cogs" aria-hidden="true"></i>
+            Lab
+          </a>
+        </li>
+        
+      </ul>
+      
+    </li>
+    
+    <li>
+      <a href="/client/">
+        <span class="faa-parent animated-hover">
+          <i class="fa  fa-android faa-vertical" aria-hidden="true"></i>
+          客户端
+        </span>
+      </a>
+      
+    </li>
+    
+    <li>
+      <a href="/atom.xml">
+        <span class="faa-parent animated-hover">
+          <i class="fa  fa-rss faa-pulse" aria-hidden="true"></i>
+          RSS
+        </span>
+      </a>
+      
+    </li>
+    
+  </ul>
+  <p style="text-align: center; font-size: 13px; color: #b9b9b9;">&copy 2020 hexo-sakura</p>
+</div>
+<button onclick="topFunction()" class="mobile-cd-top" id="moblieGoTop" title="Go to top" style="display: none;"><i
+    class="fa fa-chevron-up" aria-hidden="true"></i></button>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<!-- require MetingJS -->
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+<style>
+  .aplayer .aplayer-lrc {
+    height: 35px;
+  }
+  .aplayer .aplayer-lrc p{
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 18px !important;
+  }
+  .aplayer .aplayer-lrc p.aplayer-lrc-current{
+    color: #FF1493;
+  }
+  .aplayer.aplayer-narrow .aplayer-body{
+    left: -66px !important;
+  }
+  .aplayer.aplayer-fixed .aplayer-lrc {
+    display: none;
+  }
+  .aplayer .aplayer-lrc.aplayer-lrc-hide {
+      display:none !important;
+  }
+  .aplayer.aplayer-fixed .lrc-show {
+    display: block;
+    background: rgba(255, 255, 255, 0.8);
+  }
+</style>
+<meting-js
+
+    id="2660651585"
+
+    server="netease"
+
+    type="playlist"
+
+    fixed="true"
+
+    autoplay="false"
+
+    loop="all"
+
+    order="random"
+
+    preload="auto"
+
+    volume="0.7"
+
+    mutex="true"
+
+</meting-js>
+<script>
+  $(function(){
+    $('body').on('click', '.aplayer', function(){
+      if($('.aplayer-button').hasClass('aplayer-play')) {
+        $('.aplayer-lrc').removeClass('lrc-show');
+      } else {
+        $('.aplayer-lrc').addClass('lrc-show');
+      }
+    })
+  });
+</script>
+</body>
+
+</html>

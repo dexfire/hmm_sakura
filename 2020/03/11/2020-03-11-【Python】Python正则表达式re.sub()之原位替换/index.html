@@ -1,0 +1,1208 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  
+  
+    <meta name="description" content="樱花博客，一个记录个人成长的地方。">
+  
+  <meta name="keywords" content="关键词,关键词,关键词" />
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="author" content="dexfire, dexfire@gmail.com" />
+  
+  <title itemprop="name">
+    
+    【Python】Python正则表达式re.sub()之原位替换 |
+    
+    你终于回来啦~ ♪(＾∀＾●)ﾉ
+  </title>
+  
+  <link rel="shortcut icon" href="/images/favicon.ico">
+  
+  <meta http-equiv="x-dns-prefetch-control" content="on">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Noto+SerifMerriweather|Merriweather+Sans|Source+Code+Pro|Ubuntu:400,700|Noto+Serif+SC"
+    media="all">
+  <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+  <link rel="stylesheet" id="saukra_css-css" href="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/css/autoptimize.css" type="text/css" media="all">
+  <!-- <link rel="stylesheet" id="saukra_css-css" href="/css/style.css" type="text/css" media="all"> -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/css/lib.css" type="text/css" media="all">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/css/font.css" type="text/css" media="all">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/css/insight.css" type="text/css" media="all">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/css/jquery.fancybox.min.css" type="text/css" media="all">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/css/zoom.css" type="text/css" media="all">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/css/sharejs.css" type="text/css" media="all">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/css/custom.css" type="text/css" media="all">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+  <script>
+    /*Initial Variables*/
+    var mashiro_option = new Object();
+    var mashiro_global = new Object();
+    mashiro_option.NProgressON = true;
+    /*
+     * 邮箱信息之类的东西可以填在这里，这些js变量基本都作用于sakura-app.js
+     * 这样的设置仅是为了方便在基于PHP开发的主题中设置js变量，既然移植到了Node上，我想或许可以精简这一逻辑吧
+     */
+    mashiro_option.email_domain = "";
+    mashiro_option.email_name = "";
+    mashiro_option.cookie_version_control = "";
+    mashiro_option.qzone_autocomplete = false;
+    mashiro_option.site_name = "さくら荘そのdexfire";
+    mashiro_option.author_name = "dexfire";
+    mashiro_option.site_url = "https://dexfire.cn";
+    mashiro_option.v_appId = "aFI53WTJYb4qPknwn0l76Lnu-gzGzoHsz";
+    mashiro_option.v_appKey = "2YeldrXS6Hm64JWCCLNgpj3C";
+    mashiro_option.mathjax = "0";
+    mashiro_option.qq_api_url = "https://api.mashiro.top/qqinfo/";
+    mashiro_option.qq_avatar_api_url = "https://api.mashiro.top/qqinfo/";
+                    // mashiro_option.float_player_on = true;
+
+    /*End of Initial Variables*/
+  </script>
+  <script type="text/javascript">
+    var bg = "https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0/images/cover/IMG_0001.JPG,https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0/images/cover/IMG_0002.JPG,https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0/images/cover/IMG_7631.JPG,https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0/images/cover/IMG_7632.JPG,https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0/images/cover/IMG_7633.JPG,https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0/images/cover/IMG_7634.JPG,https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0/images/cover/IMG_7635.JPG,https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0/images/cover/IMG_7636.JPG,https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0/images/cover/IMG_7638.JPG,https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0/images/cover/IMG_7639.JPG,https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0/images/cover/IMG_7642.JPG,https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0/images/cover/IMG_7643.jpg,https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0/images/cover/IMG_7725.jpg,https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0/images/cover/IMG_7760.jpg".split(",");
+    var bgindex = Math.floor(Math.random() * bg.length);
+    if (!!window.ActiveXObject || "ActiveXObject" in window) { //is IE?
+      alert('朋友，IE浏览器未适配哦~');
+    }
+  </script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body
+  class="page-template page-template-user page-template-page-analytics page-template-userpage-analytics-php page page-id-1297 chinese-font serif isWebKit">
+  <div class="scrollbar" id="bar"></div>
+  <a href="#" class="cd-top faa-float animated"></a>
+  <section id="main-container">
+    <div class="headertop filter-dot" style="height: 0;">
+  <div id="banner_wave_1"></div>
+  <div id="banner_wave_2"></div>
+  <figure id="centerbg" class="centerbg" onerror="randBG()">
+    <div class="focusinfo no-select">
+      <div class="header-tou">
+        <a href="https://dexfire.cn">
+          <img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/custom/avatar.jpg">
+        </a>
+      </div>
+      <div class="header-info">
+        <p>Live your life with passion! With some drive!</p>
+        <div class="top-social_v2">
+          <li id="bg-pre">
+            <img class="flipx" src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/other/next-b.svg">
+          </li>
+          
+            
+              
+                <li>
+                  <a href="http://github.com/honjun" target="_blank" class="social-github" title="github">
+                    <img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/social/github.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="http://weibo.com/mashirozx?is_all=1" target="_blank" class="social-github" title="sina">
+                    <img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/social/sina.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="http://weibo.com/mashirozx?is_all=1" target="_blank" class="social-github" title="wangyiyun">
+                    <img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/social/wangyiyun.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="http://weibo.com/mashirozx?is_all=1" target="_blank" class="social-github" title="zhihu">
+                    <img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/social/zhihu.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="http://weibo.com/mashirozx?is_all=1" target="_blank" class="social-github" title="email">
+                    <img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/social/email.svg">
+                  </a>
+                </li>
+              
+            
+              
+                <li class="wechat">
+                  <a href="/#">
+                    <img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/social/wechat.png">
+                  </a>
+                  <div class="wechatInner">
+                    <img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/custom/wechat.jpg">
+                  </div>
+                </li>
+              
+            
+              
+                <li class="wechat">
+                  <a href="/#">
+                    <img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/social/wechat.png">
+                  </a>
+                  <div class="wechatInner">
+                    <img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/custom/wechat.jpg">
+                  </div>
+                </li>
+              
+            
+          
+          <li id="bg-next">
+            <img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/other/next-b.svg">
+          </li>
+        </div>
+      </div>
+    </div>
+  </figure>
+  <div id="video-container" style="">
+    <video style="object-fit: fill" id="bgvideo" class="video" video-name="" src="" width="auto" preload="auto">
+    </video>
+    <div id="video-btn" class="loadvideo videolive">
+    </div>
+    <div id="video-add">
+    </div>
+    <div class="video-stu">
+    </div>
+  </div>
+  <div class="headertop-down faa-float animated" onclick="headertop_down()">
+    <span>
+      <i class="fa fa-chevron-down" aria-hidden="true">
+      </i>
+    </span>
+  </div>
+</div>
+    <div id="page" class="site wrapper">
+      <header class="site-header no-select gizle sabit" role="banner">
+  <div class="site-top">
+    <div class="site-branding">
+      <span class="site-title">
+        <span class="logolink moe-mashiro">
+          <a href="/">
+            <span class="sakurasono">さくら荘その</span>
+            <span class="shironeko">dexfire</span>
+          </a>
+        </span>
+      </span>
+    </div>
+    <div class="searchbox search-form-submit">
+      <i class="iconfont js-toggle-search iconsearch icon-search">
+      </i>
+    </div>
+    <div id="show-nav" class="showNav mobile-fit">
+      <div class="line line1">
+      </div>
+      <div class="line line2">
+      </div>
+      <div class="line line3">
+      </div>
+    </div>
+    <div class="lower-cantiner">
+      <div class="lower">
+        <nav class="mobile-fit-control hide">
+          <ul id="menu-new" class="menu">
+            
+              <li>
+                <a href="/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
+                    首页
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
+                    时间线
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/categories/%E6%8A%80%E6%9C%AF/">
+                          <i class="fa fa-code" aria-hidden="true"></i>
+                          技术
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/%E7%94%9F%E6%B4%BB/">
+                          <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                          生活
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/%E8%B5%84%E6%BA%90/">
+                          <i class="fa fa-cloud-download" aria-hidden="true"></i>
+                          资源
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/%E9%9A%8F%E6%83%B3/">
+                          <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                          随想
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/%E8%BD%AC%E8%BD%BD/">
+                          <i class="fa fa-book" aria-hidden="true"></i>
+                          转载
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="javascript:;">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+                    清单
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/tags/%E6%82%A6%E8%AF%BB/">
+                          <i class="fa fa-th-list faa-bounce" aria-hidden="true"></i>
+                          书单
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/bangumi/">
+                          <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
+                          番组
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/music/">
+                          <i class="fa fa-headphones" aria-hidden="true"></i>
+                          歌单
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/tags/%E5%9B%BE%E9%9B%86/">
+                          <i class="fa fa-photo" aria-hidden="true"></i>
+                          图集
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="/comment/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-pencil-square-o faa-tada" aria-hidden="true"></i>
+                    留言板
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/links/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-link faa-shake" aria-hidden="true"></i>
+                    友人帐
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/donate/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-heart faa-pulse" aria-hidden="true"></i>
+                    赞赏
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-leaf faa-wrench" aria-hidden="true"></i>
+                    关于
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/about/">
+                          <i class="fa fa-meetup" aria-hidden="true"></i>
+                          我？
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/theme-sakura/">
+                          <i class="fa iconfont icon-sakura" aria-hidden="true"></i>
+                          主题
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/theme-sakura/update_logs.html">
+                          <i class="fa iconfont fa-bug" aria-hidden="true"></i>
+                          更新
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/lab/">
+                          <i class="fa fa-cogs" aria-hidden="true"></i>
+                          Lab
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="/client/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-android faa-vertical" aria-hidden="true"></i>
+                    客户端
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/atom.xml">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-rss faa-pulse" aria-hidden="true"></i>
+                    RSS
+                  </span>
+                </a>
+                
+              </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+<div class="pattern-center-blank"></div>
+
+<div id="content" class="site-content">
+  <div id="primary" class="content-area">
+    <main id="main" class="site-main" role="main">
+      <article id="post-1"
+        class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
+        
+        <header class="entry-header">
+          <h1 class="entry-title">【Python】Python正则表达式re.sub()之原位替换</h1>
+          <p class="entry-census">dexfire&nbsp;·&nbsp;2020-3-11&nbsp;·&nbsp;<span
+              id="busuanzi_value_page_pv"></span>次阅读</p>
+          </p>
+
+          <hr>
+        </header>
+        
+        <div class="entry-content">
+          <h1 id="pythonpython正则表达式resub之原位替换"><a class="markdownIt-Anchor" href="#pythonpython正则表达式resub之原位替换"></a> 【Python】Python正则表达式re.sub()之原位替换</h1>
+<p>首先讲一下背景，这里是一个API网页接口，其中的html内容为了便于使用json进行传输，使用了许多escape 格式，类似 <code>\x22</code> <code>\x3C</code> 的样子，这里贴一部分：</p>
+<pre class="highlight"><code class="python"><span class="hljs-meta">&gt;&gt;&gt; </span>feed = <span class="hljs-string">r'class=\x22info-detail\x22&gt;\x3Cspan  class=\x22 ui-mr8 state\x22 &gt;3月7日 22:01\x3C\/span&gt;\x3Ca href=\x22javascript:;\x22 data-cmd=\x22qz_sign\x22 class=\x22f-sign-show state\x22 title=\x22我也要设置\x22&gt;\x3C\/a&gt;\x3C\/div&gt;\x3C\/div&gt;\x3C\/div&gt;\x3Cdiv class=\x22f-single-content f-wrap\x22&gt;\x3Cdiv class=\x22f-item f-s-i\x22 id=\x22feed_....._311_0_1583589681_0_1\x22 data-feedsflag=\x22\x22 data-iswupfeed=\x221\x22 data-key=\x227e6e330318a9635e0a8f0000\x22 data-specialtype=\x22\x22 data-extend-info=\x220_0_1_0_0_0_0|08009cc0040f5001|0008000000000000\x22 data-functype=\x22\x22 data-hasfollowed=\x221\x22&gt;\x3Cdiv class=\x22f-info qz_info_cut\x22&gt;我教你们怎么做舔狗，一天三遍请安记得把称呼带上，哥哥早上好，哥哥晚上好，对方回你一句话赶紧十句话顶上去嘘寒问暖要安排上，吃了吗？在干嘛？下雪了吗？下雨了吗？冷吗？加衣服了吗？哥哥你那里降温了记得添衣服，哥哥你那里下雨了记得带伞，哥哥你在哪？哥哥我请你吃饭，哥哥晚上有时间吗？哥哥中午有时间吗？哥哥辛苦了，哥哥穿这身真帅，哥哥你看今晚的星星，哥哥你要睡觉了吗？哥哥我觉得这个特别适合你就给你买了你别不高 \x3Ca'</span>
+</code></pre>
+<p>经过一反度娘科普，发现其实也就是对html标签tag中的<code>&lt;</code> <code>&gt;</code> <code>'</code> <code>'</code> 进行了转义，但又不一定只有这几种情况，总的来讲，这些符号全都属于 ascii 编码的范畴，所以我们要做的就是对这些转义字符进行逆向解码。</p>
+<p>首先呢，二狗在这里尽量尝试不借助Python文档以外的外界超自然力量进行研究，首先想到这个可否使用 Python 自带的编解码函数进行解码呢？毕竟 Python3 对自然语言编码可是增强了一大截，这点小问题应该难不倒万能胶语言的嘛？</p>
+<p>我们的基本思路是：</p>
+<ol>
+<li><strong>方案一</strong>：首先看是否存在 <code>str</code> 类的二次解码函数。</li>
+<li><strong>方案二</strong>：其次就是曲线救国路线，线进行一次额外的编码，而后再进行一次解码。</li>
+</ol>
+<p>那么问题来了，怎样进行编解码呢？我首先想到的是 <code>str</code> 类的 <code>str.encode()</code> 函数,以及其对应的解码函数 <code>byte.decode()</code> ，这两个函数的功能分别是：</p>
+<ol>
+<li>
+<p><code>str.encode(encoding=&quot;utf-8&quot;, errors=&quot;strict&quot;)</code> 对文本字符串进行编码，接收一个编码类型参数，编码结果为一个 <code>byte</code> 型的编码数据。</p>
+</li>
+<li>
+<p><code>byte.decode()</code> 用于对 字节型 数据进行解码，解码结果为一个 <code>str</code> 字符串，可以传递一个编码参数，也可以不提供，这时函数库会自动根据编码特性进行 <strong>猜测</strong> ，这当然本身是一个复杂的工作，不过我们用的是python，强大的函数库的确为我们大幅度减少了工作量。</p>
+</li>
+</ol>
+<p>那么又问题来了，Python到底支持那些编码格式，我们又该用哪种方案进行解码呢？<br />
+这里贴出Python的两处文档，一个是<code>str.encode()</code>函数，一个是<code>codecs</code> 专栏，也就是专门讲解python中编解码的详尽列表。</p>
+<ol>
+<li><a href="https://docs.python.org/zh-cn/3/library/stdtypes.html?highlight=str%20encode#str.encode" target="_blank" rel="noopener">内置类型 - str.encode(encoding=“utf-8”, errors=“strict”)</a></li>
+<li><a href="https://docs.python.org/zh-cn/3/library/codecs.html#standard-encodings" target="_blank" rel="noopener">codecs — 编解码器注册和相关基类</a></li>
+</ol>
+<p>我们可以看到这里一个非常权威且霸道的用词：</p>
+<blockquote>
+<p><strong>标准编码</strong><br />
+Python 自带了许多内置的编解码器，它们的实现或者是通过 C 函数，或者是通过映射表。 以下表格是按名称排序的编解码器列表，并提供了一些常见别名以及编码格式通常针对的语言。 别名和语言列表都不是<strong>详尽无遗</strong>的。 请注意仅有大小写区别或使用连字符替代下划线的拼写形式也都是有效的别名；因此，‘utf-8’ 是 ‘utf_8’ 编解码器的有效别名。</p>
+</blockquote>
+<p>这个表格大体是这个格式：</p>
+<p><img src="/img/QQ%E6%88%AA%E5%9B%BE20200311010842.png" alt="Python支持的编码格式" /></p>
+<p>我们搜索ASCII关键字，发现其中涉及到ASCII的寥寥无几，反正是为了偷懒，司马当活马医，看上哪个就用哪个了。</p>
+<h2 id="首先是方案一"><a class="markdownIt-Anchor" href="#首先是方案一"></a> 首先是方案一</h2>
+<p>这里，通过python文档并没有看到这种奇奇怪怪的解码函数，因为的确有些小众了，这里实在有些按耐不住，还是动用了外部力量，发现的确曾经有前辈研究过这类问题：</p>
+<p>参考链接：</p>
+<ol>
+<li><a href="https://jingyan.baidu.com/article/a3aad71ab430e8b1fb0096c6.html" target="_blank" rel="noopener">Python教程：[37]处理网页源码中的\x22字符 - 百度经验</a></li>
+<li><a href="https://blog.csdn.net/tiwoo/article/details/50334515" target="_blank" rel="noopener">Python 中使用 string-escape 将带转义的字节码字符串转换为 utf-8 字符串</a></li>
+</ol>
+<p>没错，结果呢，我们发现这两个都使用了一个非常神奇的操作，一下子就得到了解码后的结果：都是用了一个<code>str.decode('string-escape')</code> 称之为“<strong>文本转义</strong>”的解码方式，然鹅，我们用的是Py3，其中已经找不到这个函数了。</p>
+<pre class="highlight"><code class="python"><span class="hljs-meta">&gt;&gt;&gt; </span>feed.decode(<span class="hljs-string">'string-escape'</span>)
+Traceback (most recent call last):
+  File <span class="hljs-string">"&lt;pyshell#287&gt;"</span>, line <span class="hljs-number">1</span>, <span class="hljs-keyword">in</span> &lt;module&gt;
+    feed.decode(<span class="hljs-string">'string-escape'</span>)
+AttributeError: <span class="hljs-string">'str'</span> object has no attribute <span class="hljs-string">'decode'</span>
+&gt;&gt;&gt;
+</code></pre>
+<p>要相信天无绝人之路，我们继续搜搜，发现了这个stackoverflow的贴子，其中介绍的是关于python3 中的实现方法。<br />
+3. <a href="https://stackoverflow.com/questions/14820429/how-do-i-decodestring-escape-in-python3" target="_blank" rel="noopener">how do I .decode(‘string-escape’) in Python3?</a><br />
+问法非常直接粗暴，果然是老外的办事风格，严谨认真且直捣黄龙。</p>
+<p>I have some escaped strings that need to be unescaped. I’d like to do this in Python.</p>
+<p>For example, in python2.7 I can do this:</p>
+<pre class="highlight"><code class="python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-string">"\\123omething special"</span>.decode(<span class="hljs-string">'string-escape'</span>)
+<span class="hljs-string">'Something special'</span>
+&gt;&gt;&gt;
+How do I do it <span class="hljs-keyword">in</span> Python3? This doesn<span class="hljs-string">'t work:
+
+&gt;&gt;&gt; b"\\123omething special".decode('</span>string-escape<span class="hljs-string">')
+Traceback (most recent call last):
+  File "&lt;stdin&gt;", line 1, in &lt;module&gt;
+LookupError: unknown encoding: string-escape
+&gt;&gt;&gt;
+</span></code></pre>
+<p>My goal is to be abel to take a string like this:</p>
+<p><code>s\000u\000p\000p\000o\000r\000t\000@\000p\000s\000i\000l\000o\000c\000.\000c\000o\000m\000</code><br />
+And turn it into:</p>
+<p><code>&quot;support@psiloc.com&quot;</code><br />
+After I do the conversion, I’ll probe to see if the string I have is encoded in UTF-8 or UTF-16.</p>
+<p>我们看到了几个提供了线索的答案，也就是：<br />
+<img src="/img/QQ%E6%88%AA%E5%9B%BE20200311012229.png" alt="p1" /><br />
+这里是使用了编码后解码的方案，这里我也找到了另外一个看起来比较靠谱的代码：</p>
+<p><code>feed.encode('utf8').decode('unicode_escape')</code></p>
+<p>这个代码也就是首先对 <code>str</code> 进行utf8编码，而后作为unicode的escape文本进行解码，完成解码操作，我们实际操作一番：</p>
+<pre class="highlight"><code class="python"><span class="hljs-meta">&gt;&gt;&gt; </span>ss = <span class="hljs-string">r'\x23\x45\x3C'</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>ss.encode(<span class="hljs-string">'utf8'</span>).decode(<span class="hljs-string">'unicode_escape'</span>)
+<span class="hljs-string">'#E&lt;'</span>
+&gt;&gt;&gt;
+</code></pre>
+<p>似乎效果立杆见影！看来这里在进行utf8编码时，并没有将转义符号进行二次编码，而后一次解码则刚刚好将utf8编码时的新转义字符连同原有的转义字符一起进行了解码，实现最终解码的效果，管它具体原理呢，把代码超过来试一把…果然，抄代码一时爽，一直抄…结果终于就出事故了：</p>
+<pre class="highlight"><code class="python"><span class="hljs-meta">&gt;&gt;&gt; </span>feed.encode(<span class="hljs-string">'utf8'</span>).decode(<span class="hljs-string">'unicode_escape'</span>)
+<span class="hljs-string">'class="info-detail"&gt;&lt;span  class=" ui-mr8 state" &gt;3æ\x9c\x887æ\x97¥ 22:01&lt;\\/span&gt;&lt;a href="javascript:;" data-cmd="qz_sign" class="f-sign-show state" title="æ\x88\x91ä¹\x9fè¦\x81è®¾ç½®"&gt;&lt;\\/a&gt;&lt;\\/div&gt;&lt;\\/div&gt;&lt;\\/div&gt;&lt;div class="f-single-content f-wrap"&gt;&lt;div class="f-item f-s-i" id="feed_53702270_311_0_1583589681_0_1" data-feedsflag="" data-iswupfeed="1" data-key="7e6e330318a9635e0a8f0000" data-specialtype="" data-extend-info="0_0_1_0_0_0_0|08009cc0040f5001|0008000000000000" data-functype="" data-hasfollowed="1"&gt;&lt;div class="f-info qz_info_cut"&gt;æ\x88\x91æ\x95\x99ä½\xa0ä»¬æ\x80\x8eä¹\x88å\x81\x9aè\x88\x94ç\x8b\x97ï¼\x8cä¸\x80å¤©ä¸\x89é\x81\x8dè¯·å®\x89è®°å¾\x97æ\x8a\x8aç§°å\x91¼å¸¦ä¸\x8aï¼\x8cå\x93¥å\x93¥æ\x97©ä¸\x8aå¥½ï¼\x8cå\x93¥å\x93¥æ\x99\x9aä¸\x8aå¥½ï¼\x8cå¯¹æ\x96¹å\x9b\x9eä½\xa0ä¸\x80å\x8f¥è¯\x9dèµ¶ç´§å\x8d\x81å\x8f¥è¯\x9dé¡¶ä¸\x8aå\x8e»å\x98\x98å¯\x92é\x97®æ\x9a\x96è¦\x81å®\x89æ\x8e\x92ä¸\x8aï¼\x8cå\x90\x83äº\x86å\x90\x97ï¼\x9få\x9c¨å¹²å\x98\x9bï¼\x9fä¸\x8bé\x9bªäº\x86å\x90\x97ï¼\x9fä¸\x8bé\x9b¨äº\x86å\x90\x97ï¼\x9få\x86·å\x90\x97ï¼\x9få\x8a\xa0è¡£æ\x9c\x8däº\x86å\x90\x97ï¼\x9få\x93¥å\x93¥ä½\xa0é\x82£é\x87\x8cé\x99\x8dæ¸©äº\x86è®°å¾\x97æ·»è¡£æ\x9c\x8dï¼\x8cå\x93¥å\x93¥ä½\xa0é\x82£é\x87\x8cä¸\x8bé\x9b¨äº\x86è®°å¾\x97å¸¦ä¼\x9eï¼\x8cå\x93¥å\x93¥ä½\xa0å\x9c¨å\x93ªï¼\x9få\x93¥å\x93¥æ\x88\x91è¯·ä½\xa0å\x90\x83é¥\xadï¼\x8cå\x93¥å\x93¥æ\x99\x9aä¸\x8aæ\x9c\x89æ\x97¶é\x97´å\x90\x97ï¼\x9få\x93¥å\x93¥ä¸\xadå\x8d\x88æ\x9c\x89æ\x97¶é\x97´å\x90\x97ï¼\x9få\x93¥å\x93¥è¾\x9bè\x8b¦äº\x86ï¼\x8cå\x93¥å\x93¥ç©¿è¿\x99èº«ç\x9c\x9få¸\x85ï¼\x8cå\x93¥å\x93¥ä½\xa0ç\x9c\x8bä»\x8aæ\x99\x9aç\x9a\x84æ\x98\x9fæ\x98\x9fï¼\x8cå\x93¥å\x93¥ä½\xa0è¦\x81ç\x9d¡è§\x89äº\x86å\x90\x97ï¼\x9få\x93¥å\x93¥æ\x88\x91è§\x89å¾\x97è¿\x99ä¸ªç\x89¹å\x88«é\x80\x82å\x90\x88ä½\xa0å°±ç»\x99ä½\xa0ä¹°äº\x86ä½\xa0å\x88«ä¸\x8dé«\x98 &lt;a'</span>
+&gt;&gt;&gt;
+</code></pre>
+<p>这种操作对中文似乎有致命伤啊，所有中文经过这样操作以后，全成乱码了…这可咋整捏？</p>
+<h2 id="方案二"><a class="markdownIt-Anchor" href="#方案二"></a> 方案二</h2>
+<p>下面验证另外一种方法：<br />
+<img src="/img/QQ%E6%88%AA%E5%9B%BE20200311012330.png" alt="p2" /></p>
+<h2 id="方案三使用codecs类进行escape_decode"><a class="markdownIt-Anchor" href="#方案三使用codecs类进行escape_decode"></a> 方案三：使用<code>codecs</code>类进行escape_decode</h2>
+<p><img src="/img/QQ%E6%88%AA%E5%9B%BE20200311013556.png" alt="" /></p>
+<h2 id="方案四使用re进行正则替换"><a class="markdownIt-Anchor" href="#方案四使用re进行正则替换"></a> 方案四：使用<code>re</code>进行正则替换</h2>
+
+        </div>
+        <!-- .entry-content -->
+        <div class="single-reward">
+          <div class="reward-open">赏
+            <div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/custom/donate/AliPayQR.jpg"></li>
+                <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/custom/donate/WeChanQR.jpg"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent">
+        </div>
+        <footer class="post-footer">
+          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh"
+              target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i>
+              知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
+          <div class="post-tags">
+          </div>
+          <div class="post-share">
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer><!-- .entry-footer -->
+      </article>
+      <!-- #post-## -->
+	  <div class="toc-container">
+		<div class="toc" style="background: none;"></div>
+	  </div>
+      <section class="post-squares nextprev">
+        
+        
+        <div class="post-nepre half previous">
+          
+            <a href="/2020/03/13/2020-04-12-%E3%80%90%E2%98%85%E3%80%91%E5%85%B3%E4%BA%8E%E5%A5%B3%E5%AD%A9%E5%AD%90%E5%8A%A0%E5%BC%BA%E8%87%AA%E6%88%91%E4%BF%9D%E6%8A%A4%E7%9A%84%E5%8F%A5%E5%AD%90/" rel="prev">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0/images/loader/orange.progress-bar-stripe-loader.svg" data-src=""
+                  style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)"
+                  src="">
+              </div>
+              <span class="label">
+                Previous Post</span>
+              <div class="info">
+                <h3>
+                  【衍射】光学中的衍射现象推论与计算</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+          
+          
+          
+          <div class="post-nepre half next">
+            
+              <a href="/2020/03/10/2020-03-10-%E3%80%90%E9%9A%8F%E6%83%B3%E3%80%91%E8%BF%99%E4%B8%96%E4%B8%8A%E4%B8%8D%E5%B9%B8%E7%A6%8F%E7%9A%84%E4%BA%BA%EF%BC%8C%E5%A4%A7%E5%A4%9A%E6%98%AF%E8%BF%87%E5%88%86%E8%87%AA%E7%A7%81%E7%9A%84%E4%BA%BA/" rel="next">
+                <div class="background">
+                  <img class="lazyload" src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0/images/loader/orange.progress-bar-stripe-loader.svg" data-src=""
+                    style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;"
+                    onerror="imgError(this,3)" src="">
+                </div>
+                <span class="label">
+                  Next Post</span>
+                <div class="info">
+                  <h3>
+                    【经济】基金下跌时，应该赎回吗？</h3>
+                  <hr>
+                </div>
+              </a>
+            </div>
+            
+      </section>
+      
+<div id="vcomments"></div>
+<script>
+  window.onload = function(){
+      var valine = new Valine();
+      valine.init({
+        el: '#vcomments',
+        appId: "aFI53WTJYb4qPknwn0l76Lnu-gzGzoHsz",
+        appKey: "2YeldrXS6Hm64JWCCLNgpj3C",
+        path: window.location.pathname,
+        placeholder: "你是我一生只会遇见一次的惊喜 ..."
+      })
+  }
+</script>
+
+      <section class="author-profile">
+        <div class="info" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
+          <a href="" class="profile gravatar"><img src="" itemprop="image"
+              alt="dexfire" height="70" width="70"></a>
+          <div class="meta">
+            <span class="title">Author</span>
+            <h3 itemprop="name">
+              <a href="" itemprop="url" rel="author">dexfire</a>
+            </h3>
+          </div>
+        </div>
+        <hr>
+        <p><i class="iconfont icon-write"></i></p>
+      </section>
+    </main><!-- #main -->
+  </div><!-- #primary -->
+</div>
+
+
+    </div>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            // PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+    <!-- <footer id="footer">  <div class="outer"> <div id="footer-info" class="inner"> &copy; 2020 dexfire<br> powered_by <a href="http://hexo.io/" target="_blank">Hexo</a> </div> </div> </footer> -->
+
+<footer id="colophon" class="site-footer" role="contentinfo">
+  <div class="site-info">
+    <div class="footertext">
+      <div class="img-preload">
+        <img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/other/wordpress-rotating-ball-o.svg">
+        <img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/other/disqus-preloader.svg"></div>
+      <p class="foo-logo"
+        style="background-image: url('https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/elements/sakura.svg');"></p>
+
+      <!--p style="color: #666666;">Copyright &copy 2018 - 2020 dexfire. <br> All Rights Reserved.</p-->
+      <p style="font-family: 'Ubuntu', sans-serif;">
+        <span style="color: #666666;">Crafted with
+          <i class="fa fa-heart animated" style="color: #e74c3c;"></i>
+          by
+          <a rel="me" href="https://hello.2heng.xin/@mashiro" target="_blank"
+            style="color: #000000;text-decoration:none;">Mashiro</a></span></p>
+      <p>Copyright &copy 2018 - 2020
+        dexfire<br>
+        <a href="http://www.beian.miit.gov.cn" target="_blank">沪ICP备17028213号</a>
+      </p>
+    </div>
+    <div class="footer-device">
+      <p style="font-family: 'Ubuntu', sans-serif;">
+        <span style="color: #b9b9b9;">Theme
+          <a href="https://github.com/honjun/hexo-theme-sakura" target="_blank"
+            style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Sakura</a>
+          <i class="iconfont icon-sakura rotating" style="color: #ffc0cb;display:inline-block"></i>
+          by
+          <a href="https://2heng.xin/" target="_blank"
+            style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Mashiro</a>&<a
+            href="https://www.hojun.cn/" target="_blank"
+            style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">dexfire</a>,
+          Powered by Hexo,
+          Hosted by Github Pages</a>
+        </span>
+      </p>
+      <p>
+        <span id="busuanzi_container_site_pv" style="color: #b9b9b9;">
+          本站总访问量<span id="busuanzi_value_site_pv">1</span>次
+        </span>
+      </p>
+    </div>
+
+    <p id="footer-sponsor">
+      <a href="#" target="_blank" alt="CDN Sponsor" rel="nofollow"><img
+          src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/support/Tencent_Cloud_logo.svg" alt="CDN Sponsor"
+          style="height: 1.5em;"></a>&nbsp;&nbsp;&nbsp;<a href="https://www.vultr.com/?ref=7196564" target="_blank"
+        alt="Server provider" rel="nofollow"><img
+          src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/support/vultr_logo__on-white.svg" alt="Server provider"
+          style="height: 1.5em;"></a>&nbsp;&nbsp;&nbsp;<a href="#" target="_blank" alt="Free CDN" rel="nofollow"><img
+          src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/support/baidu_cdn.svg" alt="jsDelivr"
+          style="height: 1.5em;"></a>&nbsp;&nbsp;&nbsp;<a href="https://www.google.com/intl/ja/analytics/"
+        target="_blank" alt="Analytics solution" rel="nofollow"><img
+          src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/support/Google.svg" alt="Google Analytics"
+          style="height: 1.5em; "></a>
+    </p>
+  </div>
+  <!-- .site-info -->
+</footer>
+
+<div class="changeSkin-gear no-select" style="bottom: -999px;">
+    <div class="keys">
+        <span id="open-skinMenu">
+            <i class="iconfont icon-gear inline-block rotating"></i>&nbsp; 切换主题 | SCHEME TOOL
+        </span>
+    </div>
+</div>
+<div class="skin-menu no-select">
+    <div class="theme-controls row-container">
+        <ul class="menu-list">
+            <li id="white-bg">
+                <i class="fa fa-television" aria-hidden="true"></i>
+            </li>
+            <!--Default-->
+            <li id="sakura-bg">
+                <i class="iconfont icon-sakura"></i>
+            </li>
+            <!--Sakura-->
+            <li id="gribs-bg">
+                <i class="fa fa-slack" aria-hidden="true"></i>
+            </li>
+            <!--Grids-->
+            <li id="KAdots-bg">
+                <i class="iconfont icon-dots"></i>
+            </li>
+            <!--Dots-->
+            <li id="totem-bg">
+                <i class="fa fa-superpowers" aria-hidden="true"></i>
+            </li>
+            <!--Orange-->
+            <li id="pixiv-bg">
+                <i class="iconfont icon-pixiv"></i>
+            </li>
+            <!--Start-->
+            <li id="bing-bg">
+                <i class="iconfont icon-bing"></i>
+            </li>
+            <!--Bing-->
+            <li id="dark-bg">
+                <i class="fa fa-moon-o" aria-hidden="true"></i>
+            </li>
+            <!--Night-->
+        </ul>
+    </div>
+    <div class="font-family-controls row-container">
+        <button type="button" class="control-btn-serif selected" data-mode="serif"
+            onclick="mashiro_global.font_control.change_font()">Serif</button>
+        <button type="button" class="control-btn-sans-serif" data-mode="sans-serif"
+            onclick="mashiro_global.font_control.change_font()">Sans Serif</button>
+    </div>
+</div>
+<canvas id="night-mode-cover"></canvas>
+<div class="prpr" style="visibility: hidden;">
+    <div class="mashiro-tips" style="opacity: 0;">你一直相信的事，也让我相信吧。活着，是件美好的事。</div>
+    <canvas id="live2d" width="280" height="250" class="live2d"></canvas>
+</div>
+<div class="live2d-tool hide-live2d no-select" onclick="hide_live2d()">
+    <div class="keys">Show</div>
+</div>
+<div class="live2d-tool switch-live2d no-select" onclick="switch_pio()">
+    <div class="keys">Switch</div>
+</div>
+<div class="live2d-tool save-live2d no-select" onclick="save_pio()">
+    <div class="keys">Save</div>
+</div>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/js/lib.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/js/InsightSearch.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/js/jquery.fancybox.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/js/zoom.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/js/sakura-app_v3.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/js/autoptimize.js"></script>
+<!-- //cdn1.lncld.net/static/js/3.0.4/av-min.js -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/js/av-min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/js/botui.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/js/custom.js"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<!-- Valine评论 -->>
+<script type="text/javascript" src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<!-- 不蒜子 网页计数器 -->
+<script async type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- TOC目录 -->
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+
+<script type="text/javascript">
+  /* <![CDATA[ */
+  if (/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+    var Poi = {
+      "pjax": "1",
+      "movies": {
+        "url": "https://cdn.jsdelivr.net/gh/honjun/hojun@1.2",
+        "name": "Unbroken.mp4",
+        "live": "close"
+      },
+      "windowheight": "fixed",
+      "codelamp": "close",
+      "ajaxurl": "",
+      "order": "asc",
+      "formpostion": "bottom"
+    };
+  } else {
+    var Poi = {
+      "pjax": "1",
+      "movies": {
+        "url": "https://cdn.jsdelivr.net/gh/honjun/hojun@1.2",
+        "name": "Unbroken.mp4",
+        "live": "open"
+      },
+      "windowheight": "auto",
+      "codelamp": "close",
+      "ajaxurl": "",
+      "order": "asc",
+      "formpostion": "bottom"
+    };
+  }
+  /* ]]> */
+</script>
+
+
+
+
+
+
+
+
+<!-- baidu Analytics -->
+<script>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement('script');
+        hm.src = 'https://hm.baidu.com/hm.js?18d22dda3acd079101f04a6eacf3781e';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+<script>
+  $(document).ready(function () {
+    // 处理目录
+    if ($(".toc").length > 0 && document.body.clientWidth > 1200) {
+      if ($(".pattern-center").length > 0) { //有图的情况
+        tocbot.init({
+          // Where to render the table of contents.
+          tocSelector: '.toc', // 放置目录的容器
+          // Where to grab the headings to build the table of contents.
+          contentSelector: '.entry-content', // 正文内容所在
+          // Which headings to grab inside of the contentSelector element.
+          scrollSmooth: true,
+          headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+          collapseDepth: 3,
+          headingsOffset: -300,
+          scrollSmoothOffset: -85
+        });
+      } else {
+        tocbot.init({
+          // Where to render the table of contents.
+          tocSelector: '.toc', // 放置目录的容器
+          // Where to grab the headings to build the table of contents.
+          contentSelector: '.entry-content', // 正文内容所在
+          // Which headings to grab inside of the contentSelector element.
+          scrollSmooth: true,
+          headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+          collapseDepth: 3,
+          headingsOffset: -85,
+          scrollSmoothOffset: -85
+        });
+      }
+      var offsetTop = $('.toc')
+        .offset()
+        .top - 95;
+      window.onscroll = function () {
+        var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+        if (scrollTop >= offsetTop) {
+          $('.toc').addClass('toc-fixed');
+        } else {
+          $('.toc').removeClass('toc-fixed');
+        }
+      }
+    }
+  });
+</script>
+
+    <!-- openNav -->
+    <div class="openNav no-select">
+      <div class="iconflat no-select">
+        <div class="icon"></div>
+      </div>
+      <div class="site-branding">
+        
+        <h1 class="site-title">
+          <a href="">
+            
+          </a>
+        </h1>
+        
+      </div>
+    </div>
+  </section>
+
+  <div id="mo-nav" class="">
+  <div class="m-avatar">
+    <img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/custom/avatar.jpg">
+  </div>
+  <p
+    style="text-align: center; color: #333; font-weight: 900; font-family: 'Ubuntu', sans-serif; letter-spacing: 1.5px">
+    さくら荘そのdexfire</p>
+  <p style="text-align: center; word-spacing: 20px;">
+    
+    
+    <a href="http://github.com/honjun" class="fa fa-github" target="_blank"
+      style="color: #333; margin-left:20px"></a>
+    
+    <a href="http://weibo.com/mashirozx?is_all=1" class="fa fa-weibo" target="_blank"
+      style="color: #dd4b39; margin-left:20px"></a>
+    
+    <a href="https://wpa.qq.com/msgrd?v=3&uin=954655431&site=qq&menu=yes" class="fa fa-qq" target="_blank"
+      style="color: #25c6fe; margin-left:20px"></a>
+    
+    
+  </p>
+  <ul id="menu-new-1" class="menu">
+    
+    <li>
+      <a href="/">
+        <span class="faa-parent animated-hover">
+          <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
+          首页
+        </span>
+      </a>
+      
+    </li>
+    
+    <li>
+      <a href="/archives">
+        <span class="faa-parent animated-hover">
+          <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
+          时间线
+        </span>
+      </a>
+      
+      <ul class="sub-menu">
+        
+        <li>
+          <a href="/categories/%E6%8A%80%E6%9C%AF/">
+            <i class="fa fa-code" aria-hidden="true"></i>
+            技术
+          </a>
+        </li>
+        
+        <li>
+          <a href="/categories/%E7%94%9F%E6%B4%BB/">
+            <i class="fa fa-file-text-o" aria-hidden="true"></i>
+            生活
+          </a>
+        </li>
+        
+        <li>
+          <a href="/categories/%E8%B5%84%E6%BA%90/">
+            <i class="fa fa-cloud-download" aria-hidden="true"></i>
+            资源
+          </a>
+        </li>
+        
+        <li>
+          <a href="/categories/%E9%9A%8F%E6%83%B3/">
+            <i class="fa fa-commenting-o" aria-hidden="true"></i>
+            随想
+          </a>
+        </li>
+        
+        <li>
+          <a href="/categories/%E8%BD%AC%E8%BD%BD/">
+            <i class="fa fa-book" aria-hidden="true"></i>
+            转载
+          </a>
+        </li>
+        
+      </ul>
+      
+    </li>
+    
+    <li>
+      <a href="javascript:;">
+        <span class="faa-parent animated-hover">
+          <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+          清单
+        </span>
+      </a>
+      
+      <ul class="sub-menu">
+        
+        <li>
+          <a href="/tags/%E6%82%A6%E8%AF%BB/">
+            <i class="fa fa-th-list faa-bounce" aria-hidden="true"></i>
+            书单
+          </a>
+        </li>
+        
+        <li>
+          <a href="/bangumi/">
+            <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
+            番组
+          </a>
+        </li>
+        
+        <li>
+          <a href="/music/">
+            <i class="fa fa-headphones" aria-hidden="true"></i>
+            歌单
+          </a>
+        </li>
+        
+        <li>
+          <a href="/tags/%E5%9B%BE%E9%9B%86/">
+            <i class="fa fa-photo" aria-hidden="true"></i>
+            图集
+          </a>
+        </li>
+        
+      </ul>
+      
+    </li>
+    
+    <li>
+      <a href="/comment/">
+        <span class="faa-parent animated-hover">
+          <i class="fa  fa-pencil-square-o faa-tada" aria-hidden="true"></i>
+          留言板
+        </span>
+      </a>
+      
+    </li>
+    
+    <li>
+      <a href="/links/">
+        <span class="faa-parent animated-hover">
+          <i class="fa  fa-link faa-shake" aria-hidden="true"></i>
+          友人帐
+        </span>
+      </a>
+      
+    </li>
+    
+    <li>
+      <a href="/donate/">
+        <span class="faa-parent animated-hover">
+          <i class="fa  fa-heart faa-pulse" aria-hidden="true"></i>
+          赞赏
+        </span>
+      </a>
+      
+    </li>
+    
+    <li>
+      <a href="/">
+        <span class="faa-parent animated-hover">
+          <i class="fa  fa-leaf faa-wrench" aria-hidden="true"></i>
+          关于
+        </span>
+      </a>
+      
+      <ul class="sub-menu">
+        
+        <li>
+          <a href="/about/">
+            <i class="fa fa-meetup" aria-hidden="true"></i>
+            我？
+          </a>
+        </li>
+        
+        <li>
+          <a href="/theme-sakura/">
+            <i class="fa iconfont icon-sakura" aria-hidden="true"></i>
+            主题
+          </a>
+        </li>
+        
+        <li>
+          <a href="/theme-sakura/update_logs.html">
+            <i class="fa iconfont fa-bug" aria-hidden="true"></i>
+            更新
+          </a>
+        </li>
+        
+        <li>
+          <a href="/lab/">
+            <i class="fa fa-cogs" aria-hidden="true"></i>
+            Lab
+          </a>
+        </li>
+        
+      </ul>
+      
+    </li>
+    
+    <li>
+      <a href="/client/">
+        <span class="faa-parent animated-hover">
+          <i class="fa  fa-android faa-vertical" aria-hidden="true"></i>
+          客户端
+        </span>
+      </a>
+      
+    </li>
+    
+    <li>
+      <a href="/atom.xml">
+        <span class="faa-parent animated-hover">
+          <i class="fa  fa-rss faa-pulse" aria-hidden="true"></i>
+          RSS
+        </span>
+      </a>
+      
+    </li>
+    
+  </ul>
+  <p style="text-align: center; font-size: 13px; color: #b9b9b9;">&copy 2020 hexo-sakura</p>
+</div>
+<button onclick="topFunction()" class="mobile-cd-top" id="moblieGoTop" title="Go to top" style="display: none;"><i
+    class="fa fa-chevron-up" aria-hidden="true"></i></button>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<!-- require MetingJS -->
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+<style>
+  .aplayer .aplayer-lrc {
+    height: 35px;
+  }
+  .aplayer .aplayer-lrc p{
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 18px !important;
+  }
+  .aplayer .aplayer-lrc p.aplayer-lrc-current{
+    color: #FF1493;
+  }
+  .aplayer.aplayer-narrow .aplayer-body{
+    left: -66px !important;
+  }
+  .aplayer.aplayer-fixed .aplayer-lrc {
+    display: none;
+  }
+  .aplayer .aplayer-lrc.aplayer-lrc-hide {
+      display:none !important;
+  }
+  .aplayer.aplayer-fixed .lrc-show {
+    display: block;
+    background: rgba(255, 255, 255, 0.8);
+  }
+</style>
+<meting-js
+
+    id="2660651585"
+
+    server="netease"
+
+    type="playlist"
+
+    fixed="true"
+
+    autoplay="false"
+
+    loop="all"
+
+    order="random"
+
+    preload="auto"
+
+    volume="0.7"
+
+    mutex="true"
+
+</meting-js>
+<script>
+  $(function(){
+    $('body').on('click', '.aplayer', function(){
+      if($('.aplayer-button').hasClass('aplayer-play')) {
+        $('.aplayer-lrc').removeClass('lrc-show');
+      } else {
+        $('.aplayer-lrc').addClass('lrc-show');
+      }
+    })
+  });
+</script>
+</body>
+
+</html>

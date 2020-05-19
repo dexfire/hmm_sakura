@@ -432,7 +432,17 @@
         
         <div class="entry-content">
           <h1 id="-0-"><a class="markdownIt-Anchor" href="#-0-"></a> </h1>
+<p>开启一个新的绘图窗口：</p>
+<pre class="highlight"><code class="matlab"><span class="hljs-built_in">figure</span>(<span class="hljs-number">1</span>)
+<span class="hljs-comment">% 或者也可以省略参数，自动开启一个独占的编号窗口。</span>
+<span class="hljs-built_in">figure</span>
+</code></pre>
 <h2 id="绘制2d函数图像"><a class="markdownIt-Anchor" href="#绘制2d函数图像"></a> 绘制2d函数图像</h2>
+<pre class="highlight"><code class="matlab">x=-<span class="hljs-built_in">pi</span>:<span class="hljs-number">0.01</span>:<span class="hljs-built_in">pi</span>;
+y=<span class="hljs-built_in">sin</span>(x);
+<span class="hljs-built_in">plot</span>(x,y);
+</code></pre>
+<p><img src="/imgs/QQ%E6%88%AA%E5%9B%BE20200514005100.png" alt="" /></p>
 <h2 id="绘制3d函数图像"><a class="markdownIt-Anchor" href="#绘制3d函数图像"></a> 绘制3d函数图像</h2>
 <h2 id="图像处理"><a class="markdownIt-Anchor" href="#图像处理"></a> 图像处理</h2>
 <p>Matlab作为工程中的数据可视化工具是非常的方便的。但是在具体的生成过程中通常会遇见以下几个比较常见的问题，这里以我最近在写论文中用图遇到的问题作为例子。简要说明输出图像大小位置规范的重要性。</p>

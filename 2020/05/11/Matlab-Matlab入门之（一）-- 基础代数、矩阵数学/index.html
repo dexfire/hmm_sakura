@@ -1,0 +1,1554 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  
+  
+    <meta name="description" content="樱花博客，一个记录个人成长的地方。">
+  
+  <meta name="keywords" content="关键词,关键词,关键词" />
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="author" content="dexfire, dexfire@gmail.com" />
+  
+  <title itemprop="name">
+    
+    [Matlab]Matlab入门之（） -- 基础代数、矩阵数学 |
+    
+    你终于回来啦~ ♪(＾∀＾●)ﾉ
+  </title>
+  
+  <link rel="shortcut icon" href="/images/favicon.ico">
+  
+  <meta http-equiv="x-dns-prefetch-control" content="on">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Noto+SerifMerriweather|Merriweather+Sans|Source+Code+Pro|Ubuntu:400,700|Noto+Serif+SC"
+    media="all">
+  <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+  <link rel="stylesheet" id="saukra_css-css" href="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/css/autoptimize.css" type="text/css" media="all">
+  <!-- <link rel="stylesheet" id="saukra_css-css" href="/css/style.css" type="text/css" media="all"> -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/css/lib.css" type="text/css" media="all">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/css/font.css" type="text/css" media="all">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/css/insight.css" type="text/css" media="all">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/css/jquery.fancybox.min.css" type="text/css" media="all">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/css/zoom.css" type="text/css" media="all">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/css/sharejs.css" type="text/css" media="all">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/css/custom.css" type="text/css" media="all">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+  <script>
+    /*Initial Variables*/
+    var mashiro_option = new Object();
+    var mashiro_global = new Object();
+    mashiro_option.NProgressON = true;
+    /*
+     * 邮箱信息之类的东西可以填在这里，这些js变量基本都作用于sakura-app.js
+     * 这样的设置仅是为了方便在基于PHP开发的主题中设置js变量，既然移植到了Node上，我想或许可以精简这一逻辑吧
+     */
+    mashiro_option.email_domain = "";
+    mashiro_option.email_name = "";
+    mashiro_option.cookie_version_control = "";
+    mashiro_option.qzone_autocomplete = false;
+    mashiro_option.site_name = "Dexfireのさくら荘そ";
+    mashiro_option.author_name = "のさくら荘そ";
+    mashiro_option.site_url = "https://dexfire.cn";
+    mashiro_option.v_appId = "aFI53WTJYb4qPknwn0l76Lnu-gzGzoHsz";
+    mashiro_option.v_appKey = "2YeldrXS6Hm64JWCCLNgpj3C";
+    mashiro_option.mathjax = "0";
+    mashiro_option.qq_api_url = "https://api.mashiro.top/qqinfo/";
+    mashiro_option.qq_avatar_api_url = "https://api.mashiro.top/qqinfo/";
+                    // mashiro_option.float_player_on = true;
+
+    /*End of Initial Variables*/
+  </script>
+  <script type="text/javascript">
+    var bg = "https://cdn.jsdelivr.net/gh/dexfire/cdn/images/cover/IMG_0001.JPG,https://cdn.jsdelivr.net/gh/dexfire/cdn/images/cover/IMG_0002.JPG,https://cdn.jsdelivr.net/gh/dexfire/cdn/images/cover/IMG_7631.JPG,https://cdn.jsdelivr.net/gh/dexfire/cdn/images/cover/IMG_7632.JPG,https://cdn.jsdelivr.net/gh/dexfire/cdn/images/cover/IMG_7633.JPG,https://cdn.jsdelivr.net/gh/dexfire/cdn/images/cover/IMG_7634.JPG,https://cdn.jsdelivr.net/gh/dexfire/cdn/images/cover/IMG_7635.JPG,https://cdn.jsdelivr.net/gh/dexfire/cdn/images/cover/IMG_7636.JPG,https://cdn.jsdelivr.net/gh/dexfire/cdn/images/cover/IMG_7638.JPG,https://cdn.jsdelivr.net/gh/dexfire/cdn/images/cover/IMG_7639.JPG,https://cdn.jsdelivr.net/gh/dexfire/cdn/images/cover/IMG_7642.JPG,https://cdn.jsdelivr.net/gh/dexfire/cdn/images/cover/IMG_7643.jpg,https://cdn.jsdelivr.net/gh/dexfire/cdn/images/cover/IMG_7725.jpg,https://cdn.jsdelivr.net/gh/dexfire/cdn/images/cover/IMG_7760.jpg,https://dexfire.cn/img/20200614001.jpg".split(",");
+    var bgindex = Math.floor(Math.random() * bg.length);
+    if (!!window.ActiveXObject || "ActiveXObject" in window) { //is IE?
+      alert('朋友，IE浏览器未适配哦~');
+    }
+  </script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body
+  class="page-template page-template-user page-template-page-analytics page-template-userpage-analytics-php page page-id-1297 chinese-font serif isWebKit">
+  <div class="scrollbar" id="bar"></div>
+  <a href="#" class="cd-top faa-float animated"></a>
+  <section id="main-container">
+    <div class="headertop filter-dot" style="height: 0;">
+  <div id="banner_wave_1"></div>
+  <div id="banner_wave_2"></div>
+  <figure id="centerbg" class="centerbg" onerror="randBG()">
+    <div class="focusinfo no-select">
+      <div class="header-tou">
+        <a href="https://dexfire.cn">
+          <img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/custom/avatar.jpg">
+        </a>
+      </div>
+      <div class="header-info">
+        <p>热爱是最终的救赎，勇敢是唯一的退路~❤</p>
+        <div class="top-social_v2">
+          <li id="bg-pre">
+            <img class="flipx" src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/other/next-b.svg">
+          </li>
+          
+            
+              
+                <li>
+                  <a href="http://github.com/honjun" target="_blank" class="social-github" title="github">
+                    <img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/social/github.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="http://weibo.com/mashirozx?is_all=1" target="_blank" class="social-github" title="sina">
+                    <img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/social/sina.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="http://weibo.com/mashirozx?is_all=1" target="_blank" class="social-github" title="wangyiyun">
+                    <img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/social/wangyiyun.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="http://weibo.com/mashirozx?is_all=1" target="_blank" class="social-github" title="zhihu">
+                    <img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/social/zhihu.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="http://weibo.com/mashirozx?is_all=1" target="_blank" class="social-github" title="email">
+                    <img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/social/email.svg">
+                  </a>
+                </li>
+              
+            
+              
+                <li class="wechat">
+                  <a href="/#">
+                    <img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/social/wechat.png">
+                  </a>
+                  <div class="wechatInner">
+                    <img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/custom/wechat.jpg">
+                  </div>
+                </li>
+              
+            
+              
+                <li class="wechat">
+                  <a href="/#">
+                    <img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/social/wechat.png">
+                  </a>
+                  <div class="wechatInner">
+                    <img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/custom/wechat.jpg">
+                  </div>
+                </li>
+              
+            
+          
+          <li id="bg-next">
+            <img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/other/next-b.svg">
+          </li>
+        </div>
+      </div>
+    </div>
+  </figure>
+  <div id="video-container" style="">
+    <video style="object-fit: fill" id="bgvideo" class="video" video-name="" src="" width="auto" preload="auto">
+    </video>
+    <div id="video-btn" class="loadvideo videolive">
+    </div>
+    <div id="video-add">
+    </div>
+    <div class="video-stu">
+    </div>
+  </div>
+  <div class="headertop-down faa-float animated" onclick="headertop_down()">
+    <span>
+      <i class="fa fa-chevron-down" aria-hidden="true">
+      </i>
+    </span>
+  </div>
+</div>
+    <div id="page" class="site wrapper">
+      <header class="site-header no-select gizle sabit" role="banner">
+  <div class="site-top">
+    <div class="site-branding">
+      <span class="site-title">
+        <span class="logolink moe-mashiro">
+          <a href="/">
+            <span class="sakurasono">Dexfire</span>
+            <span class="shironeko">のさくら荘そ</span>
+          </a>
+        </span>
+      </span>
+    </div>
+    <div class="searchbox search-form-submit">
+      <i class="iconfont js-toggle-search iconsearch icon-search">
+      </i>
+    </div>
+    <div id="show-nav" class="showNav mobile-fit">
+      <div class="line line1">
+      </div>
+      <div class="line line2">
+      </div>
+      <div class="line line3">
+      </div>
+    </div>
+    <div class="lower-cantiner">
+      <div class="lower">
+        <nav class="mobile-fit-control hide">
+          <ul id="menu-new" class="menu">
+            
+              <li>
+                <a href="/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
+                    主页
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
+                    时间线
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/categories/%E6%8A%80%E6%9C%AF/">
+                          <i class="fa fa-code" aria-hidden="true"></i>
+                          技术
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/%E7%94%9F%E6%B4%BB/">
+                          <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                          生活
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/%E8%B5%84%E6%BA%90/">
+                          <i class="fa fa-cloud-download" aria-hidden="true"></i>
+                          资源
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/%E9%9A%8F%E6%83%B3/">
+                          <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                          随想
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/%E8%BD%AC%E8%BD%BD/">
+                          <i class="fa fa-book" aria-hidden="true"></i>
+                          转载
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="javascript:;">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+                    清单
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/tags/%E6%82%A6%E8%AF%BB/">
+                          <i class="fa fa-th-list faa-bounce" aria-hidden="true"></i>
+                          书单
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/bangumi/">
+                          <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
+                          番组
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/music/">
+                          <i class="fa fa-headphones" aria-hidden="true"></i>
+                          歌单
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/tags/%E5%9B%BE%E9%9B%86/">
+                          <i class="fa fa-photo" aria-hidden="true"></i>
+                          图集
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="/comment/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-pencil-square-o faa-tada" aria-hidden="true"></i>
+                    留言板
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/links/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-link faa-shake" aria-hidden="true"></i>
+                    友人帐
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/donate/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-heart faa-pulse" aria-hidden="true"></i>
+                    咖啡
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-leaf faa-wrench" aria-hidden="true"></i>
+                    关于
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/about/">
+                          <i class="fa fa-meetup" aria-hidden="true"></i>
+                          我
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/theme-sakura/">
+                          <i class="fa iconfont icon-sakura" aria-hidden="true"></i>
+                          主题
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/theme-sakura/update_logs.html">
+                          <i class="fa fa-ravelry" aria-hidden="true"></i>
+                          更新
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/lab/">
+                          <i class="fa fa-cogs" aria-hidden="true"></i>
+                          实验室
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="/atom.xml">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-rss faa-pulse" aria-hidden="true"></i>
+                    RSS
+                  </span>
+                </a>
+                
+              </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+<div class="pattern-center-blank"></div>
+
+<div id="content" class="site-content">
+  <div id="primary" class="content-area">
+    <main id="main" class="site-main" role="main">
+      <article id="post-1"
+        class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
+        
+        <header class="entry-header">
+          <h1 class="entry-title">[Matlab]Matlab入门之（） -- 基础代数、矩阵数学</h1>
+          <p class="entry-census">dexfire&nbsp;·&nbsp;2020-5-11&nbsp;·&nbsp;<span
+              id="busuanzi_value_page_pv"></span>次阅读</p>
+          </p>
+
+          <hr>
+        </header>
+        
+        <div class="entry-content">
+          <h1 id="-0-"><a class="markdownIt-Anchor" href="#-0-"></a> </h1>
+<h2 id="matlab中的lambda表达式-fx-x2-2x1"><a class="markdownIt-Anchor" href="#matlab中的lambda表达式-fx-x2-2x1"></a> <a href="https://www.cnblogs.com/timssd/p/7221066.html" target="_blank" rel="noopener">Matlab中的lambda表达式 f=@(x) x^2-2*x+1;</a></h2>
+<p>Matlab中的lambda表达式<br />
+f=@(x) x^2-2*x+1;</p>
+<h2 id="基于matlab的矩阵及元素赋值"><a class="markdownIt-Anchor" href="#基于matlab的矩阵及元素赋值"></a> 基于MATLAB的矩阵及元素赋值</h2>
+<p><a href="https://blog.csdn.net/huyaping2014/article/details/88375234" target="_blank" rel="noopener">基于MATLAB的矩阵及元素赋值_人工智能_huyaping2014的专栏-CSDN博客</a></p>
+<p><a href="https://me.csdn.net/huyaping2014" target="_blank" rel="noopener">艾特小蘑菇</a> 2019-03-10 10:13:11 <img src="https://csdnimg.cn/release/phoenix/template/new_img/articleRead.png" alt="" /> 4562 <img src="https://csdnimg.cn/release/phoenix/template/new_img/collect.png" alt="" /> <img src="https://csdnimg.cn/release/phoenix/template/new_img/tobarCollectionActive.png" alt="" /> 收藏  4</p>
+<p>最后发布:2019-03-10 10:13:11首发:2019-03-10 10:13:11</p>
+<p>*内容摘要  ：该代码用于实现在MATLAB中矩阵及元素的赋值</p>
+<p>*文件标识：无</p>
+<p>*作 者： *完成日期：2019-3-10</p>
+<p>*问题描述：给矩阵a赋值</p>
+<p>&gt;&gt; a=[1 4 7;2 5 8; 3 6 9]</p>
+<p>a =</p>
+<p>1     4     7<br />
+     2     5     8<br />
+     3     6     9</p>
+<p>*问题描述：给矩阵全行赋予值<br />
+*例如给矩阵的第5行赋值为【2 4 6 】<br />
+&gt;&gt; a(6,:)=[2 4 6]</p>
+<p>a =</p>
+<p>1     4     7<br />
+     2     5     8<br />
+     3     6     9<br />
+     0     0     0<br />
+     0     0     0<br />
+     2     4     6</p>
+<p>*问题描述：要把矩阵的第3,4行及1,3列交点上的元素取出，构成一个新的矩阵</p>
+<p>&gt;&gt; b=a([3 4],[1 3])</p>
+<p>b=</p>
+<p>3     9<br />
+     0     0</p>
+<p>&gt;&gt; f1=ones(3,4)</p>
+<p>*问题描述：实现全1矩阵f1;实现全0矩阵f2；实现魔方矩阵f3；实现单位矩阵f4.</p>
+<p>f1 =</p>
+<p>1     1     1     1<br />
+     1     1     1     1<br />
+     1     1     1     1</p>
+<p>&gt;&gt; f2=zeros(3,4)</p>
+<p>f2 =</p>
+<p>0     0     0     0<br />
+     0     0     0     0<br />
+     0     0     0     0</p>
+<p>&gt;&gt; f3=magic(3)</p>
+<p>f3 =</p>
+<p>8     1     6<br />
+     3     5     7<br />
+     4     9     2</p>
+<p>&gt;&gt; f4=eye(3)</p>
+<p>f4 =</p>
+<p>1     0     0<br />
+     0     1     0<br />
+     0     0     1</p>
+<p>&gt;&gt;</p>
+<h2 id="matlab基础学习二-变量类型与赋值"><a class="markdownIt-Anchor" href="#matlab基础学习二-变量类型与赋值"></a> MATLAB基础学习（二）-变量类型与赋值</h2>
+<p><img src="https://csdnimg.cn/release/phoenix/template/new_img/original.png" alt="" /></p>
+<p><a href="https://me.csdn.net/weixin_42717711" target="_blank" rel="noopener">杨广帅</a> 2018-09-11 10:06:36 <img src="https://csdnimg.cn/release/phoenix/template/new_img/articleRead.png" alt="" /> 19475 <img src="https://csdnimg.cn/release/phoenix/template/new_img/collect.png" alt="" /> <img src="https://csdnimg.cn/release/phoenix/template/new_img/tobarCollectionActive.png" alt="" /> 收藏  18</p>
+<p>最后发布:2018-09-11 10:06:36首发:2018-09-11 10:06:36</p>
+<p>分类专栏： <a href="https://blog.csdn.net/weixin_42717711/category_7888188.html" target="_blank" rel="noopener">MATLAB</a></p>
+<p>版权声明：本文为博主原创文章，遵循 <a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC 4.0 BY-SA</a> 版权协议，转载请附上原文出处链接和本声明。</p>
+<p>本文链接：<a href="https://blog.csdn.net/weixin_42717711/article/details/82620634" target="_blank" rel="noopener">https://blog.csdn.net/weixin_42717711/article/details/82620634</a></p>
+<p>展开</p>
+<p>matlab解决问题的最基本思路是建立脚本文件，那么脚本文件的第一段就是定义一些变量，这和C语言等编程思想是一样的。matlab提供的变量类型很多，最基础的是三种：数值变量、符号变量、字符串，其他的类型还有cell、table等。这里仅说明最基础的变量类型。</p>
+<p><strong>1.数值变量</strong><br />
+    matlab中所有的数值变量都是矩阵，赋值时，以方括号作为开头和结尾，以英文逗号或空格分割同行元素，以英文分号分割各列。例如在Command Window里输入</p>
+<p>a=[1 2;3 4]<img src="https://img-blog.csdn.net/20180911095201387?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MjcxNzcxMQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="" /></p>
+<p>可以看到运算结果，a是一个数值变量。同时workspace里出现一个田字形的变量a，说明变量a的类型是数值型。</p>
+<p><img src="https://img-blog.csdn.net/2018091109524581?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MjcxNzcxMQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="" /><br />
+向量和数字可以视为特殊的矩阵，例如</p>
+<p>a=[1 2]</p>
+<p>a=[1;2]</p>
+<p>分别是行向量和列向量。</p>
+<p>a=[1]  可以简写为a=1   是数字。<br />
+    数值变量的命名要求是英文字母开头，不能包含特殊符号，大小写敏感。这里推荐采用下划线来进行分割，例如value_of_A，这和其他编程语言的命名规则大体相当。<br />
+    赋值中，有时需要用到等差数列，例如定义一个向量a=[1 2 3]，如果比较长，赋值很麻烦，所以matlab提供了一个简单的方法</p>
+<p>a=[1:1:3]</p>
+<p>这里两个冒号的意思是起始值:步长:终值。采用这种赋值方式时可以获得一个等差数列行向量，并可以省略两侧的方括号。当步长为1时，可以省略步长和一个冒号，于是可以简写为</p>
+<ol>
+<li>a=1:3</li>
+</ol>
+<p><img src="https://img-blog.csdn.net/20180911095716707?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MjcxNzcxMQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="" /></p>
+<p>另一种灵活的赋值方法是分块矩阵，其方法是变量名后面加圆括号，圆括号中加序号。例如</p>
+<p>a=[1 2;3 4]</p>
+<p>定义变量a之后，</p>
+<p>b=a(1,2)</p>
+<p>就可以把a的第一行第二列元素赋值给b，当然也可以用</p>
+<p>a(1,2)=1</p>
+<p>来修改矩阵中部分元素的值。这里需要注意，序号必须是自然数，且不能是零。当矩阵中有多个元素需要赋值时，可以将序号部分改成向量，例如</p>
+<p>a([1 2],[1 2])=[1 2;3 4]</p>
+<p>中把行数和列数都用向量表示，就是说对矩阵a的第1和2行，第1和2列，总共4个元素赋值。更进一步，也可以有a([1 2],1)表示a的第一列，也可以写成<br />
+a(1:end,1)</p>
+<p>这里的end表示终点，即a的行数2，也可以更进一步简写成</p>
+<p>a(:,1)</p>
+<p>这里的冒号表示从头至尾。这类赋值方法最为常用，但基本的语法非常简单，方括号表示矩阵开头和结尾，圆括号表示从矩阵中选取部分，把握这个原则，有利于读懂程序。<br />
+    当然分块矩阵也可以</p>
+<p>b=[a a]</p>
+<p>这样的赋值方法，但需要注意的是，方括号中的元素必须满足矩阵的行列数要求，例如</p>
+<p>a=[1 1]</p>
+<p>b=[1;1]</p>
+<p>c=[a b]</p>
+<p>就会引起错误，因为此时matlab无法确定c的行列数。<br />
+<strong>2.符号变量</strong><br />
+    总体而言，符号变量比数值变量简单得多，因为变化非常少，常用的赋值命令是</p>
+<p>syms a b</p>
+<p>syms表示这里要定义一些符号变量，a和b是变量名，符号变量的命名规则和数值变量一样。有时候也采用</p>
+<p>syms a real</p>
+<p>来强调a是实数变量，具体可以doc syms来获得帮助。<br />
+    有些变量之间存在依赖关系，此时可以定义</p>
+<p>syms x y(x)</p>
+<p>这里声明x是一个符号变量，又声明y是一个符号变量，且y的值由x决定，这相当于数学中函数的概念。当然具体的函数关系并没有明确规定。也可以</p>
+<p>syms x y z(x,y)</p>
+<p>来定义符号变量z，z依赖x和y。这相当于二元函数的概念。这里的圆括号显然和数值变量中的圆括号含义完全不同，这也是学习matlab最不习惯的地方，同一个符号，由于变量类型不同会有完全不同的含义。所以在学习matlab的过程中，一定要区分数值变量和符号变量。<br />
+    上述方法定义的符号变量是一个数，或者1*1矩阵，matlab中也可以定义符号矩阵，例如</p>
+<p>syms a11 a12 a21 a22</p>
+<p>A=[a11 a12;a21 a22]</p>
+<p>就可以获得一个矩阵符号变量A。<br />
+  定义符号变量后，workspace中出现相应的变量名，图形不是数值变量的田字形，而是方框里有个立方体，双击后可以看到行列数。</p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3d3dy5pbG92ZW1hdGxhYi5jbi9kYXRhL2F0dGFjaG1lbnQvaW1hZ2UvMDAwLzI1Lzc5LzExXzIwMF8yMDAuanBn" alt="2.jpg" /></p>
+<p><strong>3.字符串</strong><br />
+    比数值、符号更为简单的就是字符串了，其定义方法是以单引号开头和结尾，例如</p>
+<p>a=‘hello world’</p>
+<p>就定义了一个字符串a，其值为你好世界。matlab中较为特殊的是，字符串可视为行向量，例如</p>
+<ol>
+<li>b='hello ’</li>
+<li>c=‘world’</li>
+<li>a=[b c]</li>
+</ol>
+<p>也可以获得字符串a，其值为你好世界。另外，有时也可以将字符串视为矩阵，例如</p>
+<p>a=[‘ab’;‘cd’]</p>
+<p>但这种用法很罕见，同时要求各行字符串长度一样，否则将违反矩阵行列数规定。<br />
+    当然字符串的值也可以是特殊符号，比如</p>
+<ol>
+<li>',</li>
+</ol>
+<p>就定义了逗号，而最特殊的就是定义单引号，因为单引号会和字符串定义中的单引号混淆，因此matlab中用两个单引号表示一个单引号，也就是</p>
+<ol>
+<li>a=’’’’</li>
+</ol>
+<p>表示a是一个字符变量，值是一个单引号。语句中第一和第四个单引号是字符串类型的开头和结尾，中间两个单引号用来表示一个单引号。<br />
+    定义字符串变量后，workspace中出现相应的变量名，图像是方框里写了ch，双击后可以看到行列数。</p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3d3dy5pbG92ZW1hdGxhYi5jbi9kYXRhL2F0dGFjaG1lbnQvaW1hZ2UvMDAwLzI1Lzc5LzE0XzIwMF8yMDAuanBn" alt="3.jpg" /></p>
+<h2 id="matlab-判断对象的数据类型isa_人工智能_csdn1hao的博客-csdn博客"><a class="markdownIt-Anchor" href="#matlab-判断对象的数据类型isa_人工智能_csdn1hao的博客-csdn博客"></a> <a href="http://www.baidu.com/link?url=u6OJx_GQyxiEV4yPnRoKPGbCpLOvLDMrraqARMEQ_3Oez9d1_g0XUuf7Be0WubllqhOtRKj_wqJiBP9ofpaZ9jtz9JoK-jE9G4cMu2XMOxq" target="_blank" rel="noopener">matlab 判断对象的数据类型isa()_人工智能_CSDN1HAO的博客-CSDN博客</a><a href="http://www.baidu.com/link?url=u6OJx_GQyxiEV4yPnRoKPGbCpLOvLDMrraqARMEQ_3Oez9d1_g0XUuf7Be0WubllqhOtRKj_wqJiBP9ofpaZ9jtz9JoK-jE9G4cMu2XMOxq" target="_blank" rel="noopener">blog.csdn.net</a></h2>
+<p>“参量obj是一个MATLAB对象或者Java对象。参量class_name是MATLAB(预定义的或用户定义的)对象或Java对象。预定义的MATLAB对象包括如下类型:logical 逻辑数组char 字符串数组numeric 整型或浮点型数组integer 有符号或无符号整型数组… ”</p>
+<h2 id="7matlab-如何将矩阵中的数分别赋值给多个变量_人工智能_csdn博客"><a class="markdownIt-Anchor" href="#7matlab-如何将矩阵中的数分别赋值给多个变量_人工智能_csdn博客"></a> <em>7</em><a href="https://www.baidu.com/link?url=mBg-IDBa-SG4pjESCpjymjDt7f6MMMvj0nrDNSEehg0OuH0mCop2PpOHVvOJw9QAma0miQv6HAYXiVZuKQoAmdqfxbB7MOT6zrUgkDD_E9C&amp;wd=&amp;eqid=b81a1d920000f64a000000065ebbae3c" target="_blank" rel="noopener"><em>Matlab</em> 如何将矩阵中的数分别<em>赋值</em>给多个<em>变量</em>_人工智能…_CSDN博客</a></h2>
+<p>2018年8月13日 - <em>matlab</em>同时给多个<em>变量赋值</em>例子1:对x,y,z同时初始化为100例子2:对a,b,c分别初始化为mat,lab,sky例子3:将Cell<em>数组</em>x={123}中的1,2,3分别<em>赋值</em>给a,b,c例子…</p>
+<p><a href="http://www.baidu.com/link?url=mBg-IDBa-SG4pjESCpjymjDt7f6MMMvj0nrDNSEehg0OuH0mCop2PpOHVvOJw9QAma0miQv6HAYXiVZuKQoAmdqfxbB7MOT6zrUgkDD_E9C" target="_blank" rel="noopener"><img src="https://cambrian-images.cdn.bcebos.com/ea7e0c7af4673ed4cd13dc1c2b27c1eb_1562913917952.jpeg" alt="" />CSDN技术社区</a></p>
+<h2 id="转载matlab中一条语句给多个变量赋值转载"><a class="markdownIt-Anchor" href="#转载matlab中一条语句给多个变量赋值转载"></a> [转载]MATLAB中一条语句给多个变量赋值(转载)</h2>
+<p>(2017-10-08 17:51:31)</p>
+<p>对a，b和c分别赋值1，2和3<br />
+a,b,c=1,2,3</p>
+<p><img src="/img/QQ%E6%88%AA%E5%9B%BE20200513165543.png" alt="" /></p>
+<h2 id="一些图像变换矩阵"><a class="markdownIt-Anchor" href="#一些图像变换矩阵"></a> 一些图像变换矩阵</h2>
+<h2 id="图像几何变换"><a class="markdownIt-Anchor" href="#图像几何变换"></a> 图像几何变换</h2>
+<p><img src="https://csdnimg.cn/release/phoenix/template/new_img/original.png" alt="" /></p>
+<p><a href="https://me.csdn.net/fanzonghao" target="_blank" rel="noopener">DL_fan</a> 2018-10-09 14:18:52 <img src="https://csdnimg.cn/release/phoenix/template/new_img/articleRead.png" alt="" /> 5887 <img src="https://csdnimg.cn/release/phoenix/template/new_img/collect.png" alt="" /> <img src="https://csdnimg.cn/release/phoenix/template/new_img/tobarCollectionActive.png" alt="" /> 收藏  6</p>
+<p>最后发布:2018-10-09 14:18:52首发:2018-10-09 14:18:52</p>
+<p>分类专栏： <a href="https://blog.csdn.net/fanzonghao/category_7883466.html" target="_blank" rel="noopener">opencv</a></p>
+<p>版权声明：本文为博主原创文章，遵循 <a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC 4.0 BY-SA</a> 版权协议，转载请附上原文出处链接和本声明。</p>
+<p>本文链接：<a href="https://blog.csdn.net/fanzonghao/article/details/82981560" target="_blank" rel="noopener">https://blog.csdn.net/fanzonghao/article/details/82981560</a></p>
+<p>展开</p>
+<h3 id="一仿射变换概念"><a class="markdownIt-Anchor" href="#一仿射变换概念"></a> 一.仿射变换概念</h3>
+<p>1.下图是一般形式，其中x,y代表原坐标，v,w代表变换后的坐标，T是变换矩阵</p>
+<p><img src="https://img-blog.csdnimg.cn/20200419095541751.png" alt="" /></p>
+<p>其中几种常见的变换形式矩阵为：</p>
+<p><img src="https://img-blog.csdnimg.cn/20200419095740721.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2ZhbnpvbmdoYW8=,size_16,color_FFFFFF,t_70" alt="" /></p>
+<p>2.坐标系变换</p>
+<p>再看第二个问题，变换中心，对于缩放、平移可以以图像坐标原点（图像左上角为原点）为中心变换，这不用坐标系变换，直接按照一般形式计算即可。而对于旋转和偏移，一般是以图像中心为原点，那么这就涉及坐标系转换了。</p>
+<p>我们都知道，opencv的原点在图像左上角，水平向右为 X 轴，垂直向下为 Y 轴。课本中常见的坐标系是以图像中心为原点，水平向右为 X 轴，垂直向上为 Y 轴，称为笛卡尔坐标系。看下图:</p>
+<p><img src="https://img-blog.csdnimg.cn/20200419095906577.png" alt="" /></p>
+<p>因此，对于旋转和偏移，就需要3步（3次变换）：</p>
+<ul>
+<li>将输入原图图像坐标转换为笛卡尔坐标系；</li>
+<li>进行顺时针旋转计算。旋转矩阵前面已经给出了；</li>
+<li>将旋转后的图像的笛卡尔坐标转回图像坐标。</li>
+</ul>
+<h3 id=""><a class="markdownIt-Anchor" href="#"></a> <img src="https://img-blog.csdnimg.cn/20200419102052506.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2ZhbnpvbmdoYW8=,size_16,color_FFFFFF,t_70" alt="" /></h3>
+<p>3.示例：（250,0）绕（250,250）旋转120度</p>
+<pre class="highlight"><code class="">import cv2
+import numpy as np
+from math import cos,sin,pi
+ 
+def rotate_one(x,y,angle,cx,cy):
+ 
+    &quot;&quot;&quot;
+    点(x,y) 绕(cx,cy)点顺时针旋转
+    &quot;&quot;&quot;
+    angle = angle*pi/180
+    x_new = (x-cx)*cos(angle) + (cy-y)*sin(angle)+cx
+    y_new = (x-cx)*sin(angle) + (y-cy)*cos(angle)+cy
+    return x_new, y_new
+ 
+def rotate_two(x,y,angle,cx,cy):
+    &quot;&quot;&quot;
+       点(x,y) 绕(cx,cy)点顺时针旋转
+    &quot;&quot;&quot;
+    angle = angle * pi / 180
+    input_matrix = np.array([x, y, 1])
+    transform_matrix = np.array([[1, 0, 0],
+                                 [0, -1, 0],
+                                 [-cx, cy, 1]])
+    inv_transform_matrix = np.array([[1, 0, 0],
+                                     [0, -1, 0],
+                                     [cx, cy, 1]])
+    rotate_matrix = np.array([[cos(angle), -sin(angle), 0],
+                              [sin(angle), cos(angle), 0],
+                              [0,           0,         1]])
+    output_matrix = ((input_matrix.dot(transform_matrix)).dot(rotate_matrix)).dot(inv_transform_matrix)
+    x_new, y_new, _ = output_matrix
+    return x_new, y_new
+def test_cv2():
+ 
+    img=np.zeros((501,501))
+ 
+    x, y= 250, 0
+    cx,cy=250,250
+    angle=120
+    # x_new, y_new = rotate_one(x,y,angle,cx,cy)
+    # cv2.circle(img,(x,y),radius=2,color=(255,255,255),thickness=2)
+    # cv2.circle(img, (cx, cy), radius=2, color=(255, 255, 255), thickness=2)
+    # cv2.circle(img, (int(x_new), int(y_new)), radius=2, color=(255, 255, 255), thickness=2)
+    # cv2.imshow('img', img)
+    # cv2.waitKey(0)
+ 
+    x_new, y_new = rotate_two(x,y,angle,cx,cy)
+    cv2.circle(img,(x,y),radius=2,color=(255,255,255),thickness=2)
+    cv2.circle(img, (cx, cy), radius=2, color=(255, 255, 255), thickness=2)
+    cv2.circle(img, (int(x_new), int(y_new)), radius=2, color=(255, 255, 255), thickness=2)
+    cv2.imshow('img', img)
+    cv2.waitKey(0)
+ 
+    
+ 
+if __name__ == '__main__':
+    test_cv2()
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/20190802142759255.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2ZhbnpvbmdoYW8=,size_16,color_FFFFFF,t_70" alt="" /></p>
+<p>4.代码示例：对图中的最大轮廓猪猪旋转180度</p>
+<pre class="highlight"><code class="">import cv2
+import numpy as np
+from math import cos,sin,pi
+import imutils
+from matplotlib import pyplot as plt
+ 
+def rotate(points, angle, cx, cy):
+    &quot;&quot;&quot;
+       点(x,y) 绕(cx,cy)点顺时针旋转
+    &quot;&quot;&quot;
+    h, w = points.shape
+    one = np.ones((h, 1))
+    input_matrix = np.hstack((points,one))
+    print(input_matrix.shape)
+    print(input_matrix[:2])
+    angle = angle * pi / 180
+ 
+    # input_matrix = np.array([x, y, 1])
+    transform_matrix = np.array([[1, 0, 0],
+                                 [0, -1, 0],
+                                 [-cx, cy, 1]])
+    inv_transform_matrix = np.array([[1, 0, 0],
+                                     [0, -1, 0],
+                                     [cx, cy, 1]])
+    rotate_matrix = np.array([[cos(angle), -sin(angle), 0],
+                              [sin(angle), cos(angle), 0],
+                              [0,           0,         1]])
+    output_matrix = ((input_matrix.dot(transform_matrix)).dot(rotate_matrix)).dot(inv_transform_matrix).astype(np.int)
+    # print(output_matrix.shape)
+    # print(output_matrix[:2])
+    # x_new, y_new, _ = output_matrix
+    return output_matrix[:, :-1]
+ 
+def test_pig_rotate():
+    path = './20181011234118419.jpeg'
+    img = cv2.imread(path)
+    gary = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
+    black=np.zeros([img.shape[0], img.shape[1]])
+    #二值化找轮廓
+    image_thre = cv2.threshold(gary, 127, 255, cv2.THRESH_BINARY)[1]
+    cnts = cv2.findContours(image_thre, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+    contours = cnts[0] if imutils.is_cv2() else cnts[1]
+    c_ = sorted(contours, key=cv2.contourArea, reverse=True)
+    points = np.squeeze(c_[0])
+ 
+    # #debug show
+    plt.figure(figsize=(15,15))
+    # plt.plot(points[:, 0], points[:, 1])
+    # plt.show()
+    
+    contour_list = []
+    new_points = rotate(points, angle=120, cx=img.shape[1]//2, cy=img.shape[0]//2)
+    contour_list.append(new_points[:, np.newaxis, :])
+ 
+    black = cv2.drawContours(black, contour_list, -1, (255, 255, 255), thickness=-1)
+    cv2.imwrite('./3.jpg', black)
+ 
+ 
+if __name__ == '__main__':
+    # test_cv2()
+    test_pig_rotate()
+</code></pre>
+<p>原图：</p>
+<p><img src="https://img-blog.csdnimg.cn/20200419110548315.jpeg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2ZhbnpvbmdoYW8=,size_16,color_FFFFFF,t_70" alt="" /></p>
+<p>顺时针旋转180度：</p>
+<p><img src="https://img-blog.csdnimg.cn/20200419110708860.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2ZhbnpvbmdoYW8=,size_16,color_FFFFFF,t_70" alt="" /></p>
+<p>5.代码示例：对整张图进行旋转</p>
+<pre class="highlight"><code class=""># 旋转图片无黑边
+def rotate_image():
+    from math import fabs
+    from math import sin, cos, radians
+    path = './20181011234118419.jpeg'
+    img = cv2.imread(path)
+    # img=cv2.imread('2018-09-10IMG_8003.jpg')
+    height, width = img.shape[:2]
+ 
+    degree = 90
+    # 旋转后的尺寸
+    heightNew = int(width * fabs(sin(radians(degree))) + height * fabs(cos(radians(degree))))
+    widthNew = int(height * fabs(sin(radians(degree))) + width * fabs(cos(radians(degree))))
+ 
+    matRotation = cv2.getRotationMatrix2D((width / 2, height / 2), degree, 1)
+ 
+    # print(matRotation[0, 2])
+    # print(matRotation)
+    matRotation[0, 2] += (widthNew - width) / 2
+    matRotation[1, 2] += (heightNew - height) / 2
+ 
+    imgRotation = cv2.warpAffine(img, matRotation, (widthNew, heightNew), borderValue=(255, 255, 255))
+    #
+    # cv2.imshow('img', imgRotation)
+    # cv2.waitKey(0)
+    cv2.imwrite('img_size_1_ok.jpg', imgRotation)
+if __name__ == '__main__':
+    rotate_image()
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/20200419113015906.jpeg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2ZhbnpvbmdoYW8=,size_16,color_FFFFFF,t_70" alt="" /> <img src="https://img-blog.csdnimg.cn/2020041911303274.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2ZhbnpvbmdoYW8=,size_16,color_FFFFFF,t_70" alt="" /></p>
+<p>旋转矩阵：<br />
+\left[ \begin{array}{cc} s_x &amp; 0&amp;0\ 0 &amp; x_Y &amp; 0 \ 0 &amp; 0 &amp; 1 \end{array}\right]</p>
+<h2 id="matlab-从已有矩阵构造新矩阵"><a class="markdownIt-Anchor" href="#matlab-从已有矩阵构造新矩阵"></a> matlab 从已有矩阵构造新矩阵</h2>
+<h2 id="matlab-显示变量信息"><a class="markdownIt-Anchor" href="#matlab-显示变量信息"></a> matlab 显示变量信息</h2>
+<p><code>whos A</code></p>
+<p>returns</p>
+<p>Name      Size            Bytes  Class     Attributes</p>
+<p>A         1x1                 8  double</p>
+<h2 id="matlab-扩充矩阵维度"><a class="markdownIt-Anchor" href="#matlab-扩充矩阵维度"></a> matlab 扩充矩阵维度</h2>
+<p>matlab多维数组操作</p>
+<p>1.一个三维数组由行、列和页三维组成，其中每一页包含一个由行和列构成的二维数组。</p>
+<p>2.利用标准数组函数创建多维数组<br />
+A=zeros(4,3,2) 生成一个4行3列2页的三维全0数组，ones，rand和randn等函数有相似的用法。</p>
+<p>3.利用直接索引方式生成多维数组<br />
+A=zeros(2,3)<br />
+A(:,:,2)=ones(2,3)<br />
+A(:,:,3)=4<br />
+上面的代码先生成一个二维数组作为三维数组的第一页，然后通过数组直接索引，添加第二页、第三页。</p>
+<p>4.利用函数reshape和repmat生成多维数组<br />
+B=reshape(A,2,9)<br />
+B=[A(:,:,1) A(:,:,2) A(:,:,3)] %结果与上面一样。<br />
+reshape(B,2,3,3)<br />
+reshape(B,[2 3 3]) %结果与上面一样。<br />
+提示：reshape函数可以将任何维数的数组转变成其他维数的数组。</p>
+<p>5.利用repmat函数生成多维数组<br />
+C=ones(2,3)<br />
+repmat(C,[1 1 3]) % repmat写出类似reshape的repmat(C,1,1,3)将显示出错<br />
+提示：repmat是通过数组复制创建多维数组的，上面的代码即是将数组C在行维和列维分别复制一次，然后再页维复制三次得到2×3×3的三维数组。<br />
+6.利用cat函数创建多维数组<br />
+a=zeros(2);<br />
+b=ones(2);<br />
+c=repmat(2,2,2);<br />
+D=cat(3,a,b,c)%创建三维数组<br />
+D=cat(4,a,b,c) %创建4维数组。<br />
+D(:,1,:😅 %查看第一列的数据。<br />
+size(D) %可以知道数组D的具体维数。<br />
+6.数组运算与处理<br />
+数组之间的运算要求两个数组在任何一维都必须具有相同的大小。<br />
+（1）squeeze函数用于删除多维数组中的单一维（即大小为1的那些维）<br />
+E=squeeze(D)<br />
+size(D) E的数据和D一样，但比D少了一维，只有2行、2列和3页。<br />
+（2）reshape函数可以将一个三维向量变成一维向量。<br />
+v(1,1,:)=1:6<br />
+squeeze(v)<br />
+v(😃<br />
+（3）reshape函数用于改变多维数组的行、列、页以及更高阶的维数，但不改变数组元素的总个数。<br />
+F=cat(3,2+zeros(2,4),ones(2,4),zeros(2,4))<br />
+G=reshape(F,[3,2,4])<br />
+H=reshape(F,[4 3 2]) 或K=reshape(F,2,12)<br />
+多维数组的重组按这样的顺序：第一页的第一列、第二列……，第二页的第一列、第二列……。<br />
+7.sub2ind函数和ind2sub函数用于多维数组的直接引用，索引顺序与重组顺序一致。<br />
+sub2ind(size(F),1,1,1) %求第1行、第1列、第1页的数值的单一索引<br />
+sub2ind(size(F),1,2,1) %求第1行、第2列、第1页的数值的单一索引<br />
+sub2ind(size(F),1,2,3) %求第1行、第2列、第3页的数值的单一索引<br />
+[r c p]=ind2sub(size(F),19) %由单一索引求其对应的行列页数值。<br />
+8．函数flipdim用于多维数组的翻转，相当于二维数组中的flipud和fliplr函数。例如下面的代码进行按行、列和按页翻转。<br />
+M=reshape(1:18,2,3,3)<br />
+flipdim(M,1) %每一页中的行翻转<br />
+flipdim(M,2) %每一页中的列翻转<br />
+flipdim(M,3) %将第一和第三页翻转调换<br />
+9.函数shiftdim用于循环轮换一个数组的维数。如果一个数组r行、c列和p页，则循环轮换一次，就生成一个c行、p列和r页的数组。<br />
+M %重新调用<br />
+shiftdim(M,1) %轮换一次<br />
+shiftdim(M,2) %轮换两次<br />
+数组轮换后规律很难直观理解，我们可以将三维数组看成一个类似魔方的方形盒子<br />
+函数shiftdim也支持负的循环轮换次数。执行该轮换时，数组的维数增加，并且多出的维数均为单一维。<br />
+M %重新调用<br />
+size(M)<br />
+shiftdim(M,-1)<br />
+size(ans).<br />
+10.函数permute和ipermute用于实现多维条件下的转置操作。从本质上讲permute函数是shiftdimhas函数的扩展。<br />
+M %重新调用<br />
+permute(M,[2 3 1])<br />
+shiftdim(M,1) %两者结果一样<br />
+permute函数中的参数[2 3 1]表示使函数第二维成为第一维，第三维成为第二维，第一维成为第三维。<br />
+11. permute(M,[2 1 3])<br />
+[2 1 3]表示将数组的行列相互转置，页保持不变（只在第一和第二维转置）。<br />
+permute函数的第一个参数为待转置的数组，第二个参数为转置顺序，它必须是待转置的多维数组的维数的某种排列，否则所进行的转置无法进行。<br />
+permute函数也可以用来将一个数组变成更高维的数组，例如shiftdim(M,-1)也可以用permute函数来实现。<br />
+permute(M,[4 1 2 3])<br />
+这是 因为任何一个数组都具有大于其本身尺寸的更高维数，并且这些维数均为单一维数。例如二维数组具有页这一维，只是只有一页。总之超过数组本身大小的维数都是单一维。M是一个三维数组，其第四维必为单一维，因此将M的第四维与第一维转置，第一维变成了单一维。<br />
+12．二维数组两次转置变换回原来的形式，对于多维数组，用函数ipermute来取消permute所执行的转置操作。<br />
+M %重新调用<br />
+permute(M,[3 2 1])<br />
+ipermute(M,[3 2 1]) %在我的Matlab上运行没有达到预期效果<br />
+13．size函数返回数组每一维的大小<br />
+numel函数返回数组的总元素个数<br />
+当不指定size的返回值时，将返回一个由数组的各维数组成的向量。当我们知道数组的维数时，可以将维数返回到指定变量中。<br />
+[r c p]=size(M)<br />
+r=size(M,1)<br />
+c=size(M,2)<br />
+p=size(M,3)<br />
+v=size(M,4)<br />
+当一个数组的维数或者某数组维数不确定时，可以利用函数ndims获得数组的维数值。例如：ndims(M)，与length（size（M））等效。</p>
+<h2 id="matlab-求逆矩阵-inva"><a class="markdownIt-Anchor" href="#matlab-求逆矩阵-inva"></a> matlab 求逆矩阵 inv(A)</h2>
+<p>缩放矩阵：</p>
+<pre class="highlight"><code class="matlab">scale = @(sx, sy) [sx,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>;<span class="hljs-number">0</span>,sy,<span class="hljs-number">0</span>;<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">1</span>];
+M1 = scale(<span class="hljs-number">0.5</span>, <span class="hljs-number">1.2</span>);
+</code></pre>
+<pre class="highlight"><code class="">M1 =
+
+    0.5000         0         0
+         0    1.2000         0
+         0         0    1.0000
+</code></pre>
+<p>进行坐标变换：</p>
+<pre class="highlight"><code class="matlab">p = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>];
+p1 = M1 * p';
+</code></pre>
+<p>输出的坐标为：</p>
+<pre class="highlight"><code class="">p1 =
+
+    0.5000
+    2.4000
+    3.0000
+</code></pre>
+<p>使用inv，求逆矩阵，对坐标进行逆变换：</p>
+<pre class="highlight"><code class="matlab">p2 = inv(M1)*p1;
+</code></pre>
+<p>输出：</p>
+<pre class="highlight"><code class="">p2 =
+
+     1
+     2
+     3
+</code></pre>
+
+        </div>
+        <!-- .entry-content -->
+        <div class="single-reward">
+          <div class="reward-open">赏
+            <div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/custom/donate/AliPayQR.jpg"></li>
+                <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/custom/donate/WeChanQR.jpg"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent">
+        </div>
+        <footer class="post-footer">
+          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh"
+              target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i>
+              知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
+          <div class="post-tags">
+          </div>
+          <div class="post-share">
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer><!-- .entry-footer -->
+      </article>
+      <!-- #post-## -->
+	  <div class="toc-container">
+		<div class="toc" style="background: none;"></div>
+	  </div>
+      <section class="post-squares nextprev">
+        
+        
+        <div class="post-nepre half previous">
+          
+            <a href="/2020/05/11/Matlab-Matlab%E5%A6%82%E4%BD%95%E8%BE%93%E5%87%BA%E7%81%B0%E5%BA%A6-grayscale-%E5%9B%BE%E5%83%8F%EF%BC%9F/" rel="prev">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0/images/loader/orange.progress-bar-stripe-loader.svg" data-src=""
+                  style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)"
+                  src="">
+              </div>
+              <span class="label">
+                Previous Post</span>
+              <div class="info">
+                <h3>
+                  [Matlab]Matlab如何输出灰度(grayscale)图像？</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+          
+          
+          
+          <div class="post-nepre half next">
+            
+              <a href="/2020/05/10/Project-Next-%E6%8C%96%E5%9D%91%EF%BC%9A%E9%9A%8F%E6%9C%BA%E8%8E%B7%E5%8F%96P%E7%AB%99%E7%83%AD%E9%97%A8%E5%A3%81%E7%BA%B8%EF%BC%88%EF%BC%89%EF%BC%9F/" rel="next">
+                <div class="background">
+                  <img class="lazyload" src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0/images/loader/orange.progress-bar-stripe-loader.svg" data-src=""
+                    style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;"
+                    onerror="imgError(this,3)" src="">
+                </div>
+                <span class="label">
+                  Next Post</span>
+                <div class="info">
+                  <h3>
+                    [Project Next]挖坑：随机获取P站热门壁纸（）？</h3>
+                  <hr>
+                </div>
+              </a>
+            </div>
+            
+      </section>
+      
+<div id="vcomments"></div>
+<script>
+  window.onload = function(){
+      var valine = new Valine();
+      valine.init({
+        el: '#vcomments',
+        appId: "aFI53WTJYb4qPknwn0l76Lnu-gzGzoHsz",
+        appKey: "2YeldrXS6Hm64JWCCLNgpj3C",
+        path: window.location.pathname,
+        placeholder: "你是我一生只会遇见一次的惊喜 ..."
+      })
+  }
+</script>
+
+      <section class="author-profile">
+        <div class="info" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
+			
+				  <a href="dexfire.cn" class="profile gravatar"><img src="//q2.qlogo.cn/headimg_dl?dst_uin=1944404463&spec=5" itemprop="image"
+					  alt="dexfire" height="70" width="70"></a>
+				  <div class="meta">
+					<span class="title">Author</span>
+					<h3 itemprop="name"><a href="dexfire.cn" itemprop="url" rel="author">dexfire</a></h3>
+				  </div>
+				</div><hr><p><i class="iconfont icon-write"></i></p>
+			
+      </section>
+    </main><!-- #main -->
+  </div><!-- #primary -->
+</div>
+
+
+    </div>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            // PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+    <!-- <footer id="footer">  <div class="outer"> <div id="footer-info" class="inner"> &copy; 2020 dexfire<br> powered_by <a href="http://hexo.io/" target="_blank">Hexo</a> </div> </div> </footer> -->
+
+<footer id="colophon" class="site-footer" role="contentinfo">
+  <div class="site-info">
+    <div class="footertext">
+      <div class="img-preload">
+        <img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/other/wordpress-rotating-ball-o.svg">
+        <img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/other/disqus-preloader.svg"></div>
+      <p class="foo-logo"
+        style="background-image: url('https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/elements/sakura.svg');"></p>
+
+      <!--p style="color: #666666;">Copyright &copy 2018 - 2020 のさくら荘そ. <br> All Rights Reserved.</p-->
+      <p style="font-family: 'Ubuntu', sans-serif;">
+        <span style="color: #666666;">Crafted with
+          <i class="fa fa-heart animated" style="color: #e74c3c;"></i>
+          by
+          <a rel="me" href="https://hello.2heng.xin/@mashiro" target="_blank"
+            style="color: #000000;text-decoration:none;">Mashiro</a></span></p>
+      <p>Copyright &copy 2018 - 2020
+        のさくら荘そ<br>
+        <a href="http://beian.miit.gov.cn/" target="_blank">渝ICP备20005495号</a>
+      </p>
+    </div>
+    <div class="footer-device">
+      <p style="font-family: 'Ubuntu', sans-serif;">
+        <span style="color: #b9b9b9;">Theme
+          <a href="https://github.com/honjun/hexo-theme-sakura" target="_blank"
+            style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Sakura</a>
+          <i class="iconfont icon-sakura rotating" style="color: #ffc0cb;display:inline-block"></i>
+          by
+          <a href="https://2heng.xin/" target="_blank"
+            style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Mashiro</a>&<a
+            href="https://www.hojun.cn/" target="_blank"
+            style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">のさくら荘そ</a>,
+          Powered by Hexo,
+          Hosted by Github Pages</a>
+        </span>
+      </p>
+      <p>
+        <span id="busuanzi_container_site_pv" style="color: #b9b9b9;">
+          本站总访问量<span id="busuanzi_value_site_pv">1</span>次
+        </span>
+      </p>
+    </div>
+
+    <p id="footer-sponsor">
+      <a href="#" target="_blank" alt="CDN Sponsor" rel="nofollow"><img
+          src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/support/Tencent_Cloud_logo.svg" alt="CDN Sponsor"
+          style="height: 1.5em;"></a>&nbsp;&nbsp;&nbsp;<a href="https://www.vultr.com/?ref=7196564" target="_blank"
+        alt="Server provider" rel="nofollow"><img
+          src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/support/vultr_logo__on-white.svg" alt="Server provider"
+          style="height: 1.5em;"></a>&nbsp;&nbsp;&nbsp;<a href="#" target="_blank" alt="Free CDN" rel="nofollow"><img
+          src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/support/baidu_cdn.svg" alt="jsDelivr"
+          style="height: 1.5em;"></a>&nbsp;&nbsp;&nbsp;<a href="https://www.google.com/intl/ja/analytics/"
+        target="_blank" alt="Analytics solution" rel="nofollow"><img
+          src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/support/Google.svg" alt="Google Analytics"
+          style="height: 1.5em; "></a>
+    </p>
+  </div>
+  <!-- .site-info -->
+</footer>
+
+<div class="changeSkin-gear no-select" style="bottom: -999px;">
+    <div class="keys">
+        <span id="open-skinMenu">
+            <i class="iconfont icon-gear inline-block rotating"></i>&nbsp; 切换主题 | SCHEME TOOL
+        </span>
+    </div>
+</div>
+<div class="skin-menu no-select">
+    <div class="theme-controls row-container">
+        <ul class="menu-list">
+            <li id="white-bg">
+                <i class="fa fa-television" aria-hidden="true"></i>
+            </li>
+            <!--Default-->
+            <li id="sakura-bg">
+                <i class="iconfont icon-sakura"></i>
+            </li>
+            <!--Sakura-->
+            <li id="gribs-bg">
+                <i class="fa fa-slack" aria-hidden="true"></i>
+            </li>
+            <!--Grids-->
+            <li id="KAdots-bg">
+                <i class="iconfont icon-dots"></i>
+            </li>
+            <!--Dots-->
+            <li id="totem-bg">
+                <i class="fa fa-superpowers" aria-hidden="true"></i>
+            </li>
+            <!--Orange-->
+            <li id="pixiv-bg">
+                <i class="iconfont icon-pixiv"></i>
+            </li>
+            <!--Start-->
+            <li id="bing-bg">
+                <i class="iconfont icon-bing"></i>
+            </li>
+            <!--Bing-->
+            <li id="dark-bg">
+                <i class="fa fa-moon-o" aria-hidden="true"></i>
+            </li>
+            <!--Night-->
+        </ul>
+    </div>
+    <div class="font-family-controls row-container">
+        <button type="button" class="control-btn-serif selected" data-mode="serif"
+            onclick="mashiro_global.font_control.change_font()">Serif</button>
+        <button type="button" class="control-btn-sans-serif" data-mode="sans-serif"
+            onclick="mashiro_global.font_control.change_font()">Sans Serif</button>
+    </div>
+</div>
+<canvas id="night-mode-cover"></canvas>
+<div class="prpr" style="visibility: hidden;">
+    <div class="mashiro-tips" style="opacity: 0;">你一直相信的事，也让我相信吧。活着，是件美好的事。</div>
+    <canvas id="live2d" width="280" height="250" class="live2d"></canvas>
+</div>
+<div class="live2d-tool hide-live2d no-select" onclick="hide_live2d()">
+    <div class="keys">Show</div>
+</div>
+<div class="live2d-tool switch-live2d no-select" onclick="switch_pio()">
+    <div class="keys">Switch</div>
+</div>
+<div class="live2d-tool save-live2d no-select" onclick="save_pio()">
+    <div class="keys">Save</div>
+</div>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/js/lib.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/js/InsightSearch.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/js/jquery.fancybox.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/js/zoom.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/js/sakura-app_v3.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/js/autoptimize.js"></script>
+<!-- //cdn1.lncld.net/static/js/3.0.4/av-min.js -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/js/av-min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/js/botui.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/js/custom.js"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<!-- Valine评论 -->>
+<script type="text/javascript" src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<!-- 不蒜子 网页计数器 -->
+<script async type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- TOC目录 -->
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+
+<script type="text/javascript">
+  /* <![CDATA[ */
+  if (/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+    var Poi = {
+      "pjax": "1",
+      "movies": {
+        "url": "https://cdn.jsdelivr.net/gh/honjun/hojun@1.2",
+        "name": "Unbroken.mp4",
+        "live": "close"
+      },
+      "windowheight": "fixed",
+      "codelamp": "close",
+      "ajaxurl": "",
+      "order": "asc",
+      "formpostion": "bottom"
+    };
+  } else {
+    var Poi = {
+      "pjax": "1",
+      "movies": {
+        "url": "https://cdn.jsdelivr.net/gh/honjun/hojun@1.2",
+        "name": "Unbroken.mp4",
+        "live": "open"
+      },
+      "windowheight": "auto",
+      "codelamp": "close",
+      "ajaxurl": "",
+      "order": "asc",
+      "formpostion": "bottom"
+    };
+  }
+  /* ]]> */
+</script>
+
+
+
+
+
+
+
+
+<!-- baidu Analytics -->
+<script>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement('script');
+        hm.src = 'https://hm.baidu.com/hm.js?18d22dda3acd079101f04a6eacf3781e';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+<script>
+  $(document).ready(function () {
+    // 处理目录
+    if ($(".toc").length > 0 && document.body.clientWidth > 1200) {
+      if ($(".pattern-center").length > 0) { //有图的情况
+        tocbot.init({
+          // Where to render the table of contents.
+          tocSelector: '.toc', // 放置目录的容器
+          // Where to grab the headings to build the table of contents.
+          contentSelector: '.entry-content', // 正文内容所在
+          // Which headings to grab inside of the contentSelector element.
+          scrollSmooth: true,
+          headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+          collapseDepth: 3,
+          headingsOffset: -300,
+          scrollSmoothOffset: -85
+        });
+      } else {
+        tocbot.init({
+          // Where to render the table of contents.
+          tocSelector: '.toc', // 放置目录的容器
+          // Where to grab the headings to build the table of contents.
+          contentSelector: '.entry-content', // 正文内容所在
+          // Which headings to grab inside of the contentSelector element.
+          scrollSmooth: true,
+          headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+          collapseDepth: 3,
+          headingsOffset: -85,
+          scrollSmoothOffset: -85
+        });
+      }
+      var offsetTop = $('.toc')
+        .offset()
+        .top - 95;
+      window.onscroll = function () {
+        var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+        if (scrollTop >= offsetTop) {
+          $('.toc').addClass('toc-fixed');
+        } else {
+          $('.toc').removeClass('toc-fixed');
+        }
+      }
+    }
+  });
+</script>
+
+    <!-- openNav -->
+    <div class="openNav no-select">
+      <div class="iconflat no-select">
+        <div class="icon"></div>
+      </div>
+      <div class="site-branding">
+        
+        <h1 class="site-title">
+          <a href="">
+            
+          </a>
+        </h1>
+        
+      </div>
+    </div>
+  </section>
+
+  <div id="mo-nav" class="">
+  <div class="m-avatar">
+    <img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/custom/avatar.jpg">
+  </div>
+  <p
+    style="text-align: center; color: #333; font-weight: 900; font-family: 'Ubuntu', sans-serif; letter-spacing: 1.5px">
+    Dexfireのさくら荘そ</p>
+  <p style="text-align: center; word-spacing: 20px;">
+    
+    
+    <a href="http://github.com/honjun" class="fa fa-github" target="_blank"
+      style="color: #333; margin-left:20px"></a>
+    
+    <a href="http://weibo.com/mashirozx?is_all=1" class="fa fa-weibo" target="_blank"
+      style="color: #dd4b39; margin-left:20px"></a>
+    
+    <a href="https://wpa.qq.com/msgrd?v=3&uin=954655431&site=qq&menu=yes" class="fa fa-qq" target="_blank"
+      style="color: #25c6fe; margin-left:20px"></a>
+    
+    
+  </p>
+  <ul id="menu-new-1" class="menu">
+    
+    <li>
+      <a href="/">
+        <span class="faa-parent animated-hover">
+          <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
+          主页
+        </span>
+      </a>
+      
+    </li>
+    
+    <li>
+      <a href="/archives">
+        <span class="faa-parent animated-hover">
+          <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
+          时间线
+        </span>
+      </a>
+      
+      <ul class="sub-menu">
+        
+        <li>
+          <a href="/categories/%E6%8A%80%E6%9C%AF/">
+            <i class="fa fa-code" aria-hidden="true"></i>
+            技术
+          </a>
+        </li>
+        
+        <li>
+          <a href="/categories/%E7%94%9F%E6%B4%BB/">
+            <i class="fa fa-file-text-o" aria-hidden="true"></i>
+            生活
+          </a>
+        </li>
+        
+        <li>
+          <a href="/categories/%E8%B5%84%E6%BA%90/">
+            <i class="fa fa-cloud-download" aria-hidden="true"></i>
+            资源
+          </a>
+        </li>
+        
+        <li>
+          <a href="/categories/%E9%9A%8F%E6%83%B3/">
+            <i class="fa fa-commenting-o" aria-hidden="true"></i>
+            随想
+          </a>
+        </li>
+        
+        <li>
+          <a href="/categories/%E8%BD%AC%E8%BD%BD/">
+            <i class="fa fa-book" aria-hidden="true"></i>
+            转载
+          </a>
+        </li>
+        
+      </ul>
+      
+    </li>
+    
+    <li>
+      <a href="javascript:;">
+        <span class="faa-parent animated-hover">
+          <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+          清单
+        </span>
+      </a>
+      
+      <ul class="sub-menu">
+        
+        <li>
+          <a href="/tags/%E6%82%A6%E8%AF%BB/">
+            <i class="fa fa-th-list faa-bounce" aria-hidden="true"></i>
+            书单
+          </a>
+        </li>
+        
+        <li>
+          <a href="/bangumi/">
+            <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
+            番组
+          </a>
+        </li>
+        
+        <li>
+          <a href="/music/">
+            <i class="fa fa-headphones" aria-hidden="true"></i>
+            歌单
+          </a>
+        </li>
+        
+        <li>
+          <a href="/tags/%E5%9B%BE%E9%9B%86/">
+            <i class="fa fa-photo" aria-hidden="true"></i>
+            图集
+          </a>
+        </li>
+        
+      </ul>
+      
+    </li>
+    
+    <li>
+      <a href="/comment/">
+        <span class="faa-parent animated-hover">
+          <i class="fa  fa-pencil-square-o faa-tada" aria-hidden="true"></i>
+          留言板
+        </span>
+      </a>
+      
+    </li>
+    
+    <li>
+      <a href="/links/">
+        <span class="faa-parent animated-hover">
+          <i class="fa  fa-link faa-shake" aria-hidden="true"></i>
+          友人帐
+        </span>
+      </a>
+      
+    </li>
+    
+    <li>
+      <a href="/donate/">
+        <span class="faa-parent animated-hover">
+          <i class="fa  fa-heart faa-pulse" aria-hidden="true"></i>
+          咖啡
+        </span>
+      </a>
+      
+    </li>
+    
+    <li>
+      <a href="/">
+        <span class="faa-parent animated-hover">
+          <i class="fa  fa-leaf faa-wrench" aria-hidden="true"></i>
+          关于
+        </span>
+      </a>
+      
+      <ul class="sub-menu">
+        
+        <li>
+          <a href="/about/">
+            <i class="fa fa-meetup" aria-hidden="true"></i>
+            我
+          </a>
+        </li>
+        
+        <li>
+          <a href="/theme-sakura/">
+            <i class="fa iconfont icon-sakura" aria-hidden="true"></i>
+            主题
+          </a>
+        </li>
+        
+        <li>
+          <a href="/theme-sakura/update_logs.html">
+            <i class="fa fa-ravelry" aria-hidden="true"></i>
+            更新
+          </a>
+        </li>
+        
+        <li>
+          <a href="/lab/">
+            <i class="fa fa-cogs" aria-hidden="true"></i>
+            实验室
+          </a>
+        </li>
+        
+      </ul>
+      
+    </li>
+    
+    <li>
+      <a href="/atom.xml">
+        <span class="faa-parent animated-hover">
+          <i class="fa  fa-rss faa-pulse" aria-hidden="true"></i>
+          RSS
+        </span>
+      </a>
+      
+    </li>
+    
+  </ul>
+  <p style="text-align: center; font-size: 13px; color: #b9b9b9;">&copy 2020 hexo-sakura</p>
+</div>
+<button onclick="topFunction()" class="mobile-cd-top" id="moblieGoTop" title="Go to top" style="display: none;"><i
+    class="fa fa-chevron-up" aria-hidden="true"></i></button>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<!-- require MetingJS -->
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+<style>
+  .aplayer .aplayer-lrc {
+    height: 35px;
+  }
+  .aplayer .aplayer-lrc p{
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 18px !important;
+  }
+  .aplayer .aplayer-lrc p.aplayer-lrc-current{
+    color: #FF1493;
+  }
+  .aplayer.aplayer-narrow .aplayer-body{
+    left: -66px !important;
+  }
+  .aplayer.aplayer-fixed .aplayer-lrc {
+    display: none;
+  }
+  .aplayer .aplayer-lrc.aplayer-lrc-hide {
+      display:none !important;
+  }
+  .aplayer.aplayer-fixed .lrc-show {
+    display: block;
+    background: rgba(255, 255, 255, 0.8);
+  }
+</style>
+<meting-js
+
+    id="2660651585"
+
+    server="netease"
+
+    type="playlist"
+
+    fixed="true"
+
+    autoplay="false"
+
+    loop="all"
+
+    order="random"
+
+    preload="auto"
+
+    volume="0.7"
+
+    mutex="true"
+
+</meting-js>
+<script>
+  $(function(){
+    $('body').on('click', '.aplayer', function(){
+      if($('.aplayer-button').hasClass('aplayer-play')) {
+        $('.aplayer-lrc').removeClass('lrc-show');
+      } else {
+        $('.aplayer-lrc').addClass('lrc-show');
+      }
+    })
+  });
+</script>
+</body>
+
+</html>

@@ -1,0 +1,2047 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  
+  
+    <meta name="description" content="樱花博客，一个记录个人成长的地方。">
+  
+  <meta name="keywords" content="关键词,关键词,关键词" />
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="author" content="dexfire, dexfire@gmail.com" />
+  
+  <title itemprop="name">
+    
+    2020-04-05-【加密】京东阅读epub解密 |
+    
+    你终于回来啦~ ♪(＾∀＾●)ﾉ
+  </title>
+  
+  <link rel="shortcut icon" href="/images/favicon.ico">
+  
+  <meta http-equiv="x-dns-prefetch-control" content="on">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Noto+SerifMerriweather|Merriweather+Sans|Source+Code+Pro|Ubuntu:400,700|Noto+Serif+SC"
+    media="all">
+  <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+  <link rel="stylesheet" id="saukra_css-css" href="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/css/autoptimize.css" type="text/css" media="all">
+  <!-- <link rel="stylesheet" id="saukra_css-css" href="/css/style.css" type="text/css" media="all"> -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/css/lib.css" type="text/css" media="all">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/css/font.css" type="text/css" media="all">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/css/insight.css" type="text/css" media="all">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/css/jquery.fancybox.min.css" type="text/css" media="all">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/css/zoom.css" type="text/css" media="all">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/css/sharejs.css" type="text/css" media="all">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/css/custom.css" type="text/css" media="all">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+  <script>
+    /*Initial Variables*/
+    var mashiro_option = new Object();
+    var mashiro_global = new Object();
+    mashiro_option.NProgressON = true;
+    /*
+     * 邮箱信息之类的东西可以填在这里，这些js变量基本都作用于sakura-app.js
+     * 这样的设置仅是为了方便在基于PHP开发的主题中设置js变量，既然移植到了Node上，我想或许可以精简这一逻辑吧
+     */
+    mashiro_option.email_domain = "";
+    mashiro_option.email_name = "";
+    mashiro_option.cookie_version_control = "";
+    mashiro_option.qzone_autocomplete = false;
+    mashiro_option.site_name = "Dexfireのさくら荘そ";
+    mashiro_option.author_name = "のさくら荘そ";
+    mashiro_option.site_url = "https://dexfire.cn";
+    mashiro_option.v_appId = "aFI53WTJYb4qPknwn0l76Lnu-gzGzoHsz";
+    mashiro_option.v_appKey = "2YeldrXS6Hm64JWCCLNgpj3C";
+    mashiro_option.mathjax = "0";
+    mashiro_option.qq_api_url = "https://api.mashiro.top/qqinfo/";
+    mashiro_option.qq_avatar_api_url = "https://api.mashiro.top/qqinfo/";
+                    // mashiro_option.float_player_on = true;
+
+    /*End of Initial Variables*/
+  </script>
+  <script type="text/javascript">
+    var bg = "https://cdn.jsdelivr.net/gh/dexfire/cdn/images/cover/IMG_0001.JPG,https://cdn.jsdelivr.net/gh/dexfire/cdn/images/cover/IMG_0002.JPG,https://cdn.jsdelivr.net/gh/dexfire/cdn/images/cover/IMG_7631.JPG,https://cdn.jsdelivr.net/gh/dexfire/cdn/images/cover/IMG_7632.JPG,https://cdn.jsdelivr.net/gh/dexfire/cdn/images/cover/IMG_7633.JPG,https://cdn.jsdelivr.net/gh/dexfire/cdn/images/cover/IMG_7634.JPG,https://cdn.jsdelivr.net/gh/dexfire/cdn/images/cover/IMG_7635.JPG,https://cdn.jsdelivr.net/gh/dexfire/cdn/images/cover/IMG_7636.JPG,https://cdn.jsdelivr.net/gh/dexfire/cdn/images/cover/IMG_7638.JPG,https://cdn.jsdelivr.net/gh/dexfire/cdn/images/cover/IMG_7639.JPG,https://cdn.jsdelivr.net/gh/dexfire/cdn/images/cover/IMG_7642.JPG,https://cdn.jsdelivr.net/gh/dexfire/cdn/images/cover/IMG_7643.jpg,https://cdn.jsdelivr.net/gh/dexfire/cdn/images/cover/IMG_7725.jpg,https://cdn.jsdelivr.net/gh/dexfire/cdn/images/cover/IMG_7760.jpg,https://dexfire.cn/img/20200614001.jpg".split(",");
+    var bgindex = Math.floor(Math.random() * bg.length);
+    if (!!window.ActiveXObject || "ActiveXObject" in window) { //is IE?
+      alert('朋友，IE浏览器未适配哦~');
+    }
+  </script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body
+  class="page-template page-template-user page-template-page-analytics page-template-userpage-analytics-php page page-id-1297 chinese-font serif isWebKit">
+  <div class="scrollbar" id="bar"></div>
+  <a href="#" class="cd-top faa-float animated"></a>
+  <section id="main-container">
+    <div class="headertop filter-dot" style="height: 0;">
+  <div id="banner_wave_1"></div>
+  <div id="banner_wave_2"></div>
+  <figure id="centerbg" class="centerbg" onerror="randBG()">
+    <div class="focusinfo no-select">
+      <div class="header-tou">
+        <a href="https://dexfire.cn">
+          <img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/custom/avatar.jpg">
+        </a>
+      </div>
+      <div class="header-info">
+        <p>热爱是最终的救赎，勇敢是唯一的退路~❤</p>
+        <div class="top-social_v2">
+          <li id="bg-pre">
+            <img class="flipx" src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/other/next-b.svg">
+          </li>
+          
+            
+              
+                <li>
+                  <a href="http://github.com/honjun" target="_blank" class="social-github" title="github">
+                    <img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/social/github.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="http://weibo.com/mashirozx?is_all=1" target="_blank" class="social-github" title="sina">
+                    <img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/social/sina.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="http://weibo.com/mashirozx?is_all=1" target="_blank" class="social-github" title="wangyiyun">
+                    <img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/social/wangyiyun.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="http://weibo.com/mashirozx?is_all=1" target="_blank" class="social-github" title="zhihu">
+                    <img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/social/zhihu.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="http://weibo.com/mashirozx?is_all=1" target="_blank" class="social-github" title="email">
+                    <img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/social/email.svg">
+                  </a>
+                </li>
+              
+            
+              
+                <li class="wechat">
+                  <a href="/#">
+                    <img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/social/wechat.png">
+                  </a>
+                  <div class="wechatInner">
+                    <img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/custom/wechat.jpg">
+                  </div>
+                </li>
+              
+            
+              
+                <li class="wechat">
+                  <a href="/#">
+                    <img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/social/wechat.png">
+                  </a>
+                  <div class="wechatInner">
+                    <img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/custom/wechat.jpg">
+                  </div>
+                </li>
+              
+            
+          
+          <li id="bg-next">
+            <img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/other/next-b.svg">
+          </li>
+        </div>
+      </div>
+    </div>
+  </figure>
+  <div id="video-container" style="">
+    <video style="object-fit: fill" id="bgvideo" class="video" video-name="" src="" width="auto" preload="auto">
+    </video>
+    <div id="video-btn" class="loadvideo videolive">
+    </div>
+    <div id="video-add">
+    </div>
+    <div class="video-stu">
+    </div>
+  </div>
+  <div class="headertop-down faa-float animated" onclick="headertop_down()">
+    <span>
+      <i class="fa fa-chevron-down" aria-hidden="true">
+      </i>
+    </span>
+  </div>
+</div>
+    <div id="page" class="site wrapper">
+      <header class="site-header no-select gizle sabit" role="banner">
+  <div class="site-top">
+    <div class="site-branding">
+      <span class="site-title">
+        <span class="logolink moe-mashiro">
+          <a href="/">
+            <span class="sakurasono">Dexfire</span>
+            <span class="shironeko">のさくら荘そ</span>
+          </a>
+        </span>
+      </span>
+    </div>
+    <div class="searchbox search-form-submit">
+      <i class="iconfont js-toggle-search iconsearch icon-search">
+      </i>
+    </div>
+    <div id="show-nav" class="showNav mobile-fit">
+      <div class="line line1">
+      </div>
+      <div class="line line2">
+      </div>
+      <div class="line line3">
+      </div>
+    </div>
+    <div class="lower-cantiner">
+      <div class="lower">
+        <nav class="mobile-fit-control hide">
+          <ul id="menu-new" class="menu">
+            
+              <li>
+                <a href="/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
+                    主页
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
+                    时间线
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/categories/%E6%8A%80%E6%9C%AF/">
+                          <i class="fa fa-code" aria-hidden="true"></i>
+                          技术
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/%E7%94%9F%E6%B4%BB/">
+                          <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                          生活
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/%E8%B5%84%E6%BA%90/">
+                          <i class="fa fa-cloud-download" aria-hidden="true"></i>
+                          资源
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/%E9%9A%8F%E6%83%B3/">
+                          <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                          随想
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/%E8%BD%AC%E8%BD%BD/">
+                          <i class="fa fa-book" aria-hidden="true"></i>
+                          转载
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="javascript:;">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+                    清单
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/tags/%E6%82%A6%E8%AF%BB/">
+                          <i class="fa fa-th-list faa-bounce" aria-hidden="true"></i>
+                          书单
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/bangumi/">
+                          <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
+                          番组
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/music/">
+                          <i class="fa fa-headphones" aria-hidden="true"></i>
+                          歌单
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/tags/%E5%9B%BE%E9%9B%86/">
+                          <i class="fa fa-photo" aria-hidden="true"></i>
+                          图集
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="/comment/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-pencil-square-o faa-tada" aria-hidden="true"></i>
+                    留言板
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/links/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-link faa-shake" aria-hidden="true"></i>
+                    友人帐
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/donate/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-heart faa-pulse" aria-hidden="true"></i>
+                    咖啡
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-leaf faa-wrench" aria-hidden="true"></i>
+                    关于
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/about/">
+                          <i class="fa fa-meetup" aria-hidden="true"></i>
+                          我
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/theme-sakura/">
+                          <i class="fa iconfont icon-sakura" aria-hidden="true"></i>
+                          主题
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/theme-sakura/update_logs.html">
+                          <i class="fa fa-ravelry" aria-hidden="true"></i>
+                          更新
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/lab/">
+                          <i class="fa fa-cogs" aria-hidden="true"></i>
+                          实验室
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="/atom.xml">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-rss faa-pulse" aria-hidden="true"></i>
+                    RSS
+                  </span>
+                </a>
+                
+              </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+<div class="pattern-center-blank"></div>
+
+<div id="content" class="site-content">
+  <div id="primary" class="content-area">
+    <main id="main" class="site-main" role="main">
+      <article id="post-1"
+        class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
+        
+        <header class="entry-header">
+          <h1 class="entry-title">2020-04-05-【加密】京东阅读epub解密</h1>
+          <p class="entry-census">&nbsp;·&nbsp;2020-4-29&nbsp;·&nbsp;<span
+              id="busuanzi_value_page_pv"></span>次阅读</p>
+          </p>
+
+          <hr>
+        </header>
+        
+        <div class="entry-content">
+          <p>灵感来源于： <a href="https://bbs.pediy.com/thread-223695.htm" target="_blank" rel="noopener"></a></p>
+<p>京东阅读android版下载jeb（epub格式）电子书后，book.db文件里有各本书解密用到的cert和random，将jeb解压后得到的文件用libjdrdrm.so里的decrypt函数解密就可得到原始内容。除了图片文件，其他所有文件都是加密的，需要用decrypt解密</p>
+<p>首先，下载京东阅读APP，抽取其中的 *.so 库文件。</p>
+<pre class="highlight"><code class="">libBDSpeechDecoder_V1.so
+libbd_etts.so
+libBugly.so
+libcrypto.so
+libdecryptionoperation.so
+libDecryptorJni.so
+libgnustl_shared.so
+libjcore121.so
+libjcore214.so
+libjdcomics.so
+libjdCorereadingengine.so
+libjdJmaEncryptUtil.so
+libjdopus.so
+libjdrdrm.so
+libjdrebr.so
+liblbs.so
+libMtaNativeCrash_v2.so
+librtmp-jni.so
+libsecure.so
+libSecurity.so
+libsqlcipher.so
+libssl.so
+libzbar.so
+libZBarDecoder.so
+</code></pre>
+<p>这里主要使用的是 <code>libsecure.so</code> <code>libjdrdrm.so</code> 其中，后者负责主要加密过程。</p>
+<p>这里我们需要获得加密解密所用到的证书，也就是存放于 <code>book.db</code> 中的文件。</p>
+<p>而这个文件是经过加密的，</p>
+<p>classes2.dex<br />
+<code>com.jd.app.reader.downloader.core.data.database.dao.chapterdivisionsbook.DaoMaster</code></p>
+<pre class="highlight"><code class="java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">OpenHelper</span><span class="hljs-params">(Context context, String str)</span> </span>{
+    <span class="hljs-keyword">super</span>(context, str, <span class="hljs-number">6</span>);
+}
+
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">OpenHelper</span><span class="hljs-params">(Context context, String str, CursorFactory cursorFactory)</span> </span>{
+    <span class="hljs-keyword">super</span>(context, str, cursorFactory, <span class="hljs-number">6</span>);
+}
+</code></pre>
+<h2 id="涉及到的加密算法"><a class="markdownIt-Anchor" href="#涉及到的加密算法"></a> 涉及到的加密算法</h2>
+<ul>
+<li>AES, Rijndael算法 <a href="https://blog.csdn.net/thinkerleo1997/article/details/80253635" target="_blank" rel="noopener">https://blog.csdn.net/thinkerleo1997/article/details/80253635</a><br />
+<img src="/img/QQ%E6%88%AA%E5%9B%BE20200405234157.png" alt="AES" /><br />
+这个是在 <code>libjdrdrm.so</code> 的符号表中发现的信息，也就是这个算法中采用了AES的算法，但细节可能有变化，需要使用其他的方法来探索。</li>
+<li>数据库，使用的是 sqlcipher 的简单加密算法，解密出来就是正确的数据库文件，密匙存放在 classes.dex 的字节码中。</li>
+<li><code>hmacSHA1</code> 是一种需要密码的哈希散列计算算法。</li>
+</ul>
+<h2 id="关于-bookdb-的线索"><a class="markdownIt-Anchor" href="#关于-bookdb-的线索"></a> 关于 <code>book.db</code> 的线索</h2>
+<p>以下的加密使用的都是明文密码 <code>password</code><br />
+实测发现，这个加密，仅仅使用了 <code>sqlcipher</code> 进行一次加密，其中的书名是乱码，应当有二次加密的过程才对。</p>
+<p><a href="https://github.com/CovenantEyes/sqlcipher-windows/releases" target="_blank" rel="noopener">sqlcipher-windows</a></p>
+<ul>
+<li><code>book.db</code> 的加密密匙为：<code>SessionBookDataUtil</code></li>
+<li><code>book.db</code> 的加密密匙为：<code>SessionBookDataUtil</code></li>
+</ul>
+<p><strong>用 sqlcipher 解密流程：</strong></p>
+<ol>
+<li>首先提取出加密的 <code>.db</code> 文件，比如 <code>books.db</code> 。<br />
+这个文件当中存放这比较重要的两个信息：<code>key</code> <code>random</code></li>
+<li>输出解密的数据库文件：</li>
+</ol>
+<pre class="highlight"><code class="sql">
+sqlite&gt; attach database "E:\books.db" as books key "SessionBookDataUtil";
+sqlite&gt; .databases
+seq  name             file
+<span class="hljs-comment">---  ---------------  ----------------------------------------------------------</span>
+0    main             E:\books_unencrypted.db
+2    books            E:\books.db
+
+sqlite&gt; .backup <span class="hljs-string">"books"</span> <span class="hljs-string">"E:\books_decrypted.db"</span>
+
+</code></pre>
+<p>重点：</p>
+<p><code>attach database &quot;E:\books.db&quot; as books key &quot;SessionBookDataUtil&quot;;</code><br />
+<code>.backup &quot;books&quot; &quot;E:\books_decrypted.db&quot;;</code></p>
+<h3 id="greendao"><a class="markdownIt-Anchor" href="#greendao"></a> greenDAO</h3>
+<p>classes3.dex<br />
+<code>com.jingdong.app.reader.data.a.a.z</code><br />
+这里使用了 greenrobot 的开源库 <code>DaoMaster</code> 数据库，用于对数据进行加密。</p>
+<blockquote>
+<p>greenDAO: Android ORM for your SQLite database<br />
+Note: for new apps we recommend ObjectBox, a new object-oriented database that is much faster than SQLite and easier to use. For existing apps based on greenDAO we offer DaoCompat for an easy switch (see also the announcement).</p>
+</blockquote>
+<blockquote>
+<p>greenDAO Android ORMgreenDAO is an open source Android ORM making development for SQLite databases fun again. It relieves developers from dealing with low-level database requirements while saving development time. SQLite is an awesome embedded relational database. Still, writing SQL and parsing query results are quite tedious and time-consuming tasks. greenDAO frees you from these by mapping Java objects to database tables (called ORM, “object/relational mapping”). This way you can store, update, delete, and query for Java objects using a simple object oriented API.</p>
+</blockquote>
+<p><a href="https://greenrobot.org/greendao/" target="_blank" rel="noopener">greenDAO</a></p>
+<pre class="highlight"><code class="java"><span class="hljs-keyword">import</span> com.jingdong.app.reader.tools.base.b;
+
+<span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> DaoSession a;
+
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> DaoSession <span class="hljs-title">a</span><span class="hljs-params">(Context context)</span> </span>{
+    AssertUtil.assertApplicationContext(context);
+    <span class="hljs-keyword">if</span> (a == <span class="hljs-keyword">null</span>) {
+        <span class="hljs-keyword">synchronized</span> (z<span class="hljs-class">.<span class="hljs-keyword">class</span>) </span>{
+            DaoMaster daoMaster;
+            a aVar = <span class="hljs-keyword">new</span> a(context, <span class="hljs-string">"book.db"</span>);
+            <span class="hljs-keyword">if</span> (b.a) {
+                daoMaster = <span class="hljs-keyword">new</span> DaoMaster(aVar.getWritableDb());
+            } <span class="hljs-keyword">else</span> {
+                daoMaster = <span class="hljs-keyword">new</span> DaoMaster(aVar.getEncryptedWritableDb(<span class="hljs-string">"SessionBookDataUtil"</span>));
+            }
+            a = daoMaster.newSession();
+        }
+    }
+    <span class="hljs-keyword">return</span> a;
+}
+</code></pre>
+<p>这是一个 <code>public</code> <code>static</code> 变量类，用于存放全局变量的。<br />
+classes.dex<br />
+<code>com.jingdong.app.reader.tools.base.b</code></p>
+<pre class="highlight"><code class="java"><span class="hljs-keyword">package</span> com.jingdong.app.reader.tools.base;
+
+<span class="hljs-keyword">import</span> java.util.Map;
+
+<span class="hljs-comment">/* compiled from: BuildConfigUtil */</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">b</span> </span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">boolean</span> a;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> String b;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> c;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> String d;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> String e;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> String f;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> String g;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> String h;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> String i;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> String j;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> String k;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> Map&lt;String, String&gt; l;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> m;
+}
+</code></pre>
+<p>初始化代码在这里：<br />
+这里的 <code>b.a</code> 应该是一个 debug 标志，用于调试过程中取消加密流程。</p>
+<pre class="highlight"><code class="java"><span class="hljs-keyword">import</span> com.jingdong.app.reader.tools.base.b;
+
+<span class="hljs-meta">@Keep</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">JdReaderApp</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">BaseApplication</span> </span>{
+        
+    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">initPreloadedCPA</span><span class="hljs-params">()</span> </span>{
+        String str = <span class="hljs-string">"100000"</span>;
+        <span class="hljs-keyword">try</span> {
+            String[] stringArray = getResources().getStringArray(<span class="hljs-number">2130903044</span>);
+            String[] stringArray2 = getResources().getStringArray(<span class="hljs-number">2130903043</span>);
+            String[] stringArray3 = getResources().getStringArray(<span class="hljs-number">2130903042</span>);
+            <span class="hljs-keyword">if</span> (stringArray.length == stringArray2.length &amp;&amp; stringArray.length == stringArray3.length) {
+                <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; stringArray.length; i++) {
+                    StringBuilder stringBuilder = <span class="hljs-keyword">new</span> StringBuilder();
+                    stringBuilder.append(<span class="hljs-string">"system/etc/"</span>);
+                    stringBuilder.append(stringArray[i]);
+                    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">new</span> File(stringBuilder.toString()).exists()) {
+                        CharSequence charSequence = stringArray2[i];
+                        CharSequence charSequence2 = stringArray3[i];
+                        <span class="hljs-keyword">if</span> (!TextUtils.isEmpty(charSequence) &amp;&amp; !TextUtils.isEmpty(charSequence2)) {
+                            b.f = charSequence;
+                            b.g = charSequence2;
+                            b.h = <span class="hljs-string">"yd001"</span>;
+                            b.i = str;
+                            b.j = str;
+                            StringBuilder stringBuilder2 = <span class="hljs-keyword">new</span> StringBuilder();
+                            stringBuilder2.append(b.g);
+                            stringBuilder2.append(<span class="hljs-string">"_"</span>);
+                            stringBuilder2.append(b.h);
+                            b.e = stringBuilder2.toString();
+                            <span class="hljs-keyword">return</span>;
+                        }
+                        <span class="hljs-keyword">return</span>;
+                    }
+                }
+            }
+        } <span class="hljs-keyword">catch</span> (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">initBasicInfo</span><span class="hljs-params">()</span> </span>{
+        StringBuilder stringBuilder;
+        b.a = <span class="hljs-keyword">false</span>;
+        b.b = <span class="hljs-string">"com.jingdong.app.reader.campus"</span>;
+        b.c = <span class="hljs-number">3030002</span>;
+        b.d = <span class="hljs-string">"3.3.0"</span>;
+        b.k = <span class="hljs-string">"college"</span>;
+        com.meituan.android.walle.b a = f.a(<span class="hljs-keyword">this</span>);
+        String str = <span class="hljs-string">"_"</span>;
+        <span class="hljs-keyword">if</span> (a != <span class="hljs-keyword">null</span>) {
+            b.f = a.a();
+            b.l = a.b();
+            <span class="hljs-keyword">if</span> (!com.jingdong.app.reader.tools.k.a.a(b.l)) {
+                b.i = (String) b.l.get(<span class="hljs-string">"unionId"</span>);
+                b.j = (String) b.l.get(<span class="hljs-string">"unionSiteId"</span>);
+                b.g = (String) b.l.get(<span class="hljs-string">"partnerID"</span>);
+                b.h = (String) b.l.get(<span class="hljs-string">"subPartnerID"</span>);
+                <span class="hljs-keyword">if</span> (!(TextUtils.isEmpty(b.g) || TextUtils.isEmpty(b.h))) {
+                    stringBuilder = <span class="hljs-keyword">new</span> StringBuilder();
+                    stringBuilder.append(b.g);
+                    stringBuilder.append(str);
+                    stringBuilder.append(b.h);
+                    b.e = stringBuilder.toString();
+                }
+            }
+        }
+        <span class="hljs-keyword">if</span> (TextUtils.isEmpty(b.f)) {
+            b.f = <span class="hljs-string">"guanwang"</span>;
+        }
+        <span class="hljs-keyword">if</span> (TextUtils.isEmpty(b.g)) {
+            b.g = <span class="hljs-string">"hybt100"</span>;
+        }
+        <span class="hljs-keyword">if</span> (TextUtils.isEmpty(b.h)) {
+            b.h = <span class="hljs-string">"hybt103"</span>;
+        }
+        String str2 = <span class="hljs-string">"100000"</span>;
+        <span class="hljs-keyword">if</span> (TextUtils.isEmpty(b.i)) {
+            b.i = str2;
+        }
+        <span class="hljs-keyword">if</span> (TextUtils.isEmpty(b.j)) {
+            b.j = str2;
+        }
+        <span class="hljs-keyword">if</span> (!(!TextUtils.isEmpty(b.e) || TextUtils.isEmpty(b.g) || TextUtils.isEmpty(b.h))) {
+            stringBuilder = <span class="hljs-keyword">new</span> StringBuilder();
+            stringBuilder.append(b.g);
+            stringBuilder.append(str);
+            stringBuilder.append(b.h);
+            b.e = stringBuilder.toString();
+        }
+        initPreloadedCPA();
+        fix();
+    }
+
+    
+}
+</code></pre>
+<h3 id="章节信息的加密-chapter_divisions_book_storedb-sessionchapterdivisionsbookstoredatautil"><a class="markdownIt-Anchor" href="#章节信息的加密-chapter_divisions_book_storedb-sessionchapterdivisionsbookstoredatautil"></a> 章节信息的加密 chapter_divisions_book_store.db  SessionChapterDivisionsBookStoreDataUtil</h3>
+<p>classes2.dex<br />
+<code>com.jd.app.reader.downloader.core.data.database.manage.SessionChapterDivisionsBookStoreDataUtil</code></p>
+<p>这里的加密密码为：</p>
+<pre class="highlight"><code class="java"> <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> DaoSession <span class="hljs-title">getChapterDivisionsBookStoreDaoSession</span><span class="hljs-params">(Context context)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+        AssertUtil.assertApplicationContext(context);
+        <span class="hljs-keyword">if</span> (mChapterDivisionsBookStoreDaoSession == <span class="hljs-keyword">null</span>) {
+            <span class="hljs-keyword">synchronized</span> (SessionChapterDivisionsBookStoreDataUtil<span class="hljs-class">.<span class="hljs-keyword">class</span>) </span>{
+                DaoMaster daoMaster;
+                <span class="hljs-keyword">if</span> (helper == <span class="hljs-keyword">null</span>) {
+                    helper = <span class="hljs-keyword">new</span> DevOpenHelper(context, <span class="hljs-string">"chapter_divisions_book_store.db"</span>, <span class="hljs-keyword">null</span>);
+                }
+                <span class="hljs-keyword">if</span> (b.a) {
+                    daoMaster = <span class="hljs-keyword">new</span> DaoMaster(helper.getWritableDb());
+                } <span class="hljs-keyword">else</span> {
+                    daoMaster = <span class="hljs-keyword">new</span> DaoMaster(helper.getEncryptedWritableDb(<span class="hljs-string">"password"</span>));
+                }
+                mChapterDivisionsBookStoreDaoSession = daoMaster.newSession();
+            }
+        }
+        <span class="hljs-keyword">return</span> mChapterDivisionsBookStoreDaoSession;
+    }
+
+</code></pre>
+<h3 id="sessiondownloadfailedrecordutil-download_failed_recorddb"><a class="markdownIt-Anchor" href="#sessiondownloadfailedrecordutil-download_failed_recorddb"></a> SessionDownloadFailedRecordUtil -&gt; download_failed_record.db</h3>
+<p>@classes2.dex</p>
+<p><code>com.jd.app.reader.downloader.core.data.database.manage.SessionDownloadFailedRecordUtil</code></p>
+<pre class="highlight"><code class="java">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> DaoSession <span class="hljs-title">getDownloadFailedRecordTableModelDaoSession</span><span class="hljs-params">(Context context)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+        AssertUtil.assertApplicationContext(context);
+        <span class="hljs-keyword">if</span> (mDownloadFailedRecord == <span class="hljs-keyword">null</span>) {
+            <span class="hljs-keyword">synchronized</span> (SessionDownloadFailedRecordUtil<span class="hljs-class">.<span class="hljs-keyword">class</span>) </span>{
+                DaoMaster daoMaster;
+                <span class="hljs-keyword">if</span> (helper == <span class="hljs-keyword">null</span>) {
+                    helper = <span class="hljs-keyword">new</span> DevOpenHelper(context, <span class="hljs-string">"download_failed_record.db"</span>, <span class="hljs-keyword">null</span>);
+                }
+                <span class="hljs-keyword">if</span> (b.a) {
+                    daoMaster = <span class="hljs-keyword">new</span> DaoMaster(helper.getWritableDb());
+                } <span class="hljs-keyword">else</span> {
+                    daoMaster = <span class="hljs-keyword">new</span> DaoMaster(helper.getEncryptedWritableDb(<span class="hljs-string">"password"</span>));
+                }
+                mDownloadFailedRecord = daoMaster.newSession();
+            }
+        }
+        <span class="hljs-keyword">return</span> mDownloadFailedRecord;
+    }
+
+</code></pre>
+<h3 id="sessionthewholebookstoredatautil-the_whole_book_storedb"><a class="markdownIt-Anchor" href="#sessionthewholebookstoredatautil-the_whole_book_storedb"></a> SessionTheWholeBookStoreDataUtil -&gt; the_whole_book_store.db</h3>
+<p>完整书籍存储数据。<br />
+<code>com.jd.app.reader.downloader.core.data.database.manage.SessionTheWholeBookStoreDataUtil</code></p>
+<pre class="highlight"><code class="java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> DaoSession <span class="hljs-title">getTheWholeBookStoreDaoSession</span><span class="hljs-params">(Context context)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+    AssertUtil.assertApplicationContext(context);
+    <span class="hljs-keyword">if</span> (mTheWholeBookStoreDaoSession == <span class="hljs-keyword">null</span>) {
+        <span class="hljs-keyword">synchronized</span> (SessionTheWholeBookStoreDataUtil<span class="hljs-class">.<span class="hljs-keyword">class</span>) </span>{
+            DaoMaster daoMaster;
+            <span class="hljs-keyword">if</span> (helper == <span class="hljs-keyword">null</span>) {
+                helper = <span class="hljs-keyword">new</span> DevOpenHelper(context, <span class="hljs-string">"the_whole_book_store.db"</span>, <span class="hljs-keyword">null</span>);
+            }
+            <span class="hljs-keyword">if</span> (b.a) {
+                daoMaster = <span class="hljs-keyword">new</span> DaoMaster(helper.getWritableDb());
+            } <span class="hljs-keyword">else</span> {
+                daoMaster = <span class="hljs-keyword">new</span> DaoMaster(helper.getEncryptedWritableDb(<span class="hljs-string">"password"</span>));
+            }
+            mTheWholeBookStoreDaoSession = daoMaster.newSession();
+        }
+    }
+    <span class="hljs-keyword">return</span> mTheWholeBookStoreDaoSession;
+}
+
+</code></pre>
+<h3 id="sessionfilestoredatautil-file_storedb"><a class="markdownIt-Anchor" href="#sessionfilestoredatautil-file_storedb"></a> SessionFileStoreDataUtil -&gt; file_store.db</h3>
+<p><code>com.jd.app.reader.downloader.core.data.database.manage.SessionFileStoreDataUtil</code></p>
+<pre class="highlight"><code class="java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> DaoSession <span class="hljs-title">getFileStoreDaoSession</span><span class="hljs-params">(Context context)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+    AssertUtil.assertApplicationContext(context);
+    <span class="hljs-keyword">if</span> (mFileStoreDaoSession == <span class="hljs-keyword">null</span>) {
+        <span class="hljs-keyword">synchronized</span> (SessionFileStoreDataUtil<span class="hljs-class">.<span class="hljs-keyword">class</span>) </span>{
+            DaoMaster daoMaster;
+            <span class="hljs-keyword">if</span> (helper == <span class="hljs-keyword">null</span>) {
+                helper = <span class="hljs-keyword">new</span> DevOpenHelper(context, <span class="hljs-string">"file_store.db"</span>, <span class="hljs-keyword">null</span>);
+            }
+            <span class="hljs-keyword">if</span> (b.a) {
+                daoMaster = <span class="hljs-keyword">new</span> DaoMaster(helper.getWritableDb());
+            } <span class="hljs-keyword">else</span> {
+                daoMaster = <span class="hljs-keyword">new</span> DaoMaster(helper.getEncryptedWritableDb(<span class="hljs-string">"password"</span>));
+            }
+            mFileStoreDaoSession = daoMaster.newSession();
+        }
+    }
+    <span class="hljs-keyword">return</span> mFileStoreDaoSession;
+}
+
+</code></pre>
+<h3 id="dictdb"><a class="markdownIt-Anchor" href="#dictdb"></a> <code>dict.db</code></h3>
+<pre class="highlight"><code class="java"><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> DaoSession <span class="hljs-title">a</span><span class="hljs-params">(Context context, <span class="hljs-keyword">boolean</span> z)</span> </span>{
+    AssertUtil.assertApplicationContext(context);
+    <span class="hljs-keyword">if</span> (a == <span class="hljs-keyword">null</span> || z) {
+        <span class="hljs-keyword">synchronized</span> (C<span class="hljs-class">.<span class="hljs-keyword">class</span>) </span>{
+            a aVar = <span class="hljs-keyword">new</span> a(context, <span class="hljs-string">"dict.db"</span>);
+            <span class="hljs-keyword">boolean</span> z2 = b.a;
+            a = <span class="hljs-keyword">new</span> DaoMaster(aVar.getEncryptedWritableDb(<span class="hljs-string">"SessionDictDataUtil"</span>)).newSession();
+        }
+    }
+    <span class="hljs-keyword">return</span> a;
+}
+
+</code></pre>
+<h3 id="notebookdb"><a class="markdownIt-Anchor" href="#notebookdb"></a> <code>Notebook.db</code></h3>
+<p>@classes3.dex<br />
+通过搜过关键词 <code>getEncryptedWritableDb</code> 得到</p>
+<pre class="highlight"><code class="java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> DaoSession <span class="hljs-title">a</span><span class="hljs-params">(Context context)</span> </span>{
+    AssertUtil.assertApplicationContext(context);
+    <span class="hljs-keyword">if</span> (a == <span class="hljs-keyword">null</span>) {
+        <span class="hljs-keyword">synchronized</span> (z<span class="hljs-class">.<span class="hljs-keyword">class</span>) </span>{
+            DaoMaster daoMaster;
+            C0156a c0156a = <span class="hljs-keyword">new</span> C0156a(context, <span class="hljs-string">"NoteBook.db"</span>);
+            <span class="hljs-keyword">if</span> (b.a) {
+                daoMaster = <span class="hljs-keyword">new</span> DaoMaster(c0156a.getWritableDb());
+            } <span class="hljs-keyword">else</span> {
+                daoMaster = <span class="hljs-keyword">new</span> DaoMaster(c0156a.getEncryptedWritableDb(<span class="hljs-string">"SessionBookDataUtil"</span>));
+            }
+            a = daoMaster.newSession();
+        }
+    }
+    <span class="hljs-keyword">return</span> a;
+}
+
+</code></pre>
+<h3 id="bookdb"><a class="markdownIt-Anchor" href="#bookdb"></a> <code>book.db</code></h3>
+<p>@classes3.dex<br />
+<code>com.jingdong.app.reader.data.a.a.z</code></p>
+<pre class="highlight"><code class="java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> DaoSession <span class="hljs-title">a</span><span class="hljs-params">(Context context)</span> </span>{
+    AssertUtil.assertApplicationContext(context);
+    <span class="hljs-keyword">if</span> (a == <span class="hljs-keyword">null</span>) {
+        <span class="hljs-keyword">synchronized</span> (z<span class="hljs-class">.<span class="hljs-keyword">class</span>) </span>{
+            DaoMaster daoMaster;
+            a aVar = <span class="hljs-keyword">new</span> a(context, <span class="hljs-string">"book.db"</span>);
+            <span class="hljs-keyword">if</span> (b.a) {
+                daoMaster = <span class="hljs-keyword">new</span> DaoMaster(aVar.getWritableDb());
+            } <span class="hljs-keyword">else</span> {
+                daoMaster = <span class="hljs-keyword">new</span> DaoMaster(aVar.getEncryptedWritableDb(<span class="hljs-string">"SessionBookDataUtil"</span>));
+            }
+            a = daoMaster.newSession();
+        }
+    }
+    <span class="hljs-keyword">return</span> a;
+}
+</code></pre>
+<pre class="highlight"><code class="java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> DaoSession <span class="hljs-title">a</span><span class="hljs-params">(Context context)</span> </span>{
+    AssertUtil.assertApplicationContext(context);
+    <span class="hljs-keyword">if</span> (a == <span class="hljs-keyword">null</span>) {
+        <span class="hljs-keyword">synchronized</span> (A<span class="hljs-class">.<span class="hljs-keyword">class</span>) </span>{
+            a = <span class="hljs-keyword">new</span> DaoMaster(<span class="hljs-keyword">new</span> a(context, <span class="hljs-string">"books.db"</span>).getEncryptedWritableDb(<span class="hljs-string">"SessionBookDataUtil"</span>)).newSession();
+        }
+    }
+    <span class="hljs-keyword">return</span> a;
+}
+</code></pre>
+<p>这里的 <code>a</code> 类，是一个DAO的子类，<br />
+同文件：</p>
+<pre class="highlight"><code class="java"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> DaoSession a;
+
+    <span class="hljs-comment">/* compiled from: SessionBookDataUtil */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">a</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">OpenHelper</span> </span>{
+        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">a</span><span class="hljs-params">(Context context, String str)</span> </span>{
+            <span class="hljs-keyword">super</span>(context, str);
+        }
+
+        <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">a</span><span class="hljs-params">(Database database)</span> </span>{
+            <span class="hljs-keyword">try</span> {
+                <span class="hljs-keyword">if</span> (!a(database, <span class="hljs-string">"JDFolder"</span>, <span class="hljs-string">"TEAM_ID"</span>)) {
+                    database.execSQL(<span class="hljs-string">"ALTER TABLE JDFolder ADD COLUMN TEAM_ID TEXT DEFAULT '' "</span>);
+                }
+            } <span class="hljs-keyword">catch</span> (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+        <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">b</span><span class="hljs-params">(Database database)</span> </span>{
+            <span class="hljs-keyword">try</span> {
+                <span class="hljs-keyword">if</span> (!a(database, <span class="hljs-string">"JDBookMark"</span>, <span class="hljs-string">"MEDIA_TIME"</span>)) {
+                    database.execSQL(<span class="hljs-string">"ALTER TABLE JDBookMark ADD COLUMN MEDIA_TIME INTEGER DEFAULT 0"</span>);
+                }
+            } <span class="hljs-keyword">catch</span> (SQLException e) {
+                e.printStackTrace();
+            }
+            <span class="hljs-keyword">try</span> {
+                <span class="hljs-keyword">if</span> (!a(database, <span class="hljs-string">"JDBook"</span>, <span class="hljs-string">"BUY_TYPE"</span>)) {
+                    database.execSQL(<span class="hljs-string">"ALTER TABLE JDBook ADD COLUMN BUY_TYPE INTEGER DEFAULT 0"</span>);
+                }
+            } <span class="hljs-keyword">catch</span> (SQLException e2) {
+                e2.printStackTrace();
+            }
+        }
+
+        <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">c</span><span class="hljs-params">(Database database)</span> </span>{
+            <span class="hljs-keyword">try</span> {
+                <span class="hljs-keyword">if</span> (!a(database, <span class="hljs-string">"JDBook"</span>, <span class="hljs-string">"TEAM_ID"</span>)) {
+                    database.execSQL(<span class="hljs-string">"ALTER TABLE JDBook ADD COLUMN TEAM_ID TEXT DEFAULT '' "</span>);
+                }
+            } <span class="hljs-keyword">catch</span> (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onUpgrade</span><span class="hljs-params">(Database database, <span class="hljs-keyword">int</span> i, <span class="hljs-keyword">int</span> i2)</span> </span>{
+            StringBuilder stringBuilder = <span class="hljs-keyword">new</span> StringBuilder();
+            stringBuilder.append(<span class="hljs-string">"Upgrading schema from version "</span>);
+            stringBuilder.append(i);
+            stringBuilder.append(<span class="hljs-string">" to "</span>);
+            stringBuilder.append(i2);
+            Log.i(<span class="hljs-string">"greenDAO"</span>, stringBuilder.toString());
+            <span class="hljs-keyword">if</span> (i &lt; <span class="hljs-number">9</span>) {
+                c(database);
+            }
+            <span class="hljs-keyword">if</span> (i &lt; <span class="hljs-number">10</span>) {
+                a(database);
+            }
+            <span class="hljs-keyword">if</span> (i &lt; <span class="hljs-number">12</span>) {
+                b(database);
+            }
+        }
+
+</code></pre>
+<h2 id="关于书本的加密-openbookaction"><a class="markdownIt-Anchor" href="#关于书本的加密-openbookaction"></a> 关于书本的加密 <code>OpenBookAction</code></h2>
+<p>类名：<code>com.jingdong.app.reader.main.action.OpenBookAction</code></p>
+<pre class="highlight"><code class="java">    <span class="hljs-comment">/* access modifiers changed from: private */</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">a</span><span class="hljs-params">(g gVar, i iVar, JDBook jDBook, Bundle bundle, JDBookMark jDBookMark)</span> </span>{
+        g gVar2 = gVar;
+        JDBook jDBook2 = jDBook;
+        String format = jDBook.getFormat();
+        String str = <span class="hljs-string">"bookFormatTag"</span>;
+        String str2 = <span class="hljs-string">"bookServerIdTag"</span>;
+        String str3 = <span class="hljs-string">""</span>;
+        <span class="hljs-keyword">if</span> (a.c().r()) {
+            <span class="hljs-keyword">if</span> (!c(jDBook2)) {
+                onRouterFail(gVar2, -<span class="hljs-number">1</span>, <span class="hljs-string">"团队版权限已到期,无法继续阅读该书！"</span>);
+                <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+            }
+        } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (!c(jDBook2)) {
+            ActivityTag activityTag = ActivityTag.JD_BOOKSHELF_OPENBOOK_EXCEPTION_ACTIVITY;
+            Bundle bundle2 = <span class="hljs-keyword">new</span> Bundle();
+            StringBuilder stringBuilder = <span class="hljs-keyword">new</span> StringBuilder();
+            stringBuilder.append(jDBook.getBookId());
+            stringBuilder.append(str3);
+            bundle2.putString(str2, stringBuilder.toString());
+            bundle2.putString(str, format);
+            onRouterSuccess(gVar2, <span class="hljs-keyword">new</span> com.jingdong.app.reader.router.b.a(activityTag, bundle2));
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+        }
+        String str4 = JDBookTag.BOOK_FORMAT_COMICS;
+        <span class="hljs-keyword">boolean</span> equalsIgnoreCase = str4.equalsIgnoreCase(format);
+        String str5 = JDBookTag.BOOK_FORMAT_MP3;
+        Object obj = (equalsIgnoreCase || str5.equalsIgnoreCase(format) || b(jDBook2)) ? <span class="hljs-number">1</span> : <span class="hljs-keyword">null</span>;
+        <span class="hljs-keyword">if</span> (obj == <span class="hljs-keyword">null</span>) {
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+        }
+        String h = a.c().h();
+        JDBookMark jDBookMark2 = (JDBookMark) <span class="hljs-keyword">new</span> com.jingdong.app.reader.data.a.a.k(<span class="hljs-keyword">this</span>.app).c(Properties.BookRowId.eq(jDBook.getId()), Properties.UserId.eq(h), Properties.Type.eq(Integer.valueOf(<span class="hljs-number">0</span>)));
+        ActivityTag activityTag2 = ActivityTag.JD_EPUB_READER_ACTIVITY;
+        Bundle bundle3 = bundle == <span class="hljs-keyword">null</span> ? <span class="hljs-keyword">new</span> Bundle() : bundle;
+        bundle3.putLong(<span class="hljs-string">"bookRowIdTag"</span>, jDBook.getId().longValue());
+        StringBuilder stringBuilder2 = <span class="hljs-keyword">new</span> StringBuilder();
+        stringBuilder2.append(jDBook.getBookId());
+        stringBuilder2.append(str3);
+        bundle3.putString(str2, stringBuilder2.toString());
+        bundle3.putString(<span class="hljs-string">"bookPathTag"</span>, jDBook.getBookPath());
+        bundle3.putString(<span class="hljs-string">"bookNameTag"</span>, jDBook.getBookName());
+        bundle3.putString(<span class="hljs-string">"bookAuthorTag"</span>, jDBook.getAuthor());
+        bundle3.putInt(<span class="hljs-string">"bookFromTag"</span>, jDBook.getFrom());
+        bundle3.putString(str, format);
+        bundle3.putString(<span class="hljs-string">"bookCoverTag"</span>, jDBook.getBigImageUrl());
+        bundle3.putString(<span class="hljs-string">"BookDecryptKeyTag"</span>, jDBook.getKey());
+        bundle3.putString(<span class="hljs-string">"bookDeviceKeyTag"</span>, jDBook.getUuid());
+        bundle3.putString(<span class="hljs-string">"BookDecryptRandomTag"</span>, jDBook.getRandom());
+        bundle3.putInt(<span class="hljs-string">"bookSourceTag"</span>, jDBook.getSource());
+        bundle3.putInt(<span class="hljs-string">"bookUpdateTag"</span>, jDBook.getUpdateNum());
+        bundle3.putLong(<span class="hljs-string">"bookSizeTag"</span>, jDBook.getSize());
+        bundle3.putLong(<span class="hljs-string">"book_buy_type_tag"</span>, jDBook.getBuyType());
+        bundle3.putBoolean(<span class="hljs-string">"bookFullDownloadTag"</span>, jDBook.getIsFullDownload());
+        <span class="hljs-keyword">boolean</span> r = a.c().r();
+        str2 = JDBookTag.BOOK_FORMAT_PDF;
+        String str6 = JDBookTag.BOOK_FORMAT_EPUB;
+        <span class="hljs-keyword">if</span> (!(r || jDBook.getFrom() != <span class="hljs-number">0</span> || ((!str6.equalsIgnoreCase(format) &amp;&amp; !str2.equalsIgnoreCase(format)) || <span class="hljs-number">1</span> == jDBook.getSource() || <span class="hljs-number">6</span> == jDBook.getSource()))) {
+            bundle3.putBoolean(<span class="hljs-string">"bookCanBuyTAG"</span>, <span class="hljs-keyword">true</span>);
+        }
+        str = <span class="hljs-string">"bookMarkChapterIdTag"</span>;
+        <span class="hljs-keyword">if</span> (jDBookMark2 != <span class="hljs-keyword">null</span>) {
+            bundle3.putInt(<span class="hljs-string">"bookMarkChapterIndexTag"</span>, jDBookMark2.getChapterIndex());
+            bundle3.putString(str, jDBookMark2.getChapterId());
+            bundle3.putInt(<span class="hljs-string">"bookMarkParagraphTag"</span>, jDBookMark2.getStartParaIndex());
+            bundle3.putString(<span class="hljs-string">"bookMarkNodeTag"</span>, jDBookMark2.getStartNodePath());
+            bundle3.putInt(<span class="hljs-string">"bookMarkOffsetTag"</span>, jDBookMark2.getStartOffsetInPara());
+            bundle3.putInt(<span class="hljs-string">"bookMarkPdfPageTag"</span>, jDBookMark2.getPdfPage());
+        }
+        <span class="hljs-keyword">if</span> (jDBookMark != <span class="hljs-keyword">null</span>) {
+            bundle3.putString(<span class="hljs-string">"targetBookMarkChapterIdTag"</span>, jDBookMark.getChapterId());
+            bundle3.putInt(<span class="hljs-string">"targetBookMarkParagraphTag"</span>, jDBookMark.getStartParaIndex());
+            bundle3.putInt(<span class="hljs-string">"targetBookMarkOffsetTag"</span>, jDBookMark.getStartOffsetInPara());
+        }
+        <span class="hljs-keyword">if</span> (str6.equalsIgnoreCase(format)) {
+            activityTag2 = ActivityTag.JD_EPUB_READER_ACTIVITY;
+        } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (str2.equalsIgnoreCase(format)) {
+            <span class="hljs-keyword">if</span> (a()) {
+                activityTag2 = ActivityTag.JD_PDF_ACTIVITY;
+            } <span class="hljs-keyword">else</span> {
+                activityTag2 = ActivityTag.JD_PLUGIN_ACTIVITY;
+                bundle3.putLong(<span class="hljs-string">"download_plugin_name_tag"</span>, JDPluginTag.plugin_PDF_Type);
+            }
+        } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (JDBookTag.BOOK_FORMAT_TXT.equalsIgnoreCase(format)) {
+            activityTag2 = ActivityTag.JD_EPUB_READER_ACTIVITY;
+            <span class="hljs-keyword">if</span> (jDBook.getFrom() == <span class="hljs-number">0</span>) {
+                <span class="hljs-keyword">new</span> f(<span class="hljs-keyword">this</span>.app, jDBook.getKey()).a(jDBook.getBookPath());
+            }
+        } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (str5.equalsIgnoreCase(format)) {
+            activityTag2 = ActivityTag.JD_MEDIAPLAYER_ACTIVITY;
+            bundle3.putString(<span class="hljs-string">"audioCoverTag"</span>, jDBook.getCustomUrl());
+            bundle3.putString(str, str3);
+        } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (str4.equalsIgnoreCase(format)) {
+            activityTag2 = ActivityTag.JD_COMICS_ACTIVITY;
+        }
+        StringBuilder stringBuilder3 = <span class="hljs-keyword">new</span> StringBuilder();
+        stringBuilder3.append(jDBook.getBookId());
+        stringBuilder3.append(str3);
+        a(stringBuilder3.toString(), bundle3);
+        a(jDBook2, bundle3);
+        onRouterSuccess(gVar2, <span class="hljs-keyword">new</span> com.jingdong.app.reader.router.b.a(activityTag2, bundle3));
+        a(iVar, jDBook2);
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+    }
+
+</code></pre>
+<p>可能和加解密又关联：<br />
+@classes4.dex<br />
+<code>com.jingdong.app.reader.tools.b.a</code></p>
+<pre class="highlight"><code class="java">
+<span class="hljs-comment">/* compiled from: ClientReuqestEncryptionUtil */</span>
+
+<span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">a</span><span class="hljs-params">(String str)</span> </span>{
+    <span class="hljs-keyword">return</span> decryptionoperation.a(str, a(), <span class="hljs-keyword">this</span>.i);
+}
+
+<span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">a</span><span class="hljs-params">(String str, <span class="hljs-keyword">boolean</span> z)</span> </span>{
+    <span class="hljs-keyword">return</span> decryptionoperation.a(str, a(z), <span class="hljs-keyword">this</span>.i);
+}
+
+</code></pre>
+<h3 id="localfileheader"><a class="markdownIt-Anchor" href="#localfileheader"></a> LocalFileHeader</h3>
+<p>@classes4.dex<br />
+<code>com.jingdong.app.reader.tools.l.d.g</code><br />
+用来存放加密所需变量的类。</p>
+<pre class="highlight"><code class="java"><span class="hljs-comment">/* compiled from: LocalFileHeader */</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">g</span> </span>{
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> a;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> b;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">byte</span>[] c;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> d;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> e;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">long</span> f = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">byte</span>[] g;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">long</span> h;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">long</span> i = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> j;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> k;
+    <span class="hljs-keyword">private</span> String l;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">long</span> m;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">boolean</span> n;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> o = -<span class="hljs-number">1</span>;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">char</span>[] p;
+    <span class="hljs-keyword">private</span> ArrayList q;
+    <span class="hljs-keyword">private</span> k r;
+    <span class="hljs-keyword">private</span> a s;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">boolean</span> t;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">boolean</span> u = <span class="hljs-keyword">false</span>;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">boolean</span> v;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">a</span><span class="hljs-params">(<span class="hljs-keyword">int</span> i)</span> </span>{
+        <span class="hljs-keyword">this</span>.d = i;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">b</span><span class="hljs-params">(<span class="hljs-keyword">byte</span>[] bArr)</span> </span>{
+        <span class="hljs-keyword">this</span>.c = bArr;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">c</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.d;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">long</span> <span class="hljs-title">d</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.f;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">e</span><span class="hljs-params">(<span class="hljs-keyword">int</span> i)</span> </span>{
+        <span class="hljs-keyword">this</span>.e = i;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">f</span><span class="hljs-params">(<span class="hljs-keyword">int</span> i)</span> </span>{
+        <span class="hljs-keyword">this</span>.a = i;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">g</span><span class="hljs-params">(<span class="hljs-keyword">int</span> i)</span> </span>{
+        <span class="hljs-keyword">this</span>.b = i;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">h</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.l;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">i</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.j;
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">byte</span>[] j() {
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.c;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">k</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.e;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">long</span> <span class="hljs-title">l</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.m;
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">char</span>[] m() {
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.p;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">n</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.a;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">long</span> <span class="hljs-title">o</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.i;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">p</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.b;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">q</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.n;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">r</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.v;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">a</span><span class="hljs-params">(<span class="hljs-keyword">long</span> j)</span> </span>{
+        <span class="hljs-keyword">this</span>.h = j;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">b</span><span class="hljs-params">(<span class="hljs-keyword">long</span> j)</span> </span>{
+        <span class="hljs-keyword">this</span>.f = j;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">c</span><span class="hljs-params">(<span class="hljs-keyword">int</span> i)</span> </span>{
+        <span class="hljs-keyword">this</span>.k = i;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">d</span><span class="hljs-params">(<span class="hljs-keyword">long</span> j)</span> </span>{
+        <span class="hljs-keyword">this</span>.i = j;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">e</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.o;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> ArrayList <span class="hljs-title">f</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.q;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">g</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.k;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">a</span><span class="hljs-params">(String str)</span> </span>{
+        <span class="hljs-keyword">this</span>.l = str;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">long</span> <span class="hljs-title">b</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.h;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">c</span><span class="hljs-params">(<span class="hljs-keyword">long</span> j)</span> </span>{
+        <span class="hljs-keyword">this</span>.m = j;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">d</span><span class="hljs-params">(<span class="hljs-keyword">int</span> i)</span> </span>{
+        <span class="hljs-keyword">this</span>.j = i;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">a</span><span class="hljs-params">(<span class="hljs-keyword">byte</span>[] bArr)</span> </span>{
+        <span class="hljs-keyword">this</span>.g = bArr;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">b</span><span class="hljs-params">(<span class="hljs-keyword">boolean</span> z)</span> </span>{
+        <span class="hljs-keyword">this</span>.n = z;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">c</span><span class="hljs-params">(<span class="hljs-keyword">boolean</span> z)</span> </span>{
+        <span class="hljs-keyword">this</span>.v = z;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">d</span><span class="hljs-params">(<span class="hljs-keyword">boolean</span> z)</span> </span>{
+        <span class="hljs-keyword">this</span>.u = z;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">a</span><span class="hljs-params">(<span class="hljs-keyword">char</span>[] cArr)</span> </span>{
+        <span class="hljs-keyword">this</span>.p = cArr;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">b</span><span class="hljs-params">(<span class="hljs-keyword">int</span> i)</span> </span>{
+        <span class="hljs-keyword">this</span>.o = i;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">a</span><span class="hljs-params">(ArrayList arrayList)</span> </span>{
+        <span class="hljs-keyword">this</span>.q = arrayList;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">a</span><span class="hljs-params">(<span class="hljs-keyword">boolean</span> z)</span> </span>{
+        <span class="hljs-keyword">this</span>.t = z;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">a</span><span class="hljs-params">(k kVar)</span> </span>{
+        <span class="hljs-keyword">this</span>.r = kVar;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> a <span class="hljs-title">a</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.s;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">a</span><span class="hljs-params">(a aVar)</span> </span>{
+        <span class="hljs-keyword">this</span>.s = aVar;
+    }
+}
+</code></pre>
+<p><code>com.jingdong.app.reader.tools.l.b.a</code></p>
+<h3 id="aesdecrypter"><a class="markdownIt-Anchor" href="#aesdecrypter"></a> AESDecrypter</h3>
+<pre class="highlight"><code class="java"><span class="hljs-comment">/* compiled from: AESDecrypter */</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">a</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">c</span> </span>{
+    <span class="hljs-keyword">private</span> g a;
+    <span class="hljs-keyword">private</span> com.jingdong.app.reader.tools.l.b.b.a b;
+    <span class="hljs-keyword">private</span> com.jingdong.app.reader.tools.l.b.a.a c;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> d = <span class="hljs-number">2</span>;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> e;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> f;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> g;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">byte</span>[] h;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">byte</span>[] i;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">byte</span>[] j;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">byte</span>[] k;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> l = <span class="hljs-number">1</span>;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">byte</span>[] m;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">byte</span>[] n;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> o = <span class="hljs-number">0</span>;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">a</span><span class="hljs-params">(g gVar, <span class="hljs-keyword">byte</span>[] bArr, <span class="hljs-keyword">byte</span>[] bArr2)</span> <span class="hljs-keyword">throws</span> ZipException </span>{
+        <span class="hljs-keyword">if</span> (gVar != <span class="hljs-keyword">null</span>) {
+            <span class="hljs-keyword">this</span>.a = gVar;
+            <span class="hljs-keyword">this</span>.k = <span class="hljs-keyword">null</span>;
+            <span class="hljs-keyword">this</span>.m = <span class="hljs-keyword">new</span> <span class="hljs-keyword">byte</span>[<span class="hljs-number">16</span>];
+            <span class="hljs-keyword">this</span>.n = <span class="hljs-keyword">new</span> <span class="hljs-keyword">byte</span>[<span class="hljs-number">16</span>];
+            a(bArr, bArr2);
+            <span class="hljs-keyword">return</span>;
+        }
+        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> ZipException(<span class="hljs-string">"one of the input parameters is null in AESDecryptor Constructor"</span>);
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">a</span><span class="hljs-params">(<span class="hljs-keyword">byte</span>[] bArr, <span class="hljs-keyword">byte</span>[] bArr2)</span> <span class="hljs-keyword">throws</span> ZipException </span>{
+        g gVar = <span class="hljs-keyword">this</span>.a;
+        <span class="hljs-keyword">if</span> (gVar != <span class="hljs-keyword">null</span>) {
+            com.jingdong.app.reader.tools.l.d.a a = gVar.a();
+            <span class="hljs-keyword">if</span> (a != <span class="hljs-keyword">null</span>) {
+                StringBuilder stringBuilder;
+                <span class="hljs-keyword">int</span> a2 = a.a();
+                <span class="hljs-keyword">if</span> (a2 == <span class="hljs-number">1</span>) {
+                    <span class="hljs-keyword">this</span>.e = <span class="hljs-number">16</span>;
+                    <span class="hljs-keyword">this</span>.f = <span class="hljs-number">16</span>;
+                    <span class="hljs-keyword">this</span>.g = <span class="hljs-number">8</span>;
+                } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (a2 == <span class="hljs-number">2</span>) {
+                    <span class="hljs-keyword">this</span>.e = <span class="hljs-number">24</span>;
+                    <span class="hljs-keyword">this</span>.f = <span class="hljs-number">24</span>;
+                    <span class="hljs-keyword">this</span>.g = <span class="hljs-number">12</span>;
+                } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (a2 == <span class="hljs-number">3</span>) {
+                    <span class="hljs-keyword">this</span>.e = <span class="hljs-number">32</span>;
+                    <span class="hljs-keyword">this</span>.f = <span class="hljs-number">32</span>;
+                    <span class="hljs-keyword">this</span>.g = <span class="hljs-number">16</span>;
+                } <span class="hljs-keyword">else</span> {
+                    stringBuilder = <span class="hljs-keyword">new</span> StringBuilder();
+                    stringBuilder.append(<span class="hljs-string">"invalid aes key strength for file: "</span>);
+                    stringBuilder.append(<span class="hljs-keyword">this</span>.a.h());
+                    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> ZipException(stringBuilder.toString());
+                }
+                <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.a.m() == <span class="hljs-keyword">null</span> || <span class="hljs-keyword">this</span>.a.m().length &lt;= <span class="hljs-number">0</span>) {
+                    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> ZipException(<span class="hljs-string">"empty or null password provided for AES Decryptor"</span>);
+                }
+                bArr = a(bArr, <span class="hljs-keyword">this</span>.a.m());
+                <span class="hljs-keyword">if</span> (bArr != <span class="hljs-keyword">null</span>) {
+                    a2 = bArr.length;
+                    <span class="hljs-keyword">int</span> i = <span class="hljs-keyword">this</span>.e;
+                    <span class="hljs-keyword">int</span> i2 = <span class="hljs-keyword">this</span>.f;
+                    <span class="hljs-keyword">if</span> (a2 == (i + i2) + <span class="hljs-number">2</span>) {
+                        <span class="hljs-keyword">this</span>.h = <span class="hljs-keyword">new</span> <span class="hljs-keyword">byte</span>[i];
+                        <span class="hljs-keyword">this</span>.i = <span class="hljs-keyword">new</span> <span class="hljs-keyword">byte</span>[i2];
+                        <span class="hljs-keyword">this</span>.j = <span class="hljs-keyword">new</span> <span class="hljs-keyword">byte</span>[<span class="hljs-number">2</span>];
+                        System.arraycopy(bArr, <span class="hljs-number">0</span>, <span class="hljs-keyword">this</span>.h, <span class="hljs-number">0</span>, i);
+                        System.arraycopy(bArr, <span class="hljs-keyword">this</span>.e, <span class="hljs-keyword">this</span>.i, <span class="hljs-number">0</span>, <span class="hljs-keyword">this</span>.f);
+                        System.arraycopy(bArr, <span class="hljs-keyword">this</span>.e + <span class="hljs-keyword">this</span>.f, <span class="hljs-keyword">this</span>.j, <span class="hljs-number">0</span>, <span class="hljs-number">2</span>);
+                        bArr = <span class="hljs-keyword">this</span>.j;
+                        <span class="hljs-keyword">if</span> (bArr == <span class="hljs-keyword">null</span>) {
+                            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> ZipException(<span class="hljs-string">"invalid derived password verifier for AES"</span>);
+                        } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (Arrays.equals(bArr2, bArr)) {
+                            <span class="hljs-keyword">this</span>.b = <span class="hljs-keyword">new</span> com.jingdong.app.reader.tools.l.b.b.a(<span class="hljs-keyword">this</span>.h);
+                            <span class="hljs-keyword">this</span>.c = <span class="hljs-keyword">new</span> com.jingdong.app.reader.tools.l.b.a.a(<span class="hljs-string">"HmacSHA1"</span>);
+                            <span class="hljs-keyword">this</span>.c.a(<span class="hljs-keyword">this</span>.i);
+                            <span class="hljs-keyword">return</span>;
+                        } <span class="hljs-keyword">else</span> {
+                            stringBuilder = <span class="hljs-keyword">new</span> StringBuilder();
+                            stringBuilder.append(<span class="hljs-string">"Wrong Password for file: "</span>);
+                            stringBuilder.append(<span class="hljs-keyword">this</span>.a.h());
+                            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> ZipException(stringBuilder.toString(), <span class="hljs-number">5</span>);
+                        }
+                    }
+                }
+                <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> ZipException(<span class="hljs-string">"invalid derived key"</span>);
+            }
+            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> ZipException(<span class="hljs-string">"invalid aes extra data record - in init method of AESDecryptor"</span>);
+        }
+        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> ZipException(<span class="hljs-string">"invalid file header in init method of AESDecryptor"</span>);
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">b</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-number">2</span>;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">c</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.g;
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">byte</span>[] d() {
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.k;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">a</span><span class="hljs-params">(<span class="hljs-keyword">byte</span>[] bArr, <span class="hljs-keyword">int</span> i, <span class="hljs-keyword">int</span> i2)</span> <span class="hljs-keyword">throws</span> ZipException </span>{
+        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.b != <span class="hljs-keyword">null</span>) {
+            <span class="hljs-keyword">int</span> i3 = i;
+            <span class="hljs-keyword">while</span> (<span class="hljs-keyword">true</span>) {
+                <span class="hljs-keyword">int</span> i4 = i + i2;
+                <span class="hljs-keyword">if</span> (i3 &gt;= i4) {
+                    <span class="hljs-keyword">return</span> i2;
+                }
+                <span class="hljs-keyword">int</span> i5 = i3 + <span class="hljs-number">16</span>;
+                <span class="hljs-keyword">try</span> {
+                    <span class="hljs-keyword">this</span>.o = i5 &lt;= i4 ? <span class="hljs-number">16</span> : i4 - i3;
+                    <span class="hljs-keyword">this</span>.c.a(bArr, i3, <span class="hljs-keyword">this</span>.o);
+                    d.a(<span class="hljs-keyword">this</span>.m, <span class="hljs-keyword">this</span>.l, <span class="hljs-number">16</span>);
+                    <span class="hljs-keyword">this</span>.b.a(<span class="hljs-keyword">this</span>.m, <span class="hljs-keyword">this</span>.n);
+                    <span class="hljs-keyword">for</span> (i4 = <span class="hljs-number">0</span>; i4 &lt; <span class="hljs-keyword">this</span>.o; i4++) {
+                        <span class="hljs-keyword">int</span> i6 = i3 + i4;
+                        bArr[i6] = (<span class="hljs-keyword">byte</span>) (bArr[i6] ^ <span class="hljs-keyword">this</span>.n[i4]);
+                    }
+                    <span class="hljs-keyword">this</span>.l++;
+                    i3 = i5;
+                } <span class="hljs-keyword">catch</span> (ZipException e) {
+                    <span class="hljs-keyword">throw</span> e;
+                } <span class="hljs-keyword">catch</span> (Exception e2) {
+                    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> ZipException(e2);
+                }
+            }
+        }
+        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> ZipException(<span class="hljs-string">"AES not initialized properly"</span>);
+    }
+
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">byte</span>[] a(<span class="hljs-keyword">byte</span>[] bArr, <span class="hljs-keyword">char</span>[] cArr) <span class="hljs-keyword">throws</span> ZipException {
+        <span class="hljs-keyword">try</span> {
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> b(<span class="hljs-keyword">new</span> c(<span class="hljs-string">"HmacSHA1"</span>, <span class="hljs-string">"ISO-8859-1"</span>, bArr, PushConstants.PUSHSERVICE_INFO_SENDMESSAGE_BY_NOTIFICATIONSERVICE)).a(cArr, (<span class="hljs-keyword">this</span>.e + <span class="hljs-keyword">this</span>.f) + <span class="hljs-number">2</span>);
+        } <span class="hljs-keyword">catch</span> (Exception e) {
+            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> ZipException(e);
+        }
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">byte</span>[] a() {
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.c.b();
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">a</span><span class="hljs-params">(<span class="hljs-keyword">byte</span>[] bArr)</span> </span>{
+        <span class="hljs-keyword">this</span>.k = bArr;
+    }
+}
+</code></pre>
+<h2 id="关于-greendao"><a class="markdownIt-Anchor" href="#关于-greendao"></a> 关于 GreenDAO</h2>
+<h3 id="database-initialization"><a class="markdownIt-Anchor" href="#database-initialization"></a> Database Initialization</h3>
+<p>Make sure to use a subclass of OpenHelper provided in DaoMaster to create your database instance. For example the simple DevOpenHelper, also provided in DaoMaster.</p>
+<p>Then, when creating your database instance, just call .getEncryptedWritableDb(<password>) instead of .getWritableDb(). Finally, pass the database to DaoMaster as usual:</p>
+<pre class="highlight"><code class="java">DevOpenHelper helper = <span class="hljs-keyword">new</span> DevOpenHelper(<span class="hljs-keyword">this</span>, <span class="hljs-string">"notes-db-encrypted.db"</span>);
+Database db = helper.getEncryptedWritableDb(<span class="hljs-string">"&lt;your-secret-password&gt;"</span>);
+daoSession = <span class="hljs-keyword">new</span> DaoMaster(db).newSession();
+</code></pre>
+<hr />
+<ol>
+<li>SQLite 常用的命令：
+<ol>
+<li>输出控制</li>
+</ol>
+</li>
+</ol>
+<pre class="highlight"><code class="sql">sqlite&gt; .mode column
+sqlite&gt; .timer on
+sqlite&gt; .headers on
+sqlite&gt; .databases
+
+seq  name             file
+<span class="hljs-comment">---  ---------------  ----------------------------------------------------------</span>
+0    main             E:\books_unencrypted.db
+2    books            E:\books.db
+
+</code></pre>
+<ol start="2">
+<li></li>
+</ol>
+
+        </div>
+        <!-- .entry-content -->
+        <div class="single-reward">
+          <div class="reward-open">赏
+            <div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/custom/donate/AliPayQR.jpg"></li>
+                <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/custom/donate/WeChanQR.jpg"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent">
+        </div>
+        <footer class="post-footer">
+          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh"
+              target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i>
+              知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
+          <div class="post-tags">
+          </div>
+          <div class="post-share">
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer><!-- .entry-footer -->
+      </article>
+      <!-- #post-## -->
+	  <div class="toc-container">
+		<div class="toc" style="background: none;"></div>
+	  </div>
+      <section class="post-squares nextprev">
+        
+        
+        <div class="post-nepre half previous">
+          
+            <a href="/2020/04/29/2020-04-07-%E3%80%90%E7%94%9F%E6%B4%BB%E3%80%91%E5%A4%B1%E7%9C%A0%E6%80%8E%E4%B9%88%E5%8A%9E%EF%BC%9F/" rel="prev">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0/images/loader/orange.progress-bar-stripe-loader.svg" data-src=""
+                  style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)"
+                  src="">
+              </div>
+              <span class="label">
+                Previous Post</span>
+              <div class="info">
+                <h3>
+                  2020-04-07-【生活】失眠怎么办？</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+          
+          
+          
+          <div class="post-nepre half next">
+            
+              <a href="/2020/04/29/2020-04-01-%E3%80%90%E5%8D%95%E7%89%87%E6%9C%BA%E3%80%91%E5%8D%95%E7%89%87%E6%9C%BA%E7%AC%94%E8%AE%B0/" rel="next">
+                <div class="background">
+                  <img class="lazyload" src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0/images/loader/orange.progress-bar-stripe-loader.svg" data-src=""
+                    style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;"
+                    onerror="imgError(this,3)" src="">
+                </div>
+                <span class="label">
+                  Next Post</span>
+                <div class="info">
+                  <h3>
+                    2020-04-01-【单片机】单片机笔记</h3>
+                  <hr>
+                </div>
+              </a>
+            </div>
+            
+      </section>
+      
+<div id="vcomments"></div>
+<script>
+  window.onload = function(){
+      var valine = new Valine();
+      valine.init({
+        el: '#vcomments',
+        appId: "aFI53WTJYb4qPknwn0l76Lnu-gzGzoHsz",
+        appKey: "2YeldrXS6Hm64JWCCLNgpj3C",
+        path: window.location.pathname,
+        placeholder: "你是我一生只会遇见一次的惊喜 ..."
+      })
+  }
+</script>
+
+      <section class="author-profile">
+        <div class="info" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
+			
+				  <a href="" class="profile gravatar"><img src="" itemprop="image"
+					  alt="" height="70" width="70"></a>
+				  <div class="meta">
+					<span class="title">Author</span>
+					<h3 itemprop="name"><a href="" itemprop="url" rel="author"></a></h3>
+				  </div>
+				</div><hr><p><i class="iconfont icon-write"></i></p>
+			
+      </section>
+    </main><!-- #main -->
+  </div><!-- #primary -->
+</div>
+
+
+    </div>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            // PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+    <!-- <footer id="footer">  <div class="outer"> <div id="footer-info" class="inner"> &copy; 2020 dexfire<br> powered_by <a href="http://hexo.io/" target="_blank">Hexo</a> </div> </div> </footer> -->
+
+<footer id="colophon" class="site-footer" role="contentinfo">
+  <div class="site-info">
+    <div class="footertext">
+      <div class="img-preload">
+        <img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/other/wordpress-rotating-ball-o.svg">
+        <img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/other/disqus-preloader.svg"></div>
+      <p class="foo-logo"
+        style="background-image: url('https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/elements/sakura.svg');"></p>
+
+      <!--p style="color: #666666;">Copyright &copy 2018 - 2020 のさくら荘そ. <br> All Rights Reserved.</p-->
+      <p style="font-family: 'Ubuntu', sans-serif;">
+        <span style="color: #666666;">Crafted with
+          <i class="fa fa-heart animated" style="color: #e74c3c;"></i>
+          by
+          <a rel="me" href="https://hello.2heng.xin/@mashiro" target="_blank"
+            style="color: #000000;text-decoration:none;">Mashiro</a></span></p>
+      <p>Copyright &copy 2018 - 2020
+        のさくら荘そ<br>
+        <a href="http://beian.miit.gov.cn/" target="_blank">渝ICP备20005495号</a>
+      </p>
+    </div>
+    <div class="footer-device">
+      <p style="font-family: 'Ubuntu', sans-serif;">
+        <span style="color: #b9b9b9;">Theme
+          <a href="https://github.com/honjun/hexo-theme-sakura" target="_blank"
+            style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Sakura</a>
+          <i class="iconfont icon-sakura rotating" style="color: #ffc0cb;display:inline-block"></i>
+          by
+          <a href="https://2heng.xin/" target="_blank"
+            style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Mashiro</a>&<a
+            href="https://www.hojun.cn/" target="_blank"
+            style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">のさくら荘そ</a>,
+          Powered by Hexo,
+          Hosted by Github Pages</a>
+        </span>
+      </p>
+      <p>
+        <span id="busuanzi_container_site_pv" style="color: #b9b9b9;">
+          本站总访问量<span id="busuanzi_value_site_pv">1</span>次
+        </span>
+      </p>
+    </div>
+
+    <p id="footer-sponsor">
+      <a href="#" target="_blank" alt="CDN Sponsor" rel="nofollow"><img
+          src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/support/Tencent_Cloud_logo.svg" alt="CDN Sponsor"
+          style="height: 1.5em;"></a>&nbsp;&nbsp;&nbsp;<a href="https://www.vultr.com/?ref=7196564" target="_blank"
+        alt="Server provider" rel="nofollow"><img
+          src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/support/vultr_logo__on-white.svg" alt="Server provider"
+          style="height: 1.5em;"></a>&nbsp;&nbsp;&nbsp;<a href="#" target="_blank" alt="Free CDN" rel="nofollow"><img
+          src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/support/baidu_cdn.svg" alt="jsDelivr"
+          style="height: 1.5em;"></a>&nbsp;&nbsp;&nbsp;<a href="https://www.google.com/intl/ja/analytics/"
+        target="_blank" alt="Analytics solution" rel="nofollow"><img
+          src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/support/Google.svg" alt="Google Analytics"
+          style="height: 1.5em; "></a>
+    </p>
+  </div>
+  <!-- .site-info -->
+</footer>
+
+<div class="changeSkin-gear no-select" style="bottom: -999px;">
+    <div class="keys">
+        <span id="open-skinMenu">
+            <i class="iconfont icon-gear inline-block rotating"></i>&nbsp; 切换主题 | SCHEME TOOL
+        </span>
+    </div>
+</div>
+<div class="skin-menu no-select">
+    <div class="theme-controls row-container">
+        <ul class="menu-list">
+            <li id="white-bg">
+                <i class="fa fa-television" aria-hidden="true"></i>
+            </li>
+            <!--Default-->
+            <li id="sakura-bg">
+                <i class="iconfont icon-sakura"></i>
+            </li>
+            <!--Sakura-->
+            <li id="gribs-bg">
+                <i class="fa fa-slack" aria-hidden="true"></i>
+            </li>
+            <!--Grids-->
+            <li id="KAdots-bg">
+                <i class="iconfont icon-dots"></i>
+            </li>
+            <!--Dots-->
+            <li id="totem-bg">
+                <i class="fa fa-superpowers" aria-hidden="true"></i>
+            </li>
+            <!--Orange-->
+            <li id="pixiv-bg">
+                <i class="iconfont icon-pixiv"></i>
+            </li>
+            <!--Start-->
+            <li id="bing-bg">
+                <i class="iconfont icon-bing"></i>
+            </li>
+            <!--Bing-->
+            <li id="dark-bg">
+                <i class="fa fa-moon-o" aria-hidden="true"></i>
+            </li>
+            <!--Night-->
+        </ul>
+    </div>
+    <div class="font-family-controls row-container">
+        <button type="button" class="control-btn-serif selected" data-mode="serif"
+            onclick="mashiro_global.font_control.change_font()">Serif</button>
+        <button type="button" class="control-btn-sans-serif" data-mode="sans-serif"
+            onclick="mashiro_global.font_control.change_font()">Sans Serif</button>
+    </div>
+</div>
+<canvas id="night-mode-cover"></canvas>
+<div class="prpr" style="visibility: hidden;">
+    <div class="mashiro-tips" style="opacity: 0;">你一直相信的事，也让我相信吧。活着，是件美好的事。</div>
+    <canvas id="live2d" width="280" height="250" class="live2d"></canvas>
+</div>
+<div class="live2d-tool hide-live2d no-select" onclick="hide_live2d()">
+    <div class="keys">Show</div>
+</div>
+<div class="live2d-tool switch-live2d no-select" onclick="switch_pio()">
+    <div class="keys">Switch</div>
+</div>
+<div class="live2d-tool save-live2d no-select" onclick="save_pio()">
+    <div class="keys">Save</div>
+</div>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/js/lib.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/js/InsightSearch.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/js/jquery.fancybox.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/js/zoom.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/js/sakura-app_v3.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/js/autoptimize.js"></script>
+<!-- //cdn1.lncld.net/static/js/3.0.4/av-min.js -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/js/av-min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/js/botui.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/js/custom.js"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<!-- Valine评论 -->>
+<script type="text/javascript" src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<!-- 不蒜子 网页计数器 -->
+<script async type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- TOC目录 -->
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+
+<script type="text/javascript">
+  /* <![CDATA[ */
+  if (/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+    var Poi = {
+      "pjax": "1",
+      "movies": {
+        "url": "https://cdn.jsdelivr.net/gh/honjun/hojun@1.2",
+        "name": "Unbroken.mp4",
+        "live": "close"
+      },
+      "windowheight": "fixed",
+      "codelamp": "close",
+      "ajaxurl": "",
+      "order": "asc",
+      "formpostion": "bottom"
+    };
+  } else {
+    var Poi = {
+      "pjax": "1",
+      "movies": {
+        "url": "https://cdn.jsdelivr.net/gh/honjun/hojun@1.2",
+        "name": "Unbroken.mp4",
+        "live": "open"
+      },
+      "windowheight": "auto",
+      "codelamp": "close",
+      "ajaxurl": "",
+      "order": "asc",
+      "formpostion": "bottom"
+    };
+  }
+  /* ]]> */
+</script>
+
+
+
+
+
+
+
+
+<!-- baidu Analytics -->
+<script>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement('script');
+        hm.src = 'https://hm.baidu.com/hm.js?18d22dda3acd079101f04a6eacf3781e';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+<script>
+  $(document).ready(function () {
+    // 处理目录
+    if ($(".toc").length > 0 && document.body.clientWidth > 1200) {
+      if ($(".pattern-center").length > 0) { //有图的情况
+        tocbot.init({
+          // Where to render the table of contents.
+          tocSelector: '.toc', // 放置目录的容器
+          // Where to grab the headings to build the table of contents.
+          contentSelector: '.entry-content', // 正文内容所在
+          // Which headings to grab inside of the contentSelector element.
+          scrollSmooth: true,
+          headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+          collapseDepth: 3,
+          headingsOffset: -300,
+          scrollSmoothOffset: -85
+        });
+      } else {
+        tocbot.init({
+          // Where to render the table of contents.
+          tocSelector: '.toc', // 放置目录的容器
+          // Where to grab the headings to build the table of contents.
+          contentSelector: '.entry-content', // 正文内容所在
+          // Which headings to grab inside of the contentSelector element.
+          scrollSmooth: true,
+          headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+          collapseDepth: 3,
+          headingsOffset: -85,
+          scrollSmoothOffset: -85
+        });
+      }
+      var offsetTop = $('.toc')
+        .offset()
+        .top - 95;
+      window.onscroll = function () {
+        var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+        if (scrollTop >= offsetTop) {
+          $('.toc').addClass('toc-fixed');
+        } else {
+          $('.toc').removeClass('toc-fixed');
+        }
+      }
+    }
+  });
+</script>
+
+    <!-- openNav -->
+    <div class="openNav no-select">
+      <div class="iconflat no-select">
+        <div class="icon"></div>
+      </div>
+      <div class="site-branding">
+        
+        <h1 class="site-title">
+          <a href="">
+            
+          </a>
+        </h1>
+        
+      </div>
+    </div>
+  </section>
+
+  <div id="mo-nav" class="">
+  <div class="m-avatar">
+    <img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/custom/avatar.jpg">
+  </div>
+  <p
+    style="text-align: center; color: #333; font-weight: 900; font-family: 'Ubuntu', sans-serif; letter-spacing: 1.5px">
+    Dexfireのさくら荘そ</p>
+  <p style="text-align: center; word-spacing: 20px;">
+    
+    
+    <a href="http://github.com/honjun" class="fa fa-github" target="_blank"
+      style="color: #333; margin-left:20px"></a>
+    
+    <a href="http://weibo.com/mashirozx?is_all=1" class="fa fa-weibo" target="_blank"
+      style="color: #dd4b39; margin-left:20px"></a>
+    
+    <a href="https://wpa.qq.com/msgrd?v=3&uin=954655431&site=qq&menu=yes" class="fa fa-qq" target="_blank"
+      style="color: #25c6fe; margin-left:20px"></a>
+    
+    
+  </p>
+  <ul id="menu-new-1" class="menu">
+    
+    <li>
+      <a href="/">
+        <span class="faa-parent animated-hover">
+          <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
+          主页
+        </span>
+      </a>
+      
+    </li>
+    
+    <li>
+      <a href="/archives">
+        <span class="faa-parent animated-hover">
+          <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
+          时间线
+        </span>
+      </a>
+      
+      <ul class="sub-menu">
+        
+        <li>
+          <a href="/categories/%E6%8A%80%E6%9C%AF/">
+            <i class="fa fa-code" aria-hidden="true"></i>
+            技术
+          </a>
+        </li>
+        
+        <li>
+          <a href="/categories/%E7%94%9F%E6%B4%BB/">
+            <i class="fa fa-file-text-o" aria-hidden="true"></i>
+            生活
+          </a>
+        </li>
+        
+        <li>
+          <a href="/categories/%E8%B5%84%E6%BA%90/">
+            <i class="fa fa-cloud-download" aria-hidden="true"></i>
+            资源
+          </a>
+        </li>
+        
+        <li>
+          <a href="/categories/%E9%9A%8F%E6%83%B3/">
+            <i class="fa fa-commenting-o" aria-hidden="true"></i>
+            随想
+          </a>
+        </li>
+        
+        <li>
+          <a href="/categories/%E8%BD%AC%E8%BD%BD/">
+            <i class="fa fa-book" aria-hidden="true"></i>
+            转载
+          </a>
+        </li>
+        
+      </ul>
+      
+    </li>
+    
+    <li>
+      <a href="javascript:;">
+        <span class="faa-parent animated-hover">
+          <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+          清单
+        </span>
+      </a>
+      
+      <ul class="sub-menu">
+        
+        <li>
+          <a href="/tags/%E6%82%A6%E8%AF%BB/">
+            <i class="fa fa-th-list faa-bounce" aria-hidden="true"></i>
+            书单
+          </a>
+        </li>
+        
+        <li>
+          <a href="/bangumi/">
+            <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
+            番组
+          </a>
+        </li>
+        
+        <li>
+          <a href="/music/">
+            <i class="fa fa-headphones" aria-hidden="true"></i>
+            歌单
+          </a>
+        </li>
+        
+        <li>
+          <a href="/tags/%E5%9B%BE%E9%9B%86/">
+            <i class="fa fa-photo" aria-hidden="true"></i>
+            图集
+          </a>
+        </li>
+        
+      </ul>
+      
+    </li>
+    
+    <li>
+      <a href="/comment/">
+        <span class="faa-parent animated-hover">
+          <i class="fa  fa-pencil-square-o faa-tada" aria-hidden="true"></i>
+          留言板
+        </span>
+      </a>
+      
+    </li>
+    
+    <li>
+      <a href="/links/">
+        <span class="faa-parent animated-hover">
+          <i class="fa  fa-link faa-shake" aria-hidden="true"></i>
+          友人帐
+        </span>
+      </a>
+      
+    </li>
+    
+    <li>
+      <a href="/donate/">
+        <span class="faa-parent animated-hover">
+          <i class="fa  fa-heart faa-pulse" aria-hidden="true"></i>
+          咖啡
+        </span>
+      </a>
+      
+    </li>
+    
+    <li>
+      <a href="/">
+        <span class="faa-parent animated-hover">
+          <i class="fa  fa-leaf faa-wrench" aria-hidden="true"></i>
+          关于
+        </span>
+      </a>
+      
+      <ul class="sub-menu">
+        
+        <li>
+          <a href="/about/">
+            <i class="fa fa-meetup" aria-hidden="true"></i>
+            我
+          </a>
+        </li>
+        
+        <li>
+          <a href="/theme-sakura/">
+            <i class="fa iconfont icon-sakura" aria-hidden="true"></i>
+            主题
+          </a>
+        </li>
+        
+        <li>
+          <a href="/theme-sakura/update_logs.html">
+            <i class="fa fa-ravelry" aria-hidden="true"></i>
+            更新
+          </a>
+        </li>
+        
+        <li>
+          <a href="/lab/">
+            <i class="fa fa-cogs" aria-hidden="true"></i>
+            实验室
+          </a>
+        </li>
+        
+      </ul>
+      
+    </li>
+    
+    <li>
+      <a href="/atom.xml">
+        <span class="faa-parent animated-hover">
+          <i class="fa  fa-rss faa-pulse" aria-hidden="true"></i>
+          RSS
+        </span>
+      </a>
+      
+    </li>
+    
+  </ul>
+  <p style="text-align: center; font-size: 13px; color: #b9b9b9;">&copy 2020 hexo-sakura</p>
+</div>
+<button onclick="topFunction()" class="mobile-cd-top" id="moblieGoTop" title="Go to top" style="display: none;"><i
+    class="fa fa-chevron-up" aria-hidden="true"></i></button>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<!-- require MetingJS -->
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+<style>
+  .aplayer .aplayer-lrc {
+    height: 35px;
+  }
+  .aplayer .aplayer-lrc p{
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 18px !important;
+  }
+  .aplayer .aplayer-lrc p.aplayer-lrc-current{
+    color: #FF1493;
+  }
+  .aplayer.aplayer-narrow .aplayer-body{
+    left: -66px !important;
+  }
+  .aplayer.aplayer-fixed .aplayer-lrc {
+    display: none;
+  }
+  .aplayer .aplayer-lrc.aplayer-lrc-hide {
+      display:none !important;
+  }
+  .aplayer.aplayer-fixed .lrc-show {
+    display: block;
+    background: rgba(255, 255, 255, 0.8);
+  }
+</style>
+<meting-js
+
+    id="2660651585"
+
+    server="netease"
+
+    type="playlist"
+
+    fixed="true"
+
+    autoplay="false"
+
+    loop="all"
+
+    order="random"
+
+    preload="auto"
+
+    volume="0.7"
+
+    mutex="true"
+
+</meting-js>
+<script>
+  $(function(){
+    $('body').on('click', '.aplayer', function(){
+      if($('.aplayer-button').hasClass('aplayer-play')) {
+        $('.aplayer-lrc').removeClass('lrc-show');
+      } else {
+        $('.aplayer-lrc').addClass('lrc-show');
+      }
+    })
+  });
+</script>
+</body>
+
+</html>

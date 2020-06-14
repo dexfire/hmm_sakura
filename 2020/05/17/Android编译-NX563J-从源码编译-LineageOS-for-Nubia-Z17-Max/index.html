@@ -1,0 +1,1322 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  
+  
+    <meta name="description" content="樱花博客，一个记录个人成长的地方。">
+  
+  <meta name="keywords" content="关键词,关键词,关键词" />
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="author" content="dexfire, dexfire@gmail.com" />
+  
+  <title itemprop="name">
+    
+    [Android编译][NX563J]从源码编译 LineageOS for Nubia Z17 Max |
+    
+    你终于回来啦~ ♪(＾∀＾●)ﾉ
+  </title>
+  
+  <link rel="shortcut icon" href="/images/favicon.ico">
+  
+  <meta http-equiv="x-dns-prefetch-control" content="on">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Noto+SerifMerriweather|Merriweather+Sans|Source+Code+Pro|Ubuntu:400,700|Noto+Serif+SC"
+    media="all">
+  <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+  <link rel="stylesheet" id="saukra_css-css" href="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/css/autoptimize.css" type="text/css" media="all">
+  <!-- <link rel="stylesheet" id="saukra_css-css" href="/css/style.css" type="text/css" media="all"> -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/css/lib.css" type="text/css" media="all">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/css/font.css" type="text/css" media="all">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/css/insight.css" type="text/css" media="all">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/css/jquery.fancybox.min.css" type="text/css" media="all">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/css/zoom.css" type="text/css" media="all">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/css/sharejs.css" type="text/css" media="all">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/css/custom.css" type="text/css" media="all">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+  <script>
+    /*Initial Variables*/
+    var mashiro_option = new Object();
+    var mashiro_global = new Object();
+    mashiro_option.NProgressON = true;
+    /*
+     * 邮箱信息之类的东西可以填在这里，这些js变量基本都作用于sakura-app.js
+     * 这样的设置仅是为了方便在基于PHP开发的主题中设置js变量，既然移植到了Node上，我想或许可以精简这一逻辑吧
+     */
+    mashiro_option.email_domain = "";
+    mashiro_option.email_name = "";
+    mashiro_option.cookie_version_control = "";
+    mashiro_option.qzone_autocomplete = false;
+    mashiro_option.site_name = "Dexfireのさくら荘そ";
+    mashiro_option.author_name = "のさくら荘そ";
+    mashiro_option.site_url = "https://dexfire.cn";
+    mashiro_option.v_appId = "aFI53WTJYb4qPknwn0l76Lnu-gzGzoHsz";
+    mashiro_option.v_appKey = "2YeldrXS6Hm64JWCCLNgpj3C";
+    mashiro_option.mathjax = "0";
+    mashiro_option.qq_api_url = "https://api.mashiro.top/qqinfo/";
+    mashiro_option.qq_avatar_api_url = "https://api.mashiro.top/qqinfo/";
+                    // mashiro_option.float_player_on = true;
+
+    /*End of Initial Variables*/
+  </script>
+  <script type="text/javascript">
+    var bg = "https://cdn.jsdelivr.net/gh/dexfire/cdn/images/cover/IMG_0001.JPG,https://cdn.jsdelivr.net/gh/dexfire/cdn/images/cover/IMG_0002.JPG,https://cdn.jsdelivr.net/gh/dexfire/cdn/images/cover/IMG_7631.JPG,https://cdn.jsdelivr.net/gh/dexfire/cdn/images/cover/IMG_7632.JPG,https://cdn.jsdelivr.net/gh/dexfire/cdn/images/cover/IMG_7633.JPG,https://cdn.jsdelivr.net/gh/dexfire/cdn/images/cover/IMG_7634.JPG,https://cdn.jsdelivr.net/gh/dexfire/cdn/images/cover/IMG_7635.JPG,https://cdn.jsdelivr.net/gh/dexfire/cdn/images/cover/IMG_7636.JPG,https://cdn.jsdelivr.net/gh/dexfire/cdn/images/cover/IMG_7638.JPG,https://cdn.jsdelivr.net/gh/dexfire/cdn/images/cover/IMG_7639.JPG,https://cdn.jsdelivr.net/gh/dexfire/cdn/images/cover/IMG_7642.JPG,https://cdn.jsdelivr.net/gh/dexfire/cdn/images/cover/IMG_7643.jpg,https://cdn.jsdelivr.net/gh/dexfire/cdn/images/cover/IMG_7725.jpg,https://cdn.jsdelivr.net/gh/dexfire/cdn/images/cover/IMG_7760.jpg,https://dexfire.cn/img/20200614001.jpg".split(",");
+    var bgindex = Math.floor(Math.random() * bg.length);
+    if (!!window.ActiveXObject || "ActiveXObject" in window) { //is IE?
+      alert('朋友，IE浏览器未适配哦~');
+    }
+  </script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body
+  class="page-template page-template-user page-template-page-analytics page-template-userpage-analytics-php page page-id-1297 chinese-font serif isWebKit">
+  <div class="scrollbar" id="bar"></div>
+  <a href="#" class="cd-top faa-float animated"></a>
+  <section id="main-container">
+    <div class="headertop filter-dot" style="height: 0;">
+  <div id="banner_wave_1"></div>
+  <div id="banner_wave_2"></div>
+  <figure id="centerbg" class="centerbg" onerror="randBG()">
+    <div class="focusinfo no-select">
+      <div class="header-tou">
+        <a href="https://dexfire.cn">
+          <img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/custom/avatar.jpg">
+        </a>
+      </div>
+      <div class="header-info">
+        <p>热爱是最终的救赎，勇敢是唯一的退路~❤</p>
+        <div class="top-social_v2">
+          <li id="bg-pre">
+            <img class="flipx" src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/other/next-b.svg">
+          </li>
+          
+            
+              
+                <li>
+                  <a href="http://github.com/honjun" target="_blank" class="social-github" title="github">
+                    <img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/social/github.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="http://weibo.com/mashirozx?is_all=1" target="_blank" class="social-github" title="sina">
+                    <img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/social/sina.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="http://weibo.com/mashirozx?is_all=1" target="_blank" class="social-github" title="wangyiyun">
+                    <img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/social/wangyiyun.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="http://weibo.com/mashirozx?is_all=1" target="_blank" class="social-github" title="zhihu">
+                    <img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/social/zhihu.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="http://weibo.com/mashirozx?is_all=1" target="_blank" class="social-github" title="email">
+                    <img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/social/email.svg">
+                  </a>
+                </li>
+              
+            
+              
+                <li class="wechat">
+                  <a href="/#">
+                    <img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/social/wechat.png">
+                  </a>
+                  <div class="wechatInner">
+                    <img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/custom/wechat.jpg">
+                  </div>
+                </li>
+              
+            
+              
+                <li class="wechat">
+                  <a href="/#">
+                    <img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/social/wechat.png">
+                  </a>
+                  <div class="wechatInner">
+                    <img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/custom/wechat.jpg">
+                  </div>
+                </li>
+              
+            
+          
+          <li id="bg-next">
+            <img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/other/next-b.svg">
+          </li>
+        </div>
+      </div>
+    </div>
+  </figure>
+  <div id="video-container" style="">
+    <video style="object-fit: fill" id="bgvideo" class="video" video-name="" src="" width="auto" preload="auto">
+    </video>
+    <div id="video-btn" class="loadvideo videolive">
+    </div>
+    <div id="video-add">
+    </div>
+    <div class="video-stu">
+    </div>
+  </div>
+  <div class="headertop-down faa-float animated" onclick="headertop_down()">
+    <span>
+      <i class="fa fa-chevron-down" aria-hidden="true">
+      </i>
+    </span>
+  </div>
+</div>
+    <div id="page" class="site wrapper">
+      <header class="site-header no-select gizle sabit" role="banner">
+  <div class="site-top">
+    <div class="site-branding">
+      <span class="site-title">
+        <span class="logolink moe-mashiro">
+          <a href="/">
+            <span class="sakurasono">Dexfire</span>
+            <span class="shironeko">のさくら荘そ</span>
+          </a>
+        </span>
+      </span>
+    </div>
+    <div class="searchbox search-form-submit">
+      <i class="iconfont js-toggle-search iconsearch icon-search">
+      </i>
+    </div>
+    <div id="show-nav" class="showNav mobile-fit">
+      <div class="line line1">
+      </div>
+      <div class="line line2">
+      </div>
+      <div class="line line3">
+      </div>
+    </div>
+    <div class="lower-cantiner">
+      <div class="lower">
+        <nav class="mobile-fit-control hide">
+          <ul id="menu-new" class="menu">
+            
+              <li>
+                <a href="/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
+                    主页
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
+                    时间线
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/categories/%E6%8A%80%E6%9C%AF/">
+                          <i class="fa fa-code" aria-hidden="true"></i>
+                          技术
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/%E7%94%9F%E6%B4%BB/">
+                          <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                          生活
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/%E8%B5%84%E6%BA%90/">
+                          <i class="fa fa-cloud-download" aria-hidden="true"></i>
+                          资源
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/%E9%9A%8F%E6%83%B3/">
+                          <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                          随想
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/%E8%BD%AC%E8%BD%BD/">
+                          <i class="fa fa-book" aria-hidden="true"></i>
+                          转载
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="javascript:;">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+                    清单
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/tags/%E6%82%A6%E8%AF%BB/">
+                          <i class="fa fa-th-list faa-bounce" aria-hidden="true"></i>
+                          书单
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/bangumi/">
+                          <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
+                          番组
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/music/">
+                          <i class="fa fa-headphones" aria-hidden="true"></i>
+                          歌单
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/tags/%E5%9B%BE%E9%9B%86/">
+                          <i class="fa fa-photo" aria-hidden="true"></i>
+                          图集
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="/comment/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-pencil-square-o faa-tada" aria-hidden="true"></i>
+                    留言板
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/links/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-link faa-shake" aria-hidden="true"></i>
+                    友人帐
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/donate/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-heart faa-pulse" aria-hidden="true"></i>
+                    咖啡
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-leaf faa-wrench" aria-hidden="true"></i>
+                    关于
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/about/">
+                          <i class="fa fa-meetup" aria-hidden="true"></i>
+                          我
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/theme-sakura/">
+                          <i class="fa iconfont icon-sakura" aria-hidden="true"></i>
+                          主题
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/theme-sakura/update_logs.html">
+                          <i class="fa fa-ravelry" aria-hidden="true"></i>
+                          更新
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/lab/">
+                          <i class="fa fa-cogs" aria-hidden="true"></i>
+                          实验室
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="/atom.xml">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-rss faa-pulse" aria-hidden="true"></i>
+                    RSS
+                  </span>
+                </a>
+                
+              </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+<div class="pattern-center-blank"></div>
+
+<div id="content" class="site-content">
+  <div id="primary" class="content-area">
+    <main id="main" class="site-main" role="main">
+      <article id="post-1"
+        class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
+        
+        <header class="entry-header">
+          <h1 class="entry-title">[Android编译][NX563J]从源码编译 LineageOS for Nubia Z17 Max</h1>
+          <p class="entry-census">dexfire&nbsp;·&nbsp;2020-5-17&nbsp;·&nbsp;<span
+              id="busuanzi_value_page_pv"></span>次阅读</p>
+          </p>
+
+          <hr>
+        </header>
+        
+        <div class="entry-content">
+          <h1 id="-0-"><a class="markdownIt-Anchor" href="#-0-"></a> </h1>
+<h2 id="编译中的一些问题"><a class="markdownIt-Anchor" href="#编译中的一些问题"></a> 编译中的一些问题</h2>
+<pre class="highlight"><code class="text">### 
+dexfire@dexfire-PC:/media/dexfire/mm/lineageos$ m | tee build_log.txt
+============================================
+PLATFORM_VERSION_CODENAME=REL
+PLATFORM_VERSION=10
+LINEAGE_VERSION=17.1-20200517-UNOFFICIAL-nx563j
+TARGET_PRODUCT=lineage_nx563j
+TARGET_BUILD_VARIANT=userdebug
+TARGET_BUILD_TYPE=release
+TARGET_ARCH=arm64
+TARGET_ARCH_VARIANT=armv8-a
+TARGET_CPU_VARIANT=generic
+TARGET_2ND_ARCH=arm
+TARGET_2ND_ARCH_VARIANT=armv8-a
+TARGET_2ND_CPU_VARIANT=generic
+HOST_ARCH=x86_64
+HOST_2ND_ARCH=x86
+HOST_OS=linux
+HOST_OS_EXTRA=Linux-4.15.0-30deepin-generic-x86_64-Deepin-15
+HOST_CROSS_OS=windows
+HOST_CROSS_ARCH=x86
+HOST_CROSS_2ND_ARCH=x86_64
+HOST_BUILD_TYPE=release
+BUILD_ID=QQ2A.200501.001.B2
+OUT_DIR=out
+PRODUCT_SOONG_NAMESPACES=device/nubia/msm8998-common vendor/nubia/msm8998-common vendor/nubia/nx563j hardware/qcom-caf/msm8998
+============================================
+ninja: no work to do.
+[100% 1/1] out/soong/.bootstrap/bin/soong_build out/soong/build.ninja
+FAILED: out/soong/build.ninja
+out/soong/.bootstrap/bin/soong_build -t -l out/.module_paths/Android.bp.list -b out/soong -n out -d out/soong/build.ninja.d -globFile out/soong/.bootstrap/build-globs.ninja -o out/soong/build.ninja Android.bp
+fatal error: runtime: out of memory
+
+runtime stack:
+runtime.throw(0xa1f4ab, 0x16)
+	prebuilts/go/linux-x86/src/runtime/panic.go:617 +0x72
+runtime.sysMap(0xc158000000, 0x4000000, 0xf517d8)
+	prebuilts/go/linux-x86/src/runtime/mem_linux.go:170 +0xc7
+runtime.(*mheap).sysAlloc(0xf39fc0, 0xc000, 0xf39fd0, 0x6)
+	prebuilts/go/linux-x86/src/runtime/malloc.go:633 +0x1cd
+runtime.(*mheap).grow(0xf39fc0, 0x6, 0x0)
+	prebuilts/go/linux-x86/src/runtime/mheap.go:1232 +0x42
+runtime.(*mheap).allocSpanLocked(0xf39fc0, 0x6, 0xf517e8, 0x7f6f2f8f8e70)
+	prebuilts/go/linux-x86/src/runtime/mheap.go:1150 +0x3a7
+runtime.(*mheap).alloc_m(0xf39fc0, 0x6, 0x450063, 0x7f6f2f8f8e70)
+	prebuilts/go/linux-x86/src/runtime/mheap.go:977 +0xc2
+runtime.(*mheap).alloc.func1()
+	prebuilts/go/linux-x86/src/runtime/mheap.go:1048 +0x4c
+runtime.systemstack(0x0)
+	prebuilts/go/linux-x86/src/runtime/asm_amd64.s:351 +0x66
+runtime.mstart()
+	prebuilts/go/linux-x86/src/runtime/proc.go:1153
+
+goroutine 1 [running]:
+runtime.systemstack_switch()
+	prebuilts/go/linux-x86/src/runtime/asm_amd64.s:311 fp=0xc103a421f8 sp=0xc103a421f0 pc=0x4587f0
+runtime.(*mheap).alloc(0xf39fc0, 0x6, 0x10063, 0xc0001a4360)
+	prebuilts/go/linux-x86/src/runtime/mheap.go:1047 +0x8a fp=0xc103a42248 sp=0xc103a421f8 pc=0x42434a
+runtime.(*mcentral).grow(0xf3bc00, 0x0)
+	prebuilts/go/linux-x86/src/runtime/mcentral.go:256 +0x95 fp=0xc103a42290 sp=0xc103a42248 pc=0x417285
+runtime.(*mcentral).cacheSpan(0xf3bc00, 0x0)
+	prebuilts/go/linux-x86/src/runtime/mcentral.go:106 +0x2ff fp=0xc103a422f0 sp=0xc103a42290 pc=0x416d8f
+runtime.(*mcache).refill(0x7f6f457ea460, 0x63)
+	prebuilts/go/linux-x86/src/runtime/mcache.go:135 +0x86 fp=0xc103a42310 sp=0xc103a422f0 pc=0x416826
+runtime.(*mcache).nextFree(0x7f6f457ea460, 0x63, 0x0, 0x0, 0x92)
+	prebuilts/go/linux-x86/src/runtime/malloc.go:786 +0x88 fp=0xc103a42348 sp=0xc103a42310 pc=0x40b488
+runtime.mallocgc(0x1b00, 0x9454a0, 0xc153ff9d01, 0x92)
+	prebuilts/go/linux-x86/src/runtime/malloc.go:939 +0x76e fp=0xc103a423e8 sp=0xc103a42348 pc=0x40bd9e
+runtime.makeslice(0x9454a0, 0x0, 0x1a97, 0x6bf9d7)
+	prebuilts/go/linux-x86/src/runtime/slice.go:49 +0x6c fp=0xc103a42418 sp=0xc103a423e8 pc=0x441fac
+strings.(*Builder).grow(...)
+	prebuilts/go/linux-x86/src/strings/builder.go:67
+strings.(*Builder).Grow(...)
+	prebuilts/go/linux-x86/src/strings/builder.go:81
+strings.Join(0xc0fe2d4000, 0x2e, 0x2e, 0xa0c4e8, 0x1, 0x2e, 0x0)
+	prebuilts/go/linux-x86/src/strings/strings.go:438 +0x4d0 fp=0xc103a424f0 sp=0xc103a42418 pc=0x4e0db0
+android/soong/cc.(*libraryDecorator).androidMkWriteExportedFlags(0xc08da7fb80, 0xb04020, 0xc10bf092c0)
+	/media/dexfire/mm/lineageos/build/soong/cc/androidmk.go:144 +0xb4 fp=0xc103a42560 sp=0xc103a424f0 pc=0x6fc7e4
+android/soong/cc.(*libraryDecorator).AndroidMk.func2(0xb04020, 0xc10bf092c0, 0xb0f0e0, 0xc0fb9b3290)
+	/media/dexfire/mm/lineageos/build/soong/cc/androidmk.go:171 +0x50 fp=0xc103a425e8 sp=0xc103a42560 pc=0x77e3b0
+android/soong/android.WriteAndroidMkData(0xb04020, 0xc10bf092c0, 0xa183fa, 0x10, 0xa0f366, 0x7, 0x0, 0x0, 0x0, 0x1, ...)
+	/media/dexfire/mm/lineageos/build/soong/android/androidmk.go:438 +0xef fp=0xc103a42660 sp=0xc103a425e8 pc=0x64e22f
+android/soong/android.translateAndroidModule(0xb26440, 0xc10bf091d0, 0xb04020, 0xc10bf092c0, 0xb08760, 0xc08daa2d80, 0x7f6f2fba3840, 0xc08daa2d80, 0x5eb310, 0xc0ee58d3f0)
+	/media/dexfire/mm/lineageos/build/soong/android/androidmk.go:420 +0x969 fp=0xc103a433a0 sp=0xc103a42660 pc=0x64dc49
+android/soong/android.translateAndroidMkModule(0xb26440, 0xc10bf091d0, 0xb04020, 0xc10bf092c0, 0xb08760, 0xc08daa2d80, 0x0, 0x0)
+	/media/dexfire/mm/lineageos/build/soong/android/androidmk.go:348 +0x29b fp=0xc103a43400 sp=0xc103a433a0 pc=0x64cffb
+android/soong/android.translateAndroidMk(0xb26440, 0xc10bf091d0, 0xc00d3de450, 0x23, 0xc14f37e000, 0xb814, 0xbc00, 0xc00017e000, 0x0)
+	/media/dexfire/mm/lineageos/build/soong/android/androidmk.go:293 +0x7b2 fp=0xc103a436a0 sp=0xc103a43400 pc=0x64cb42
+android/soong/android.(*androidMkSingleton).GenerateBuildActions(0xf50888, 0xb26440, 0xc10bf091d0)
+	/media/dexfire/mm/lineageos/build/soong/android/androidmk.go:275 +0x3c7 fp=0xc103a43998 sp=0xc103a436a0 pc=0x64c1f7
+android/soong/android.(*singletonAdaptor).GenerateBuildActions(0xc00016d980, 0xb26740, 0xc0ee58d3f0)
+	/media/dexfire/mm/lineageos/build/soong/android/singleton.go:92 +0xb7 fp=0xc103a439c8 sp=0xc103a43998 pc=0x69bcd7
+github.com/google/blueprint.(*Context).generateSingletonBuildActions.func1(0xc093d85ac8, 0xc0ee58d3f0)
+	/media/dexfire/mm/lineageos/build/blueprint/context.go:2378 +0x81 fp=0xc103a439f8 sp=0xc103a439c8 pc=0x5f70f1
+github.com/google/blueprint.(*Context).generateSingletonBuildActions(0xc00009a9c0, 0xa08f00, 0xc00017e000, 0xc0000c4900, 0x11, 0x20, 0xc016894a20, 0x0, 0x0, 0x0, ...)
+	/media/dexfire/mm/lineageos/build/blueprint/context.go:2379 +0x299 fp=0xc103a43b30 sp=0xc103a439f8 pc=0x5cbcd9
+github.com/google/blueprint.(*Context).PrepareBuildActions.func1(0xb0ef20, 0xc08ba926f0)
+	/media/dexfire/mm/lineageos/build/blueprint/context.go:1911 +0x158 fp=0xc103a43c68 sp=0xc103a43b30 pc=0x5f3328
+runtime/pprof.Do(0xb0ef20, 0xc08ba926f0, 0xc038129a20, 0x1, 0x1, 0xc093d85d00)
+	prebuilts/go/linux-x86/src/runtime/pprof/runtime.go:35 +0xca fp=0xc103a43cb0 sp=0xc103a43c68 pc=0x59c22a
+github.com/google/blueprint.(*Context).PrepareBuildActions(0xc00009a9c0, 0xa08f00, 0xc00017e000, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0)
+	/media/dexfire/mm/lineageos/build/blueprint/context.go:1892 +0x12e fp=0xc103a43d40 sp=0xc103a43cb0 pc=0x5ca0ce
+github.com/google/blueprint/bootstrap.Main(0xc00009a9c0, 0xa08f00, 0xc00017e000, 0xc00056bf68, 0x3, 0x4)
+	/media/dexfire/mm/lineageos/build/blueprint/bootstrap/command.go:171 +0x99e fp=0xc103a43ed8 sp=0xc103a43d40 pc=0x63ee9e
+main.main()
+	/media/dexfire/mm/lineageos/build/soong/cmd/soong_build/main.go:75 +0x2d4 fp=0xc103a43f98 sp=0xc103a43ed8 pc=0x8f0f54
+runtime.main()
+	prebuilts/go/linux-x86/src/runtime/proc.go:200 +0x20c fp=0xc103a43fe0 sp=0xc103a43f98 pc=0x42df5c
+runtime.goexit()
+	prebuilts/go/linux-x86/src/runtime/asm_amd64.s:1337 +0x1 fp=0xc103a43fe8 sp=0xc103a43fe0 pc=0x45a741
+ninja: build stopped: subcommand failed.
+12:04:36 soong bootstrap failed with: exit status 1
+
+#### failed to build some targets (03:19 (mm:ss)) ####
+</code></pre>
+<p><strong>解决方法</strong>：增加swap虚拟内存。</p>
+<h3 id="no-kernel"><a class="markdownIt-Anchor" href="#no-kernel"></a> no kernel</h3>
+<pre class="highlight"><code class="text">[ 99% 485/486] finishing build rules ...
+vendor/lineage/build/tasks/kernel.mk:111: warning: ***************************************************************
+vendor/lineage/build/tasks/kernel.mk:112: warning: * Using prebuilt kernel binary instead of source              *
+vendor/lineage/build/tasks/kernel.mk:113: warning: * THIS IS DEPRECATED, AND IS NOT ADVISED.                     *
+vendor/lineage/build/tasks/kernel.mk:114: warning: * Please configure your device to download the kernel         *
+vendor/lineage/build/tasks/kernel.mk:115: warning: * source repository to kernel/nubia/msm8998
+vendor/lineage/build/tasks/kernel.mk:116: warning: * for more information                                        *
+vendor/lineage/build/tasks/kernel.mk:117: warning: ***************************************************************
+[100% 486/486] writing build rules ...
+out/build-lineage_nx563j-package.ninja is missing, regenerating...
+[ 99% 487/489] initializing packaging system ...
+[ 99% 488/489] including distdir.mk ...
+[100% 489/489] writing packaging rules ...
+Starting ninja...
+14:14:23 ninja failed with: exit status 1
+FAILED: ninja: 'out/target/product/nx563j/kernel', needed by 'out/target/product/nx563j/boot.img', missing and no known rule to make it
+
+</code></pre>
+<p><strong>解决方法</strong>：<br />
+克隆这个仓库<a href="https://github.com/LineageOS/android_kernel_nubia_msm8998" target="_blank" rel="noopener">android_kernel_nubia_msm8998</a>.</p>
+<p>放置位置看下一节！</p>
+<h2 id="failed-ninja-outkernel-needed-by-outbootimg-missing-and-no-known-rule-to-make-it"><a class="markdownIt-Anchor" href="#failed-ninja-outkernel-needed-by-outbootimg-missing-and-no-known-rule-to-make-it"></a> FAILED: ninja: ‘out/…/kernel’, needed by ‘out/…/boot.img’, missing and no known rule to make it</h2>
+<p><code>18:38:42 ninja failed with: exit status 1</code></p>
+<pre class="highlight"><code class="text">$ m -j5 | tee build_log4.txt
+============================================
+PLATFORM_VERSION_CODENAME=REL
+PLATFORM_VERSION=10
+LINEAGE_VERSION=17.1-20200517-UNOFFICIAL-nx563j
+TARGET_PRODUCT=lineage_nx563j
+TARGET_BUILD_VARIANT=userdebug
+TARGET_BUILD_TYPE=release
+TARGET_ARCH=arm64
+TARGET_ARCH_VARIANT=armv8-a
+TARGET_CPU_VARIANT=generic
+TARGET_2ND_ARCH=arm
+TARGET_2ND_ARCH_VARIANT=armv8-a
+TARGET_2ND_CPU_VARIANT=generic
+HOST_ARCH=x86_64
+HOST_2ND_ARCH=x86
+HOST_OS=linux
+HOST_OS_EXTRA=Linux-4.15.0-30deepin-generic-x86_64-Deepin-15
+HOST_CROSS_OS=windows
+HOST_CROSS_ARCH=x86
+HOST_CROSS_2ND_ARCH=x86_64
+HOST_BUILD_TYPE=release
+BUILD_ID=QQ2A.200501.001.B2
+OUT_DIR=out
+PRODUCT_SOONG_NAMESPACES=device/nubia/msm8998-common vendor/nubia/msm8998-common vendor/nubia/nx563j hardware/qcom-caf/msm8998
+============================================
+ninja: no work to do.
+[100% 1/1] out/soong/.bootstrap/bin/soong_build out/soong/build.ninja
+No need to regenerate ninja file
+No need to regenerate ninja file
+No need to regenerate ninja file
+Starting ninja...
+FAILED: ninja: 'out/target/product/nx563j/kernel', needed by 'out/target/product/nx563j/boot.img', missing and no known rule to make it
+18:38:42 ninja failed with: exit status 1
+</code></pre>
+<p>从device入手，也就是 <code>device/nubia/nx563j.mk</code><br />
+其中，根makefile是 <code>Android.mk</code>，其中调用了同目录下所有的mk文件。<br />
+其中的<code>lineage_nx563j.mk</code>当中，引用了另外两条。</p>
+<pre class="highlight"><code class="make">$(call inherit-product, device/nubia/nx563j/full_nx563j.mk)
+
+# Inherit some common Lineage stuff.
+$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
+</code></pre>
+<p>另外一个：<code>full_nx563j.mk</code></p>
+<pre class="highlight"><code class="make"># Inherit from those products. Most specific first.
+$(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
+
+# Inherit from nx563j device
+$(call inherit-product, device/nubia/nx563j/device.mk)
+</code></pre>
+<p>其中也没看到相应的代码。不过最后在<code>device/nubia/msm8998-common</code>下，<code>BoardConfigCommon.mk</code>下面看到：</p>
+<pre class="highlight"><code class="make"># Kernel
+BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x37 ehci-hcd.park=3 
+BOARD_KERNEL_CMDLINE += lpm_levels.sleep_disabled=1 sched_enable_hmp=1 sched_enable_power_aware=1 
+BOARD_KERNEL_CMDLINE += service_locator.enable=1 swiotlb=2048 androidboot.usbconfigfs=true 
+BOARD_KERNEL_CMDLINE += androidboot.usbcontroller=a800000.dwc3 
+BOARD_KERNEL_CMDLINE += loop.max_part=7
+BOARD_KERNEL_BASE := 0x00000000
+BOARD_KERNEL_PAGESIZE := 4096
+BOARD_KERNEL_TAGS_OFFSET := 0x00000100
+BOARD_RAMDISK_OFFSET := 0x01000000
+BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
+BOARD_MKBOOTIMG_ARGS := --ramdisk_offset $(BOARD_RAMDISK_OFFSET) --tags_offset $(BOARD_KERNEL_TAGS_OFFSET)
+
+TARGET_COMPILE_WITH_MSM_KERNEL := true
+TARGET_KERNEL_ARCH := arm64
+TARGET_KERNEL_CLANG_COMPILE := true
+TARGET_KERNEL_HEADER_ARCH := arm64
+TARGET_KERNEL_SOURCE := kernel/nubia/msm8998
+</code></pre>
+<p>其中<code>TARGET_KERNEL_SOURCE := kernel/nubia/msm8998</code>指定了内核源码的位置…</p>
+<p>把相应的内核，<br />
+<a href="https://github.com/LineageOS/android_kernel_nubia_msm8998" target="_blank" rel="noopener">android_kernel_nubia_msm8998</a>.，<br />
+放进这里重新编译！</p>
+<h3 id="小结"><a class="markdownIt-Anchor" href="#小结"></a> 小结</h3>
+<ol>
+<li>Android Repository 仓库中，单独包的命名方式是，将<code>/</code>用下划线<code>_</code>替换，即该包在Android源码树中的位置。</li>
+</ol>
+<p>例如刚刚提到的，<code>android_kernel_nubia_msm8998</code> 对应的目录位置就是： <code>android/kernel/nubia/msm8998</code><br />
+或者<code>android_device_nubia_nx563j</code>，对应的位置应该是：<code>android/device/nubia/nx563j</code></p>
+<ol start="2">
+<li>每一个编译目录，都是有有自己特定的指定位置的</li>
+</ol>
+<p>比如刚刚 Z17 Max 的 <code>device</code> 和 <code>kernel</code> 位置，是有代码明确指定了的，不可以随意更改。<br />
+当然，<code>Android.mk</code>是无论在哪里都会被包含，但是特殊的依赖还是基于路径来的，不规范的位置很可能出错。</p>
+
+        </div>
+        <!-- .entry-content -->
+        <div class="single-reward">
+          <div class="reward-open">赏
+            <div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/custom/donate/AliPayQR.jpg"></li>
+                <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/custom/donate/WeChanQR.jpg"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent">
+        </div>
+        <footer class="post-footer">
+          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh"
+              target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i>
+              知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
+          <div class="post-tags">
+          </div>
+          <div class="post-share">
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer><!-- .entry-footer -->
+      </article>
+      <!-- #post-## -->
+	  <div class="toc-container">
+		<div class="toc" style="background: none;"></div>
+	  </div>
+      <section class="post-squares nextprev">
+        
+        
+        <div class="post-nepre half previous">
+          
+            <a href="/2020/05/19/%E8%87%AA%E5%BB%BA%E5%8D%9A%E5%AE%A2-%E4%BD%BF%E7%94%A8Hexo-Deploy-Git%E6%8F%92%E4%BB%B6%E6%8E%A8%E9%80%81%E5%88%B0%E5%A4%9A%E4%B8%AA%E4%BB%93%E5%BA%93%E6%BA%90%EF%BC%88Github%E5%92%8C%E5%BC%80%E6%BA%90%E4%B8%AD%E5%9B%BD%EF%BC%9F%EF%BC%89/" rel="prev">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0/images/loader/orange.progress-bar-stripe-loader.svg" data-src=""
+                  style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)"
+                  src="">
+              </div>
+              <span class="label">
+                Previous Post</span>
+              <div class="info">
+                <h3>
+                  [自建博客]使用Hexo-Deploy-Git插件推送到多个仓库源（Github和开源中国？）</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+          
+          
+          
+          <div class="post-nepre half next">
+            
+              <a href="/2020/05/17/NX563J-Android-%E5%8A%AA%E6%AF%94%E4%BA%9AZ17-Max%E6%9C%80%E6%96%B0%E7%B3%BB%E7%BB%9FRoot-Magisk-v20-4-%E6%95%99%E7%A8%8B/" rel="next">
+                <div class="background">
+                  <img class="lazyload" src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0/images/loader/orange.progress-bar-stripe-loader.svg" data-src=""
+                    style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;"
+                    onerror="imgError(this,3)" src="">
+                </div>
+                <span class="label">
+                  Next Post</span>
+                <div class="info">
+                  <h3>
+                    [NX563J][Android]努比亚Z17 Max最新系统Root(Magisk v20.4)教程</h3>
+                  <hr>
+                </div>
+              </a>
+            </div>
+            
+      </section>
+      
+<div id="vcomments"></div>
+<script>
+  window.onload = function(){
+      var valine = new Valine();
+      valine.init({
+        el: '#vcomments',
+        appId: "aFI53WTJYb4qPknwn0l76Lnu-gzGzoHsz",
+        appKey: "2YeldrXS6Hm64JWCCLNgpj3C",
+        path: window.location.pathname,
+        placeholder: "你是我一生只会遇见一次的惊喜 ..."
+      })
+  }
+</script>
+
+      <section class="author-profile">
+        <div class="info" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
+			
+				  <a href="dexfire.cn" class="profile gravatar"><img src="//q2.qlogo.cn/headimg_dl?dst_uin=1944404463&spec=5" itemprop="image"
+					  alt="dexfire" height="70" width="70"></a>
+				  <div class="meta">
+					<span class="title">Author</span>
+					<h3 itemprop="name"><a href="dexfire.cn" itemprop="url" rel="author">dexfire</a></h3>
+				  </div>
+				</div><hr><p><i class="iconfont icon-write"></i></p>
+			
+      </section>
+    </main><!-- #main -->
+  </div><!-- #primary -->
+</div>
+
+
+    </div>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            // PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+    <!-- <footer id="footer">  <div class="outer"> <div id="footer-info" class="inner"> &copy; 2020 dexfire<br> powered_by <a href="http://hexo.io/" target="_blank">Hexo</a> </div> </div> </footer> -->
+
+<footer id="colophon" class="site-footer" role="contentinfo">
+  <div class="site-info">
+    <div class="footertext">
+      <div class="img-preload">
+        <img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/other/wordpress-rotating-ball-o.svg">
+        <img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/other/disqus-preloader.svg"></div>
+      <p class="foo-logo"
+        style="background-image: url('https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/elements/sakura.svg');"></p>
+
+      <!--p style="color: #666666;">Copyright &copy 2018 - 2020 のさくら荘そ. <br> All Rights Reserved.</p-->
+      <p style="font-family: 'Ubuntu', sans-serif;">
+        <span style="color: #666666;">Crafted with
+          <i class="fa fa-heart animated" style="color: #e74c3c;"></i>
+          by
+          <a rel="me" href="https://hello.2heng.xin/@mashiro" target="_blank"
+            style="color: #000000;text-decoration:none;">Mashiro</a></span></p>
+      <p>Copyright &copy 2018 - 2020
+        のさくら荘そ<br>
+        <a href="http://beian.miit.gov.cn/" target="_blank">渝ICP备20005495号</a>
+      </p>
+    </div>
+    <div class="footer-device">
+      <p style="font-family: 'Ubuntu', sans-serif;">
+        <span style="color: #b9b9b9;">Theme
+          <a href="https://github.com/honjun/hexo-theme-sakura" target="_blank"
+            style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Sakura</a>
+          <i class="iconfont icon-sakura rotating" style="color: #ffc0cb;display:inline-block"></i>
+          by
+          <a href="https://2heng.xin/" target="_blank"
+            style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Mashiro</a>&<a
+            href="https://www.hojun.cn/" target="_blank"
+            style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">のさくら荘そ</a>,
+          Powered by Hexo,
+          Hosted by Github Pages</a>
+        </span>
+      </p>
+      <p>
+        <span id="busuanzi_container_site_pv" style="color: #b9b9b9;">
+          本站总访问量<span id="busuanzi_value_site_pv">1</span>次
+        </span>
+      </p>
+    </div>
+
+    <p id="footer-sponsor">
+      <a href="#" target="_blank" alt="CDN Sponsor" rel="nofollow"><img
+          src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/support/Tencent_Cloud_logo.svg" alt="CDN Sponsor"
+          style="height: 1.5em;"></a>&nbsp;&nbsp;&nbsp;<a href="https://www.vultr.com/?ref=7196564" target="_blank"
+        alt="Server provider" rel="nofollow"><img
+          src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/support/vultr_logo__on-white.svg" alt="Server provider"
+          style="height: 1.5em;"></a>&nbsp;&nbsp;&nbsp;<a href="#" target="_blank" alt="Free CDN" rel="nofollow"><img
+          src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/support/baidu_cdn.svg" alt="jsDelivr"
+          style="height: 1.5em;"></a>&nbsp;&nbsp;&nbsp;<a href="https://www.google.com/intl/ja/analytics/"
+        target="_blank" alt="Analytics solution" rel="nofollow"><img
+          src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/support/Google.svg" alt="Google Analytics"
+          style="height: 1.5em; "></a>
+    </p>
+  </div>
+  <!-- .site-info -->
+</footer>
+
+<div class="changeSkin-gear no-select" style="bottom: -999px;">
+    <div class="keys">
+        <span id="open-skinMenu">
+            <i class="iconfont icon-gear inline-block rotating"></i>&nbsp; 切换主题 | SCHEME TOOL
+        </span>
+    </div>
+</div>
+<div class="skin-menu no-select">
+    <div class="theme-controls row-container">
+        <ul class="menu-list">
+            <li id="white-bg">
+                <i class="fa fa-television" aria-hidden="true"></i>
+            </li>
+            <!--Default-->
+            <li id="sakura-bg">
+                <i class="iconfont icon-sakura"></i>
+            </li>
+            <!--Sakura-->
+            <li id="gribs-bg">
+                <i class="fa fa-slack" aria-hidden="true"></i>
+            </li>
+            <!--Grids-->
+            <li id="KAdots-bg">
+                <i class="iconfont icon-dots"></i>
+            </li>
+            <!--Dots-->
+            <li id="totem-bg">
+                <i class="fa fa-superpowers" aria-hidden="true"></i>
+            </li>
+            <!--Orange-->
+            <li id="pixiv-bg">
+                <i class="iconfont icon-pixiv"></i>
+            </li>
+            <!--Start-->
+            <li id="bing-bg">
+                <i class="iconfont icon-bing"></i>
+            </li>
+            <!--Bing-->
+            <li id="dark-bg">
+                <i class="fa fa-moon-o" aria-hidden="true"></i>
+            </li>
+            <!--Night-->
+        </ul>
+    </div>
+    <div class="font-family-controls row-container">
+        <button type="button" class="control-btn-serif selected" data-mode="serif"
+            onclick="mashiro_global.font_control.change_font()">Serif</button>
+        <button type="button" class="control-btn-sans-serif" data-mode="sans-serif"
+            onclick="mashiro_global.font_control.change_font()">Sans Serif</button>
+    </div>
+</div>
+<canvas id="night-mode-cover"></canvas>
+<div class="prpr" style="visibility: hidden;">
+    <div class="mashiro-tips" style="opacity: 0;">你一直相信的事，也让我相信吧。活着，是件美好的事。</div>
+    <canvas id="live2d" width="280" height="250" class="live2d"></canvas>
+</div>
+<div class="live2d-tool hide-live2d no-select" onclick="hide_live2d()">
+    <div class="keys">Show</div>
+</div>
+<div class="live2d-tool switch-live2d no-select" onclick="switch_pio()">
+    <div class="keys">Switch</div>
+</div>
+<div class="live2d-tool save-live2d no-select" onclick="save_pio()">
+    <div class="keys">Save</div>
+</div>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/js/lib.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/js/InsightSearch.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/js/jquery.fancybox.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/js/zoom.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/js/sakura-app_v3.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/js/autoptimize.js"></script>
+<!-- //cdn1.lncld.net/static/js/3.0.4/av-min.js -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/js/av-min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/js/botui.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/js/custom.js"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<!-- Valine评论 -->>
+<script type="text/javascript" src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<!-- 不蒜子 网页计数器 -->
+<script async type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- TOC目录 -->
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+
+<script type="text/javascript">
+  /* <![CDATA[ */
+  if (/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+    var Poi = {
+      "pjax": "1",
+      "movies": {
+        "url": "https://cdn.jsdelivr.net/gh/honjun/hojun@1.2",
+        "name": "Unbroken.mp4",
+        "live": "close"
+      },
+      "windowheight": "fixed",
+      "codelamp": "close",
+      "ajaxurl": "",
+      "order": "asc",
+      "formpostion": "bottom"
+    };
+  } else {
+    var Poi = {
+      "pjax": "1",
+      "movies": {
+        "url": "https://cdn.jsdelivr.net/gh/honjun/hojun@1.2",
+        "name": "Unbroken.mp4",
+        "live": "open"
+      },
+      "windowheight": "auto",
+      "codelamp": "close",
+      "ajaxurl": "",
+      "order": "asc",
+      "formpostion": "bottom"
+    };
+  }
+  /* ]]> */
+</script>
+
+
+
+
+
+
+
+
+<!-- baidu Analytics -->
+<script>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement('script');
+        hm.src = 'https://hm.baidu.com/hm.js?18d22dda3acd079101f04a6eacf3781e';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+<script>
+  $(document).ready(function () {
+    // 处理目录
+    if ($(".toc").length > 0 && document.body.clientWidth > 1200) {
+      if ($(".pattern-center").length > 0) { //有图的情况
+        tocbot.init({
+          // Where to render the table of contents.
+          tocSelector: '.toc', // 放置目录的容器
+          // Where to grab the headings to build the table of contents.
+          contentSelector: '.entry-content', // 正文内容所在
+          // Which headings to grab inside of the contentSelector element.
+          scrollSmooth: true,
+          headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+          collapseDepth: 3,
+          headingsOffset: -300,
+          scrollSmoothOffset: -85
+        });
+      } else {
+        tocbot.init({
+          // Where to render the table of contents.
+          tocSelector: '.toc', // 放置目录的容器
+          // Where to grab the headings to build the table of contents.
+          contentSelector: '.entry-content', // 正文内容所在
+          // Which headings to grab inside of the contentSelector element.
+          scrollSmooth: true,
+          headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+          collapseDepth: 3,
+          headingsOffset: -85,
+          scrollSmoothOffset: -85
+        });
+      }
+      var offsetTop = $('.toc')
+        .offset()
+        .top - 95;
+      window.onscroll = function () {
+        var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+        if (scrollTop >= offsetTop) {
+          $('.toc').addClass('toc-fixed');
+        } else {
+          $('.toc').removeClass('toc-fixed');
+        }
+      }
+    }
+  });
+</script>
+
+    <!-- openNav -->
+    <div class="openNav no-select">
+      <div class="iconflat no-select">
+        <div class="icon"></div>
+      </div>
+      <div class="site-branding">
+        
+        <h1 class="site-title">
+          <a href="">
+            
+          </a>
+        </h1>
+        
+      </div>
+    </div>
+  </section>
+
+  <div id="mo-nav" class="">
+  <div class="m-avatar">
+    <img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/custom/avatar.jpg">
+  </div>
+  <p
+    style="text-align: center; color: #333; font-weight: 900; font-family: 'Ubuntu', sans-serif; letter-spacing: 1.5px">
+    Dexfireのさくら荘そ</p>
+  <p style="text-align: center; word-spacing: 20px;">
+    
+    
+    <a href="http://github.com/honjun" class="fa fa-github" target="_blank"
+      style="color: #333; margin-left:20px"></a>
+    
+    <a href="http://weibo.com/mashirozx?is_all=1" class="fa fa-weibo" target="_blank"
+      style="color: #dd4b39; margin-left:20px"></a>
+    
+    <a href="https://wpa.qq.com/msgrd?v=3&uin=954655431&site=qq&menu=yes" class="fa fa-qq" target="_blank"
+      style="color: #25c6fe; margin-left:20px"></a>
+    
+    
+  </p>
+  <ul id="menu-new-1" class="menu">
+    
+    <li>
+      <a href="/">
+        <span class="faa-parent animated-hover">
+          <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
+          主页
+        </span>
+      </a>
+      
+    </li>
+    
+    <li>
+      <a href="/archives">
+        <span class="faa-parent animated-hover">
+          <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
+          时间线
+        </span>
+      </a>
+      
+      <ul class="sub-menu">
+        
+        <li>
+          <a href="/categories/%E6%8A%80%E6%9C%AF/">
+            <i class="fa fa-code" aria-hidden="true"></i>
+            技术
+          </a>
+        </li>
+        
+        <li>
+          <a href="/categories/%E7%94%9F%E6%B4%BB/">
+            <i class="fa fa-file-text-o" aria-hidden="true"></i>
+            生活
+          </a>
+        </li>
+        
+        <li>
+          <a href="/categories/%E8%B5%84%E6%BA%90/">
+            <i class="fa fa-cloud-download" aria-hidden="true"></i>
+            资源
+          </a>
+        </li>
+        
+        <li>
+          <a href="/categories/%E9%9A%8F%E6%83%B3/">
+            <i class="fa fa-commenting-o" aria-hidden="true"></i>
+            随想
+          </a>
+        </li>
+        
+        <li>
+          <a href="/categories/%E8%BD%AC%E8%BD%BD/">
+            <i class="fa fa-book" aria-hidden="true"></i>
+            转载
+          </a>
+        </li>
+        
+      </ul>
+      
+    </li>
+    
+    <li>
+      <a href="javascript:;">
+        <span class="faa-parent animated-hover">
+          <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+          清单
+        </span>
+      </a>
+      
+      <ul class="sub-menu">
+        
+        <li>
+          <a href="/tags/%E6%82%A6%E8%AF%BB/">
+            <i class="fa fa-th-list faa-bounce" aria-hidden="true"></i>
+            书单
+          </a>
+        </li>
+        
+        <li>
+          <a href="/bangumi/">
+            <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
+            番组
+          </a>
+        </li>
+        
+        <li>
+          <a href="/music/">
+            <i class="fa fa-headphones" aria-hidden="true"></i>
+            歌单
+          </a>
+        </li>
+        
+        <li>
+          <a href="/tags/%E5%9B%BE%E9%9B%86/">
+            <i class="fa fa-photo" aria-hidden="true"></i>
+            图集
+          </a>
+        </li>
+        
+      </ul>
+      
+    </li>
+    
+    <li>
+      <a href="/comment/">
+        <span class="faa-parent animated-hover">
+          <i class="fa  fa-pencil-square-o faa-tada" aria-hidden="true"></i>
+          留言板
+        </span>
+      </a>
+      
+    </li>
+    
+    <li>
+      <a href="/links/">
+        <span class="faa-parent animated-hover">
+          <i class="fa  fa-link faa-shake" aria-hidden="true"></i>
+          友人帐
+        </span>
+      </a>
+      
+    </li>
+    
+    <li>
+      <a href="/donate/">
+        <span class="faa-parent animated-hover">
+          <i class="fa  fa-heart faa-pulse" aria-hidden="true"></i>
+          咖啡
+        </span>
+      </a>
+      
+    </li>
+    
+    <li>
+      <a href="/">
+        <span class="faa-parent animated-hover">
+          <i class="fa  fa-leaf faa-wrench" aria-hidden="true"></i>
+          关于
+        </span>
+      </a>
+      
+      <ul class="sub-menu">
+        
+        <li>
+          <a href="/about/">
+            <i class="fa fa-meetup" aria-hidden="true"></i>
+            我
+          </a>
+        </li>
+        
+        <li>
+          <a href="/theme-sakura/">
+            <i class="fa iconfont icon-sakura" aria-hidden="true"></i>
+            主题
+          </a>
+        </li>
+        
+        <li>
+          <a href="/theme-sakura/update_logs.html">
+            <i class="fa fa-ravelry" aria-hidden="true"></i>
+            更新
+          </a>
+        </li>
+        
+        <li>
+          <a href="/lab/">
+            <i class="fa fa-cogs" aria-hidden="true"></i>
+            实验室
+          </a>
+        </li>
+        
+      </ul>
+      
+    </li>
+    
+    <li>
+      <a href="/atom.xml">
+        <span class="faa-parent animated-hover">
+          <i class="fa  fa-rss faa-pulse" aria-hidden="true"></i>
+          RSS
+        </span>
+      </a>
+      
+    </li>
+    
+  </ul>
+  <p style="text-align: center; font-size: 13px; color: #b9b9b9;">&copy 2020 hexo-sakura</p>
+</div>
+<button onclick="topFunction()" class="mobile-cd-top" id="moblieGoTop" title="Go to top" style="display: none;"><i
+    class="fa fa-chevron-up" aria-hidden="true"></i></button>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<!-- require MetingJS -->
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+<style>
+  .aplayer .aplayer-lrc {
+    height: 35px;
+  }
+  .aplayer .aplayer-lrc p{
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 18px !important;
+  }
+  .aplayer .aplayer-lrc p.aplayer-lrc-current{
+    color: #FF1493;
+  }
+  .aplayer.aplayer-narrow .aplayer-body{
+    left: -66px !important;
+  }
+  .aplayer.aplayer-fixed .aplayer-lrc {
+    display: none;
+  }
+  .aplayer .aplayer-lrc.aplayer-lrc-hide {
+      display:none !important;
+  }
+  .aplayer.aplayer-fixed .lrc-show {
+    display: block;
+    background: rgba(255, 255, 255, 0.8);
+  }
+</style>
+<meting-js
+
+    id="2660651585"
+
+    server="netease"
+
+    type="playlist"
+
+    fixed="true"
+
+    autoplay="false"
+
+    loop="all"
+
+    order="random"
+
+    preload="auto"
+
+    volume="0.7"
+
+    mutex="true"
+
+</meting-js>
+<script>
+  $(function(){
+    $('body').on('click', '.aplayer', function(){
+      if($('.aplayer-button').hasClass('aplayer-play')) {
+        $('.aplayer-lrc').removeClass('lrc-show');
+      } else {
+        $('.aplayer-lrc').addClass('lrc-show');
+      }
+    })
+  });
+</script>
+</body>
+
+</html>

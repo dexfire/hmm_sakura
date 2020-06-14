@@ -1,0 +1,1175 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  
+  
+    <meta name="description" content="樱花博客，一个记录个人成长的地方。">
+  
+  <meta name="keywords" content="关键词,关键词,关键词" />
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="author" content="dexfire, dexfire@gmail.com" />
+  
+  <title itemprop="name">
+    
+    [Project Next]写一个一键爬取转载到博客脚本(QQ看点、百家号、微博，各大主流媒体内容抓取转发) |
+    
+    你终于回来啦~ ♪(＾∀＾●)ﾉ
+  </title>
+  
+  <link rel="shortcut icon" href="/images/favicon.ico">
+  
+  <meta http-equiv="x-dns-prefetch-control" content="on">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Noto+SerifMerriweather|Merriweather+Sans|Source+Code+Pro|Ubuntu:400,700|Noto+Serif+SC"
+    media="all">
+  <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+  <link rel="stylesheet" id="saukra_css-css" href="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/css/autoptimize.css" type="text/css" media="all">
+  <!-- <link rel="stylesheet" id="saukra_css-css" href="/css/style.css" type="text/css" media="all"> -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/css/lib.css" type="text/css" media="all">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/css/font.css" type="text/css" media="all">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/css/insight.css" type="text/css" media="all">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/css/jquery.fancybox.min.css" type="text/css" media="all">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/css/zoom.css" type="text/css" media="all">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/css/sharejs.css" type="text/css" media="all">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/css/custom.css" type="text/css" media="all">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+  <script>
+    /*Initial Variables*/
+    var mashiro_option = new Object();
+    var mashiro_global = new Object();
+    mashiro_option.NProgressON = true;
+    /*
+     * 邮箱信息之类的东西可以填在这里，这些js变量基本都作用于sakura-app.js
+     * 这样的设置仅是为了方便在基于PHP开发的主题中设置js变量，既然移植到了Node上，我想或许可以精简这一逻辑吧
+     */
+    mashiro_option.email_domain = "";
+    mashiro_option.email_name = "";
+    mashiro_option.cookie_version_control = "";
+    mashiro_option.qzone_autocomplete = false;
+    mashiro_option.site_name = "Dexfireのさくら荘そ";
+    mashiro_option.author_name = "のさくら荘そ";
+    mashiro_option.site_url = "https://dexfire.cn";
+    mashiro_option.v_appId = "aFI53WTJYb4qPknwn0l76Lnu-gzGzoHsz";
+    mashiro_option.v_appKey = "2YeldrXS6Hm64JWCCLNgpj3C";
+    mashiro_option.mathjax = "0";
+    mashiro_option.qq_api_url = "https://api.mashiro.top/qqinfo/";
+    mashiro_option.qq_avatar_api_url = "https://api.mashiro.top/qqinfo/";
+                    // mashiro_option.float_player_on = true;
+
+    /*End of Initial Variables*/
+  </script>
+  <script type="text/javascript">
+    var bg = "https://cdn.jsdelivr.net/gh/dexfire/cdn/images/cover/IMG_0001.JPG,https://cdn.jsdelivr.net/gh/dexfire/cdn/images/cover/IMG_0002.JPG,https://cdn.jsdelivr.net/gh/dexfire/cdn/images/cover/IMG_7631.JPG,https://cdn.jsdelivr.net/gh/dexfire/cdn/images/cover/IMG_7632.JPG,https://cdn.jsdelivr.net/gh/dexfire/cdn/images/cover/IMG_7633.JPG,https://cdn.jsdelivr.net/gh/dexfire/cdn/images/cover/IMG_7634.JPG,https://cdn.jsdelivr.net/gh/dexfire/cdn/images/cover/IMG_7635.JPG,https://cdn.jsdelivr.net/gh/dexfire/cdn/images/cover/IMG_7636.JPG,https://cdn.jsdelivr.net/gh/dexfire/cdn/images/cover/IMG_7638.JPG,https://cdn.jsdelivr.net/gh/dexfire/cdn/images/cover/IMG_7639.JPG,https://cdn.jsdelivr.net/gh/dexfire/cdn/images/cover/IMG_7642.JPG,https://cdn.jsdelivr.net/gh/dexfire/cdn/images/cover/IMG_7643.jpg,https://cdn.jsdelivr.net/gh/dexfire/cdn/images/cover/IMG_7725.jpg,https://cdn.jsdelivr.net/gh/dexfire/cdn/images/cover/IMG_7760.jpg,https://dexfire.cn/img/20200614001.jpg".split(",");
+    var bgindex = Math.floor(Math.random() * bg.length);
+    if (!!window.ActiveXObject || "ActiveXObject" in window) { //is IE?
+      alert('朋友，IE浏览器未适配哦~');
+    }
+  </script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body
+  class="page-template page-template-user page-template-page-analytics page-template-userpage-analytics-php page page-id-1297 chinese-font serif isWebKit">
+  <div class="scrollbar" id="bar"></div>
+  <a href="#" class="cd-top faa-float animated"></a>
+  <section id="main-container">
+    <div class="headertop filter-dot" style="height: 0;">
+  <div id="banner_wave_1"></div>
+  <div id="banner_wave_2"></div>
+  <figure id="centerbg" class="centerbg" onerror="randBG()">
+    <div class="focusinfo no-select">
+      <div class="header-tou">
+        <a href="https://dexfire.cn">
+          <img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/custom/avatar.jpg">
+        </a>
+      </div>
+      <div class="header-info">
+        <p>热爱是最终的救赎，勇敢是唯一的退路~❤</p>
+        <div class="top-social_v2">
+          <li id="bg-pre">
+            <img class="flipx" src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/other/next-b.svg">
+          </li>
+          
+            
+              
+                <li>
+                  <a href="http://github.com/honjun" target="_blank" class="social-github" title="github">
+                    <img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/social/github.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="http://weibo.com/mashirozx?is_all=1" target="_blank" class="social-github" title="sina">
+                    <img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/social/sina.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="http://weibo.com/mashirozx?is_all=1" target="_blank" class="social-github" title="wangyiyun">
+                    <img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/social/wangyiyun.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="http://weibo.com/mashirozx?is_all=1" target="_blank" class="social-github" title="zhihu">
+                    <img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/social/zhihu.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="http://weibo.com/mashirozx?is_all=1" target="_blank" class="social-github" title="email">
+                    <img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/social/email.svg">
+                  </a>
+                </li>
+              
+            
+              
+                <li class="wechat">
+                  <a href="/#">
+                    <img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/social/wechat.png">
+                  </a>
+                  <div class="wechatInner">
+                    <img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/custom/wechat.jpg">
+                  </div>
+                </li>
+              
+            
+              
+                <li class="wechat">
+                  <a href="/#">
+                    <img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/social/wechat.png">
+                  </a>
+                  <div class="wechatInner">
+                    <img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/custom/wechat.jpg">
+                  </div>
+                </li>
+              
+            
+          
+          <li id="bg-next">
+            <img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/other/next-b.svg">
+          </li>
+        </div>
+      </div>
+    </div>
+  </figure>
+  <div id="video-container" style="">
+    <video style="object-fit: fill" id="bgvideo" class="video" video-name="" src="" width="auto" preload="auto">
+    </video>
+    <div id="video-btn" class="loadvideo videolive">
+    </div>
+    <div id="video-add">
+    </div>
+    <div class="video-stu">
+    </div>
+  </div>
+  <div class="headertop-down faa-float animated" onclick="headertop_down()">
+    <span>
+      <i class="fa fa-chevron-down" aria-hidden="true">
+      </i>
+    </span>
+  </div>
+</div>
+    <div id="page" class="site wrapper">
+      <header class="site-header no-select gizle sabit" role="banner">
+  <div class="site-top">
+    <div class="site-branding">
+      <span class="site-title">
+        <span class="logolink moe-mashiro">
+          <a href="/">
+            <span class="sakurasono">Dexfire</span>
+            <span class="shironeko">のさくら荘そ</span>
+          </a>
+        </span>
+      </span>
+    </div>
+    <div class="searchbox search-form-submit">
+      <i class="iconfont js-toggle-search iconsearch icon-search">
+      </i>
+    </div>
+    <div id="show-nav" class="showNav mobile-fit">
+      <div class="line line1">
+      </div>
+      <div class="line line2">
+      </div>
+      <div class="line line3">
+      </div>
+    </div>
+    <div class="lower-cantiner">
+      <div class="lower">
+        <nav class="mobile-fit-control hide">
+          <ul id="menu-new" class="menu">
+            
+              <li>
+                <a href="/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
+                    主页
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
+                    时间线
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/categories/%E6%8A%80%E6%9C%AF/">
+                          <i class="fa fa-code" aria-hidden="true"></i>
+                          技术
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/%E7%94%9F%E6%B4%BB/">
+                          <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                          生活
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/%E8%B5%84%E6%BA%90/">
+                          <i class="fa fa-cloud-download" aria-hidden="true"></i>
+                          资源
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/%E9%9A%8F%E6%83%B3/">
+                          <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                          随想
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/%E8%BD%AC%E8%BD%BD/">
+                          <i class="fa fa-book" aria-hidden="true"></i>
+                          转载
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="javascript:;">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+                    清单
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/tags/%E6%82%A6%E8%AF%BB/">
+                          <i class="fa fa-th-list faa-bounce" aria-hidden="true"></i>
+                          书单
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/bangumi/">
+                          <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
+                          番组
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/music/">
+                          <i class="fa fa-headphones" aria-hidden="true"></i>
+                          歌单
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/tags/%E5%9B%BE%E9%9B%86/">
+                          <i class="fa fa-photo" aria-hidden="true"></i>
+                          图集
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="/comment/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-pencil-square-o faa-tada" aria-hidden="true"></i>
+                    留言板
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/links/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-link faa-shake" aria-hidden="true"></i>
+                    友人帐
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/donate/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-heart faa-pulse" aria-hidden="true"></i>
+                    咖啡
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-leaf faa-wrench" aria-hidden="true"></i>
+                    关于
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/about/">
+                          <i class="fa fa-meetup" aria-hidden="true"></i>
+                          我
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/theme-sakura/">
+                          <i class="fa iconfont icon-sakura" aria-hidden="true"></i>
+                          主题
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/theme-sakura/update_logs.html">
+                          <i class="fa fa-ravelry" aria-hidden="true"></i>
+                          更新
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/lab/">
+                          <i class="fa fa-cogs" aria-hidden="true"></i>
+                          实验室
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="/atom.xml">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-rss faa-pulse" aria-hidden="true"></i>
+                    RSS
+                  </span>
+                </a>
+                
+              </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+<div class="pattern-center-blank"></div>
+
+<div id="content" class="site-content">
+  <div id="primary" class="content-area">
+    <main id="main" class="site-main" role="main">
+      <article id="post-1"
+        class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
+        
+        <header class="entry-header">
+          <h1 class="entry-title">[Project Next]写一个一键爬取转载到博客脚本(QQ看点、百家号、微博，各大主流媒体内容抓取转发)</h1>
+          <p class="entry-census">dexfire&nbsp;·&nbsp;2020-5-12&nbsp;·&nbsp;<span
+              id="busuanzi_value_page_pv"></span>次阅读</p>
+          </p>
+
+          <hr>
+        </header>
+        
+        <div class="entry-content">
+          <h1 id="-0-"><a class="markdownIt-Anchor" href="#-0-"></a> </h1>
+<p><a href="https://mbd.baidu.com/newspage/data/landingsuper?context=%7B%22nid%22%3A%22news_9559872012891614856%22%7D&amp;n_type=0&amp;p_from=1" target="_blank" rel="noopener">一个时代结束了！Google “教父” Eric Schmidt 已离职：他是如何成就 Google 帝国的？</a></p>
+<h2 id="一个时代结束了google-教父-eric-schmidt-已离职他是如何成就-google-帝国的"><a class="markdownIt-Anchor" href="#一个时代结束了google-教父-eric-schmidt-已离职他是如何成就-google-帝国的"></a> 一个时代结束了！Google “教父” Eric Schmidt 已离职：他是如何成就 Google 帝国的？</h2>
+<p><img src="https://timg01.bdimg.com/timg?pa=&amp;imgtype=0&amp;sec=1439619614&amp;di=8520891da7e6b71fff0ab2598c84b52f&amp;quality=90&amp;size=b870_10000&amp;src=http%3A%2F%2Fpic.rmb.bdstatic.com%2Fe149259c0a1ba1b7832a6d299fc2b339.jpeg" alt="" /></p>
+<p>雷锋网</p>
+<p>发布时间：05-1120:09深圳英鹏信息技术股份有限公司</p>
+<p>长江后浪推前浪，但后浪也需要前浪的引领。</p>
+<p>在 Google 二十余年的发展潮流之中，Eric Schmidt 就是这样一个前浪。</p>
+<p>他以职业经理人的身份，深度参与了 Google 从硅谷创业公司到全球科技巨头 Alphabet 的全部发展过程，他也与 Google 两位创始人并称为 “Google 三巨头”。</p>
+<p>可以说，Eric Schmidt 是当之无愧的 “Google 教父”。</p>
+<p><img src="https://pics7.baidu.com/feed/8644ebf81a4c510f867eaf01b1bc802bd52aa55b.jpeg?token=f862565994e2c840668226ed4f292702" alt="" /></p>
+<p>然而，这位教父已经彻底离开 Google。</p>
+<p>加入 Google 之前的 Eric Schmidt</p>
+<p>别忘了，每一个前浪，都曾经是后浪。</p>
+<p>Eric Schmidt 出生于 1955 年，与乔布斯同岁。他本科毕业于普林斯顿大学，又于 1982 年在于加利福尼亚大学伯克利分校取得电子工程暨计算机科学 (EECS) 博士学位。</p>
+<p>在早期的生涯中，Eric Schmidt 曾经在一系列机构工作，比如说 Byzromotti Deisgn、贝尔实验室（Bell Labs）、Zilog 以及 Palo Alot 研究中心（PARC）。</p>
+<p>其中在贝尔实验室工作期间，他与 Mike Lesk 合作写出了 Lex 编程工具。</p>
+<p>1983 年，Eric Schmidt 以软件工程师的身份加入了 Sun Microsystems，后来他在这家公司深耕十四年，先后担任这家公司的 CTO 和 CEO，期间他负责开发了 Sun 独立于平台的编程技术 Java，并确立了 Sun 的互联网软件战略。</p>
+<p><img src="https://pics6.baidu.com/feed/0bd162d9f2d3572c896fb1c758f6c62163d0c30c.jpeg?token=ef9983e4e0b7331b41c7d4fcc48477b2" alt="" /></p>
+<p>1997 年，42 岁的 Eric Schmidt 加入 Novell 公司，担任 CEO 和董事会主席；主管公司战略规划、管理和技术研发。他很快将 Novell 重新打造成一个赢利的公司，但是随着互联网泡沫破灭，Novell 重新陷入巨额亏损的境地。</p>
+<p>2001 年，伴随着 Novell 被 Cambridge Technology Partners 收购，Eric Schmidt 离开这家公司。</p>
+<p>他的下一家，就是 Google。</p>
+<p>“Google 三巨头” 是怎么炼成的？</p>
+<p>2001 年，在两位投资人 John Doerr 和 Michael Moritz 的引荐之下，Eric Schmidt 接受了 Google 两位创始人 Larry Page 和 Sergey Brin 的面试，并给他们留下深刻印象。</p>
+<p>当年 3 月，Eric Schmidt 担任 Google 董事长，并在 2001 年 8 月正式担任 Google CEO，并陆陆续续获得了 Google 的一部分股票。</p>
+<p>在长期的 CEO 生涯中，Eric Schmidt 主要负责 Google 的日常运营，尤其是销售板块；在 Google 官网，对他的工作职责的介绍是：</p>
+<p>建立必要的企业基础架构，以维持 Google 作为一家公司的快速增长，并确保在保持产品开发周期最小的同时保持高质量。</p>
+<p><img src="https://pics7.baidu.com/feed/9d82d158ccbf6c810ab5b2556cdb143331fa40fd.jpeg?token=0abdfbe3ec89cce8673ab837089a58ce" alt="" /></p>
+<p>此后，Eric Schmidt 深度参与到 Google 在企业发展层面的重要过程中，尤其是在销售、企业决策等层面扮演了重要角色，将 Google 的强大技术转化成企业利润。</p>
+<p>2004 年 8 月，Eric Schmidt 成功带领 Google 在纳斯达克上市。</p>
+<p>在 Google 提交给美国证券交易委员会的文件的第 29 页中，说明了 Eric Schmidt 与 Google 两位创始人运作 Google 公司的关系系属三人同盟，Eric Schmidt 以首席执行官身份负责公司的正常运作并且专注于销售部分。</p>
+<p>根据文件中的描述，为了促进及时的决策，Eric Schmidt 和两位 Google 创始人每天都要开会，互相交流业务情况，并将他们的协作思想集中在最重要和紧迫的问题上——他们彼此之间有着极大的信任和尊重，而且他们通常会以相同的方式思考。</p>
+<p><img src="https://pics6.baidu.com/feed/c2cec3fdfc0392459215dacf517101c47f1e25bd.jpeg?token=7dbfcbf0a925260e44d1d2966e79bb9e" alt="" /></p>
+<p>Google 上市</p>
+<p>Larry Page 表示，当他和 Eric Schmidt 和 Sergey Brin 运营公司时，没有发生任何重大内部冲突，但存在激烈的辩论；甚至由于他们之间长期紧密的工作关系，他们经常可以预测三个人之间的意见分歧……</p>
+<p>这份文件还表示：</p>
+<p>我们三个人之间的这种伙伴关系运作良好，我们希望这种伙伴关系能够继续下去。我们三个人的共同判断和额外精力使 Google 受益匪浅。</p>
+<p>由此，“Google 三巨头” 正式形成。</p>
+<p>Eric Schmidt 的商业之道</p>
+<p>对于 Eric Schmidt，硅谷有这样一个评价：</p>
+<p>Eric Schmidt 绝对是个举足轻重的人，其经历之丰富，堪称业界老狐狸。</p>
+<p>当然，“老狐狸” 是一个正面评价。对于 Eric Schmidt 来说，这意味着他不仅仅是一个技术从业者，更是一个善于将技术转化成利润的人。</p>
+<p>在 Eric Schmidt 刚刚加入 Google 时候，Google 还没有知道销售技术之外的盈利方式；然而，凭借老道而颇具创新的头脑，Eric Schmidt 很快就意识到搜索与广告之间的天然联系。</p>
+<p>于是，通过 AdWords 广告，Google 在搜索结果右边附加广告，解决了 Google 在保持主页简明朴素的同时增加广告收入的难题，并成为 Google 最核心最成功的赚钱方式。</p>
+<p><img src="https://pics6.baidu.com/feed/08f790529822720ead42ffb8aa2eaf40f01fabd4.png?token=25346f89461b3d1b1b95563d5db62a70" alt="" /></p>
+<p>当然，作为一名有诸多职场经历的老兵，Eric Schmidt 对处于快速增长中的 Google 的贡献和庇护是毫无疑问的，但这种贡献很难具体用数字来衡量。不过，在推动 Google 拥抱免费的产品哲学这个层面上，Eric Schmidt 是厥功甚伟的。</p>
+<p>根据《免费：商业的未来》一书所写，Eric Schmidt 为 Google 提出了一种基于免费的“最大化战略”，也就是说：</p>
+<p>不管你正在开发的是何种产品都接受它，并依据分销量尽可能多地进行生产。换句话说既然分销的边际成本为零，你就可以使产品遍布全球。</p>
+<p>2007 年，由 PC World 所选出的 “ 50 名影响网络世界的重要人物” 名单中，Eric Schmidt 与 Google 的两位创始人 Larry Page 及 Sergey Brin 等 3 人荣任第一名。</p>
+<p>关于中国和苹果的一些故事</p>
+<p>作为 Google CEO，Eric Schmidt 有不少故事值得一说。</p>
+<p>比如说，在 2006 年进入 Google 进入中国的时候，Eric Schmidt 也亲自来到北京，宣布该公司的中文名字是谷歌。启动仪式上，完全不懂中文的 Eric Schmidt 用中国的七巧板拼出 “谷歌” 二字，他表示不要任何帮助，坚持独立完成。</p>
+<p>当然，后来即使 Google 退出中国，Eric Schmidt 也曾经多次来到中国。</p>
+<p><img src="https://pics3.baidu.com/feed/8ad4b31c8701a18b9d73a7db4bcaa20e2a38fef2.png?token=578c948ea717ee366bbb6532d9e1241f" alt="" /></p>
+<p>在 Google CEO 的任职过程中，Eric Schmidt 还有一段插曲与苹果有关。</p>
+<p>2006 年 8 月 28 日，Eric Schmidt 当选成为苹果公司董事会成员；但随着苹果和 Google 相继进入到移动市场，两家公司发生日益激烈利益冲突和竞争。2009 年 8 月 3 日，Eric Schmidt 宣布退出苹果董事会。</p>
+<p>当时，身为苹果 CEO 的 Steve Jobs 表示：</p>
+<p>Eric 是苹果董事会的一名杰出成员，他投入了很有价值的时间、才能、热情和智慧，以帮助苹果成功。不幸的是，随着 Google 进入苹果的核心业务领域，例如推出 Android 和 Chrome OS，他作为苹果董事会成员的作用将严重下降。</p>
+<p>乔布斯还表示，由于可能存在的利益冲突，他将不得不回避我们很大一部分会议。因此我们均认为，现在是 Eric Schmidt 辞去苹果董事的恰当时机。</p>
+<p>值得一提的是，在 2012 年接受 AllThingsD 记者 Walt Mossberg 和 Kara Swisher 的采访时，有观众问：如果必须做出选择的话，你最想成为哪家大型科技公司的 CEO？</p>
+<p>当时，Eric Schmidt 表示：如果必须选择，自己其实很希望成为苹果的 CEO，因为它有大量现金。</p>
+<p>一步步退出 Google 的舞台</p>
+<p>2011 年 1 月，在接近 10 年的 Google CEO 生涯后，Google 宣布 Eric Schmidt 卸任 CEO 一职，由 38 岁的 Larry Page 接任。</p>
+<p>但与此同时，Eric Schmidt 转任 Google 执行董事长，并且开始担任两位创始人的顾问。</p>
+<p>2015 年 8 月，Google 宣布重大人事变动和股权结构变动，并由此在组织架构上升级为 Alphabet，Larry Page 和 Sergey Brin 分别担任 Alphabet CEO 和总裁，Eric Schmidt 则担任 Alphabet 执行董事长。</p>
+<p>但在这次调整中，Sundar PIchai 开始担任 Google CEO。</p>
+<p><img src="https://pics4.baidu.com/feed/0b55b319ebc4b745458a01200019bb118b8215d1.jpeg?token=1bd650ad28b3d19a74b0f26c87337fef&amp;s=F83625D064831AF86638843203009052" alt="" /></p>
+<p>2017 年 7 月 24 日，Sundar Pichai 加入 Alphabet 董事会；4 个月后，Eric Schmidt 宣布卸任 Alphabet 执行董事长一职，但依旧是 Alphabet 董事会成员以及技术顾问。</p>
+<p>而新任的 Alphabet 董事长则变成了更有象征意义、实际上并不从事具体管理工作的德高望重的 John L. Hennessy（曾经担任斯坦福大学校长，并获得 2018 年图灵奖）。</p>
+<p>很明显，Eric Schmidt 退出，Sundar Pichai 上位，这是一场交接仪式。</p>
+<p>2019 年 6 月 19 日，Eric Schmidt 正式退出 Alphabet 董事会，但技术顾问一职依旧保留；甚至在 Google 总部，他还有两名行政助手。</p>
+<p>2019 年 12 月 3 月，Alphabet 宣布重大人事变动，Larry Page 和 Sergey Brin 将分别卸任 Alphabet 首席执行官和总裁的职务；Sundar Pichai 在担任 Google CEO 的基础上，同时成为 Alphabet CEO。</p>
+<p>由此，Alphabet 进入 Sundar Pichai 时代。</p>
+<p>当然，对于 Eric Schmidt 来说，他的使命早已完成，技术顾问的角色看起来更像是一个名誉。于是，据 CNET 报道，2020 年 2 月，Eric Schmidt 正式卸下了技术顾问的职位。</p>
+<p><img src="https://pics2.baidu.com/feed/79f0f736afc37931d40e17683921124342a9117d.png?token=e29ad8d9d41b3eb9d3e54016574f8e51" alt="" /></p>
+<p>由此，Eric Schmidt 切断了他与 Google 和 Alphabet 长达 19 年的缘分。</p>
+<p>站在今天的眼光来看，Eric Schmidt 无疑是一名极为成功的职业经理人，尤其是在 Google 以及（Alphabet）的 19 年职业生涯，奠定了他今天的重要地位。某种程度上，他成就了今天的 Google，Google 也成就了今天的他。</p>
+<p>最后道一声：再见，Eric Schmidt。</p>
+<p>雷锋网雷锋网雷锋网</p>
+<p>本文参考来源：</p>
+<p><a href="https://www.sec.gov/Archives/edgar/data/1288776/000119312504142742/ds1a.htmhttps://www.apple.com/newsroom/2009/08/03Dr-Eric-Schmidt-Resigns-from-Apples-Board-of-Directors/" target="_blank" rel="noopener">https://www.sec.gov/Archives/edgar/data/1288776/000119312504142742/ds1a.htmhttps://www.apple.com/newsroom/2009/08/03Dr-Eric-Schmidt-Resigns-from-Apples-Board-of-Directors/</a> <a href="https://www.cnet.com/news/eric-schmidt-who-led-googles-transformation-into-a-tech-giant-has-left-the-company/https://en.wikipedia.org/wiki/Eric_Schmidt" target="_blank" rel="noopener">https://www.cnet.com/news/eric-schmidt-who-led-googles-transformation-into-a-tech-giant-has-left-the-company/https://en.wikipedia.org/wiki/Eric_Schmidt</a></p>
+
+        </div>
+        <!-- .entry-content -->
+        <div class="single-reward">
+          <div class="reward-open">赏
+            <div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/custom/donate/AliPayQR.jpg"></li>
+                <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/custom/donate/WeChanQR.jpg"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent">
+        </div>
+        <footer class="post-footer">
+          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh"
+              target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i>
+              知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
+          <div class="post-tags">
+          </div>
+          <div class="post-share">
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer><!-- .entry-footer -->
+      </article>
+      <!-- #post-## -->
+	  <div class="toc-container">
+		<div class="toc" style="background: none;"></div>
+	  </div>
+      <section class="post-squares nextprev">
+        
+        
+        <div class="post-nepre half previous">
+          
+            <a href="/2020/05/12/Project-Next-%E5%86%99%E4%B8%80%E4%B8%AA%E7%99%BE%E5%AE%B6%E5%8F%B7%E6%96%87%E7%AB%A0%E6%A0%87%E9%A2%98style%E9%99%84%E5%8A%A0h-%E7%B1%BB%E5%9E%8B%E7%9A%84TamperMonkey%E8%84%9A%E6%9C%AC/" rel="prev">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0/images/loader/orange.progress-bar-stripe-loader.svg" data-src=""
+                  style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)"
+                  src="">
+              </div>
+              <span class="label">
+                Previous Post</span>
+              <div class="info">
+                <h3>
+                  [Project Next]写一个百家号文章标题style附加h?类型的TamperMonkey脚本</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+          
+          
+          
+          <div class="post-nepre half next">
+            
+              <a href="/2020/05/11/%E5%BF%83%E7%90%86%E5%AD%A6-%E5%AE%8C%E7%BE%8E%E4%B8%BB%E4%B9%89%E8%80%85%E5%AF%B9%E4%BA%BA%E7%A9%B6%E7%AB%9F%E6%98%AF%E7%A7%AF%E6%9E%81%E8%BF%98%E6%98%AF%E6%B6%88%E6%9E%81%E5%BD%B1%E5%93%8D%EF%BC%9F/" rel="next">
+                <div class="background">
+                  <img class="lazyload" src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0/images/loader/orange.progress-bar-stripe-loader.svg" data-src=""
+                    style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;"
+                    onerror="imgError(this,3)" src="">
+                </div>
+                <span class="label">
+                  Next Post</span>
+                <div class="info">
+                  <h3>
+                    &#39;[心理学]完美主义者对人究竟是积极还是消极影响？&#39;</h3>
+                  <hr>
+                </div>
+              </a>
+            </div>
+            
+      </section>
+      
+<div id="vcomments"></div>
+<script>
+  window.onload = function(){
+      var valine = new Valine();
+      valine.init({
+        el: '#vcomments',
+        appId: "aFI53WTJYb4qPknwn0l76Lnu-gzGzoHsz",
+        appKey: "2YeldrXS6Hm64JWCCLNgpj3C",
+        path: window.location.pathname,
+        placeholder: "你是我一生只会遇见一次的惊喜 ..."
+      })
+  }
+</script>
+
+      <section class="author-profile">
+        <div class="info" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
+			
+				  <a href="dexfire.cn" class="profile gravatar"><img src="//q2.qlogo.cn/headimg_dl?dst_uin=1944404463&spec=5" itemprop="image"
+					  alt="dexfire" height="70" width="70"></a>
+				  <div class="meta">
+					<span class="title">Author</span>
+					<h3 itemprop="name"><a href="dexfire.cn" itemprop="url" rel="author">dexfire</a></h3>
+				  </div>
+				</div><hr><p><i class="iconfont icon-write"></i></p>
+			
+      </section>
+    </main><!-- #main -->
+  </div><!-- #primary -->
+</div>
+
+
+    </div>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            // PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+    <!-- <footer id="footer">  <div class="outer"> <div id="footer-info" class="inner"> &copy; 2020 dexfire<br> powered_by <a href="http://hexo.io/" target="_blank">Hexo</a> </div> </div> </footer> -->
+
+<footer id="colophon" class="site-footer" role="contentinfo">
+  <div class="site-info">
+    <div class="footertext">
+      <div class="img-preload">
+        <img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/other/wordpress-rotating-ball-o.svg">
+        <img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/other/disqus-preloader.svg"></div>
+      <p class="foo-logo"
+        style="background-image: url('https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/elements/sakura.svg');"></p>
+
+      <!--p style="color: #666666;">Copyright &copy 2018 - 2020 のさくら荘そ. <br> All Rights Reserved.</p-->
+      <p style="font-family: 'Ubuntu', sans-serif;">
+        <span style="color: #666666;">Crafted with
+          <i class="fa fa-heart animated" style="color: #e74c3c;"></i>
+          by
+          <a rel="me" href="https://hello.2heng.xin/@mashiro" target="_blank"
+            style="color: #000000;text-decoration:none;">Mashiro</a></span></p>
+      <p>Copyright &copy 2018 - 2020
+        のさくら荘そ<br>
+        <a href="http://beian.miit.gov.cn/" target="_blank">渝ICP备20005495号</a>
+      </p>
+    </div>
+    <div class="footer-device">
+      <p style="font-family: 'Ubuntu', sans-serif;">
+        <span style="color: #b9b9b9;">Theme
+          <a href="https://github.com/honjun/hexo-theme-sakura" target="_blank"
+            style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Sakura</a>
+          <i class="iconfont icon-sakura rotating" style="color: #ffc0cb;display:inline-block"></i>
+          by
+          <a href="https://2heng.xin/" target="_blank"
+            style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Mashiro</a>&<a
+            href="https://www.hojun.cn/" target="_blank"
+            style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">のさくら荘そ</a>,
+          Powered by Hexo,
+          Hosted by Github Pages</a>
+        </span>
+      </p>
+      <p>
+        <span id="busuanzi_container_site_pv" style="color: #b9b9b9;">
+          本站总访问量<span id="busuanzi_value_site_pv">1</span>次
+        </span>
+      </p>
+    </div>
+
+    <p id="footer-sponsor">
+      <a href="#" target="_blank" alt="CDN Sponsor" rel="nofollow"><img
+          src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/support/Tencent_Cloud_logo.svg" alt="CDN Sponsor"
+          style="height: 1.5em;"></a>&nbsp;&nbsp;&nbsp;<a href="https://www.vultr.com/?ref=7196564" target="_blank"
+        alt="Server provider" rel="nofollow"><img
+          src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/support/vultr_logo__on-white.svg" alt="Server provider"
+          style="height: 1.5em;"></a>&nbsp;&nbsp;&nbsp;<a href="#" target="_blank" alt="Free CDN" rel="nofollow"><img
+          src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/support/baidu_cdn.svg" alt="jsDelivr"
+          style="height: 1.5em;"></a>&nbsp;&nbsp;&nbsp;<a href="https://www.google.com/intl/ja/analytics/"
+        target="_blank" alt="Analytics solution" rel="nofollow"><img
+          src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/support/Google.svg" alt="Google Analytics"
+          style="height: 1.5em; "></a>
+    </p>
+  </div>
+  <!-- .site-info -->
+</footer>
+
+<div class="changeSkin-gear no-select" style="bottom: -999px;">
+    <div class="keys">
+        <span id="open-skinMenu">
+            <i class="iconfont icon-gear inline-block rotating"></i>&nbsp; 切换主题 | SCHEME TOOL
+        </span>
+    </div>
+</div>
+<div class="skin-menu no-select">
+    <div class="theme-controls row-container">
+        <ul class="menu-list">
+            <li id="white-bg">
+                <i class="fa fa-television" aria-hidden="true"></i>
+            </li>
+            <!--Default-->
+            <li id="sakura-bg">
+                <i class="iconfont icon-sakura"></i>
+            </li>
+            <!--Sakura-->
+            <li id="gribs-bg">
+                <i class="fa fa-slack" aria-hidden="true"></i>
+            </li>
+            <!--Grids-->
+            <li id="KAdots-bg">
+                <i class="iconfont icon-dots"></i>
+            </li>
+            <!--Dots-->
+            <li id="totem-bg">
+                <i class="fa fa-superpowers" aria-hidden="true"></i>
+            </li>
+            <!--Orange-->
+            <li id="pixiv-bg">
+                <i class="iconfont icon-pixiv"></i>
+            </li>
+            <!--Start-->
+            <li id="bing-bg">
+                <i class="iconfont icon-bing"></i>
+            </li>
+            <!--Bing-->
+            <li id="dark-bg">
+                <i class="fa fa-moon-o" aria-hidden="true"></i>
+            </li>
+            <!--Night-->
+        </ul>
+    </div>
+    <div class="font-family-controls row-container">
+        <button type="button" class="control-btn-serif selected" data-mode="serif"
+            onclick="mashiro_global.font_control.change_font()">Serif</button>
+        <button type="button" class="control-btn-sans-serif" data-mode="sans-serif"
+            onclick="mashiro_global.font_control.change_font()">Sans Serif</button>
+    </div>
+</div>
+<canvas id="night-mode-cover"></canvas>
+<div class="prpr" style="visibility: hidden;">
+    <div class="mashiro-tips" style="opacity: 0;">你一直相信的事，也让我相信吧。活着，是件美好的事。</div>
+    <canvas id="live2d" width="280" height="250" class="live2d"></canvas>
+</div>
+<div class="live2d-tool hide-live2d no-select" onclick="hide_live2d()">
+    <div class="keys">Show</div>
+</div>
+<div class="live2d-tool switch-live2d no-select" onclick="switch_pio()">
+    <div class="keys">Switch</div>
+</div>
+<div class="live2d-tool save-live2d no-select" onclick="save_pio()">
+    <div class="keys">Save</div>
+</div>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/js/lib.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/js/InsightSearch.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/js/jquery.fancybox.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/js/zoom.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/js/sakura-app_v3.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/js/autoptimize.js"></script>
+<!-- //cdn1.lncld.net/static/js/3.0.4/av-min.js -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/js/av-min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/js/botui.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/js/custom.js"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<!-- Valine评论 -->>
+<script type="text/javascript" src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<!-- 不蒜子 网页计数器 -->
+<script async type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- TOC目录 -->
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+
+<script type="text/javascript">
+  /* <![CDATA[ */
+  if (/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+    var Poi = {
+      "pjax": "1",
+      "movies": {
+        "url": "https://cdn.jsdelivr.net/gh/honjun/hojun@1.2",
+        "name": "Unbroken.mp4",
+        "live": "close"
+      },
+      "windowheight": "fixed",
+      "codelamp": "close",
+      "ajaxurl": "",
+      "order": "asc",
+      "formpostion": "bottom"
+    };
+  } else {
+    var Poi = {
+      "pjax": "1",
+      "movies": {
+        "url": "https://cdn.jsdelivr.net/gh/honjun/hojun@1.2",
+        "name": "Unbroken.mp4",
+        "live": "open"
+      },
+      "windowheight": "auto",
+      "codelamp": "close",
+      "ajaxurl": "",
+      "order": "asc",
+      "formpostion": "bottom"
+    };
+  }
+  /* ]]> */
+</script>
+
+
+
+
+
+
+
+
+<!-- baidu Analytics -->
+<script>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement('script');
+        hm.src = 'https://hm.baidu.com/hm.js?18d22dda3acd079101f04a6eacf3781e';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+<script>
+  $(document).ready(function () {
+    // 处理目录
+    if ($(".toc").length > 0 && document.body.clientWidth > 1200) {
+      if ($(".pattern-center").length > 0) { //有图的情况
+        tocbot.init({
+          // Where to render the table of contents.
+          tocSelector: '.toc', // 放置目录的容器
+          // Where to grab the headings to build the table of contents.
+          contentSelector: '.entry-content', // 正文内容所在
+          // Which headings to grab inside of the contentSelector element.
+          scrollSmooth: true,
+          headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+          collapseDepth: 3,
+          headingsOffset: -300,
+          scrollSmoothOffset: -85
+        });
+      } else {
+        tocbot.init({
+          // Where to render the table of contents.
+          tocSelector: '.toc', // 放置目录的容器
+          // Where to grab the headings to build the table of contents.
+          contentSelector: '.entry-content', // 正文内容所在
+          // Which headings to grab inside of the contentSelector element.
+          scrollSmooth: true,
+          headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+          collapseDepth: 3,
+          headingsOffset: -85,
+          scrollSmoothOffset: -85
+        });
+      }
+      var offsetTop = $('.toc')
+        .offset()
+        .top - 95;
+      window.onscroll = function () {
+        var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+        if (scrollTop >= offsetTop) {
+          $('.toc').addClass('toc-fixed');
+        } else {
+          $('.toc').removeClass('toc-fixed');
+        }
+      }
+    }
+  });
+</script>
+
+    <!-- openNav -->
+    <div class="openNav no-select">
+      <div class="iconflat no-select">
+        <div class="icon"></div>
+      </div>
+      <div class="site-branding">
+        
+        <h1 class="site-title">
+          <a href="">
+            
+          </a>
+        </h1>
+        
+      </div>
+    </div>
+  </section>
+
+  <div id="mo-nav" class="">
+  <div class="m-avatar">
+    <img src="https://cdn.jsdelivr.net/gh/dexfire/cdn@v1.0.8/images/custom/avatar.jpg">
+  </div>
+  <p
+    style="text-align: center; color: #333; font-weight: 900; font-family: 'Ubuntu', sans-serif; letter-spacing: 1.5px">
+    Dexfireのさくら荘そ</p>
+  <p style="text-align: center; word-spacing: 20px;">
+    
+    
+    <a href="http://github.com/honjun" class="fa fa-github" target="_blank"
+      style="color: #333; margin-left:20px"></a>
+    
+    <a href="http://weibo.com/mashirozx?is_all=1" class="fa fa-weibo" target="_blank"
+      style="color: #dd4b39; margin-left:20px"></a>
+    
+    <a href="https://wpa.qq.com/msgrd?v=3&uin=954655431&site=qq&menu=yes" class="fa fa-qq" target="_blank"
+      style="color: #25c6fe; margin-left:20px"></a>
+    
+    
+  </p>
+  <ul id="menu-new-1" class="menu">
+    
+    <li>
+      <a href="/">
+        <span class="faa-parent animated-hover">
+          <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
+          主页
+        </span>
+      </a>
+      
+    </li>
+    
+    <li>
+      <a href="/archives">
+        <span class="faa-parent animated-hover">
+          <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
+          时间线
+        </span>
+      </a>
+      
+      <ul class="sub-menu">
+        
+        <li>
+          <a href="/categories/%E6%8A%80%E6%9C%AF/">
+            <i class="fa fa-code" aria-hidden="true"></i>
+            技术
+          </a>
+        </li>
+        
+        <li>
+          <a href="/categories/%E7%94%9F%E6%B4%BB/">
+            <i class="fa fa-file-text-o" aria-hidden="true"></i>
+            生活
+          </a>
+        </li>
+        
+        <li>
+          <a href="/categories/%E8%B5%84%E6%BA%90/">
+            <i class="fa fa-cloud-download" aria-hidden="true"></i>
+            资源
+          </a>
+        </li>
+        
+        <li>
+          <a href="/categories/%E9%9A%8F%E6%83%B3/">
+            <i class="fa fa-commenting-o" aria-hidden="true"></i>
+            随想
+          </a>
+        </li>
+        
+        <li>
+          <a href="/categories/%E8%BD%AC%E8%BD%BD/">
+            <i class="fa fa-book" aria-hidden="true"></i>
+            转载
+          </a>
+        </li>
+        
+      </ul>
+      
+    </li>
+    
+    <li>
+      <a href="javascript:;">
+        <span class="faa-parent animated-hover">
+          <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+          清单
+        </span>
+      </a>
+      
+      <ul class="sub-menu">
+        
+        <li>
+          <a href="/tags/%E6%82%A6%E8%AF%BB/">
+            <i class="fa fa-th-list faa-bounce" aria-hidden="true"></i>
+            书单
+          </a>
+        </li>
+        
+        <li>
+          <a href="/bangumi/">
+            <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
+            番组
+          </a>
+        </li>
+        
+        <li>
+          <a href="/music/">
+            <i class="fa fa-headphones" aria-hidden="true"></i>
+            歌单
+          </a>
+        </li>
+        
+        <li>
+          <a href="/tags/%E5%9B%BE%E9%9B%86/">
+            <i class="fa fa-photo" aria-hidden="true"></i>
+            图集
+          </a>
+        </li>
+        
+      </ul>
+      
+    </li>
+    
+    <li>
+      <a href="/comment/">
+        <span class="faa-parent animated-hover">
+          <i class="fa  fa-pencil-square-o faa-tada" aria-hidden="true"></i>
+          留言板
+        </span>
+      </a>
+      
+    </li>
+    
+    <li>
+      <a href="/links/">
+        <span class="faa-parent animated-hover">
+          <i class="fa  fa-link faa-shake" aria-hidden="true"></i>
+          友人帐
+        </span>
+      </a>
+      
+    </li>
+    
+    <li>
+      <a href="/donate/">
+        <span class="faa-parent animated-hover">
+          <i class="fa  fa-heart faa-pulse" aria-hidden="true"></i>
+          咖啡
+        </span>
+      </a>
+      
+    </li>
+    
+    <li>
+      <a href="/">
+        <span class="faa-parent animated-hover">
+          <i class="fa  fa-leaf faa-wrench" aria-hidden="true"></i>
+          关于
+        </span>
+      </a>
+      
+      <ul class="sub-menu">
+        
+        <li>
+          <a href="/about/">
+            <i class="fa fa-meetup" aria-hidden="true"></i>
+            我
+          </a>
+        </li>
+        
+        <li>
+          <a href="/theme-sakura/">
+            <i class="fa iconfont icon-sakura" aria-hidden="true"></i>
+            主题
+          </a>
+        </li>
+        
+        <li>
+          <a href="/theme-sakura/update_logs.html">
+            <i class="fa fa-ravelry" aria-hidden="true"></i>
+            更新
+          </a>
+        </li>
+        
+        <li>
+          <a href="/lab/">
+            <i class="fa fa-cogs" aria-hidden="true"></i>
+            实验室
+          </a>
+        </li>
+        
+      </ul>
+      
+    </li>
+    
+    <li>
+      <a href="/atom.xml">
+        <span class="faa-parent animated-hover">
+          <i class="fa  fa-rss faa-pulse" aria-hidden="true"></i>
+          RSS
+        </span>
+      </a>
+      
+    </li>
+    
+  </ul>
+  <p style="text-align: center; font-size: 13px; color: #b9b9b9;">&copy 2020 hexo-sakura</p>
+</div>
+<button onclick="topFunction()" class="mobile-cd-top" id="moblieGoTop" title="Go to top" style="display: none;"><i
+    class="fa fa-chevron-up" aria-hidden="true"></i></button>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<!-- require MetingJS -->
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+<style>
+  .aplayer .aplayer-lrc {
+    height: 35px;
+  }
+  .aplayer .aplayer-lrc p{
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 18px !important;
+  }
+  .aplayer .aplayer-lrc p.aplayer-lrc-current{
+    color: #FF1493;
+  }
+  .aplayer.aplayer-narrow .aplayer-body{
+    left: -66px !important;
+  }
+  .aplayer.aplayer-fixed .aplayer-lrc {
+    display: none;
+  }
+  .aplayer .aplayer-lrc.aplayer-lrc-hide {
+      display:none !important;
+  }
+  .aplayer.aplayer-fixed .lrc-show {
+    display: block;
+    background: rgba(255, 255, 255, 0.8);
+  }
+</style>
+<meting-js
+
+    id="2660651585"
+
+    server="netease"
+
+    type="playlist"
+
+    fixed="true"
+
+    autoplay="false"
+
+    loop="all"
+
+    order="random"
+
+    preload="auto"
+
+    volume="0.7"
+
+    mutex="true"
+
+</meting-js>
+<script>
+  $(function(){
+    $('body').on('click', '.aplayer', function(){
+      if($('.aplayer-button').hasClass('aplayer-play')) {
+        $('.aplayer-lrc').removeClass('lrc-show');
+      } else {
+        $('.aplayer-lrc').addClass('lrc-show');
+      }
+    })
+  });
+</script>
+</body>
+
+</html>

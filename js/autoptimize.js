@@ -770,23 +770,7 @@ try {
         }
     }
     mashiro_global.ini.live2d();
-    var bgn = 1;
-    function nextBG() {
-        $(".centerbg").css("background-image", "url(https://api.2heng.xin/cover/?" + bgn + ")");
-        bgn = bgn + 1;
-    }
-    function preBG() {
-        bgn = bgn - 1;
-        $(".centerbg").css("background-image", "url(https://api.2heng.xin/cover/?" + bgn + ")");
-    }
-    $(document).ready(function() {
-        $("#bg-next").click(function() {
-            nextBG();
-        });
-        $("#bg-pre").click(function() {
-            preBG();
-        });
-    });
+    
     if (document.body.clientWidth <= 860 && !window.is_app) {
         window.onscroll = function() {
             scrollFunction()
@@ -1012,7 +996,7 @@ try {
         if (confirm(msg) == true) {
             $(this).commentPrivate();
         } else {
-            aler("已取消");
+            alert("已取消");
         }
     });
     $.fn.commentPrivate = function() {
